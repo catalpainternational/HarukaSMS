@@ -1,0 +1,30 @@
+{% extends "groups/base.html" %}
+{% load pagination_tags sorting_tags %}
+
+{% block title %}Groups{% endblock %}
+
+{% block content %}
+
+<div class='module'>
+    <h2>Groups</h2>
+    <p><a class='button add' title='Add group' href="{% url create-group %}" >Add group...</a></p>
+    <table class='sortable pagination'>
+        <thead>
+            <tr>
+                <th>{% anchor id "Group ID Number" %}</th>
+                <th>{% anchor name Name %}</th>
+                <th>{% anchor count "Number Recipients" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for group in groups %}
+                <tr class="{% cycle 'odd' 'even' %}">
+                    <td>{{ group.pk }}</td>
+                    <td><a href='{% url edit-group group.pk %}'>{{ group.name }}</a></td>
+                    <td>{{ group.count }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

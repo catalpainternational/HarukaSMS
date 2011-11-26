@@ -1,0 +1,41 @@
+{% extends "bulksend/base.html" %}
+{% load forms_tags %}
+
+{% block stylesheets %}
+{{ block.super }}
+<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/dashboard.css" />
+{% endblock %}
+
+{% block content %}
+
+<form action='/bulksend/' method="POST">
+<div class="module">
+    <div class="module contents">
+        <h2>Message</h2>
+        
+        <div>
+            <textarea name="message" cols="60" rows="5"></textarea>
+        </div>
+    </div>
+</div>
+
+<div class="module">
+    <div style='padding=10'>
+        <h2>Groups</h2>
+        <div>
+                <h4> Send the bulk message to the following group:
+        </div>
+        <select name='group_id'>
+            {% for group in groups %}
+            <option value="{{ group.pk }}"> {{ group.name }} </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div style='padding:10'>
+        <input type="submit" class="send" value="Send Messages" />
+    </div>
+</div>
+</form>
+{% endblock %}
+
