@@ -1,5 +1,6 @@
 -e git://github.com/rapidsms/rapidsms.git#egg=RapidSMS
 -e git://github.com/rapidsms/pygsm.git#egg=pygsm
 -e git://github.com/nyaruka/rapidsms-xforms.git#egg=rapidsms-xforms
+-e git://github.com/unicefuganda/rapidsms-generic.git#egg=rapidsms-generic
 -e git://github.com/unicefuganda/rapidsms-contact.git#egg=rapidsms-contact
 django-sorting
