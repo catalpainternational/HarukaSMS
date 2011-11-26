@@ -2,6 +2,8 @@
 # vim: ai ts=4 sts=4 et sw=4
 # encoding=utf-8
 
+import os
+
 # -------------------------------------------------------------------- #
 #                          MAIN CONFIGURATION                          #
 # -------------------------------------------------------------------- #
@@ -184,6 +186,15 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.request",
 ]
 
+# Absolute path to the directory static files should be collected to.
+# Don't put anything in this directory yourself; store your static files
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# Example: "/home/media/media.lawrence.com/static/"
+STATIC_ROOT =  os.getcwd()+'/static/'
+
+# URL prefix for static files.
+# Example: "http://media.lawrence.com/static/"
+STATIC_URL = '/static/'
 
 # -------------------------------------------------------------------- #
 #                           HERE BE DRAGONS!                           #
