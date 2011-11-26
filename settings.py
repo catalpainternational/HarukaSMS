@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.sessions",
     "django.contrib.contenttypes",
+   # "django.contrib.staticfiles",
 
     # the rapidsms contrib apps.
     "rapidsms.contrib.default",
@@ -191,11 +192,11 @@ TEMPLATE_CONTEXT_PROCESSORS = [
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT =  os.getcwd()+'/static/'
+#STATIC_ROOT =  os.getcwd()+'/static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 # -------------------------------------------------------------------- #
 #                           HERE BE DRAGONS!                           #
