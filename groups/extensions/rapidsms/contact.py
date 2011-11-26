@@ -15,7 +15,7 @@ class ContactExtra(models.Model):
     email = models.EmailField(blank=True)
     phone = models.CharField(max_length=32, blank=True)
     title = models.CharField(max_length=64, blank=True)
-    gender = models.CharField(max_length=1, blank=True)
+    #gender = models.CharField(max_length=1, blank=True) 
     age = models.CharField(max_length=64, blank=True)
     location = models.CharField(max_length=64, blank=True)
     
