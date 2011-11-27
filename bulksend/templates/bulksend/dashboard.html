@@ -3,18 +3,40 @@
 
 {% block stylesheets %}
 {{ block.super }}
-<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/dashboard.css" />
+<!--<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/dashboard.css" />-->
 {% endblock %}
+
 
 {% block content %}
 
-<form action='/bulksend/' method="POST">
+<form action='/bulksend/review/' method="POST">
+  <script content="text/javascript">
+    var sms_length = {{ sms_length }};
+      var sms_cost = {{ sms_cost }};
+  </script>
+
 <div class="module">
     <div class="module contents">
         <h2>Message</h2>
-        
-        <div>
-            <textarea name="message" cols="60" rows="5"></textarea>
+        <div class="msg_input">
+          <textarea name="message"
+                    cols="60"
+                    id="message"
+                    rows="5"
+                    onKeyDown="countChars('message','c_count','sms_count','msg_price')"
+                    onKeyUp="countChars('message','c_count','sms_count','msg_price')"></textarea>
+        </div>
+        <div class="price">
+          <table>
+            <thead><tr><th colspan="3">Price evaluation:</th></tr></thead>
+            <tbody>
+                <tr><td class="col_0"></td><td class="col_1"><span id="c_count"></span></td><td>characters</td></tr>
+                <tr><td class="col_0">÷</td><td class="col_1">{{ sms_length }}</td><td>char. per SMS</td></tr>
+                <tr class="hr"><td colspan="2" class="col_1"><hr></hr></td><td></td></tr>
+                <tr><td class="col_0">=</td><td class="col_1"><span id="sms_count"></span></td><td>SMS per message.</td></tr>
+                <tr class="last_row"><td class="col_0">=</td><td class="col_1">$<span id="msg_price"></span></td><td>per contact.</td></tr>
+            </tbody>
+          </table>
         </div>
     </div>
 </div>
@@ -38,4 +60,3 @@
 </div>
 </form>
 {% endblock %}
-

@@ -4,6 +4,9 @@
 from django.conf.urls.defaults import *
 from . import views
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^$', views.bulksend, name="bulksend"),
+    url(r'^review/$', views.review, name="review"),
+
 )
