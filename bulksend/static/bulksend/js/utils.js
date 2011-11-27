@@ -5,18 +5,13 @@ function countChars(id_read, id_count,id_sms_count,id_msg_price){
     sms_count = Math.ceil(char_count/sms_length);
     msg_price = sms_count * sms_cost;
     document.getElementById(id_sms_count).innerHTML= sms_count;
-    document.getElementById(id_msg_price).innerHTML= msg_price;
+    document.getElementById(id_msg_price).innerHTML= '$'+msg_price;
 }
 
-function costCalculator(id_){
-
-    cost = (message_count * sms_cost) / 100;
-}
-
-function showSpinnerAndRedirect(){
+function showSpinnerAndRedirect(to_hide_id){
     document.getElementById('spinner').style.display='block';
-    document.getElementById('content-main').style.display='none';
-    setTimeout(redirectAfterGet, (3 * 1000));
+    document.getElementById(to_hide_id).style.display='none';
+    setTimeout(redirectAfterGet, (1 * 1000));
 }
 function redirectAfterGet() {
     var req = false;

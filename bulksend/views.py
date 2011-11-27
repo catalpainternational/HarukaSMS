@@ -48,6 +48,7 @@ def review(request):
             "m_length": len(text),
             "m_count":m_count,
             "send_price":send_price,
+            "group":group,
             }
 
         import datetime
@@ -57,19 +58,6 @@ def review(request):
             lorem_ipsum,
             context_instance=RequestContext(request)
         )
-
-        # for contact in group.contacts.all():
-        #     connection = contact.connection_set.all()[0]
-        #     post = {"connection_id": unicode(connection.id), "text": text}
-        #     call_router("messaging", "send_message", **post)
-        # print datetime.datetime.now()
-
-        # messages.success(request, 'Thank you, you successfully sent your bulk message.')
-        # return render_to_response(
-        #     "bulksend/dashboard.html", {
-        #         "groups": Group.objects.all(),
-        #     }, context_instance=RequestContext(request)
-        # )
 
 
 @login_required
