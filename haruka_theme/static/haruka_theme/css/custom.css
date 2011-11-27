@@ -105,7 +105,7 @@
     background: #fff;
     margin: 0.5em auto 0 auto;
    
-    -moz-box-shadow: 4px 4px 8px #aaa;
+    -moz-box-shadow: 4px 4px 8px #575757;
     box-shadow: 0px 2px 6px #aaa;
     -moz-border-radius-bottomright: 1em;
     -moz-border-radius-bottomleft: 1em;
@@ -150,41 +150,41 @@
  /*------------- START OF MODULE HEADER ----------------*/
     
     
-    div.module h2 {
-    background-color: #FFFFFF;
-    background-image: url("");
-    font-size: 160%;
-    letter-spacing:0.5px;
-    padding: 0.3125em;
-    text-shadow: 1px 1px 1px #f4f4f4;
+	div.module h2 {
+		background-color: #FFFFFF;
+		background-image: url("");
+		font-size: 160%;
+		letter-spacing:0.5px;
+		padding: 0.3125em;
+		text-shadow: 1px 1px 1px #f4f4f4;
 }
 
-div.module h2, div.module h3 {
-    background-position: 0 100%;
-    background-repeat: repeat-x;
-    color: #666666;
-    font-weight: normal;
-    line-height: 1;
-    margin: 0;
-    white-space: nowrap;
-    
-}
- 
-    div.module div {
-    -moz-border-bottom-colors: none;
-    -moz-border-image: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #F4F4F4;
-    margin-top: -1px;
-    border-color: #DDDDDD #EEEEEE #FFFFFF;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 4px 4px 4px 4px;
+	div.module h2, div.module h3 {
+		background-position: 0 100%;
+		background-repeat: repeat-x;
+		color: #666666;
+		font-weight: normal;
+		line-height: 1;
+		margin: 0;
+		white-space: nowrap;
     
 }
 
-div.module div.module {
-    border: none;
+	div.module div {
+		-moz-border-bottom-colors: none;
+		-moz-border-image: none;
+		-moz-border-left-colors: none;
+		-moz-border-right-colors: none;
+		-moz-border-top-colors: none;
+		background-color: #F4F4F4;
+		border-color: #DDDDDD #EEEEEE #FFFFFF;
+		border-style: solid;
+		border-width: 1px;
+		border-radius: 4px 4px 4px 4px;
+    
+    
+}
+
+	div.module div.module {
+		border: none;
 }
