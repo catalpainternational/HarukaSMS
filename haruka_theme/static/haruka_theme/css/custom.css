@@ -56,8 +56,8 @@
     top: 83px;
     background-color: #cccccc;
     left: 477px;
-    margin-left: -47px;
     top: -19px;
+    
 }
 
    #tabs,
@@ -67,6 +67,7 @@
         bottom: 0;
         padding: 0;
         margin: 0;
+        margin-left: -41px;
     }
 
     /* global tabs sit on the right, page-specific tabs sit on the left.
@@ -112,7 +113,7 @@
     -moz-border-radius-topleft: 1em;
 }
 
-/*--------------- END OF MAIN NAVIGATION -----------------*/
+/*--------------- START OF FOOTER -----------------*/
 
 #footer {
     border-top: 0px;
