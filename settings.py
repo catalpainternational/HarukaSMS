@@ -53,7 +53,7 @@ INSTALLED_BACKENDS = {
 # to help you get started quickly, many django/rapidsms apps are enabled
 # by default. you may wish to remove some and/or add your own.
 INSTALLED_APPS = [
-
+    "haruka_theme",
     # the essentials.
     "django_nose",
     "djtables",
@@ -96,7 +96,7 @@ INSTALLED_APPS = [
     "contact",
     'groups',
     "bulksend",
-    "haruka_theme",
+
 ]
 
 SMS_APPS = [
