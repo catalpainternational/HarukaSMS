@@ -32,6 +32,8 @@ urlpatterns = patterns('',
     (r'^groups/', include('groups.urls')),
     (r'^bulksend/', include('bulksend.urls')),
     ('', include('rapidsms_xforms.urls')),
+    ('polls', include('poll.urls')),
+    ('', include('rapidsms_httprouter.urls')),
 )
 
 if settings.DEBUG:

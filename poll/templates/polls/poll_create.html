@@ -1,0 +1,26 @@
+{% extends "polls/layout.html" %}
+{% block title %}Polls{% endblock %}
+
+{% block content %}
+
+{% load uni_form_tags %}
+{% load forms_tags %}
+<form action="{% url poll.views.new_poll %}" method="post" class="uniForm" id="newForm">
+<fieldset>
+{{ form|as_uni_form }}
+<div class="buttons" style="float:left;margin-bottom:10px;margin-top:10px">
+  <a href="{% url polls %}">
+    <img src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt=""/> 
+    Cancel
+  </a>
+  <a onclick="$('#newForm').submit();" href="javascript:void(0);">
+    <img src="{{ MEDIA_URL }}rapidsms/icons/silk/add.png" alt=""/> 
+    Create Poll
+  </a>
+</div>
+
+</fieldset>
+{% csrf_token %}
+</form>
+
+{% endblock %}

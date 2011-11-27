@@ -156,8 +156,9 @@ def console(request):
                     outgoing = OutgoingMessage(conn, text)
                     get_router().handle_outgoing(outgoing)
                 else:
-                    reply_form.errors.setdefault('short_description', ErrorList())
-                    reply_form.errors['recipient'].append("This number isn't in the system")
+                    pass #Fail gracefully
+                    #reply_form.errors.setdefault('short_description', ErrorList())
+                    #reply_form.errors['recipient'].append("This number isn't in the system")
 
         elif request.POST['action'] == 'search':
             # split on spaces
