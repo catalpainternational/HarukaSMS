@@ -177,10 +177,12 @@ div.module h2, div.module h3 {
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
     background-color: #F4F4F4;
-    border-color: #636363 #DDDDDD #DDDDDD;
-    border-style: none;
-    border-width: 1px;
     margin-top: -1px;
+    border-color: #DDDDDD #EEEEEE #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px 4px 4px 4px;
+    
 }
 
 div.module div.module {
