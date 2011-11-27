@@ -96,6 +96,11 @@ INSTALLED_APPS = [
     "contact",
     'groups',
     "bulksend",
+    "mptt",
+    "code_generator",
+    "rapidsms.contrib.locations.nested",
+    "simple_locations",
+    "poll",
 
 ]
 
@@ -113,6 +118,7 @@ XFORMS_HOST = 'localhost:8000'
 # to add it here, also, to expose it in the rapidsms ui.
 RAPIDSMS_TABS = [
     # Haruka specific
+    ('polls',                                               'Polls'),
     ("xforms",                                              "Survey Builder"),
     ("bulksend",                                            "Bulk Messaging"),
     ('list-groups',                                         "Groups"),
