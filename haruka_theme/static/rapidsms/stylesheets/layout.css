@@ -1,0 +1,37 @@
+
+body {
+    background:  url("../images/body-bg.png");
+    color: #333333;
+    font: 9pt/1 "Lucida Grande","Bitstream Vera Sans",Verdana,sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+#header {
+    background: url("../images/header-bg.png") repeat-x scroll 0 0 transparent;
+    color: #CCCCFF;
+    padding-bottom: 33px;
+    padding-top: 23px;
+    position: relative;
+    
+}
+
+#inner {
+    padding: 1em;
+    position: relative;
+}
+
+#branding h1 a {
+    background: url("../images/harukasms.png") no-repeat scroll 0 50% transparent;
+    display: block;
+    float: left;
+    height: 65px;
+    width: 245px;
+}
+
+#tabs {
+    right: 125px;
+    top: 83px;
+    background-color: #cccccc;
+}

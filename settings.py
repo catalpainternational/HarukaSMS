@@ -83,6 +83,7 @@ INSTALLED_APPS = [
     #"rapidsms.contrib.registration",
     "rapidsms.contrib.scheduler",
     "rapidsms.contrib.echo",
+    "django.contrib.staticfiles",
 
     # Haruka specific
     #    'rosetta',
@@ -137,6 +138,7 @@ MIDDLEWARE_CLASSES = (
 #    'django.middleware.csrf.CsrfResponseMiddleware',
 )
 
+
 # -------------------------------------------------------------------- #
 #                         BORING CONFIGURATION                         #
 # -------------------------------------------------------------------- #
@@ -161,7 +163,7 @@ TEST_RUNNER = "django_nose.NoseTestSuiteRunner"
 
 # for some reason this setting is blank in django's global_settings.py,
 # but it is needed for static assets to be linkable.
-MEDIA_URL = "/static/"
+MEDIA_URL = "/site-media/"
 
 
 # this is required for the django.contrib.sites tests to run, but also
@@ -192,11 +194,33 @@ TEMPLATE_CONTEXT_PROCESSORS = [
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-#STATIC_ROOT =  os.getcwd()+'/static/'
+STATIC_ROOT =  os.getcwd()+'/static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-#STATIC_URL = '/static/'
+STATIC_URL = '/static/'
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)
+
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
+
+# List of callables that know how to import templates from various sources.
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    #'django.template.loaders.eggs.Loader',
+)
 
 # -------------------------------------------------------------------- #
 #                           HERE BE DRAGONS!                           #

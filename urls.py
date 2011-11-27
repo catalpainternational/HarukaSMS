@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 admin.autodiscover()
 
@@ -40,3 +41,4 @@ if settings.DEBUG:
         # production)
         (r'^', include('rapidsms.urls.static_media')),
     )
+    urlpatterns += staticfiles_urlpatterns()
