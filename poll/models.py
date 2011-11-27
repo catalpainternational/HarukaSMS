@@ -42,7 +42,8 @@ CONTAINS_PATTERN_TEMPLATE = '^.*\s*(%s)(\s|[^a-zA-Z]|$)'
 YES_WORDS = {
     'en-us':['yes', 'yeah', 'yep', 'yay', 'y'],
     'en':['yes', 'yeah', 'yep', 'yay', 'y'],
-    'ach':['ada','da']
+    'ach':['ada','da'],
+    'tet':['los','sim',],
 }
 
 # This can be configurable from settings, but here's a default list of
@@ -50,7 +51,8 @@ YES_WORDS = {
 NO_WORDS = {
             'en-us':['no', 'nope', 'nah', 'nay', 'n'],
             'en':['no', 'nope', 'nah', 'nay', 'n'],
-            'ach':['ku','k']
+            'ach':['ku','k'],
+            'tet':['lae',],
 }
 
 class ResponseForm(forms.Form):
