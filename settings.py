@@ -61,7 +61,7 @@ INSTALLED_APPS = [
 
     # common dependencies (which don't clutter up the ui).
     "rapidsms.contrib.handlers",
-    "rapidsms.contrib.ajax",
+    #"rapidsms.contrib.ajax", # can't be used with rapidsms_httprouter
 
     # enable the django admin using a little shim app (which includes
     # the required urlpatterns), and a bunch of undocumented apps that
@@ -76,16 +76,18 @@ INSTALLED_APPS = [
     # the rapidsms contrib apps.
     "rapidsms.contrib.default",
     "rapidsms.contrib.export",
-    "rapidsms.contrib.httptester",
+    #"rapidsms.contrib.httptester", # can't be used with rapidsms_httprouter
     "rapidsms.contrib.locations",
-    "rapidsms.contrib.messagelog",
+    #"rapidsms.contrib.messagelog", # can't be used with rapidsms_httprouter
     "rapidsms.contrib.messaging",
     #"rapidsms.contrib.registration",
     "rapidsms.contrib.scheduler",
     "rapidsms.contrib.echo",
     "django.contrib.staticfiles",
 
-    # Haruka specific
+    # Haruka specific #
+    ###################
+
     #    'rosetta',
     "eav", # used by xforms
     "uni_form", # used by xforms
@@ -96,10 +98,13 @@ INSTALLED_APPS = [
     "contact",
     'groups',
     "bulksend",
+
+    # for the polls
     "mptt",
     "code_generator",
     "rapidsms.contrib.locations.nested",
     "simple_locations",
+    "rapidsms_httprouter",
     "poll",
 
 ]
@@ -107,6 +112,7 @@ INSTALLED_APPS = [
 SMS_APPS = [
     "rapidsms_xforms",
     "bulksend",
+    "poll",
 ]
 
 # rapidsms-xforms specific settings
@@ -118,12 +124,13 @@ XFORMS_HOST = 'localhost:8000'
 # to add it here, also, to expose it in the rapidsms ui.
 RAPIDSMS_TABS = [
     # Haruka specific
-    ('polls',                                               'Polls'),
+    ("polls",                                               "Polls"),
     ("xforms",                                              "Survey Builder"),
     ("bulksend",                                            "Bulk Messaging"),
     ('list-groups',                                         "Groups"),
     ("registration",                                        "Registration"),
-    ("rapidsms.contrib.messagelog.views.message_log",       "Message Log"),
+    #("rapidsms.contrib.messagelog.views.message_log",       "Message Log"), # can't be used with rapidsms_httprouter
+    ("httprouter-console",                                  "Console"), # for use with rapidsms_httprouter
 
 #    ('rapidsms.views.dashboard',                            "Dashboard"),
 #    ("rapidsms.contrib.messaging.views.messaging",          "Messaging"),
@@ -241,8 +248,8 @@ TEST_EXCLUDED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.auth",
     "rapidsms",
-    "rapidsms.contrib.ajax",
-    "rapidsms.contrib.httptester",
+    #"rapidsms.contrib.ajax", # can't be used with rapidsms_httprouter
+    #"rapidsms.contrib.httptester", # can't be used with rapidsms_httprouter
 ]
 
 # the project-level url patterns

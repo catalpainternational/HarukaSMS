@@ -1,0 +1,19 @@
+{% extends "polls/response_base_view.html" %}
+{% block remaining_content %} 
+    <td class="center response_text_col">
+        {{ response.message.text }}
+    </td>
+    <td class="center response_custom_col">
+      {% ifequal db_type 'text' %}
+          {{ response.eav.poll_text_value }}
+      {% else %}
+          {% ifequal db_type 'float' %}
+              {{ response.eav.poll_number_value
+          {% else %}
+              {% ifequal db_type 'object' %}
+                  {{ response.eav.poll_location_value }}
+              {% endifequal %}
+          {% endifequal %}
+      {% endifequal %}
+    </td>
+{% endblock %}
