@@ -36,6 +36,7 @@ Thumbs.db
 
 # Django Related #
 ##################
+src
 site-packages
 databases
 
