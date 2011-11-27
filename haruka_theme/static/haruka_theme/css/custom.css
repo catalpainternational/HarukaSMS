@@ -1,6 +1,6 @@
 
 	body {
-		background:  url("") #B1DEEA;
+		background:  url("../images/backgroundwhite.png") repeat-x #B1DEEA;
 		color: #333333;
 		font: 9pt/1 "Helvetica","Arial";
 		margin-top: 70px;
@@ -40,10 +40,10 @@
 		background: url("../images/harukasms.png") no-repeat scroll 0 50% transparent;
 		display: block;
 		float: left;
-		height: 65px;
-		width: 245px;
+		height: 70px;
+		width: 250px;
 		margin-left: -12px;
-		margin-top: -79px;
+		margin-top: -72px;
 }
 
 /*------------------- END OF HEADER ---------------------*/
@@ -54,7 +54,7 @@
 #tabs {
     right: 125px;
     top: 83px;
-    background-color: #cccccc;
+    background-color: none;
     left: 477px;
     top: -19px;
     
@@ -106,7 +106,7 @@
     margin: 0.5em auto 0 auto;
    
     -moz-box-shadow: 4px 4px 8px #aaa;
-    box-shadow: 4px 4px 8px #aaa;
+    box-shadow: 0px 2px 6px #aaa;
     -moz-border-radius-bottomright: 1em;
     -moz-border-radius-bottomleft: 1em;
     -moz-border-radius-topright: 1em;
@@ -144,4 +144,45 @@
         text-align: right;
         float: right;
         margin: 0;
-    }
+   }
+    
+    
+ /*------------- START OF MODULE HEADER ----------------*/
+    
+    
+    div.module h2 {
+    background-color: #FFFFFF;
+    background-image: url("");
+    font-size: 160%;
+    letter-spacing:0.5px;
+    padding: 0.3125em;
+    text-shadow: 1px 1px 1px #f4f4f4;
+}
+
+div.module h2, div.module h3 {
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    color: #666666;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    white-space: nowrap;
+    
+}
+ 
+    div.module div {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #F4F4F4;
+    border-color: #636363 #DDDDDD #DDDDDD;
+    border-style: none;
+    border-width: 1px;
+    margin-top: -1px;
+}
+
+div.module div.module {
+    border: none;
+}
