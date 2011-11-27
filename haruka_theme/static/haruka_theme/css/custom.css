@@ -1,37 +1,113 @@
 
-body {
-    background:  url("../images/body-bg.png");
-    color: #333333;
-    font: 9pt/1 "Lucida Grande","Bitstream Vera Sans",Verdana,sans-serif;
-    margin: 0;
-    padding: 0;
+	body {
+		background:  url("") #B1DEEA;
+		color: #333333;
+		font: 9pt/1 "Helvetica","Arial";
+		margin-top: 70px;
+		padding: 0;
     
 }
 
-#header {
-    background: url("../images/header-bg.png") repeat-x scroll 0 0 transparent;
-    color: #CCCCFF;
-    padding-bottom: 33px;
-    padding-top: 23px;
-    position: relative;
+	#inner {
+		padding: 1em;
+		position: relative;
+}
+
+/*--------------- START OF HEADER -----------------*/
+
+	#header {
+		background: url("../images/header-bg.png") repeat-x scroll 0 0 transparent;
+		color: #CCCCFF;
+		padding-bottom: 33px;
+		padding-top: 23px;
+		position: relative;
     
 }
 
-#inner {
-    padding: 1em;
-    position: relative;
+	#branding {
+		padding: 0 10px;
+	
 }
 
-#branding h1 a {
-    background: url("../images/harukasms.png") no-repeat scroll 0 50% transparent;
-    display: block;
-    float: left;
-    height: 65px;
-    width: 245px;
+    #branding h1 {
+        background: url("");
+        height: 0px;
+        color: #fff;
+        margin: 0;
 }
+
+	#branding h1 a {
+		background: url("../images/harukasms.png") no-repeat scroll 0 50% transparent;
+		display: block;
+		float: left;
+		height: 65px;
+		width: 245px;
+		margin-left: -12px;
+		margin-top: -79px;
+}
+
+/*------------------- END OF HEADER ---------------------*/
+
+
+/*--------------- START OF MAIN NAVIGATION -----------------*/
 
 #tabs {
     right: 125px;
     top: 83px;
     background-color: #cccccc;
+    left: 477px;
+    margin-left: -47px;
+    top: -19px;
+}
+
+   #tabs,
+    #page-tabs {
+        position: absolute;
+        height: 28px;
+        bottom: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* global tabs sit on the right, page-specific tabs sit on the left.
+     * to draw more attention. TODO: maybe re-think this */
+    #tabs { right: 0; }
+    #page-tabs { left: 0;  }
+
+        #tabs li,
+        #page-tabs li {
+            display: block;
+            float: left;
+            line-height: 28px;
+        }
+
+        /* 5px spacing between each tab, to match the top gap, since
+         * we're using pixel-positioned backgrounds there */
+        #tabs li { margin-right: 5px; }
+        #page-tabs li { margin-left: 5px; }
+
+            #tabs li a,
+            #page-tabs li a {
+                color: #fff;
+                display: block;
+                padding: 0 1em;
+                background: #2fa5d1 url("../images/tab-bg.png") repeat-x;
+                border-right: 0px;
+                border-left: 0px;
+
+/*--------------- END OF MAIN NAVIGATION -----------------*/
+
+}
+
+#wrapper {
+    width: 80em;
+    background: #fff;
+    margin: 0.5em auto 0 auto;
+   
+    -moz-box-shadow: 4px 4px 8px #aaa;
+    box-shadow: 4px 4px 8px #aaa;
+    -moz-border-radius-bottomright: 1em;
+    -moz-border-radius-bottomleft: 1em;
+    -moz-border-radius-topright: 1em;
+    -moz-border-radius-topleft: 1em;
 }
