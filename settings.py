@@ -106,6 +106,7 @@ INSTALLED_APPS = [
     "simple_locations",
     "rapidsms_httprouter",
     "poll",
+    "pygsm-gateway",
 
 ]
 

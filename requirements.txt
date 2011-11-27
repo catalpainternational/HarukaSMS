@@ -5,3 +5,4 @@
 -e git://github.com/unicefuganda/rapidsms-contact.git#egg=rapidsms-contact
 django-sorting
 django_pagination
+-e git+https://github.com/caktus/pygsm-gateway.git#egg=pygsm-gateway
