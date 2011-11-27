@@ -56,8 +56,8 @@
     top: 83px;
     background-color: #cccccc;
     left: 477px;
-    margin-left: -47px;
     top: -19px;
+    
 }
 
    #tabs,
@@ -67,6 +67,7 @@
         bottom: 0;
         padding: 0;
         margin: 0;
+        margin-left: -41px;
     }
 
     /* global tabs sit on the right, page-specific tabs sit on the left.
@@ -111,3 +112,36 @@
     -moz-border-radius-topright: 1em;
     -moz-border-radius-topleft: 1em;
 }
+
+/*--------------- START OF FOOTER -----------------*/
+
+#footer {
+    border-top: 0px;
+    padding: 0.5em;
+    clear: both;
+    color: #ccc;
+
+    /* reserve space for at two lines of links @ LH=1.4 (for the
+     * copyright and licensing/download info) */
+    min-height: 2.8em;
+}
+
+    #footer .footer-region {
+        margin-top: 1.4em;
+        line-height: 1.4;
+        opacity: 0.25;
+        float: left;
+    }
+
+        #footer .footer-region:hover {
+            opacity: 1; }
+
+        #footer .footer-region a            { margin-right: 0.5em; }
+        #footer .footer-region a:last-child { margin-right: 0; }
+
+
+    #footer p.rights {
+        text-align: right;
+        float: right;
+        margin: 0;
+    }
