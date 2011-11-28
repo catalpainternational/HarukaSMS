@@ -10,6 +10,11 @@
 {% block content %}
 
 <h4>Groups</h4>
+<form action='/bulksend/review/' method="POST">
+  <script content="text/javascript">
+    var sms_length = {{ sms_length }};
+      var sms_cost = {{ sms_cost }};
+  </script>
   <div class="well">
       <div style='padding=10'>
           <div>
@@ -66,10 +71,6 @@
     <input type="submit" class="btn" value="Send Messages" />
 </div>
     
-<form action='/bulksend/review/' method="POST">
-  <script content="text/javascript">
-    var sms_length = {{ sms_length }};
-      var sms_cost = {{ sms_cost }};
-  </script>
+
 </form>
 {% endblock %}
