@@ -66,7 +66,8 @@
 
     #tabs,
     #page-tabs {
-    background: url("../images/nav2.png") repeat-x;
+    background: url("") #999999;
+    opacity: 0.9;
         position: absolute;
         height: 50px;
         bottom: 0;
@@ -135,33 +136,14 @@
 /*--------------- END OF MAIN NAVIGATION -----------------*/
 
 
-.submit {
+#submit {
+	background-color: #0064CD;
     background-image: -moz-linear-gradient(center top , #049CDB, #0064CD);
     background-repeat: repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: #FFFFFF;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-     -moz-border-bottom-colors: none;
-    -moz-border-image: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    -moz-transition: all 0.1s linear 0s;
-    background-color: #E6E6E6;
-    background-image: -moz-linear-gradient(center top , #FFFFFF, #FFFFFF 25%, #E6E6E6);
-    background-repeat: no-repeat;
-    border-color: #CCCCCC #CCCCCC #BBBBBB;
-    border-radius: 4px 4px 4px 4px;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
-    color: #333333;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 13px;
-    line-height: normal;
-    padding: 5px 14px 6px;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    
     
 }
 
@@ -228,7 +210,7 @@
 }
 
 	div.module div {
-		width: 270px;
+		width: auto;
 		-moz-border-bottom-colors: none;
 		-moz-border-image: none;
 		-moz-border-left-colors: none;
@@ -236,11 +218,9 @@
 		-moz-border-top-colors: none;
 		background-color: #F4F4F4;
 		border-color: #DDDDDD #EEEEEE #FFFFFF;
-		border-style: solid;
-		border-width: 1px;
-		border-radius: 4px 4px 4px 4px;
+		border-style: none;
+		border-width: 0px;
 		
-    
     
 }
 
@@ -254,3 +234,73 @@ body:last-child form > div:first-child {
     padding: 1em;
 
 }
+
+thead th {
+    background: url("");
+    color: none;
+
+}
+
+thead th a:hover {
+    background-image: url("");
+    color: none;
+ }
+
+/*------------- START OF CSS FORM OVERRIDES  ----------------*/
+
+body:last-child h2 + form {
+    background-color: #F5F5F5;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: opx;
+    border-top: 0 none;
+    padding: 0;
+
+}
+
+
+form div.submit {
+    background: url("");
+    border-top: none;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+form div.field p.help {
+    border-left: none;
+    color: #AAAAAA;
+    font-size: 80%;
+    margin-left: 0.625em;
+    margin-top: 0;
+    max-width: 30em;
+    padding-left: 0.3125em;
+    padding-top: 2px;
+    
+}
+ 
+form div.field label {
+
+    color: #404040;
+    display: block;
+    float: left;
+    font-size: 13px;
+    line-height: 18px;
+    padding-top: 6px;
+    text-align: right;
+    width: 100px;
+    display: block;
+    margin-bottom: 0.5em
+    text-align: left;
+    width: 130px;
+    
+}
+
+label {
+    color: #404040;
+    float: left;
+    font-size: 12px;
+    line-height: 18px;
+    padding-top: 6px;
+    text-align: left;
+    width: auto;
