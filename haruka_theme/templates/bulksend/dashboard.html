@@ -1,0 +1,75 @@
+{% extends "bulksend/base.html" %}
+{% load forms_tags %}
+
+{% block stylesheets %}
+{{ block.super }}
+<!--<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/dashboard.css" />-->
+{% endblock %}
+
+
+{% block content %}
+
+<h4>Groups</h4>
+  <div class="well">
+      <div style='padding=10'>
+          <div>
+                  <h5> Send the bulk message to the following group:</h5>
+          </div>
+          <select name='group_id'>
+              {% for group in groups %}
+              <option value="{{ group.pk }}"> {{ group.name }} </option>
+              {% endfor %}
+          </select>
+      </div>
+  </div>
+  <div class="row">
+	  <div class="span6">
+		<h4>Message</h4>
+		<div class="well">
+			<div class="input, textarea">
+		          <textarea name="message"
+		                    cols="60"
+		                    id="message"
+		                    rows="25"
+		                    onKeyDown="countChars('message','c_count','sms_count','msg_price')"
+		                    onKeyUp="countChars('message','c_count','sms_count','msg_price')"></textarea>
+		     </div>
+		  </div>
+	  </div>
+	  <div class="span8">
+		<div class="bordered zebra-striped ">
+		  <table>
+		    <thead><tr><th colspan="1"><h4>Price Evaluation:</h4></th></tr></thead>
+		    <tbody>
+		        <tr>
+		        	<td class="col_1" id="c_count"></td>
+		        	<td><h4>Characters</h4></td>
+		        </tr>
+		        <tr>
+		        	<td class="col_1" id="sms_length">{{ sms_length }}</td>
+		        	<td><h4>Characters per SMS</h4></td>
+		        </tr>
+		        <tr>
+		        	<td class="col_1" id="sms_count"></td>
+		        	<td><h4>SMS per Message.</h4></td>
+		        </tr>
+		        <tr class="last_row">
+		        	<td class="col_1" id="msg_price"></td>
+		        	<td><h4>Per Contact.</h4></td>
+		        </tr>
+		    </tbody>
+		  </table>
+		</div>
+	  </div>
+    </div>
+<div style='padding:10'>
+    <input type="submit" class="btn" value="Send Messages" />
+</div>
+    
+<form action='/bulksend/review/' method="POST">
+  <script content="text/javascript">
+    var sms_length = {{ sms_length }};
+      var sms_cost = {{ sms_cost }};
+  </script>
+</form>
+{% endblock %}

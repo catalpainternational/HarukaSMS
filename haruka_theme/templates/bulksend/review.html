@@ -1,0 +1,117 @@
+{% extends "bulksend/base.html" %}
+{% load forms_tags %}
+
+{% block stylesheets %}
+{{ block.super }}
+<!--<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/dashboard.css" />-->
+{% endblock %}
+
+{% block content %}
+<div class="form_bulk_send" id="form_bulk_send">
+    <form action='/bulksend/review/' method="POST">
+        <div class="module">
+            <div class="module contents">
+                <div class="tally">
+                    <input type="hidden" name="group_id"
+                           value="{{group.pk}}"/>
+                    <input type="hidden" name="message"
+                           value="{{m_text}}"/>
+
+                    <center>
+                        <table><!--
+                                   <thead>
+                                   <tr class="row_0">
+                                   <td class="col_0">Item</td>
+                                   <td class="col_1">Quantity</td>
+                                   <td class="col_2">Unit</td></tr>
+                                   </thead>-->
+                            <tbody>
+                                <tr class="row_section">
+                                    <td colspan="3">Message:</td>
+                                </tr>
+                                <tr>
+                                    <td class="col_m" colspan="3">{{m_text}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="col_0">message length:</td>
+                                    <td class="col_1">{{m_length}}</td>
+                                    <td class="col_2">Characters</td>
+                                </tr>
+                                <tr>
+                                    <td class="col_0">SMS length:</td>
+                                    <td class="col_1">÷ {{sms_length}}</td>
+                                <td class="col_2">Characters</td></tr>
+                                <tr class="row_op">
+                                    <td class="col_0"></td>
+                                    <td class="col_1"><hr/></td>
+                                <td class="col_2"></td></tr>
+                                <tr class="row_rez">
+                                    <td class="col_0">Number of SMS per message:</td>
+                                    <td class="col_1">= {{m_count}}</td>
+                                <td class="col_2">SMS</td></tr>
+                                <tr>
+                                <td class="empty_row" colspan="3"></td></tr>
+                                <tr class="row_section">
+                                    <td class="col_t" colspan="3">Group: <em>{{g_name}}</em></td>
+                                </tr>
+                                <tr>
+                                    <td class="col_0">Group size:</td>
+                                    <td class="col_1">{{g_size}}</td>
+                                    <td class="col_2">Contacts</td>
+                                </tr>
+                                <tr>
+                                    <td class="col_0">Number of SMS per message:</td>
+                                    <td class="col_1">× {{m_count}}</td>
+                                    <td class="col_2">SMS</td>
+                                </tr>
+                                <tr class="row_op">
+                                    <td class="col_0"></td>
+                                    <td class="col_1"><hr></td>
+                                    <td class="col_2"></td>
+                                </tr>
+                                <tr class="row_rez">
+                                    <td class="col_0">Number of SMS to send:</td>
+                                    <td class="col_1">= {{sms_count}}</td>
+                                    <td class="col_2">SMS</td>
+                                </tr>
+                                <tr>
+                                    <td class="empty_row" colspan="3"></td>
+                                </tr>
+                                <tr>
+                                    <td class="col_0">Cost per SMS:</td>
+                                    <td class="col_1">$ {{sms_cost}}</td>
+                                    <td class="col_2">(US $)</td>
+                                </tr>
+                                <tr>
+                                    <td class="col_0">Number of SMS to send:</td>
+                                    <td class="col_1">× {{sms_count}}</td>
+                                    <td class="col_2">SMS</td>
+                                </tr>
+                                <tr class="row_op">
+                                    <td class="col_0"></td>
+                                    <td class="col_1"><hr></td>
+                                    <td class="col_2"></td>
+                                </tr>
+                                <tr class="row_rez row_rez_final">
+                                    <td class="col_0">Total cost for sending the message to the
+                                    {{g_size}} contacts in {{g_name}}</td>
+                                    <td class="col_1">= $ {{send_price}}</td>
+                                    <td class="col_2">(US $)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <input onclick="javascript:showSpinnerAndRedirect('form_bulk_send')" type="submit" class="send" value="Send Message to {{g_size}} contacts" />
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="spinner" style="display:none">
+    <p>Please be patient. This may take a few minutes</p>
+    <br/>
+    <img src="/static/bulksend/images/big_spinner_336699.gif"/>
+</div>
+{% endblock %}
