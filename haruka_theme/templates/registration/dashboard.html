@@ -28,7 +28,7 @@
 				{% csrf_token %}
 		
 				<div class="submit">
-					<input type="submit" name="submit" value="Save Contact" class="btn primary" />{% if contact %}
+					<input class="btn primary" type="submit" value="Save Contact" name="submit" style="margin-left: 112px; margin-top: 19px;" />{% if contact %}
 					<input type="submit" name="submit" value="Delete Contact" class="btn danger" />{% endif %}
 				</div>
 			</form>
@@ -40,7 +40,7 @@
 				{% csrf_token %}
 		
 				<div class="submit">
-					<input type="submit" name="submit" value="save contacts" class="btn primary" />
+					<input class="btn primary" type="submit" value="Upload Contacts" name="submit" style="margin-left: 177px;" >
 				</div>
 			</form>
 		</div>
@@ -48,9 +48,9 @@
 	<div class="span8">
 		<h4>Contacts</h4>
 			{{ contacts_table.as_html }}{% if contact %}
-				<table class="bordered-table">
-					<a href="{% url registration %}" class="table">Add a Contact</a>
-				</div>{% endif %}
+				<div class="toolbar">
+					<a href="{% url registration %}" class="add">Add a Contact</a>
+				</div>{% endif %}	
 	</div>
 </div>	
 
