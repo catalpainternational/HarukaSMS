@@ -45,8 +45,23 @@
 		float: left;
 		height: 70px;
 		width: 250px;
-		margin-left: -12px;
-		margin-top: -72px;
+		margin-left: 17px;
+		margin-top: -77px;
+}
+
+#header #auth a {
+    color: #0069D6;
+}
+
+#header #auth {
+	color: ##0069D6;
+    font-size: 100%;
+    line-height: 22px;
+    margin: 0 10px;
+    position: absolute;
+    right: 0;
+    top: -66px;
+    
 }
 
 /*------------------- END OF HEADER ---------------------*/
@@ -54,28 +69,22 @@
 
 /*--------------- START OF MAIN NAVIGATION -----------------*/
 
-#tabs {
-    right: 125px;
-    top: 83px;
-    background-color: none;
-    left: 477px;
-    top: -19px;
-    
-    
-}
 
-   #tabs,
+    #tabs,
     #page-tabs {
+        -webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		border-radius: 8px;
+    	background-color: #999999;
         position: absolute;
-        height: 28px;
+        height: 57px;
         bottom: 0;
         padding: 0;
         margin: 0;
-        margin-left: -41px;
+        margin-right: 56px;
+        
     }
 
-    /* global tabs sit on the right, page-specific tabs sit on the left.
-     * to draw more attention. TODO: maybe re-think this */
     #tabs { right: 0; }
     #page-tabs { left: 0;  }
 
@@ -84,11 +93,10 @@
             display: block;
             float: left;
             line-height: 28px;
+           
         }
 
-        /* 5px spacing between each tab, to match the top gap, since
-         * we're using pixel-positioned backgrounds there */
-        #tabs li { margin-right: 0; }
+        #tabs li { margin-right: 0px; }
         #page-tabs li { margin-left: 0px; }
 
             #tabs li a,
@@ -96,9 +104,41 @@
                 color: #fff;
                 display: block;
                 padding: 0 1em;
-                background: #2fa5d1 url("../images/tab-bg.png") repeat-x;
-                border-right: 0px;
-                border-left: 0px;
+                background: url("");
+                border-right: 1px solid #f5f5f5;
+                border-left: 1px solid #f5f5f5;
+                outline: none;
+                height: 27px;
+                padding: 15px;
+                opacity: 0.9;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+                
+            }
+
+            #tabs li.unread a span {
+                display: block;
+                padding-right: 21px;
+                background: url("");
+            }
+
+            #tabs li.active a,       #page-tabs li.active a,
+            #tabs li.active a:hover, #page-tabs li.active a:hover,
+            #tabs li.active a:focus, #page-tabs li.active a:focus {
+
+                background: #fff url("") repeat-x;
+                text-decoration: none;
+                text-shadow: none;
+                color: #000;
+                border: none;
+                border-bottom: 0;
+                margin-top: -1px;
+            }
+
+            #tabs li a:hover, #page-tabs li a:hover,
+            #tabs li a:focus, #page-tabs li a:focus {
+                background-image: url("");
+                text-shadow: #cef1f5 0 0 2px;
+                text-decoration: none;              
 
 /*--------------- END OF MAIN NAVIGATION -----------------*/
 
