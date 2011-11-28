@@ -11,7 +11,7 @@
 
 
     <form action='/bulksend/' method="POST">
-        <div class="module">
+        <div class="well">
                 <div class="tally">
                     <input type="hidden" name="group_id"
                            value="{{group.pk}}"/>
@@ -36,38 +36,30 @@
                                 <tr class="row_op">
                                     <td class="col_0"></td>
                                     <td class="col_1"></td>
-                                <td class="col_2"></td></tr>
+                                <td class="col_2"></td>
+                                </tr>
                                 <tr class="row_rez">
-                                    <td class="col_0">Number of SMS per message:</td>
-                                    <td class="col_1">= {{m_count}}</td>
-                                
-                                <tr>
-                                <td class="empty_row" colspan="3"></td></tr>
                                 <tr class="row_section">
                                     <td class="col_t" colspan="3"><h4>Group:</h4><blockquote><p>{{g_name}}</p></blockquote></td>
                                 </tr>
+                                <td class="col_0"><h4>Number of SMS per message:</h4></td>
+                                    <td class="col_1"> <h4>{{m_count}}</h4></td>
                                 <tr>
-                                    <td class="col_0">Group size:</td>
-                                    <td class="col_1">{{g_size}}</td>
+                                    <td class="col_0"><h4>Group size:</h4></td>
+                                    <td class="col_1"><h4>{{g_size}}</h4></td>
                                     
                                 </tr>
                       
-                                <tr class="row_op">
-                                    <td class="col_0"></td>
-                                    <td class="col_1"></td>
-                                  
-                                </tr>
+                               
                                 <tr class="row_rez">
-                                    <td class="col_0">Number of SMS to send:</td>
-                                    <td class="col_1">= {{sms_count}}</td>
+                                    <td class="col_0"><h4>Number of SMS to send:</h4></td>
+                                    <td class="col_1"><h4> {{sms_count}}</h4></td>
                                
                                 </tr>
+
                                 <tr>
-                                    <td class="empty_row" colspan="3"></td>
-                                </tr>
-                                <tr>
-                                    <td class="col_0">Cost per SMS:</td>
-                                    <td class="col_1">$ {{sms_cost}}</td>
+                                    <td class="col_0"><h4>Cost per SMS:</h4></td>
+                                    <td class="col_1"><h4>{{sms_cost}}</h4></td>
                                  
                                 </tr>
                            
@@ -77,16 +69,13 @@
                                   
                                 </tr>
                                 <tr class="row_rez row_rez_final">
-                                    <td class="col_0">Total cost for sending the message to the
-                                    {{g_size}} contacts in {{g_name}}</td>
-                                    <td class="col_1">= $ {{send_price}}</td>
+                                    <td class="col_0"><h4>Total Cost:</h4></td>
+                                    <td class="col_1" id="c_count">US$ {{send_price}}</td>
                                
                                 </tr>
                             </tbody>
                         </table>
-                        <div>
-                            <input onclick="javascript:showSpinnerAndRedirect('form_bulk_send')" type="submit" class="send" value="Send Message to {{g_size}} contacts" />
-                        </div>
+                            <input onclick="javascript:showSpinnerAndRedirect('form_bulk_send')" type="submit" class="btn large danger" value="Send Message to {{g_size}} contacts" style="margin-bottom: 22px; margin-left: 170px;"/>
                     </center>
                 </div>
             </div>
