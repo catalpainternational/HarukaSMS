@@ -75,6 +75,8 @@
         -webkit-border-radius: 8px;
 		-moz-border-radius: 8px;
 		border-radius: 8px;
+		-moz-transition: opacity 0.2s ease 0s;
+    	background-image: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.1) 50%, transparent 50%);
     	background-color: #999999;
         position: absolute;
         height: 57px;
@@ -137,9 +139,11 @@
 
             #tabs li a:hover, #page-tabs li a:hover,
             #tabs li a:focus, #page-tabs li a:focus {
-                background-image: url("");
+                background-image: #ffffff url("");
                 text-shadow: #cef1f5 0 0 2px;
-                text-decoration: none;              
+                text-decoration: none;
+                opacity: 0.3;
+                
 
 /*--------------- END OF MAIN NAVIGATION -----------------*/
 
