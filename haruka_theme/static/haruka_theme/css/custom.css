@@ -1,3 +1,6 @@
+/* @override 
+	http://127.0.0.1:8000/static/haruka_theme/css/custom.css */
+
 
 	body {
 		background:  url("../images/backgroundwhite.png") repeat-x #B1DEEA;
@@ -210,7 +213,7 @@ thead th a:hover {
 /*------------- START OF CSS FORM OVERRIDES  ----------------*/
 
 body:last-child h2 + form {
-    background-color: #F5F5F5;
+    background-color: #FFFFFF;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: opx;
     border-top: 0 none;
@@ -258,6 +261,8 @@ form div.field label {
     
 }
 
+/*-----------------BULK MESSAGING STYLING OVERRIDES-------------------*/
+
 label {
     color: #404040;
     float: left;
@@ -268,6 +273,43 @@ label {
     width: auto;
 }
 
+#c_count {
+	color: #6699CC;
+	padding-top: 18px;
+	alignment-baseline: central;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+#sms_count {
+	color: #6699CC;
+	padding-top: 18px;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+#msg_price {
+	color: #6699CC;
+	padding-top: 18px;
+	font-weight: bold;
+	font-size: 24px;
+	
+}
+#sms_length {
+	color: #6699CC;
+	padding-top: 18px;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.msg_input textarea {
+    height: 90em;
+    
+}
+textarea {
+	height: 149px;
+    width: 290px;
+}
 .row {
     margin-left: -2px;
 }
