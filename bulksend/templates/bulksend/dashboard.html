@@ -9,6 +9,14 @@
 
 {% block content %}
 
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <h2>Groups</h2>
 <form action='/bulksend/review/' method="POST">
   <script content="text/javascript">
