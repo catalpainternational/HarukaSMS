@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.db import transaction
 from django.shortcuts import render_to_response, get_object_or_404
+from django.contrib import messages
 from rapidsms.models import Contact
 from rapidsms.models import Connection
 from rapidsms.models import Backend
@@ -46,8 +47,6 @@ def registration(req, pk=None):
             for line in req.FILES["bulk"]:
                 line_list = line.split(',')
                 name = line_list[0].strip()
-                #backend_name = line_list[1].strip()
-                #identity = line_list[2].strip()
                 identity = line_list[1].strip()
                 try:
                     gender = line_list[2].strip()
@@ -72,6 +71,8 @@ def registration(req, pk=None):
                     contact=contact)
                 connection.save()
 
+            messages.success(req, 'Thank you, you successfully added to your contacts.')
+
             return HttpResponseRedirect(
                 reverse(registration))
         else:
@@ -84,9 +85,10 @@ def registration(req, pk=None):
                 contact.language = 'en-us' #default behavior for now
                 contact.save()
                 backend = Backend.objects.get(name=backend_name)
-                connection = Connection(backend=backend, identity=contact.phone,\
-                    contact=contact)
+                connection = Connection.objects.get_or_create(backend=backend, contact=contact)[0]
+                connection.identity = contact.phone
                 connection.save()
+                messages.success(req, 'Thank you, you successfully updated %s : %s.' % (contact.name, contact.phone))
                 return HttpResponseRedirect(
                     reverse(registration))
 
