@@ -245,6 +245,7 @@
    
 /*------------- START OF MODULE STYLING ----------------*/
 
+    
 }
 
 	div.module div {
@@ -269,6 +270,7 @@
 	div.module div.module {
 		border: none;
 }
+<<<<<<< HEAD
 
 
 body:last-child form > div:first-child {
@@ -347,3 +349,5 @@ label {
     padding-top: 6px;
     text-align: left;
     width: auto;
+=======
+>>>>>>> f618fd4938bd9e914b4da82fb6c3bad6302d0d34
