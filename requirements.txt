@@ -7,3 +7,4 @@ django-sorting
 django_pagination
 -e git://github.com/caktus/pygsm-gateway.git#egg=pygsm-gateway
 django-mptt
+pyserial
