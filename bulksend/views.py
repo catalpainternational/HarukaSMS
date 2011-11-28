@@ -10,6 +10,8 @@ from rapidsms.utils.pagination import paginated
 from groups.models import Group
 from . import filters
 from rapidsms.contrib.ajax.utils import call_router
+from django.forms import ValidationError
+
 
 k_SMSLength = 160
 k_SMSPrice = 0.08
@@ -26,7 +28,17 @@ def review(request):
 
         text = request.POST.get('message')
         group_id = request.POST.get('group_id')
-        group = Group.objects.get(pk=group_id)
+
+        try:
+            group = Group.objects.get(pk=group_id)
+        except:
+            messages.error(request, 'A valid Group must be selected')
+            return render_to_response(
+                "bulksend/dashboard.html", {
+                    "groups": Group.objects.all(),
+                    }, context_instance=RequestContext(request)
+                )
+
 
         m_count    = ((len(text) / k_SMSLength) + 1 )
         m_price    = m_count * k_SMSPrice

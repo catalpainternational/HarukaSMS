@@ -9,7 +9,15 @@
 
 {% block content %}
 
-<h4 style="margin-left: 41px;">Groups</h4>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="alert-message {{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h4>Groups</h4>
 <form action='/bulksend/review/' method="POST">
   <script content="text/javascript">
     var sms_length = {{ sms_length }};
