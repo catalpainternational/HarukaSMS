@@ -63,7 +63,7 @@ def registration(req, pk=None):
                 contact.save()
 
                 # Get our backend or create one
-                backend = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)[0]
+                backend, created = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
 
                 connection = Connection(backend=backend, identity=identity,\
                     contact=contact)
@@ -82,7 +82,7 @@ def registration(req, pk=None):
                 contact = contact_form.save()
                 contact.language = 'en-us' #default behavior for now
                 contact.save()
-                backend = Backend.objects.get(name=backend_name)
+                backend, created = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
                 connection = Connection.objects.get_or_create(backend=backend, contact=contact)[0]
                 connection.identity = contact.phone
                 connection.save()

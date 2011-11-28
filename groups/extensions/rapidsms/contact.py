@@ -15,7 +15,7 @@ class ContactExtra(models.Model):
             max_length=1,
             choices=(('M', 'Male'), ('F', 'Female')), null=True)
     age = models.CharField(max_length=64, blank=True)
-    #location = models.CharField(max_length=64, blank=True)
+    location = models.CharField(max_length=64, blank=True)
     
     def save(self, **kwargs):
         super(ContactExtra, self).save(**kwargs)
