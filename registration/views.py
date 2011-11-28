@@ -57,15 +57,13 @@ def registration(req, pk=None):
                 
                 # we need this because of the groups extensions to contact and its custom save()
                 language = 'en-us' # default behavior for now
-                contact = Contact(name=first_name, phone=identity,
-                                gender=gender, age=age, location=location, language=language)
+                contact = Contact(name=name, phone=identity,
+                                gender=gender, age=age, language=language)
+#                                gender=gender, age=age, location=location, language=language)
                 contact.save()
 
                 # Get our backend or create one
-                if Backend.objects.get(name=backend_name).exists():
-                    backend = Backend.objects.get(name=backend_name)
-                else:
-                    backend = Backend.objects.get_or_create(name="default")
+                backend = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)[0]
 
                 connection = Connection(backend=backend, identity=identity,\
                     contact=contact)
