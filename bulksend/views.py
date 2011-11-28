@@ -15,6 +15,15 @@ from rapidsms.messages.outgoing import OutgoingMessage
 from rapidsms_httprouter.router import get_router
 
 
+def _mail_merge(contact, text):
+    # use regex!!!
+    text = text.replace('[name]', contact.name)
+    text = text.replace('[ name]', contact.name)
+    text = text.replace('[name ]', contact.name)
+    text = text.replace('[ name ]', contact.name)
+    return text
+
+
 k_SMSLength = 160
 k_SMSPrice = 0.08
 @login_required
@@ -103,7 +112,7 @@ def bulksend(request):
         router = get_router()
         for contact in group.contacts.all():
             connection = contact.connection_set.all()[0]
-            outgoing = OutgoingMessage(connection, text)
+            outgoing = OutgoingMessage(connection, _mail_merge(contact, text))
             router.handle_outgoing(outgoing)
 
         messages.success(request, 'Thank you, you successfully sent your bulk message.')
