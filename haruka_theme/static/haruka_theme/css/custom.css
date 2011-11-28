@@ -13,24 +13,11 @@
 		position: relative;
 }
 
-#wrapper {
-    width: 80em;
-    background: #fff;
-    margin: 0.5em auto 0 auto;
-    -moz-box-shadow: 4px 4px 8px #575757;
-    box-shadow: 0px 2px 6px #aaa;
-    -moz-border-radius-bottomright: 1em;
-    -moz-border-radius-bottomleft: 1em;
-    -moz-border-radius-topright: 1em;
-    -moz-border-radius-topleft: 1em;
-  
-}
-
 /*--------------- START OF HEADER -----------------*/
 
 	#header {
-		background: url("") repeat-x scroll 0 0 transparent;
-		color: none;
+		background: url("../images/header-bg.png") repeat-x scroll 0 0 transparent;
+		color: #CCCCFF;
 		padding-bottom: 33px;
 		padding-top: 23px;
 		position: relative;
@@ -64,21 +51,30 @@
 
 /*--------------- START OF MAIN NAVIGATION -----------------*/
 
-    #tabs,
+#tabs {
+    right: 125px;
+    top: 83px;
+    background-color: none;
+    left: 477px;
+    top: -19px;
+    
+    
+}
+
+   #tabs,
     #page-tabs {
-    background: url("") #999999;
-    opacity: 0.9;
         position: absolute;
-        height: 50px;
+        height: 28px;
         bottom: 0;
         padding: 0;
         margin: 0;
-        top: -35px;
-        right: 50px;
-        --webkit-border-radius: 6px;
-		-moz-border-radius: 6px;
-		border-radius: 6px;
+        margin-left: -41px;
     }
+
+    /* global tabs sit on the right, page-specific tabs sit on the left.
+     * to draw more attention. TODO: maybe re-think this */
+    #tabs { right: 0; }
+    #page-tabs { left: 0;  }
 
         #tabs li,
         #page-tabs li {
@@ -87,66 +83,36 @@
             line-height: 28px;
         }
 
-
-        #tabs li { margin-right: 0px; }
+        /* 5px spacing between each tab, to match the top gap, since
+         * we're using pixel-positioned backgrounds there */
+        #tabs li { margin-right: 0; }
         #page-tabs li { margin-left: 0px; }
 
             #tabs li a,
             #page-tabs li a {
                 color: #fff;
-                font: 10pt/1 "Helvetica","Arial";
-                height: 50px
-                margin-top:10px;
-                background: url("") repeat-x;
+                display: block;
+                padding: 0 1em;
+                background: #2fa5d1 url("../images/tab-bg.png") repeat-x;
                 border-right: 0px;
                 border-left: 0px;
-                margin-top: 18px;
-                position: relative;
-                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-            }
-
-            #tabs li.unread a span {
-                display: block;
-                padding-right: 21px;
-                background: url("") no-repeat 100% 50%;
-            }
-
-            #tabs li.active a,       #page-tabs li.active a,
-            #tabs li.active a:hover, #page-tabs li.active a:hover,
-            #tabs li.active a:focus, #page-tabs li.active a:focus {
-
-                background: #fff url("") repeat-x;
-                text-decoration: none;
-                text-shadow: none;
-                color: #000;
-                border: 0px;
-                border-bottom: 0;
-                margin-top: -1px;
-            }
-
-            #tabs li a:hover, #page-tabs li a:hover,
-            #tabs li a:focus, #page-tabs li a:focus {
-                background-image: url("");
-                text-shadow: #cef1f5 0 0 2px;
-                text-decoration: none;
-            }
-
-
 
 /*--------------- END OF MAIN NAVIGATION -----------------*/
 
-
-#submit {
-	background-color: #0064CD;
-    background-image: -moz-linear-gradient(center top , #049CDB, #0064CD);
-    background-repeat: repeat-x;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    color: #FFFFFF;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    
-    
 }
 
+#wrapper {
+    width: 80em;
+    background: #fff;
+    margin: 0.5em auto 0 auto;
+   
+    -moz-box-shadow: 4px 4px 8px #575757;
+    box-shadow: 0px 2px 6px #aaa;
+    -moz-border-radius-bottomright: 1em;
+    -moz-border-radius-bottomleft: 1em;
+    -moz-border-radius-topright: 1em;
+    -moz-border-radius-topleft: 1em;
+}
 
 /*--------------- START OF FOOTER -----------------*/
 
@@ -202,15 +168,10 @@
 		line-height: 1;
 		margin: 0;
 		white-space: nowrap;
-   
-   
-   
-/*------------- START OF MODULE STYLING ----------------*/
-
+    
 }
 
 	div.module div {
-		width: auto;
 		-moz-border-bottom-colors: none;
 		-moz-border-image: none;
 		-moz-border-left-colors: none;
@@ -218,15 +179,17 @@
 		-moz-border-top-colors: none;
 		background-color: #F4F4F4;
 		border-color: #DDDDDD #EEEEEE #FFFFFF;
-		border-style: none;
-		border-width: 0px;
-		
+		border-style: solid;
+		border-width: 1px;
+		border-radius: 4px 4px 4px 4px;
+    
     
 }
 
 	div.module div.module {
 		border: none;
 }
+<<<<<<< HEAD
 
 
 body:last-child form > div:first-child {
@@ -305,3 +268,5 @@ label {
     padding-top: 6px;
     text-align: left;
     width: auto;
+=======
+>>>>>>> f618fd4938bd9e914b4da82fb6c3bad6302d0d34
