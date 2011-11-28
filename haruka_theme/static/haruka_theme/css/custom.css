@@ -16,7 +16,7 @@
 /*--------------- START OF HEADER -----------------*/
 
 	#header {
-		background: url("../images/header-bg.png") repeat-x scroll 0 0 transparent;
+		background: url("../images/harukasms.png") repeat-x scroll 0 0 transparent;
 		color: #CCCCFF;
 		padding-bottom: 33px;
 		padding-top: 23px;
@@ -52,12 +52,13 @@
 /*--------------- START OF MAIN NAVIGATION -----------------*/
 
 #tabs {
-    right: 125px;
-    top: 83px;
-    background-color: none;
-    left: 477px;
-    top: -19px;
-    
+   
+    background: url("../images/tab-bg.png") repeat-x scroll 0 0 #2FA5D1;
+    border-left: 0 none;
+    border-right: 0 none;
+    color: #FFFFFF;
+    display: block;
+    padding: 0 1em;
     
 }
 
@@ -189,8 +190,6 @@
 	div.module div.module {
 		border: none;
 }
-<<<<<<< HEAD
-
 
 body:last-child form > div:first-child {
     background-color: #F4F4F4;
@@ -210,6 +209,7 @@ thead th a:hover {
  }
 
 /*------------- START OF CSS FORM OVERRIDES  ----------------*/
+
 
 body:last-child h2 + form {
     background-color: #F5F5F5;
@@ -268,5 +268,3 @@ label {
     padding-top: 6px;
     text-align: left;
     width: auto;
-=======
->>>>>>> f618fd4938bd9e914b4da82fb6c3bad6302d0d34
