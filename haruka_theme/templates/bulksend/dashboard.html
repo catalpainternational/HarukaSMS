@@ -9,8 +9,8 @@
 
 {% block content %}
 
-<h4>Groups</h4>
-  <div class="well">
+<h4 style="margin-left: 40px;">Groups</h4>
+  <div class="well" style="margin-left: 18px;">
       <div style='padding=10'>
           <div>
                   <h5> Send the bulk message to the following group:</h5>
@@ -24,7 +24,7 @@
   </div>
   <div class="row">
 	  <div class="span6">
-		<h4>Message</h4>
+		<h4 style="margin-left: 22px;">Message</h4>
 		<div class="well">
 			<div class="input, textarea">
 		          <textarea name="message"
@@ -37,12 +37,12 @@
 		  </div>
 	  </div>
 	  <div class="span8">
-		<div class="bordered zebra-striped ">
+		<div class="bordered ">
 		  <table>
-		    <thead><tr><th colspan="1"><h4>Price Evaluation:</h4></th></tr></thead>
+		    <thead><tr><th colspan="1"><h4 style="margin-top:-9px;">Price Evaluation:</h4></th></tr></thead>
 		    <tbody>
 		        <tr>
-		        	<td class="col_1" id="c_count"></td>
+		        	<td class="col_1" id="c_count">0</td>
 		        	<td><h4>Characters</h4></td>
 		        </tr>
 		        <tr>
@@ -50,12 +50,12 @@
 		        	<td><h4>Characters per SMS</h4></td>
 		        </tr>
 		        <tr>
-		        	<td class="col_1" id="sms_count"></td>
-		        	<td><h4>SMS per Message.</h4></td>
+		        	<td class="col_1" id="sms_count">0</td>
+		        	<td><h4>SMS per Message</h4></td>
 		        </tr>
 		        <tr class="last_row">
-		        	<td class="col_1" id="msg_price"></td>
-		        	<td><h4>Per Contact.</h4></td>
+		        	<td class="col_1" id="msg_price">$0</td>
+		        	<td><h4>Per Contact</h4></td>
 		        </tr>
 		    </tbody>
 		  </table>
@@ -63,7 +63,7 @@
 	  </div>
     </div>
 <div style='padding:10'>
-    <input type="submit" class="btn" value="Send Messages" />
+    <input type="submit" class="btn large danger" value="Send Messages" style="margin-left: 18px;"/> 
 </div>
     
 <form action='/bulksend/review/' method="POST">
