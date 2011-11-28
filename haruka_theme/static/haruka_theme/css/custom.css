@@ -31,6 +31,8 @@
 	#header {
 		background: url("") repeat-x scroll 0 0 transparent;
 		color: none;
+		background: url("../images/header-bg.png") repeat-x scroll 0 0 transparent;
+		color: #CCCCFF;
 		padding-bottom: 33px;
 		padding-top: 23px;
 		position: relative;
@@ -65,11 +67,23 @@
 /*--------------- START OF MAIN NAVIGATION -----------------*/
 
     #tabs,
+#tabs {
+    right: 125px;
+    top: 83px;
+    background-color: none;
+    left: 477px;
+    top: -19px;
+    
+    
+}
+
+   #tabs,
     #page-tabs {
     background: url("") #999999;
     opacity: 0.9;
         position: absolute;
         height: 50px;
+        height: 28px;
         bottom: 0;
         padding: 0;
         margin: 0;
@@ -78,7 +92,13 @@
         --webkit-border-radius: 6px;
 		-moz-border-radius: 6px;
 		border-radius: 6px;
+        margin-left: -41px;
     }
+
+    /* global tabs sit on the right, page-specific tabs sit on the left.
+     * to draw more attention. TODO: maybe re-think this */
+    #tabs { right: 0; }
+    #page-tabs { left: 0;  }
 
         #tabs li,
         #page-tabs li {
@@ -89,6 +109,9 @@
 
 
         #tabs li { margin-right: 0px; }
+        /* 5px spacing between each tab, to match the top gap, since
+         * we're using pixel-positioned backgrounds there */
+        #tabs li { margin-right: 0; }
         #page-tabs li { margin-left: 0px; }
 
             #tabs li a,
@@ -98,6 +121,9 @@
                 height: 50px
                 margin-top:10px;
                 background: url("") repeat-x;
+                display: block;
+                padding: 0 1em;
+                background: #2fa5d1 url("../images/tab-bg.png") repeat-x;
                 border-right: 0px;
                 border-left: 0px;
                 margin-top: 18px;
@@ -147,6 +173,18 @@
     
 }
 
+#wrapper {
+    width: 80em;
+    background: #fff;
+    margin: 0.5em auto 0 auto;
+   
+    -moz-box-shadow: 4px 4px 8px #575757;
+    box-shadow: 0px 2px 6px #aaa;
+    -moz-border-radius-bottomright: 1em;
+    -moz-border-radius-bottomleft: 1em;
+    -moz-border-radius-topright: 1em;
+    -moz-border-radius-topleft: 1em;
+}
 
 /*--------------- START OF FOOTER -----------------*/
 
@@ -221,6 +259,10 @@
 		border-style: none;
 		border-width: 0px;
 		
+		border-style: solid;
+		border-width: 1px;
+		border-radius: 4px 4px 4px 4px;
+    
     
 }
 
