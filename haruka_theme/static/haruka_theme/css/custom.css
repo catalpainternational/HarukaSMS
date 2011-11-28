@@ -292,7 +292,8 @@ form div.field label {
     display: block;
     margin-bottom: 0.5em
     text-align: left;
-    width: 130px;
+    width: 75px;
+    padding-right: 10px;
     
 }
 

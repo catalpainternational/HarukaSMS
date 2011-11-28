@@ -8,14 +8,13 @@
 
 {% block left %}
 
-<div class="row">
-	   <p><a class='btn' title='Add group' href="{% url create-group %}" >add group</a></p>  
-	<div class="span8">
+<div class="row"> 
+	<div class="span7">
 		<div class="well">
-			<h2>{% if contact %}
+			<h3>{% if contact %}
 				Edit {{ contact }}{% else %}
 				Add a Contact{% endif %}
-			</h2>
+			</h3>
 		
 			<form action="" method="post" class="zebra-striped">
 				{% render_form contact_form %}
@@ -28,7 +27,7 @@
 			</form>
 		</div>
 		<div class="well">
-				<h2>Bulk Registration</h2>
+				<h3>Bulk Registration</h3>
 			<form action="" method="post" enctype="multipart/form-data">
 				{% render_form bulk_form %}
 				{% csrf_token %}
@@ -42,11 +41,11 @@
 </div>
 {% endblock %}
 {% block right %}
-<div class="span10">
+<div class="span8">
 	<div class="well">
-		<h2>Contacts</h2>
+		<h3>Contacts</h3>
 		{{ contacts_table.as_html }}{% if contact %}
-			<div class="toolbar">
+			<div class="zebra-striped">
 				<a href="{% url registration %}" class="add">Add a Contact</a>
 			</div>{% endif %}
 	</div>
