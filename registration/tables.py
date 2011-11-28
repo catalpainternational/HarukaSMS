@@ -9,8 +9,7 @@ from rapidsms.models import Contact
 
 def _edit_link(cell):
     return reverse(
-        "messsenger_edit",
-        #"registration_edit", # from orginal
+        "registration_edit", # from orginal
         args=[cell.row.pk])
 
 def _any_identity(cell):
