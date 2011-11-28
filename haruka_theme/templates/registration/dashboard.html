@@ -6,15 +6,15 @@
 <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/dashboard.css" />
 {% endblock %}
 
-{% block left %}
+{% block content %}
 
 <div class="row"> 
 	<div class="span7">
-		<div class="well">
-			<h3>{% if contact %}
+		<h4>{% if contact %}
 				Edit {{ contact }}{% else %}
 				Add a Contact{% endif %}
-			</h3>
+			</h4>
+		<div class="well">
 		
 			<form action="" method="post" class="zebra-striped">
 				{% render_form contact_form %}
@@ -26,8 +26,8 @@
 				</div>
 			</form>
 		</div>
+		<h4>Bulk Registration</h4>
 		<div class="well">
-				<h3>Bulk Registration</h3>
 			<form action="" method="post" enctype="multipart/form-data">
 				{% render_form bulk_form %}
 				{% csrf_token %}
@@ -38,17 +38,15 @@
 			</form>
 		</div>
 	</div>
-</div>
-{% endblock %}
-{% block right %}
-<div class="span8">
-	<div class="well">
-		<h3>Contacts</h3>
-		{{ contacts_table.as_html }}{% if contact %}
-			<div class="zebra-striped">
-				<a href="{% url registration %}" class="add">Add a Contact</a>
-			</div>{% endif %}
+	<div class="span8">
+		<h4>Contacts</h4>
+		<div class="well">
+			{{ contacts_table.as_html }}{% if contact %}
+				<div class="bordered-table">
+					<a href="{% url registration %}" class="bordered-table">Add a Contact</a>
+				</div>{% endif %}
+		</div>
 	</div>
-</div>
+</div>	
 
 {% endblock %}
