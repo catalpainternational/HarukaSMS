@@ -11,6 +11,8 @@ from groups.models import Group
 from . import filters
 from rapidsms.contrib.ajax.utils import call_router
 from django.forms import ValidationError
+from rapidsms.messages.outgoing import OutgoingMessage
+from rapidsms_httprouter.router import get_router
 
 
 k_SMSLength = 160
@@ -32,7 +34,7 @@ def review(request):
         try:
             group = Group.objects.get(pk=group_id)
         except:
-            messages.error(request, 'A valid Group must be selected')
+            messages.error(request, 'A valid Group must be selected. Perhaps you need to make a new one.')
             return render_to_response(
                 "bulksend/dashboard.html", {
                     "groups": Group.objects.all(),
@@ -63,8 +65,6 @@ def review(request):
             "group":group,
             }
 
-        import datetime
-        print datetime.datetime.now()
         return render_to_response(
             "bulksend/review.html",
             lorem_ipsum,
@@ -82,25 +82,41 @@ def bulksend(request):
                 "sms_length":k_SMSLength,
             }, context_instance=RequestContext(request)
         )
-
     elif request.method.upper() == 'POST':
 
         text = request.POST.get('message')
         group_id = request.POST.get('group_id')
-
         group = Group.objects.get(pk=group_id)
+ 
+        # Kickin' it ol'school
+        #import datetime
+        #print datetime.datetime.now()
+        #for contact in group.contacts.all():
+        #    connection = contact.connection_set.all()[0]
+        #    post = {"connection_id": unicode(connection.id), "text": text}
+        #    call_router("messaging", "send_message", **post)
+        #print datetime.datetime.now()
 
+        # The leaders of the New School
         import datetime
         print datetime.datetime.now()
+        router = get_router()
         for contact in group.contacts.all():
             connection = contact.connection_set.all()[0]
-            post = {"connection_id": unicode(connection.id), "text": text}
-            call_router("messaging", "send_message", **post)
-        print datetime.datetime.now()
+            outgoing = OutgoingMessage(connection, text)
+            router.handle_outgoing(outgoing)
 
         messages.success(request, 'Thank you, you successfully sent your bulk message.')
+
         return render_to_response(
             "bulksend/dashboard.html", {
                 "groups": Group.objects.all(),
+                "sms_cost":k_SMSPrice,
+                "sms_length":k_SMSLength,
             }, context_instance=RequestContext(request)
         )
+
+
+
+
+
