@@ -106,15 +106,18 @@ INSTALLED_APPS = [
     "simple_locations",
     "rapidsms_httprouter",
     "poll",
-    "pygsm-gateway",
-
 ]
 
+# rapidsms-httprouter related items
 SMS_APPS = [
     "rapidsms_xforms",
     "bulksend",
     "poll",
 ]
+
+# pointing the rapidsms-httprouter to pygsm-gateway
+ROUTER_URL = "http://localhost:8080/?backend=%(backend)s&identity=%(recipient)s&text=%(text)s"
+
 
 # rapidsms-xforms specific settings
 XFORMS_HOST = 'localhost:8000'
