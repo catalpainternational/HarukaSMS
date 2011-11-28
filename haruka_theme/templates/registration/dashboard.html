@@ -40,12 +40,10 @@
 	</div>
 	<div class="span8">
 		<h4>Contacts</h4>
-		<div class="well">
 			{{ contacts_table.as_html }}{% if contact %}
-				<div class="bordered-table">
-					<a href="{% url registration %}" class="bordered-table">Add a Contact</a>
+				<table class="bordered-table">
+					<a href="{% url registration %}" class="table">Add a Contact</a>
 				</div>{% endif %}
-		</div>
 	</div>
 </div>	
 
