@@ -246,6 +246,8 @@ body:last-child form > div:first-child {
 
 }
 
+ /*------------- START OF TABLE STYLING ----------------*/
+
 thead th {
     background: url("");
     color: none;
@@ -255,7 +257,28 @@ thead th {
 thead th a:hover {
     background-image: url("");
     color: none;
+    
  }
+ 
+ thead th a, thead th span.unsortable {
+    border-left: 0 solid #F8F8F8;
+    display: block;
+    margin: -0.5em;
+    outline: 0 none;
+    padding: 0.5em;
+    position: relative;
+    
+}
+
+ thead th.asc  a span { background-image: url(""); }
+ thead th.desc a span { background-image: url(""); }
+ 
+   tfoot {
+        background: url("") repeat-x 0 0;
+        font-size: none;
+    }
+ 
+ 
 
 /*------------- START OF CSS FORM OVERRIDES  ----------------*/
 
@@ -360,3 +383,14 @@ textarea {
 .row {
     margin-left: -2px;
 }
+
+/*-----------------BULK REVIEW STYLING-------------------*/
+
+tr.row_section td {
+    background: none;
+
+}
+
+
+
+
