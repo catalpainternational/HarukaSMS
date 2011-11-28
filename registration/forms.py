@@ -9,7 +9,7 @@ from rapidsms.models import Contact
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        exclude = ("connections","name","language","title","email",)
+        exclude = ("connections","language","title",)
 
 
 # the built-in FileField doesn't specify the 'size' attribute, so the

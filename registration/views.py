@@ -57,11 +57,9 @@ def registration(req, pk=None):
                     gender = age = location = ''
                 
                 # we need this because of the groups extensions to contact and its custom save()
-                first_name = name.split()[0]
-                last_name = name.replace(first_name + ' ', '')
                 language = 'en-us' # default behavior for now
-                contact = Contact(first_name=first_name, last_name=last_name, phone=identity,
-                                    gender=gender, age=age, location=location, language=language)
+                contact = Contact(name=first_name, phone=identity,
+                                gender=gender, age=age, location=location, language=language)
                 contact.save()
 
                 # Get our backend or create one
