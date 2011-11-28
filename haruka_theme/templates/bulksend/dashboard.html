@@ -9,16 +9,16 @@
 
 {% block content %}
 
-<h4>Groups</h4>
+<h4 style="margin-left: 41px;">Groups</h4>
 <form action='/bulksend/review/' method="POST">
   <script content="text/javascript">
     var sms_length = {{ sms_length }};
       var sms_cost = {{ sms_cost }};
   </script>
-  <div class="well">
+<div class="well" style="margin-right: 18px; margin-left: 20px;">
       <div style='padding=10'>
           <div>
-                  <h5> Send the bulk message to the following group:</h5>
+                  <h5>Send To:</h5>
           </div>
           <select name='group_id'>
               {% for group in groups %}
@@ -44,7 +44,7 @@
 	  <div class="span8">
 		<div class="bordered ">
 		  <table>
-		    <thead><tr><th colspan="1"><h4 style="margin-top:-9px;">Price Evaluation:</h4></th></tr></thead>
+		    <thead><tr><th colspan="1"><h4 style="margin-top: -9px; margin-left: 13px;">Cost Calculator:</h4></th></tr></thead>
 		    <tbody>
 		        <tr>
 		        	<td class="col_1" id="c_count">0</td>
@@ -68,7 +68,7 @@
 	  </div>
     </div>
 <div style='padding:10'>
-    <input type="submit" class="btn large danger" value="Send Messages" style="margin-left: 18px;"/> 
+	<input class="btn large danger" type="submit" style="margin-left: 148px; margin-top: -12px;" value="Send Messages">
 </div>
     
 
