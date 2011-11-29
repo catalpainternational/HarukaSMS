@@ -1,0 +1,20 @@
+<div class="name">Edit '{{poll.name}}'</div>
+
+{% load uni_form_tags %}
+
+<form action="{% url poll.views.edit_poll poll.pk %}" method="post" class="uniForm">
+<fieldset>
+{{form|as_uni_form}}
+
+
+  <a class='btn'="showPollDetails('{{ poll.pk }}');" href="javascript:void(0);" class="negative">
+    <img src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt=""/> 
+    Cancel
+  </a>
+  <a onclick="submitForm(this, '#poll_header');" href="javascript:void(0);">
+    <img src="{{ MEDIA_URL }}poll/icons/silk/disk.png" alt=""/> 
+    Save Poll Details
+  </a>
+
+</fieldset>
+</form>
