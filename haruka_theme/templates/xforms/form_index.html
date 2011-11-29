@@ -1,0 +1,66 @@
+{% extends "xforms/layout.html" %}
+{% block title %}XForms{% endblock %}
+
+{% block content %}
+
+<script type="text/javascript">
+function deleteForm(form_id, form_name) {
+	if (confirm("Are you sure you want to delete \"" + form_name + "\" ?")) {
+		document.form.action += form_id + "/delete/";
+		document.form.submit();
+	}
+}
+</script>
+
+
+    <a class='btn large primary' style="margin-bottom:30px;" href="/xforms/new/" style="float:left"> Add New Survey </a> 
+
+
+<table width="100%" class="bordered-table zebra-striped"> 
+  <thead> 
+    <tr> 
+      <th class="form_name_col">Name</th> 
+      <th class="form_description_col">Description</th> 
+      <th class="form_options_col"></th> 
+    </tr> 
+  </thead> 
+  <tbody>
+    {% if xforms %}
+    {% for xform in xforms %}
+    <tr class="form_table_row">
+      <td><b>{% if xform.active %}{{ xform.name }}{% else %}<font color="grey">{{ xform.name }}</font>{% endif %}</b></td>
+      <td>{{ xform.description }}</td>
+      <td>
+           <a style="float:right;padding-top:7px;" href="javascript:void(0);" onclick="deleteForm('{{xform.pk}}','{{xform.name|addslashes}}');"><img border="0" src="{{ MEDIA_URL }}rapidsms/icons/silk/delete.png"/></a>
+	
+	<div class="buttons">
+       
+	  <a href="/xforms/{{ xform.pk }}/submissions/">
+            <img src="{{ MEDIA_URL }}rapidsms_xforms/icons/silk/database_table.png" alt=""/> Submissions ({{ xform.submissions.all.count }})
+	  </a>
+	  <a href="/xforms/{{ xform.pk }}/view/">
+            <img src="{{ MEDIA_URL }}rapidsms_xforms/icons/silk/zoom.png" alt=""/> View
+	  </a>
+	</div>
+      </td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr class="form_table_row">
+      <td colspan=3><i>No existing Forms.  Click 'Add New Form' to create one.</i></td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+<br/>
+
+
+<br class="clear"/>
+
+<br/><br/>
+
+<form name="form" method="post" action="/xforms/">
+{% csrf_token %}
+</form>
+
+{% endblock %}

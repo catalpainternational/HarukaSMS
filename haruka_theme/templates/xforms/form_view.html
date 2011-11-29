@@ -1,0 +1,175 @@
+{% extends "xforms/layout.html" %}
+{% block title %}XForms{% endblock %}
+
+{% block content %}
+
+<script type="text/javascript">
+
+	// send the current field order to the server
+	function updateOrder() {
+		delim = "";
+		sub = "";
+
+		$("#sortable .field_table").each(function() {
+			if (this.id != "") {
+				sub += delim + this.id;
+				delim = ",";
+			}
+		});
+
+		if (sub != "") {
+			$.post("/xforms/{{xform.pk}}/order/",{'order':sub});
+		}
+	}
+
+	// Create our sortable widget and handle any sort events
+	$(function() {
+		$("#sortable").sortable({ update: updateOrder, delay: 0, distance: 20, handle: '.grippy' });
+		$("#sortable").disableSelection();
+	});
+	
+	// Add a new box for entering a new field
+	function addNewFieldBox() {
+		var newBox = $("#new_field_box").clone();
+		newBox.load( "/xforms/" + {{ xform.pk }} + "/add_field/", function() {
+			newBox.show();
+			newBox.id = "field_box_" + Math.floor((new Date()).getTime() / 1000);
+			$("#sortable").append(newBox);
+		});
+		
+	}
+	
+	$( document ).ready( function() {
+
+		// hide our new field template
+		$('#new_field_box').hide();
+		
+		$(".field_box").each(function() {
+			field_id = $(this).parent().attr("id");
+			if (field_id) {
+				$(this).load("/xforms/{{xform.pk}}/field/" + field_id + "/");
+			}
+		});
+		
+		showFormDetails();
+		
+		// if no fields, show the add new field form
+		if ({{field_count}} == 0) {
+			addNewFieldBox();
+		}
+		
+	});
+	
+	function showFormDetails() {
+	  $("#form_header").load("/xforms/{{xform.pk}}/details/");
+	}
+	
+	function deleteField(link) {
+	  field_id = $(link).parents(".field_table").attr("id");
+	  if (confirm("Are you sure you want to delete this field?")) {
+      $.post('/xforms/{{xform.pk}}/delete_field/' + field_id + "/", function(data) {
+        $(link).parents(".field_box").remove();
+      }); 
+    }
+  }
+  
+  function editField(link) {
+    field_id = $(link).parents(".field_table").attr("id");
+    url = "/xforms/" +  {{xform.pk}} + "/edit_field/" + field_id + "/";
+    $(link).parents(".field_box").load(url);
+    selected = $(("#selection_" + field_id));
+    selected.addClass('form_selected');
+    selected.removeClass('form_unselected');
+  }
+  
+  function showConstraints(link) {
+    field_id = $(link).parents(".field_table").attr("id");
+    url = "/xforms/" +  {{xform.pk}} + "/edit_field/" + field_id + "/";
+    
+  }
+	
+	function saveField(link) {
+    form = $(link).parents(".form");
+    form_data = form.serializeArray();
+    form.parents(".field_box").load(form.attr("action"), form_data);
+  }
+  
+  function cancelAdd(link) {
+    if (confirm("Are you sure you want to cancel this new field?")) {
+      $(link).parents(".field_box").remove();
+    }
+  }
+	
+	function cancelField(link) {
+	   field_id = $(link).parents(".field_table").attr("id");
+     $(link).parents(".field_box").load("/xforms/{{xform.pk}}/field/" + field_id + "/");
+	}
+	
+	function editFormDetails(form_id) {
+	  $("#form_header").load("/xforms/" + form_id + "/edit/");
+	}
+	
+	function submitForm(link, resultDiv) {
+	  form = $(link).parents("form");
+    form_data = form.serializeArray();
+    console.log(resultDiv);
+    console.log($(resultDiv));
+    $(resultDiv).load(form.attr("action"), form_data);
+	}
+	
+	// Trap our ajax errors and put them where we can see them
+	$.ajaxSetup({
+		error:function(x,e){
+			if(x.status==0){
+				$("#error").html("Oopsie, network not found.");
+			} else if(x.status>=400){
+				$("#error").html(x.responseText);	
+			}
+		}
+	});
+	
+</script>
+  
+<div id="form_header">
+   
+</div>
+
+<table width="100%" class="form_table">
+<thead>
+<tr>
+<th class="field_name_col">Caption</th>
+<th class="field_type_col">Type</th>
+<th class="field_command_col">Command</th>
+<th class="field_description_col">Description</th>
+<th class="field_options_col"></th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="form_fields_cell" colspan="5">
+			<ul id="sortable">
+				{% for field in fields %}
+				<li class="field ui-state-default form_unselected" id="{{field.pk}}">
+					<div class="field_box" id="field_box_{{forloop.counter}}">
+					</div>
+				</li>
+				{% endfor %}
+
+				<li class="field ui-state-default form_unselected">
+					<div class="field_box" id="new_field_box"></div>
+				</li>
+			</ul>
+</td></tr>
+</tbody>
+</table>
+<br/>
+<div class="buttons">
+    <a href="javascript:addNewFieldBox();" style="float:left">
+      <img border="0" src="{{ MEDIA_URL }}rapidsms/icons/silk/add.png" alt=""/>Add New Field
+    </a>
+  </div>
+<br/><br/>
+
+
+<div id="error"></div>
+
+{% endblock %}
