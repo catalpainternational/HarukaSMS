@@ -164,7 +164,7 @@ def view_report(req, poll_id, location_id=None, as_module=False):
         locations = Location.tree.all().order_by('name')
 
     results = []
-    import pdb; pdb.set_trace()
+    #import pdb; pdb.set_trace()
     for location in locations:
         report = report_function(location=location, for_map=False)
         import pdb; pdb.set_trace()
