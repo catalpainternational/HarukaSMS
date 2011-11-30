@@ -1,0 +1,29 @@
+{% for field in form %}
+ <td class="rule_{{ field.name }}_col">
+   {{ field.errors }}
+   {{ field }}
+ </td>
+{% endfor %}
+<td class="rule_options_col">
+    {% if rule %}
+        <a style="float:right" onclick="cancelSave(this, '{% url poll.views.view_rule poll.pk category.pk rule.pk %}');" href="javascript:void(0);">
+            <img border="0" style="padding-top:7px;" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt=""/> 
+        </a>
+        <div class="buttons">
+            <a onclick="saveRow(this, '{% url poll.views.edit_rule poll.pk category.pk rule.pk %}');" href="javascript:void(0);">
+                <img src="{{ MEDIA_URL }}poll/icons/silk/bullet_disk.png" alt=""/> 
+                Save
+            </a>
+        </div>
+    {% else %}
+        <a style="float:right" onclick="cancelAdd(this);" href="javascript:void(0);">
+            <img border="0" style="padding-top:7px;" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt=""/> 
+        </a>
+        <div class="buttons">
+            <a onclick="add(this, '{% url poll.views.add_rule poll.pk category.pk %}');" href="javascript:void(0);">
+                <img src="{{ MEDIA_URL }}rapidsms/icons/silk/add.png" alt=""/> 
+                Add
+            </a>
+        </div>
+    {% endif %}
+</td>

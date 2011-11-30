@@ -1,0 +1,20 @@
+{% extends "polls/response_base_view.html" %}
+{% block remaining_content %}
+    <td class="center response_text_col">
+      {{ response.message.text }}
+    </td>
+    <td class="response_value_col center">
+      {{ response.eav.poll_number_value|floatformat:3 }}
+    </td>
+    <td class="response_categories_col">
+      {% if response.categories %}
+        <ul class="category_list">
+          {% for responsecategory in response.categories.all %}
+          <li {% if responsecategory.category.color %}style="width:100%;background-color:#{{ responsecategory.category.color }}"{% endif %}>
+            {{ responsecategory.category.name }}
+          </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </td>
+{% endblock %}
