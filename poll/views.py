@@ -19,6 +19,9 @@ from eav.models import Attribute
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_control
 from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage
+from rapidsms_httprouter.models import Message
+from rapidsms_httprouter.views import MessageTable
 
 from .forms import *
 
@@ -44,11 +47,34 @@ def responses_as_csv(req, pk):
 @require_GET
 @login_required
 def dashboard(req):
-    polls = Poll.objects.annotate(Count('responses')).order_by('start_date')
+    polls = Poll.objects.annotate(Count('responses')).order_by('start_date')[:5]
+    queryset = Message.objects.all()
+
+    paginator = Paginator(queryset.order_by('-id'), 20)
+    page = req.GET.get('page')
+    try:
+        messages = paginator.page(page)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        messages = paginator.page(paginator.num_pages)
+    except:
+        # None or not an integer, default to first page
+        messages = paginator.page(1)
+
     return render_to_response(
         "polls/poll_dashboard.html",
-        { 'polls': polls, },
+        { "polls": polls, 
+          "messages_table": MessageTable(queryset, request=req),
+          "messages": messages,},
         context_instance=RequestContext(req))
+
+@require_GET
+@login_required
+def messages(req):
+    """ return json with latest messages """
+    messages = Message.objects.all()[:15]
+    #return json here
+    pass
 
 
 @require_GET

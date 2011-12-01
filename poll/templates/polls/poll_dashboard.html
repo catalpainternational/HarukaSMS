@@ -7,62 +7,42 @@
 {% endblock %}
 {% block content %}
 
-<a class="btn large primary" href="{% url poll.views.new_poll %}"> Add New Poll </a> 
-
-<table width="400px" class="bordered-table zebra-striped"> 
-  <thead> 
-    <tr>
-      <th class="poll_name_col">Name</th>  
-      <th class="poll_question_col">Question</th>
-      <th class="poll_date_col">Start Date</th>
-      <th class="poll_date_col">Closing Date</th>
-      <th class="poll_options_col"></th> 
-    </tr> 
-  </thead> 
-  <tbody>
-    {% if polls %}
-    {% for poll_obj in polls %}
-    <tr class="bordered-table zebra-striped">
-      <td>{{ poll_obj.name }}</td>
-      <td><b>{% if poll_obj.start_date %}{{ poll_obj.question }}{% else %}<font color="grey">{{ poll_obj.question }}</font>{% endif %}</b></td>
-      <td>{% if poll_obj.start_date %}{{ poll_obj.start_date|date:"d/m/Y" }}{% endif %}</td>
-      <td>{% if poll_obj.end_date %}{{ poll_obj.end_date|date:"d/m/Y" }}{% else %}Open{% endif %}</td>      
-      <td>
-          <a style="float:right;padding-top:7px;" href="javascript:void(0);" onclick="deletePoll(this, '{% url poll.views.delete_poll poll_obj.pk %}','{{poll_obj.question|addslashes}}');"><img border="0" src="{{ MEDIA_URL }}rapidsms/icons/silk/delete.png"/></a>
-          <div class="buttons">
-              {% if poll_obj.responses__count %}
-                  <a href="{% url poll-report poll_obj.pk %}">
-                        <img src="{{ MEDIA_URL }}poll/icons/silk/zoom.png" alt=""/> Report
-                  </a>
-            	  <a href="{% url poll-responses poll_obj.pk %}">
-                        <img src="{{ MEDIA_URL }}poll/icons/silk/database_table.png" alt=""/> Responses ({{ poll_obj.responses__count }})
-            	  </a>
-	          {% endif %}
-	          <a href="{% url poll.views.view_poll poll_obj.pk %}">
-                  <img src="{{ MEDIA_URL }}poll/icons/silk/bullet_wrench.png" alt=""/> Edit
-	          </a>
-	      </div>
-      </td>
-    </tr>
-    {% endfor %}
-    {% else %}
-    <tr class="poll_table_row">
-      <td colspan="5"><i>No existing Polls.  Click 'Add New Poll' to create one.</i></td>
-    </tr>
-    {% endif %}
-  </tbody>
-</table>
-<br/>
-
-
-<br/><br/>
-
+<div class="polls module">
+  <h2>Your Polls</h2>
+  <table width="400px" class="bordered-table zebra-striped"> 
+    <thead> 
+      <tr>
+        <th class="poll_name_col">Poll Name</th>  
+        <th class="poll_question_col">Question</th>
+        <th class="poll_date_col">Start Date</th>
+        <th class="poll_date_col">Closing Date</th>
+        <th class="poll_submissions">Submissions</th>
+      </tr> 
+    </thead> 
+    <tbody>
+      {% if polls %}
+      {% for poll_obj in polls %}
+      <tr class="bordered-table zebra-striped">
+        <td>{{ poll_obj.name }}</td>
+        <td><b>{% if poll_obj.start_date %}{{ poll_obj.question }}{% else %}<font color="grey">{{ poll_obj.question }}</font>{% endif %}</b></td>
+        <td>{% if poll_obj.start_date %}{{ poll_obj.start_date|date:"d/m/Y" }}{% endif %}</td>
+        <td>{% if poll_obj.end_date %}{{ poll_obj.end_date|date:"d/m/Y" }}{% else %}Still Open{% endif %}</td>
+        <td>{{ poll_obj.messages.count }}</td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <tr class="poll_table_row">
+        <td colspan="5"><i>No existing Polls.  Click 'Add New Poll' to create one.</i></td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
 </div>
 
-
-<form name="form" method="post" action="">
-{% csrf_token %}
-</form>
+<div class="messages module">
+  <h2>Incoming and Outgoiong Messages</h2>
+  {{ messages_table.as_html }}
+</div>
 
 </div>
 
