@@ -2,6 +2,7 @@ from django.conf.urls.defaults import *
 from . import views
 
 urlpatterns = patterns('',
+    url(r'^dashboard/$', poll.views.dashboard),
     url(r"^$", views.polls, name="polls"),
     url(r"^(\d+)/submissions.csv$", views.responses_as_csv),    
     url(r"^new/$", views.new_poll),
