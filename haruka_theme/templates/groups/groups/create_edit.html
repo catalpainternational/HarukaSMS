@@ -22,9 +22,9 @@
 {% block content %}
  
     <div class="row">
-    	<div class="span7">
-			<div class="well">
-				<h4>{% if form.instance.pk %}Edit Group{% else %}Create Group{% endif %}</h4>
+    	<div class="span9">
+			<h4>{% if form.instance.pk %}Edit Group{% else %}Create Group{% endif %}</h4>
+			<div class="well">	
 				<form action="#" method="POST" class="buttons">
 					{% csrf_token %}
 					<table>
