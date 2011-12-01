@@ -21,18 +21,10 @@ from groups.forms import GroupForm, ContactForm
 
 
 @login_required
-def list_groups(request):
-    groups = Group.objects.annotate(count=Count('contacts'))
-    context = {
-        'groups': groups.order_by('name'),
-    }
-    return render_to_response('groups/groups/list.html', context,
-                              context_instance=RequestContext(request))
-
-
-@login_required
 @transaction.commit_on_success
 def create_edit_group(request, group_id=None):
+    groups = Group.objects.annotate(count=Count('contacts'))
+
     group = None
     if group_id:
         group = get_object_or_404(Group, pk=group_id)
@@ -46,11 +38,13 @@ def create_edit_group(request, group_id=None):
             return HttpResponseRedirect(reverse('list-groups'))
     else:
         form = GroupForm(instance=group)
+
     context = {
-        'form': form,
+        'groups': groups.order_by('name'),
         'group': group,
+        'form': form,
     }
-    return render_to_response('groups/groups/create_edit.html', context,
+    return render_to_response('groups/groups/list.html', context,
                               context_instance=RequestContext(request))
 
 

@@ -4,7 +4,7 @@ from groups import views
 
 
 urlpatterns = patterns('',
-    url(r'^group/$', views.list_groups,
+    url(r'^group/$', views.create_edit_group,
         name='list-groups'),
     url(r'^group/create/$', views.create_edit_group,
         name='create-group'),
