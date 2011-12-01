@@ -22,7 +22,7 @@
 {% block content %}
  
     <div class="row">
-    	<div class="span6">
+    	<div class="span7">
 			<div class="well">
 				<h4>{% if form.instance.pk %}Edit Group{% else %}Create Group{% endif %}</h4>
 				<form action="#" method="POST" class="buttons">
@@ -31,8 +31,8 @@
 						{{ form }}
 					</table>
 					<div class='form-action'>
-						<input type='button' name='cancel' value='Cancel' />
-						<input type='submit' name='submit' value="Save" />
+						<input type='button' name='cancel' value='Cancel' class='btn' />
+						<input type='submit' name='submit' value="Save"  class='btn primary'/>
 					</div>
 				</form>
 			</div>

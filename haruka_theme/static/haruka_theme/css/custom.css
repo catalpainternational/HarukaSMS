@@ -403,9 +403,14 @@ textarea {
 
 tr.row_section td {
     background: none;
+}
+
+.paginator {
+	position: absolute;
 
 }
 
-
+#contact_list {
+	height: 530px; 
 
 

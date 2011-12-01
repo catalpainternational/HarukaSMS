@@ -6,9 +6,7 @@
 {% block content %}
     <div class="row">
 		<div class="span10">
-			<div class='well'>
-				<h2>Groups</h2>
-				<p><a class='btn' title='Add group' href="{% url create-group %}" >add group</a></p>  
+				<h2>Groups</h2>  
 				<table class='zebra-striped' >
 					<thead>
 						<tr>
@@ -27,7 +25,8 @@
 						{% endfor %}
 					</tbody>
 				</table>
-			</div>
+				<p><a class='btn' title='Add group' href="{% url create-group %}" >add group</a></p>
+			
     </div>
     <div class="span10">
     ...
