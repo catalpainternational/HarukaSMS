@@ -9,4 +9,3 @@ django_pagination
 django-mptt
 pyserial
 pytz
--e git+https://github.com/rapidsms/pygsm.git#egg=pygsm

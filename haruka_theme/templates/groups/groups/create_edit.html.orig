@@ -1,0 +1,85 @@
+{% extends "groups/base.html" %}
+{% load pagination_tags sorting_tags %}
+
+
+{% block title %}{% if form.instance.pk %}Edit Group{% else %}Create Group{% endif %}{% endblock %}
+
+{% block stylesheets %}
+    {{ block.super }}
+		<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/ui.multiselect.css" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ block.super }}
+    <script src="{{ STATIC_URL }}js/forms.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/jquery.scrollTo-min.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/jquery.localisation-min.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/ui.multiselect.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}groups/js/groups.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="row well span10">
+		<h2>Groups</h2> 
+		<table class='zebra-striped' >
+			<thead>
+				<tr>
+					<th>{% anchor id "Group ID Number" %}</th>
+					<th>{% anchor name Name %}</th>
+					<th>{% anchor count "Number Recipients" %}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for group in groups %}
+					<tr class="{% cycle 'odd' 'even' %}">
+						<td>{{ group.pk }}</td>
+						<td><a href='{% url edit-group group.pk %}'>{{ group.name }}</a></td>
+						<td>{{ group.count }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+    </div>
+ 
+    <div class="row">
+<<<<<<< HEAD
+    	<div class="row well span6">
+    	<h4>{% if form.instance.pk %}Edit Group{% else %}Create Group{% endif %}</h4>
+			<form action="#" method="POST" class="buttons">
+				{% csrf_token %}
+				<table>
+					{{ form }}
+				</table>
+				<div class='form-action'>
+					<input type='button' name='cancel' value='Cancel' class='btn' />
+					<input type='submit' name='submit' value="Save" class='btn'  />
+				</div>
+			</form>
+    	</div>
+		<div class="span10">
+  
+    	</div>
+=======
+    	<div class="span9">
+			<h4>{% if form.instance.pk %}Edit Group{% else %}Create Group{% endif %}</h4>
+			<div class="well">	
+				<form action="#" method="POST" class="buttons">
+					{% csrf_token %}
+					<table>
+						{{ form }}
+					</table>
+					<div class='form-action'>
+						<input type='button' name='cancel' value='Cancel' class='btn' />
+						<input type='submit' name='submit' value="Save"  class='btn primary'/>
+					</div>
+				</form>
+			</div>
+    </div>
+<div class="span10">
+    ...
+    </div>
+>>>>>>> 2f0c6ea32f81cc0c8213c3d91b7dcb49b4e6b5bc
+    </div>
+
+
+{% endblock %}
