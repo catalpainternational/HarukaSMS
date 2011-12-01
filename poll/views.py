@@ -43,6 +43,16 @@ def responses_as_csv(req, pk):
 
 @require_GET
 @login_required
+def dashboard(req):
+    polls = Poll.objects.annotate(Count('responses')).order_by('start_date')
+    return render_to_response(
+        "polls/poll_dashboard.html",
+        { 'polls': polls, },
+        context_instance=RequestContext(req))
+
+
+@require_GET
+@login_required
 def polls(req):
     polls = Poll.objects.annotate(Count('responses')).order_by('start_date')
     breadcrumbs = (('Polls', ''),)
