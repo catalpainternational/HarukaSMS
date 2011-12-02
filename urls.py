@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     (r'^admin/', include(admin.site.urls)),
-    
+
     # RapidSMS core URLs
     (r'^account/', include('rapidsms.urls.login_logout')),
 
@@ -34,7 +34,7 @@ urlpatterns = patterns('',
     (r'^groups/', include('groups.urls')),
     (r'^bulksend/', include('bulksend.urls')),
     ('', include('rapidsms_xforms.urls')),
-    ('polls', include('poll.urls')),
+    ('^polls/', include('poll.urls')),
     ('', include('rapidsms_httprouter.urls')),
 )
 

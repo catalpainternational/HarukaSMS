@@ -19,6 +19,9 @@ from eav.models import Attribute
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_control
 from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage
+from rapidsms_httprouter.models import Message
+from rapidsms_httprouter.views import MessageTable
 
 from .forms import *
 
@@ -44,12 +47,28 @@ def responses_as_csv(req, pk):
 @require_GET
 @login_required
 def dashboard(req):
-    polls = Poll.objects.annotate(Count('responses')).order_by('start_date')
+    polls = Poll.objects.annotate(Count('responses')).order_by('start_date')[:5]
+    queryset = Message.objects.all()
+
+    queryset = Message.objects.all()
+    titles=["Text","Direction","Connection","Status","Date"]
+    table = read_only_message_table(queryset.order_by('-date')[0:15],titles)
+
     return render_to_response(
         "polls/poll_dashboard.html",
-        { 'polls': polls, },
+        { "polls": polls,
+          "messages_table": table},
         context_instance=RequestContext(req))
 
+@require_GET
+@login_required
+def latest_messages(req):
+    """ return -json- HTML with latest messages """
+    queryset = Message.objects.all()
+    titles=["Text","Direction","Connection","Status","Date"]
+    table = read_only_message_table(queryset.order_by('-date')[0:15],titles)
+
+    return HttpResponse(status=200,content=table)
 
 @require_GET
 @login_required
@@ -104,7 +123,7 @@ def new_poll(req):
             if not form.cleaned_data['question_luo'] == '':
                 Translation.objects.create(language='ach', field=form.cleaned_data['question'],
                                            value=form.cleaned_data['question_luo'])
-            
+
             poll_type = Poll.TYPE_TEXT if p_type == NewPollForm.TYPE_YES_NO else p_type
 
             poll = Poll.create_with_bulk(\
@@ -117,7 +136,7 @@ def new_poll(req):
             poll.contacts=contacts # for some reason this wasn't being saved in the create_with_bulk call
             poll.response_type=response_type
             poll.save()
-            
+
             if p_type == NewPollForm.TYPE_YES_NO:
                 poll.add_yesno_categories()
 
@@ -639,3 +658,37 @@ def create_translation(request):
             return HttpResponse("/fla")
     return render_to_response('polls/translation.html', dict(translation_form=translation_form),
             context_instance=RequestContext(request))
+
+
+
+def append_msg_row(table,message):
+    table.append("<tr><td>")
+    table.append(message.text)
+    table.append("</td><td>")
+    table.append(message.direction)
+    table.append("</td><td>")
+    table.append("<a href=\"#\" onclick=\"javascript:reply('%s')\">%s</a>" % (message.connection.identity,message.connection))
+    table.append("</td><td>")
+    table.append(message.status)
+    table.append("</td><td>")
+    table.append(message.date.strftime("%m/%d/%Y %H:%m:%S"))
+    table.append("</td></tr>")
+
+
+def read_only_message_table(messages,titles):
+    table =[u"<table>"]
+    table.append(u"\t<thead>\n\t\t<tr>")
+
+    for item in titles:
+        table.append("<th>")
+        table.append(item)
+        table.append("</th>")
+    table.append('\t\t</tr>\n\t</thead>')
+
+    table.append('\t<tbody>')
+
+    for message in messages:
+        append_msg_row(table,message)
+
+    table.append(u'\t</tbody>\n</table>')
+    return u"".join(table)

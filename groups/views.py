@@ -34,7 +34,7 @@ def create_edit_group(request, group_id=None):
         form = GroupForm(request.POST, instance=group)
         if form.is_valid():
             form.save()
-            messages.info(request, "Group saved successfully")
+            messages.success(request, "Group saved successfully")
             return HttpResponseRedirect(reverse('list-groups'))
     else:
         form = GroupForm(instance=group)
@@ -83,7 +83,7 @@ def create_edit_contact(request, contact_id=None):
         form = ContactForm(request.POST, instance=contact)
         if form.is_valid():
             form.save()
-            messages.info(request, "Contact saved successfully")
+            messages.success(request, "Contact saved successfully")
             return HttpResponseRedirect(reverse('list-contacts'))
     else:
         form = ContactForm(instance=contact)

@@ -19,6 +19,14 @@
 {% endblock %}
 
 {% block content %}
+	{% if messages %}
+		<ul class="messages">
+		    {% for message in messages %}
+		    <li{% if message.tags %} class="alert-message {{ message.tags }}"{% endif %}>{{ message }}</li>
+		    {% endfor %}
+		</ul>
+	{% endif %}
+
     <div class="row well span10">
 		<h2>Groups</h2> 
 		<table class='zebra-striped' >

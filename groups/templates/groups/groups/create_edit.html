@@ -18,7 +18,17 @@
     <script src="{{ STATIC_URL }}groups/js/groups.js" type="text/javascript"></script>
 {% endblock %}
 
+
 {% block content %}
+
+	{% if messages %}
+		<ul class="messages">
+		    {% for message in messages %}
+		    <li{% if message.tags %} class="alert-message {{ message.tags }}"{% endif %}>{{ message }}</li>
+		    {% endfor %}
+		</ul>
+	{% endif %}
+
     <div class="row">
 		<h2>Groups</h2> 
 		<table class='zebra-striped' >
