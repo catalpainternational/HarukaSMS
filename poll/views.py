@@ -65,7 +65,7 @@ def dashboard(req):
 def latest_messages(req):
     """ return -json- HTML with latest messages """
     queryset = Message.objects.all()
-    titles=["Text","Direction","Connection","Status","Date"]
+    titles=["Text","Direction","Phone number","Status","Date"]
     table = read_only_message_table(queryset.order_by('-date')[0:15],titles)
 
     return HttpResponse(status=200,content=table)
@@ -662,16 +662,18 @@ def create_translation(request):
 
 
 def append_msg_row(table,message):
+    make_friendly = {'I': 'Incoming', "O": "Outgoing", "Q": "Queued", "S":"Sent",
+                     "H": "Received"}
     table.append("<tr><td>")
     table.append(message.text)
     table.append("</td><td>")
-    table.append(message.direction)
+    table.append(make_friendly[message.direction])
     table.append("</td><td>")
-    table.append("<a href=\"#\" onclick=\"javascript:reply('%s')\">%s</a>" % (message.connection.identity,message.connection))
+    table.append("<a href=\"#\" onclick=\"javascript:reply('%s')\">%s</a>" % (message.connection.identity,message.connection.identity))
     table.append("</td><td>")
-    table.append(message.status)
+    table.append(make_friendly[message.status])
     table.append("</td><td>")
-    table.append(message.date.strftime("%m/%d/%Y %H:%m:%S"))
+    table.append(message.date.strftime("%m/%d/%Y %H:%m"))
     table.append("</td></tr>")
 
 

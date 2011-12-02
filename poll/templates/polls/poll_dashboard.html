@@ -42,17 +42,17 @@
 <div class="messages module">
   <h2>Latest Incoming and Outgoing Messages</h2>
   <div id="message_table">
-      {{ messages_table.as_html }}
+      {{ messages_table|safe }}
   </div>
   <a class="more_msg" href="/router/console">More Messages</a>
   <script type="text/javascript">
     function update() {
         $.get("/polls/latest_messages", function(data) {
         $("#message_table").html(data);
-            window.setTimeout(update, 1000);
+            window.setTimeout(update, 5000);
         });
     }
-    window.setTimeout(update, 1000);
+    window.setTimeout(update, 5000);
 
     function reply(number) {
         $('#id_recipient').val(number);
