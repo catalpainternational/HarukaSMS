@@ -21,7 +21,7 @@
 {% block content %}
 	<h4>{% if form.instance.pk %}Edit Group{% else %}Create Group{% endif %}</h4>
 		<div class="row">
-		    <div class="well span7" style="border-top:none; border-bottom:none">
+		    <div class="well span7">
 	    		<form action="#" method="POST" class="buttons">
 	    			{% csrf_token %}
 	    			<table>
