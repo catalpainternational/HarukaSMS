@@ -41,6 +41,7 @@ def _mail_merge(contact, text):
     text = text.replace('[ first_name ]', contact.name.split()[0])
     return text
 
+
 @require_GET
 @login_required
 def responses_as_csv(req, pk):
@@ -64,20 +65,9 @@ class ReplyForm(forms.Form):
     message = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'size':'60'}))
 
 
-
 @login_required
 def dashboard(req):
     """ dashboard for viewing poll status and incoming / outgoing messages """
-    polls = Poll.objects.annotate(Count('responses')).order_by('start_date')[:5]
-    messages = Message.objects.all().order_by('-date')[0:15]
-
-    # get some real names per connection
-    for message in messages:
-        message.connection.name = Contact.objects.get(connection__identity=message.connection.identity).name
-
-    # prepare for the message table
-    titles=["Text","Direction","Phone number","Status","Date"]
-    table = read_only_message_table(messages,titles)
 
     if req.method.upper() == 'GET':
         reply_form = ReplyForm()
@@ -95,12 +85,24 @@ def dashboard(req):
                 reply_form.errors.setdefault('short_description', ErrorList())
                 reply_form.errors['recipient'].append("This number isn't in the system")
 
+    polls = Poll.objects.annotate(Count('responses')).order_by('start_date')[:5]
+    messages = Message.objects.all().order_by('-date')[0:15]
+
+    # get some real names per connection
+    for message in messages:
+        message.connection.name = Contact.objects.get(connection__identity=message.connection.identity).name
+
+    # prepare for the message table
+    titles=["Text","Direction","Phone number","Status","Date"]
+    table = read_only_message_table(messages,titles)
+
     return render_to_response(
         "polls/poll_dashboard.html",
         { "polls": polls,
           "reply_form" : reply_form,
           "messages_table": table},
         context_instance=RequestContext(req))
+
 
 @require_GET
 @login_required
@@ -111,6 +113,7 @@ def latest_messages(req):
     table = read_only_message_table(queryset.order_by('-date')[0:15],titles)
 
     return HttpResponse(status=200,content=table)
+
 
 @require_GET
 @login_required
@@ -141,6 +144,7 @@ def demo(req, poll_id):
     outgoing = OutgoingMessage(c2, "dear Amuru representative: uReport, Uganda's community-level monitoring system, shows that 46.7% of young reporters in your district found that their local water point IS NOT functioning.")
     router.handle_outgoing(outgoing)
     return HttpResponse(status=200)
+
 
 @permission_required('poll.can_poll')
 def new_poll(req):
@@ -196,6 +200,7 @@ def new_poll(req):
         "polls/poll_create.html", { 'form': form},
         context_instance=RequestContext(req))
 
+
 @login_required
 def view_poll(req, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
@@ -204,6 +209,7 @@ def view_poll(req, poll_id):
     return render_to_response("polls/poll_view.html",
         { 'poll': poll, 'categories': categories, 'category_count' : len(categories), 'breadcrumbs' : breadcrumbs },
         context_instance=RequestContext(req))
+
 
 @login_required
 def view_report(req, poll_id, location_id=None, as_module=False):
@@ -289,6 +295,7 @@ def view_report(req, poll_id, location_id=None, as_module=False):
     else:
         return render_to_response(template, context, context_instance=RequestContext(req))
 
+
 @login_required
 @cache_control(no_cache=True, max_age=0)
 def view_poll_details(req, form_id):
@@ -296,6 +303,7 @@ def view_poll_details(req, form_id):
     return render_to_response("polls/poll_details.html",
         { 'poll': poll },
         context_instance=RequestContext(req))
+
 
 @login_required
 @permission_required('poll.can_edit_poll')
@@ -320,6 +328,7 @@ def edit_poll(req, poll_id):
         { 'form': form, 'poll': poll, 'categories': categories, 'category_count' : len(categories), 'breadcrumbs' : breadcrumbs },
         context_instance=RequestContext(req))
 
+
 @login_required
 def view_responses(req, poll_id, as_module=False):
     poll = get_object_or_404(Poll, pk=poll_id)
@@ -337,6 +346,7 @@ def view_responses(req, poll_id, as_module=False):
         { 'poll': poll, 'responses': responses, 'breadcrumbs': breadcrumbs, 'columns': typedef['report_columns'], 'db_type': typedef['db_type'], 'row_template':typedef['view_template']},
         context_instance=RequestContext(req))
 
+
 def stats(req, poll_id, location_id=None):
     poll = get_object_or_404(Poll, pk=poll_id)
     location = None
@@ -346,9 +356,11 @@ def stats(req, poll_id, location_id=None):
     json_response_data = {'layer_title':'Survey:%s' % poll.name, 'layer_type':'categorized', 'data':list(poll.responses_by_category(location))}
     return HttpResponse(mark_safe(simplejson.dumps(json_response_data)))
 
+
 def number_details(req, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     return HttpResponse(mark_safe(simplejson.dumps(list(poll.get_numeric_detailed_data()))))
+
 
 def _get_response_edit_form(response, data=None):
     typedef = Poll.TYPE_CHOICES[response.poll.type]
@@ -399,6 +411,7 @@ def _get_response_edit_form(response, data=None):
             value = response.eav.poll_location_value
         return form(response=response, initial={'value':value})
 
+
 @login_required
 @permission_required('poll.can_edit_poll')
 def apply_response(req, response_id):
@@ -419,6 +432,7 @@ def apply_response(req, response_id):
 
     return redirect(reverse('poll-responses', args=[poll.pk]))
 
+
 @login_required
 def apply_all(req, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
@@ -436,6 +450,7 @@ def apply_all(req, poll_id):
             except AttributeError:
                 pass
     return redirect(reverse('poll-responses', args=[poll.pk]))
+
 
 @login_required
 @transaction.commit_on_success
@@ -475,6 +490,7 @@ def edit_response(req, response_id):
         { 'form' : form, 'response': response, 'db_type':db_type },
         context_instance=RequestContext(req))
 
+
 @login_required
 def view_response(req, response_id):
     response = get_object_or_404(Response, pk=response_id)
@@ -483,6 +499,7 @@ def view_response(req, response_id):
     return render_to_response(view_template,
         { 'response': response, 'db_type': db_type},
         context_instance=RequestContext(req))
+
 
 @login_required
 @permission_required('poll.can_edit_poll')
@@ -497,6 +514,7 @@ def delete_response (req, response_id):
 
     return HttpResponse(status=200)
 
+
 @login_required
 def view_category(req, poll_id, category_id):
     poll = get_object_or_404(Poll, pk=poll_id)
@@ -504,6 +522,7 @@ def view_category(req, poll_id, category_id):
     return render_to_response("polls/category_view.html",
         { 'poll': poll, 'category' : category },
         context_instance=RequestContext(req))
+
 
 @login_required
 @transaction.commit_on_success
@@ -534,6 +553,7 @@ def edit_category (req, poll_id, category_id):
         { 'form' : form, 'poll': poll, 'category' : category },
         context_instance=RequestContext(req))
 
+
 @login_required
 @permission_required('poll.can_edit_poll')
 def add_category(req, poll_id):
@@ -561,6 +581,7 @@ def add_category(req, poll_id):
         { 'form' : form, 'poll' : poll },
         context_instance=RequestContext(req))
 
+
 @login_required
 @permission_required('poll.can_edit_poll')
 def delete_poll (req, poll_id):
@@ -569,6 +590,7 @@ def delete_poll (req, poll_id):
         poll.delete()
 
     return HttpResponse(status=200)
+
 
 @login_required
 @permission_required('poll.can_poll')
@@ -581,6 +603,7 @@ def start_poll (req, poll_id):
         {"poll" : poll},
         context_instance=RequestContext(req))
 
+
 @login_required
 @permission_required('poll.can_edit_poll')
 def end_poll (req, poll_id):
@@ -592,6 +615,7 @@ def end_poll (req, poll_id):
         {"poll" : poll},
         context_instance=RequestContext(req))
 
+
 @login_required
 @permission_required('poll.can_edit_poll')
 def delete_category (req, poll_id, category_id):
@@ -601,6 +625,7 @@ def delete_category (req, poll_id, category_id):
     if req.method == 'POST':
         category.delete()
     return HttpResponse(status=200)
+
 
 @login_required
 @permission_required('poll.can_edit_poll')
@@ -631,6 +656,7 @@ def edit_rule(req, poll_id, category_id, rule_id) :
         { 'form' : form, 'poll': poll, 'category' : category, 'rule' : rule },
         context_instance=RequestContext(req))
 
+
 @login_required
 @permission_required('poll.can_edit_poll')
 def add_rule(req, poll_id, category_id):
@@ -658,6 +684,7 @@ def add_rule(req, poll_id, category_id):
         { 'form' : form, 'poll': poll, 'category' : category },
         context_instance=RequestContext(req))
 
+
 @login_required
 def view_rule(req, poll_id, category_id, rule_id) :
 
@@ -667,6 +694,7 @@ def view_rule(req, poll_id, category_id, rule_id) :
     return render_to_response("polls/rule_view.html",
         { 'rule' : rule, 'poll' : poll, 'category' : category },
         context_instance=RequestContext(req))
+
 
 @login_required
 def view_rules(req, poll_id, category_id):
@@ -680,6 +708,7 @@ def view_rules(req, poll_id, category_id):
         {  'poll' : poll, 'category' : category, 'rules' : rules, 'breadcrumbs': breadcrumbs },
         context_instance=RequestContext(req))
 
+
 @login_required
 @transaction.commit_on_success
 @permission_required('poll.can_edit_poll')
@@ -690,6 +719,7 @@ def delete_rule (req, poll_id, category_id, rule_id):
         rule.delete()
     category.poll.reprocess_responses()
     return HttpResponse(status=200)
+
 
 def create_translation(request):
     translation_form=PollTranslation()
@@ -702,18 +732,19 @@ def create_translation(request):
             context_instance=RequestContext(request))
 
 
-
 def append_msg_row(table,message):
-    make_friendly = {'I': 'Incoming', "O": "Outgoing", "Q": "Queued", "S":"Sent",
-                     "H": "Received"}
+    make_friendly = {   "I": "Incoming", "O": "Outgoing",
+                        "Q": "Queued",   "S":"Sent",
+                        "H": "Received", "P": "Pending", }
     table.append("<tr><td>")
     table.append(message.text)
     table.append("</td><td>")
     table.append(make_friendly[message.direction])
     table.append("</td><td>")
+    name = Contact.objects.get(connection__identity=message.connection.identity).name
     table.append("%(name)s <br /> <a href=\"#\" onclick=\"javascript:reply('%(identity)s')\">%(identity)s</a>" \
                                                                     % { 'identity': message.connection.identity,
-                                                                        'name': message.connection.name,})
+                                                                        'name': name,})
     table.append("</td><td>")
     table.append(make_friendly[message.status])
     table.append("</td><td>")
