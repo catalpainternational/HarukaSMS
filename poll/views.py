@@ -93,7 +93,7 @@ def dashboard(req):
         message.connection.name = Contact.objects.get(connection__identity=message.connection.identity).name
 
     # prepare for the message table
-    titles=["Text","Direction","Phone number","Status","Date"]
+    titles=["Text","Direction","Phone number","Status","Time"]
     table = read_only_message_table(messages,titles)
 
     return render_to_response(
@@ -748,7 +748,7 @@ def append_msg_row(table,message):
     table.append("</td><td>")
     table.append(make_friendly[message.status])
     table.append("</td><td>")
-    table.append(timesince.timesince(message.date))
+    table.append(timesince.timesince(message.date)+" ago")
     #table.append(message.date.strftime("%m/%d/%Y %H:%m"))
     table.append("</td></tr>")
 
