@@ -9,7 +9,7 @@ from django.shortcuts import redirect, get_object_or_404, render_to_response
 from django.http import HttpResponse
 from django.contrib.sites.models import Site
 from django.contrib.auth.decorators import login_required, permission_required
-from django.utils import simplejson
+from django.utils import simplejson, timesince
 from django.utils.safestring import mark_safe
 from rapidsms_httprouter.router import get_router
 from rapidsms.messages.outgoing import OutgoingMessage
@@ -748,7 +748,8 @@ def append_msg_row(table,message):
     table.append("</td><td>")
     table.append(make_friendly[message.status])
     table.append("</td><td>")
-    table.append(message.date.strftime("%m/%d/%Y %H:%m"))
+    table.append(timesince.timesince(message.date))
+    #table.append(message.date.strftime("%m/%d/%Y %H:%m"))
     table.append("</td></tr>")
 
 
