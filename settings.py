@@ -130,7 +130,7 @@ RAPIDSMS_TABS = [
     # Haruka specific
     ('rapidsms-dashboard',                                  "Home"),
     ("polls",                                               "Polls"),
-#    ("xforms",                                              "Survey Builder"),
+    ("xforms",                                              "Data Collection"),
     ("bulksend",                                            "Messaging"),
     ('list-groups',                                         "Groups"),
     ("registration",                                        "Registration"),
