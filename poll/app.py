@@ -8,13 +8,17 @@ from django.db.models import Q
 
 class App(AppBase):
     def handle (self, message):
-        #import pdb; pdb.set_trace()
         # see if this contact matches any of our polls
         if (message.connection.identity):
             try:
                 poll = Poll.objects.filter(contacts__connection__identity=message.connection.identity).exclude(start_date=None).filter(
                     Q(end_date=None) | (~Q(end_date=None) & Q(end_date__gt=datetime.datetime.now()))).latest(
                     'start_date')
+                # accept queries for response rates with '?'
+                if message.text.startswith('?'):
+                    response_rate =  int(poll.responses.distinct().count()* 100.0 / poll.contacts.distinct().count())
+                    message.respond("Response rate %s%" % response_rate)
+                    return False
                 if poll.response_type == Poll.RESPONSE_TYPE_ONE and poll.responses.filter(
                     contact=message.connection.contact).exists():
                     old_response=poll.responses.filter(contact=message.connection.contact)[0]
