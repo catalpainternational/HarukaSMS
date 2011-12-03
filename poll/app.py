@@ -14,11 +14,21 @@ class App(AppBase):
                 poll = Poll.objects.filter(contacts__connection__identity=message.connection.identity).exclude(start_date=None).filter(
                     Q(end_date=None) | (~Q(end_date=None) & Q(end_date__gt=datetime.datetime.now()))).latest(
                     'start_date')
+                
                 # accept queries for response rates with '?'
                 if message.text.startswith('?'):
                     response_rate =  int(poll.responses.distinct().count()* 100.0 / poll.contacts.distinct().count())
-                    message.respond("Response rate %s%" % response_rate)
+                    response_text = "Response rate %s%%%% \n" % (response_rate,)
+
+                    responses_by_category = poll.responses_by_category()
+                    for category in responses_by_category:
+                        category_rate = int(category['value'] * 100.0 / poll.contacts.distinct().count())
+                        response_text = response_text + "-- %s : %s%%%% \n" % (category['category__name'], category_rate)
+                        
+                    message.respond(response_text)
+
                     return False
+
                 if poll.response_type == Poll.RESPONSE_TYPE_ONE and poll.responses.filter(
                     contact=message.connection.contact).exists():
                     old_response=poll.responses.filter(contact=message.connection.contact)[0]
