@@ -27,6 +27,20 @@ from rapidsms_httprouter.views import MessageTable
 from .forms import *
 
 
+
+def _mail_merge(contact, text):
+    # use regex!!!
+    text = text.replace('[name]', contact.name)
+    text = text.replace('[ name]', contact.name)
+    text = text.replace('[name ]', contact.name)
+    text = text.replace('[ name ]', contact.name)
+
+    text = text.replace('[first_name]', contact.name.split()[0])
+    text = text.replace('[ first_name]', contact.name.split()[0])
+    text = text.replace('[first_name ]', contact.name.split()[0])
+    text = text.replace('[ first_name ]', contact.name.split()[0])
+    return text
+
 @require_GET
 @login_required
 def responses_as_csv(req, pk):
@@ -74,6 +88,7 @@ def dashboard(req):
                 if Connection.objects.filter(identity=reply_form.cleaned_data['recipient']).count():
                     text = reply_form.cleaned_data['message']
                     conn = Connection.objects.filter(identity=reply_form.cleaned_data['recipient'])[0]
+                    text = _mail_merge(Contact.objects.get(connection__identity=conn.identity), text)
                     outgoing = OutgoingMessage(conn, text)
                     get_router().handle_outgoing(outgoing)
             else:
