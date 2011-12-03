@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import csv
+from django import forms
 from django.db import transaction
 from django.db.models import Q, Count
 from django.views.decorators.http import require_GET
@@ -14,7 +15,7 @@ from rapidsms_httprouter.router import get_router
 from rapidsms.messages.outgoing import OutgoingMessage
 from .models import Response
 from rapidsms.contrib.locations.models import Location
-from rapidsms.models import Connection, Backend
+from rapidsms.models import Contact, Connection, Backend
 from eav.models import Attribute
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_control
@@ -44,19 +45,45 @@ def responses_as_csv(req, pk):
     return response
 
 
-@require_GET
+class ReplyForm(forms.Form):
+    recipient = forms.CharField(max_length=20)
+    message = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'size':'60'}))
+
+
+
 @login_required
 def dashboard(req):
+    """ dashboard for viewing poll status and incoming / outgoing messages """
     polls = Poll.objects.annotate(Count('responses')).order_by('start_date')[:5]
-    queryset = Message.objects.all()
+    messages = Message.objects.all().order_by('-date')[0:15]
 
-    queryset = Message.objects.all()
-    titles=["Text","Direction","Connection","Status","Date"]
-    table = read_only_message_table(queryset.order_by('-date')[0:15],titles)
+    # get some real names per connection
+    for message in messages:
+        message.connection.name = Contact.objects.get(connection__identity=message.connection.identity).name
+
+    # prepare for the message table
+    titles=["Text","Direction","Phone number","Status","Date"]
+    table = read_only_message_table(messages,titles)
+
+    if req.method.upper() == 'GET':
+        reply_form = ReplyForm()
+
+    elif req.POST['action'].upper() == 'REPLY':
+            reply_form = ReplyForm(req.POST)
+            if reply_form.is_valid():
+                if Connection.objects.filter(identity=reply_form.cleaned_data['recipient']).count():
+                    text = reply_form.cleaned_data['message']
+                    conn = Connection.objects.filter(identity=reply_form.cleaned_data['recipient'])[0]
+                    outgoing = OutgoingMessage(conn, text)
+                    get_router().handle_outgoing(outgoing)
+            else:
+                reply_form.errors.setdefault('short_description', ErrorList())
+                reply_form.errors['recipient'].append("This number isn't in the system")
 
     return render_to_response(
         "polls/poll_dashboard.html",
         { "polls": polls,
+          "reply_form" : reply_form,
           "messages_table": table},
         context_instance=RequestContext(req))
 
@@ -193,10 +220,10 @@ def view_report(req, poll_id, location_id=None, as_module=False):
         locations = Location.tree.all().order_by('name')
 
     results = []
-    #import pdb; pdb.set_trace()
+
     for location in locations:
         report = report_function(location=location, for_map=False)
-        import pdb; pdb.set_trace()
+
         if len(report):
             if is_text_poll:
                 offset = 0
@@ -669,7 +696,9 @@ def append_msg_row(table,message):
     table.append("</td><td>")
     table.append(make_friendly[message.direction])
     table.append("</td><td>")
-    table.append("<a href=\"#\" onclick=\"javascript:reply('%s')\">%s</a>" % (message.connection.identity,message.connection.identity))
+    table.append("%(name)s <br /> <a href=\"#\" onclick=\"javascript:reply('%(identity)s')\">%(identity)s</a>" \
+                                                                    % { 'identity': message.connection.identity,
+                                                                        'name': message.connection.name,})
     table.append("</td><td>")
     table.append(make_friendly[message.status])
     table.append("</td><td>")

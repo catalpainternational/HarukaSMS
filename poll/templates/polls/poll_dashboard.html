@@ -21,13 +21,17 @@
     </thead>
     <tbody>
       {% if polls %}
-      {% for poll_obj in polls %}
+      {% for poll in polls %}
       <tr class="bordered-table zebra-striped">
-        <td>{{ poll_obj.name }}</td>
-        <td><b>{% if poll_obj.start_date %}{{ poll_obj.question }}{% else %}<font color="grey">{{ poll_obj.question }}</font>{% endif %}</b></td>
-        <td>{% if poll_obj.start_date %}{{ poll_obj.start_date|date:"d/m/Y" }}{% endif %}</td>
-        <td>{% if poll_obj.end_date %}{{ poll_obj.end_date|date:"d/m/Y" }}{% else %}Still Open{% endif %}</td>
-        <td>{{ poll_obj.messages.count }}</td>
+        <td>{{ poll.name }}</td>
+        <td><b>{% if poll.start_date %}{{ poll.question }}{% else %}<font color="grey">{{ poll.question }}</font>{% endif %}</b></td>
+        <td>{% if poll.start_date %}{{ poll.start_date|date:"d/m/Y" }}{% endif %}</td>
+        <td>{% if poll.end_date %}{{ poll.end_date|date:"d/m/Y" }}{% else %}Still Open{% endif %}</td>
+        <td>{{ poll.messages.count }} 
+            {% if poll.contacts.count > 1 %}
+              of {{ poll.contacts.count }} ({% widthratio poll.messages.count poll.contacts.count 100 %}%)
+            {% endif %}
+           </td>
       </tr>
       {% endfor %}
       {% else %}
@@ -37,6 +41,22 @@
       {% endif %}
     </tbody>
   </table>
+</div>
+
+<div class="sender module">
+  <h2>Send Message</h2>
+  <form method="POST" class="sender-form">
+    {{ reply_form }}
+    <input type="hidden" name="action" value="reply" />
+    <input type="submit" value="send" />
+    {% csrf_token %}
+  </form>
+  <script language="javascript">
+    function reply(number) {
+        $('#id_recipient').val(number);
+        return void(0);
+    }
+  </script>
 </div>
 
 <div class="messages module">
