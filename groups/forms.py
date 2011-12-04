@@ -31,7 +31,13 @@ class FancyPhoneInput(forms.TextInput):
         return value
 
 
+from django.contrib.admin.widgets import FilteredSelectMultiple
+from django.forms import ModelForm
+from django import forms
+
 class GroupForm(forms.ModelForm):
+
+    contacts=forms.ModelMultipleChoiceField(Contact.objects.all(),widget=FilteredSelectMultiple("Contacts",False,attrs={'rows':'10'}))
 
     class Meta:
         model = Group
@@ -39,12 +45,12 @@ class GroupForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(GroupForm, self).__init__(*args, **kwargs)
+        qs = Contact.objects.order_by('name')
         self.fields['contacts'].help_text = ''
         qs = Contact.objects.order_by('name')
         self.fields['contacts'].queryset = qs
         self.fields['contacts'].widget.attrs['class'] = 'horitzonal-multiselect'
-        self.fields['contacts'].widget.attrs['size'] = '20'
-
+        print self.fields['contacts'].widget
 
 class ContactForm(forms.ModelForm):
     """ Form for managing contacts """

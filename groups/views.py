@@ -38,7 +38,7 @@ def create_edit_group(request, group_id=None):
             return HttpResponseRedirect(reverse('list-groups'))
     else:
         form = GroupForm(instance=group)
-
+        #print form
     context = {
         'groups': groups.order_by('name'),
         'group': group,

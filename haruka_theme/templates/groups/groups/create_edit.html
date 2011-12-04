@@ -20,7 +20,7 @@
 
 {% block content %}
     <div class="row">
-		<h2>Groups</h2> 
+		<h2>Groups</h2>
 		<table class='zebra-striped' >
 			<thead>
 				<tr>
@@ -40,13 +40,16 @@
 			</tbody>
 		</table>
     </div>
- 
+
     <div class="row">
     	<div class="row well span6">
-    	<h4>{% if form.instance.pk %}Edit Group{% else %}Create Group{% endif %}</h4>
+    	<h4>{% if form.instance.pk %}Edit Group{% else %}Create
+    	  Group{% endif %}</h4>
+        bla bla bla bla bla
 			<form action="#" method="POST" class="buttons">
 				{% csrf_token %}
 				<table>
+
 					{{ form }}
 				</table>
 				<div class='form-action'>
@@ -56,7 +59,7 @@
 			</form>
     	</div>
 		<div class="span10">
-  
+
     	</div>
     </div>
 
