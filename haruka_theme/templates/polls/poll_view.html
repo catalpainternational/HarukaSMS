@@ -86,13 +86,13 @@
 	});
 	
 </script>
-  
-<div id="poll_header" class id='prettyprint linenums'>
+<h4 style="margin-left:40px; margin-top:45px;">Polling Information</h4>
+<div  class="well" id="poll_header" style="width:858px; margin-left:20px;">
 </div>
 
 <form action="">
 {% csrf_token %}
-<table width="100%" class="bordered-table zebra-striped">
+<table class="condensed-table" style="width:858px; margin-left:40px;">
 <thead>
 <tr>
 <th class="category_name_col">Name</th>
@@ -113,9 +113,8 @@
 </table>
 </form>
 <br/>
-<div class="buttons">
-    <a href="javascript:addNewCategoryBox();" style="float:left">
-      <img border="0" src="{{ MEDIA_URL }}rapidsms/icons/silk/add.png" alt=""/>Add New Category
+<div>
+    <a href="javascript:addNewCategoryBox();" style="float:left" class="btn">Add New Category
     </a>
 </div>
 <br/><br/>

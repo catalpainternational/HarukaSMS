@@ -9,7 +9,7 @@
 
 <a class="btn large primary" style="margin-bottom:30px;" href="{% url poll.views.new_poll %}"> Add New Poll </a> 
 
-<table width="400px" class="bordered-table zebra-striped"> 
+<table width="400px" class="condensed-table"> 
   <thead> 
     <tr>
       <th class="poll_name_col">Name</th>  
@@ -29,18 +29,15 @@
       <td>{% if poll_obj.end_date %}{{ poll_obj.end_date|date:"d/m/Y" }}{% else %}Open{% endif %}</td>      
       <td>
           <a style="float:right;padding-top:7px;" href="javascript:void(0);" onclick="deletePoll(this, '{% url poll.views.delete_poll poll_obj.pk %}','{{poll_obj.question|addslashes}}');"><img border="0" src="{{ MEDIA_URL }}rapidsms/icons/silk/delete.png"/></a>
-          <div class="buttons">
+          <div>
               {% if poll_obj.responses__count %}
-                  <a href="{% url poll-report poll_obj.pk %}">
-                        <img src="{{ MEDIA_URL }}poll/icons/silk/zoom.png" alt=""/> Report
+<!--                  <a href="{% url poll-report poll_obj.pk %}">  </a>-->
+<!--                        <img src="{{ MEDIA_URL }}poll/icons/silk/zoom.png" alt=""/> Report-->
                   </a>
-            	  <a href="{% url poll-responses poll_obj.pk %}">
-                        <img src="{{ MEDIA_URL }}poll/icons/silk/database_table.png" alt=""/> Responses ({{ poll_obj.responses__count }})
-            	  </a>
+            	  <a href="{% url poll-responses poll_obj.pk %}" class="btn">
+                        Responses({{ poll_obj.responses__count }})</a>
 	          {% endif %}
-	          <a href="{% url poll.views.view_poll poll_obj.pk %}">
-                  <img src="{{ MEDIA_URL }}poll/icons/silk/bullet_wrench.png" alt=""/> Edit
-	          </a>
+	          <a href="{% url poll.views.view_poll poll_obj.pk %}" class="btn">Edit</a>
 	      </div>
       </td>
     </tr>

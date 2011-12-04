@@ -13,8 +13,7 @@
     {% endif %}
     {% if poll.start_date and not poll.end_date %}
     <form style="border:0px" action="{% url poll.views.end_poll poll.pk %}" method="POST" id="closePollForm">
-    <a onclick="submitForm(this, '#poll_header');" href="javascript:void(0);">
-        <img src="{{ MEDIA_URL }}rapidsms/icons/silk/delete.png" alt=""/> 
+    <a onclick="submitForm(this, '#poll_header');" href="javascript:void(0);" class='btn'>
         Close Poll
     </a>
     </form>    

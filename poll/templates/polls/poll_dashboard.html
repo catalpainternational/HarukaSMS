@@ -7,9 +7,23 @@
 {% endblock %}
 {% block content %}
 
-<div class="polls module">
-  <h2>Your Polls</h2>
-  <table width="400px" class="bordered-table zebra-striped">
+<h4 style="margin-top:40px; margin-left:60px">Quick SMS</h4>
+  <div class="well" style="width:770px; margin-left:60px;">
+    <form method="POST" class="sender-form" style='margin-left:80px; margin-top:20px;'>
+      {{ reply_form }}
+      <input type="hidden" name="action" value="reply" />
+      <input type="submit" value="send" class='btn primary'/>
+      {% csrf_token %}
+    </form>
+    <script language="javascript">
+      function reply(number) {
+          $('#id_recipient').val(number);
+          return void(0);
+      }
+    </script>
+  </div>
+  <h4 style="margin-top:40px; margin-left:60px">Your Latest Polls</h4>
+  <table  style="width:810px; margin-left:60px;" class="condensed-table">
     <thead>
       <tr>
         <th class="poll_name_col">Poll Name</th>
@@ -41,27 +55,9 @@
       {% endif %}
     </tbody>
   </table>
-</div>
-
-<div class="sender module">
-  <h2>Send Message</h2>
-  <form method="POST" class="sender-form">
-    {{ reply_form }}
-    <input type="hidden" name="action" value="reply" />
-    <input type="submit" value="send" />
-    {% csrf_token %}
-  </form>
-  <script language="javascript">
-    function reply(number) {
-        $('#id_recipient').val(number);
-        return void(0);
-    }
-  </script>
-</div>
-
-<div class="messages module">
-  <h2>Latest Incoming and Outgoing Messages</h2>
-  <div id="message_table">
+<div>
+  <h4 style="margin-top:40px; margin-left:60px">Latest Activity</h4>
+  <div id="condensed_table" style="width:810px; margin-left:60px;">
       {{ messages_table|safe }}
   </div>
   <a class="more_msg" href="/router/console">More Messages</a>
@@ -74,8 +70,6 @@
     }
     window.setTimeout(update, 5000);
   </script>
-</div>
-
 </div>
 
 {% endblock %}
