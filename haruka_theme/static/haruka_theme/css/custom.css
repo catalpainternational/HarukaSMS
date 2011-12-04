@@ -441,7 +441,7 @@ tr.row_section td {
 	width:600px;
 	margin-left:20px;
 	height: 605px;
-	margin-top:45px;
+	margin-top:0px;
 	background-color: #F5F5F5;
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 4px 4px 4px 4px;
@@ -507,13 +507,51 @@ tr.row_section td {
 	
 }
 
-#div_id_command_prefix{
+#div_id_command_prefix {
 	visibility:hidden;
 	
 }
 
-#div_id_separator{
+#div_id_separator {
 	visibility:hidden;
 }
 
+#id_description {
+	height: 2em;
+	width: 53%;
+}
 
+#div_id_restrict_to {
+	position:relative;
+	top:-910px;
+}
+
+#div_id_restrict_message {
+	position:relative;
+	top:-900px;	
+}
+
+.form_fields_cell {
+	background-color: #ffffff;
+}
+
+.add_field_header {
+    color: white;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
+    line-height: 18px;
+    padding: 10px 10px 9px;
+    text-align: left;
+}
+
+#new_field_box {
+    background-color: white;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    margin: 0;
+    width: 858px;
+    margin-left:20px;
+
+}    

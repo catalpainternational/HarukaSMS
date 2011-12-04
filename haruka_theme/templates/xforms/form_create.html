@@ -1,0 +1,25 @@
+{% extends "xforms/layout.html" %}
+{% block title %}XForms{% endblock %}
+
+{% block content %}
+{% load forms %}
+
+<div id="form_header">
+<div><h4 style='margin-top:45px; margin-left:40px;'>Data Collection</h4></div>
+</div>
+
+<form action="/xforms/new/" method="post" class="uniForm" id="newForm">
+{% csrf_token %}
+{{ form|render_layout }}
+
+<div style="float:left;margin-bottom:10px;margin-top:10px">
+  <a class='btn' href="/xforms/">
+    Cancel
+  </a>
+  <a class='btn primary' onabortnclick="$('#newForm').submit();" href="javascript:void(0);">
+    Create Form
+  </a>
+</div>
+</form>
+
+{% endblock %}
