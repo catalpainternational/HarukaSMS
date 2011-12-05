@@ -7,8 +7,8 @@
 {% endblock %}
 {% block content %}
 
-<h4 style="margin-top:40px; margin-left:60px">Quick SMS</h4>
-  <div class="well" style="width:770px; margin-left:60px;">
+<h4 style="margin-top:45px; margin-left:20px">Quick SMS</h4>
+  <div class="well" style="width:770px; margin-left:18px; padding-right: 107px;">
     <form method="POST" class="sender-form" style='margin-left:80px; margin-top:20px;'>
       {{ reply_form }}
       <input type="hidden" name="action" value="reply" />
@@ -23,7 +23,7 @@
     </script>
   </div>
 
-  <h4 style="margin-top:40px; margin-left:60px">Your Latest Polls</h4>
+  <h4 style="margin-top:40px; margin-left:20px">Your Latest Polls</h4>
   <table  style="width:810px; margin-left:60px;" class="condensed-table">
     <thead>
       <tr>
@@ -58,7 +58,7 @@
   </table>
 
 
-  <h4 style="margin-top:40px; margin-left:60px">Your Latest Data Collection</h4>
+  <h4 style="margin-top:40px; margin-left:20px">Your Latest Data Collection</h4>
   <table  style="width:810px; margin-left:60px;" class="condensed-table">
     <thead>
       <tr>
@@ -96,11 +96,11 @@
   </table>
 
 <div>
-  <h4 style="margin-top:40px; margin-left:60px">Latest Activity</h4>
+  <h4 style="margin-top:40px; margin-left:20px">Latest Activity</h4>
   <div id="condensed_table" style="width:810px; margin-left:60px;">
       {{ messages_table|safe }}
   </div>
-  <a class="more_msg" href="/router/console">More Messages</a>
+  <!--<a class="more_msg" href="/router/console">More Messages</a>-->
   <script type="text/javascript">
     function update() {
         $.get("/polls/latest_messages", function(data) {
