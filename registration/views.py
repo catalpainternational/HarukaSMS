@@ -63,8 +63,8 @@ def registration(req, pk=None):
                 # we need this because of the groups extensions to contact and its custom save()
                 language = 'en-us' # default behavior for now
                 contact = Contact(name=name, phone=identity,
-                                 age=age, language=language)
-#                                gender=gender, age=age, location=location, language=language)
+                                 #age=age, language=language)
+                                 gender=gender, age=age, location=location, language=language)
                 contact.save()
 
                 # Get our backend or create one

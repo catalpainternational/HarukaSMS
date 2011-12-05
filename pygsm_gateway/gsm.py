@@ -65,7 +65,7 @@ class GsmPollingThread(threading.Thread):
         if "error" in boxdata.lower():
             print "Error - phone not supported"
             exit()
-        #import pdb; pdb.set_trace()
+
         boxsize = boxdata.split("(")[1].split(")")[0].split("-")[0].split(',').__len__()
         
         logger.debug('SIM Inbox size URL: %s' % boxsize)

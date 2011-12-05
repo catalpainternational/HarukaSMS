@@ -34,7 +34,6 @@ class PygsmHttpServer(ThreadingMixIn, HTTPServer):
             #added to play nicely with rapidsms_httprouter, although this perhaps is semantically incorrect.
             def do_GET(self):
                 logger.debug('got GET')
-                #import pdb; pdb.set_trace()
                 form = parse_qs(urlparse(self.path).query)
                 if 'identity' in form and 'text' in form:
                     self._send_method(form['identity'][0],
