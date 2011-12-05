@@ -24,11 +24,11 @@
 
 </script>
 
-<h4 style='margin-left:40px; margin-top:45px'>Responses for:</h4>
+<h4 style='margin-left:20px; margin-top:45px; margin-bottom:15px;'>Your Poll</h4>
 <div class="well" style="width:858px; margin-left:20px;">
     <div class="name" style='margin-left:10px;'><h5>'{{ poll.question }}'</h5></div>
     <div>
-        <a class='btn' style='margin-left:780px;'href="{% url poll.views.responses_as_csv poll.pk %}">Export
+        <a class='btn primary' style='margin-left:780px;'href="{% url poll.views.responses_as_csv poll.pk %}">Export
         </a>
         {% ifequal poll.type 'l' %}
             <a href="{% url poll.views.apply_all poll.pk %}">
@@ -44,6 +44,7 @@
       <br/>
     </div>
 </div>
+<h4 style='margin-left:20px; margin-top:45px; margin-bottom:15px;'>SMS Poll Responses</h4>
 <form class="form" action="" method="post">
 <table class="condensed-table" style='width:891px; margin-left:20px;'> 
   <thead>

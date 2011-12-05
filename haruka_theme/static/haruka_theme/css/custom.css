@@ -434,6 +434,14 @@ tr.row_section td {
 /*-----------------DIV REPLACEMENTS POLLING -------------------*/
 
 
+.add_category_header {
+    background-color: none
+    color: none;
+    padding-bottom: none;
+    padding-left: none;
+    padding-top: none;
+
+}
 
 #div_id_default_response_luo {
 	
@@ -480,7 +488,7 @@ tr.row_section td {
 
 #div_id_default_response {
 	position:relative;
-	top:-66px;
+	top:-15px;
 }
 
 #div_id_start_immediately {
@@ -518,6 +526,21 @@ tr.row_section td {
 
 /*-----------------DIV REPLACEMENTS DATA COLLECTION -------------------*/
 
+.uniForm fieldset {
+    height: auto;
+
+}
+
+.uniForm .formHint, .uniForm .blockLabels .formHint {
+    color: #777777;
+    font-size: 0.9em;
+    padding-left: 0;
+    position: relative;
+    top: 0;
+    width: 39%;
+}
+
+
 .ctrlHolder {
     border-bottom: none;
     padding: 7px;
@@ -545,12 +568,12 @@ tr.row_section td {
 
 #div_id_restrict_to {
 	position:relative;
-	top:-465px;
+	top:-150px;
 }
 
 #div_id_restrict_message {
 	position:relative;
-	top:-445px;	
+	top:-140px;	
 }
 
 .form_fields_cell {
@@ -614,7 +637,9 @@ tr.row_section td {
 	height: 380px;
 }
 
-id_contacts_to {
+ctrlHolder {
+    border-bottom: 0px;
+    padding: 7px;
 
 }
 
