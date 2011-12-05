@@ -32,7 +32,10 @@ blablablabla	<div class="row">
 	    		<form action="#" method="POST" class="buttons">
 	    			{% csrf_token %}
                                 <table>
-	    				{{ form }}
+	    			  <tr><td>Name</td><td>{{ form.name }}</td></tr>
+                                  <tr><td>Description</td><td>{{ form.description }}</td></tr>
+
+                                  <tr><td colspan="2">{{ form.contacts }}</td></tr>
                                 </table>
 	    			<div class='form-action' style="align:right">
 	    				<input type='button' name='cancel' value='Cancel' class='btn' style="margin-left:255px;" />
