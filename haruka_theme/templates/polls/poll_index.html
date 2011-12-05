@@ -9,20 +9,20 @@
 
 <a class="btn large primary" style="margin-bottom:30px; margin-top: 45px; margin-left: 20px; " href="{% url poll.views.new_poll %}"> Add New Poll </a> 
 
-<table class='condensed-table' style="width:878px; margin-left:20px;"> 
+<table class="condensed-table" style="width:878px; margin-left:20px;"> 
   <thead> 
     <tr>
       <th class="poll_name_col">Name</th>  
-      <th class="poll_question_col">Question</th>
+      <th class="poll_question_col" style='width:290px;'>Question</th>
       <th class="poll_date_col">Start Date</th>
       <th class="poll_date_col">Closing Date</th>
-      <th class="poll_options_col"></th> 
+      <th class="poll_options_col" style='width:212px;'></th> 
     </tr> 
   </thead> 
   <tbody>
     {% if polls %}
     {% for poll_obj in polls %}
-    <tr class="bordered-table zebra-striped">
+    <tr class="table">
       <td>{{ poll_obj.name }}</td>
       <td><b>{% if poll_obj.start_date %}{{ poll_obj.question }}{% else %}<font color="grey">{{ poll_obj.question }}</font>{% endif %}</b></td>
       <td>{% if poll_obj.start_date %}{{ poll_obj.start_date|date:"d/m/Y" }}{% endif %}</td>

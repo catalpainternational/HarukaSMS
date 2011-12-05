@@ -518,6 +518,10 @@ tr.row_section td {
 
 /*-----------------DIV REPLACEMENTS DATA COLLECTION -------------------*/
 
+.ctrlHolder {
+    border-bottom: none;
+    padding: 7px;
+}
 
 #div_id_keyword_prefix {
 	visibility:hidden;
@@ -541,12 +545,12 @@ tr.row_section td {
 
 #div_id_restrict_to {
 	position:relative;
-	top:-910px;
+	top:-465px;
 }
 
 #div_id_restrict_message {
 	position:relative;
-	top:-900px;	
+	top:-445px;	
 }
 
 .form_fields_cell {
