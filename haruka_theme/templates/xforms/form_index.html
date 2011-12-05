@@ -16,7 +16,7 @@ function deleteForm(form_id, form_name) {
     <a class='btn large primary' style="margin-bottom:30px;" href="/xforms/new/" style="float:left"> Add New Survey </a> 
 
 
-<table width="100%" class="bordered-table zebra-striped"> 
+<table width="100%" class="condensed-table"> 
   <thead> 
     <tr> 
       <th class="form_name_col">Name</th> 
@@ -33,13 +33,12 @@ function deleteForm(form_id, form_name) {
       <td>
            <a style="float:right;padding-top:7px;" href="javascript:void(0);" onclick="deleteForm('{{xform.pk}}','{{xform.name|addslashes}}');"><img border="0" src="{{ MEDIA_URL }}rapidsms/icons/silk/delete.png"/></a>
 	
-	<div class="buttons">
+	<div>
        
-	  <a href="/xforms/{{ xform.pk }}/submissions/">
-            <img src="{{ MEDIA_URL }}rapidsms_xforms/icons/silk/database_table.png" alt=""/> Submissions ({{ xform.submissions.all.count }})
+	  <a class='btn' href="/xforms/{{ xform.pk }}/submissions/">Submissions ({{ xform.submissions.all.count }})
 	  </a>
-	  <a href="/xforms/{{ xform.pk }}/view/">
-            <img src="{{ MEDIA_URL }}rapidsms_xforms/icons/silk/zoom.png" alt=""/> View
+	  <a class='btn' href="/xforms/{{ xform.pk }}/view/">
+         View
 	  </a>
 	</div>
       </td>

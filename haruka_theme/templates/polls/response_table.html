@@ -1,0 +1,78 @@
+<script type="text/javascript">
+
+  function deleteResponse(link, delete_link) {
+    if (confirm("Are you sure you want to remove this response from the poll?")) {
+      $.post(delete_link, function(data) {
+        $(link).parents("tr").remove();
+      });
+    }
+  }
+  
+  function cancelResponse(link, view_link) {
+     $(link).parents("tr").load(view_link);
+  }
+
+  function saveResponse(link, edit_link) {
+    form = $(link).parents(".form");
+    form_data = form.serializeArray();
+    $(link).parents("tr").load(edit_link, form_data);
+  }
+
+  function editResponse(link, edit_link) {
+    $(link).parents("tr").load(edit_link);
+  }
+
+</script>
+
+<h4 style='margin-left:40px; margin-top:45px'>Responses for:</h4>
+<div class="well" style="width:858px; margin-left:20px;">
+    <div class="name" style='margin-left:10px;'><h5>'{{ poll.question }}'</h5></div>
+    <div>
+        <a class='btn' style='margin-left:780px;'href="{% url poll.views.responses_as_csv poll.pk %}">Export
+        </a>
+        {% ifequal poll.type 'l' %}
+            <a href="{% url poll.views.apply_all poll.pk %}">
+                <img src="{{ MEDIA_URL }}poll/icons/silk/application_form_add.png" alt=""/>Register All
+            </a>
+        {% else %}
+            {% ifequal poll.type 'r' %}
+                <a href="{% url poll.views.apply_all poll.pk %}">
+                    <img src="{{ MEDIA_URL }}poll/icons/silk/application_form_add.png" alt=""/>Register All
+                </a>
+            {% endifequal %}
+        {% endifequal %}
+      <br/>
+    </div>
+</div>
+<form class="form" action="" method="post">
+<table class="condensed-table" style='width:891px; margin-left:20px;'> 
+  <thead>
+    <tr>
+      <th class="response_sender_col">Sender</th>
+      {% for column, colclass in columns %}
+      <th class="response_{{ colclass }}_col">{{ column }}</th>
+      {% endfor %}
+      <th class="response_options_col"></th>
+    </tr>
+  </thead>
+
+<tbody>
+{% if responses %}
+    {% for response in responses %}
+        <tr class="poll_table_row">
+            {% include row_template %}
+        </tr>
+    {% endfor %}
+{% else %}
+  <tr class="poll_table_row">
+    <td colspan="{{ columns|length }}">
+      <i>No responses for this poll.</i>
+    </td>
+  </tr>
+{% endif %}
+</tbody>
+</table>
+</form>
+<br/>
+</div>
+

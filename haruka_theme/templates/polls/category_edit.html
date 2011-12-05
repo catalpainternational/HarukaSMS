@@ -1,0 +1,40 @@
+<td class="category_name_col">
+    {% if not category %}
+        <div class="add_category_header">Add New Category</div>
+    {% endif %}
+    <script language="javascript">
+      $(document).ready(function() {
+        // highlight the save button when changes are detected
+        $("input,select").change(function() { 
+            category_id = '{{ category.pk }}'
+            $("#save_" + category_id).addClass("positive");
+        });
+      });
+      
+    </script>
+
+  {% if category %}
+  
+  {% endif %} {{ form.name }} {{ form.name.errors}}</td>
+<td class="category_response_col">{{ form.response }} {{form.command.errors}}</td>
+<!--<td class="category_priority_col">{{ form.priority }} {{ form.priority.errors }}</td>-->
+<td class="category_color_col" {% if form.color %}style="background-color:#{{ form.color.value }}"{% endif %}>{{ form.color }} {{ form.color.errors }}</td>
+<td class="category_default_col">{{ form.default }} {{ form.default.errors }}</td>
+<td class="category_options_col">
+  
+  {% if category %}
+      <a style="float:right;padding-top:7px;" href="javascript:void(0);"><img onclick="cancelCategory(this, '{% url poll.views.view_category poll.pk category.pk %}');" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt="" border="0"/></a>  
+      <div>
+          <a class='btn success' onclick="saveCategory(this, '{% url poll.views.edit_category poll.pk category.pk %}');" href="javascript:void(0);" id="save_{{ category.pk }}">Save
+          </a>
+      </div>
+  {% else %}  
+      <a href="javascript:void(0);"><img onclick="cancelAdd(this);" style="float:right;padding-top:6px;" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt="" border="0"/></a>  
+      <div class="buttons">
+          <a onclick="addCategory(this);" href="javascript:void(0);" id="save_{{ category.pk }}" class="positive">
+              <img src="{{ MEDIA_URL }}rapidsms/icons/silk/add.png" alt=""/>Add
+          </a>
+      </div>
+  {% endif %}
+  </td>
+</form>

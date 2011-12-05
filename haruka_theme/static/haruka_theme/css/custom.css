@@ -412,5 +412,146 @@ tr.row_section td {
 
 #contact_list {
 	height: 530px; 
+	
+}
+
+/*-----------------DIV REPLACEMENTS POLLING -------------------*/
 
 
+#div_id_default_response_luo {
+	
+	visibility:hidden;
+	height:0px;
+	
+}
+
+#div_id_question_luo {
+	visibility:hidden;
+	height:0px;
+}
+
+
+#div_id_contacts {
+	visibility:hidden;
+	height:0px;
+	
+}
+
+#newForm {
+	width:600px;
+	margin-left:20px;
+	height: 605px;
+	margin-top:0px;
+	background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 19px;
+}
+
+.uniForm .ctrlHolder {
+    border-bottom: 0px solid #DFDFDF;
+    padding: 7px;
+}
+
+.uniForm .focused {
+	background-color: #DDF4FB;
+    border-color: #C6EDF9;
+}
+
+#div_id_default_response {
+	position:relative;
+	top:-66px;
+}
+
+#div_id_start_immediately {
+	position:relative;
+	top:-125px;
+	
+}
+
+#div_id_groups {
+	position:relative;
+	top:0px;
+	top:-138px;
+	
+}
+
+#div_id_name {
+	position:relative;
+	top:-14px;
+}
+
+#div_id_question {
+	position:relative;
+	top:-10px;
+}
+
+.uniForm fieldset {
+	height: 605px;
+}
+
+.uniForm textarea, .uniForm .blockLabels textarea {
+    height: 2em;
+    width: 53%;
+ 
+ }
+
+/*-----------------DIV REPLACEMENTS DATA COLLECTION -------------------*/
+
+
+#div_id_keyword_prefix {
+	visibility:hidden;
+	
+}
+
+#div_id_command_prefix {
+	visibility:hidden;
+	
+}
+
+#div_id_separator {
+	visibility:hidden;
+}
+
+#id_description {
+	height: 2em;
+	width: 53%;
+}
+
+#div_id_restrict_to {
+	position:relative;
+	top:-910px;
+}
+
+#div_id_restrict_message {
+	position:relative;
+	top:-900px;	
+}
+
+.form_fields_cell {
+	background-color: #ffffff;
+}
+
+.add_field_header {
+    color: white;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
+    line-height: 18px;
+    padding: 10px 10px 9px;
+    text-align: left;
+}
+
+#new_field_box {
+    background-color: white;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    margin: 0;
+    width: 858px;
+    margin-left:20px;
+
+}    
