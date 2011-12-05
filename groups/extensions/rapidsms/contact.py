@@ -10,12 +10,12 @@ from groups.utils import format_number
 class ContactExtra(models.Model):
     """ Abstract model to extend the RapidSMS Contact model """
 
-    phone = models.CharField(max_length=32, blank=True)
+    phone = models.CharField(max_length=32,)
     #gender = models.CharField(
     #        max_length=1,
     #        choices=(('M', 'Male'), ('F', 'Female')), null=True)
-    age = models.IntegerField(blank=True,)
-    location = models.CharField(max_length=64, blank=True)
+    age = models.IntegerField(blank=True, null=True)
+    location = models.CharField(max_length=64, blank=True, null=True)
     
     def save(self, **kwargs):
         super(ContactExtra, self).save(**kwargs)
