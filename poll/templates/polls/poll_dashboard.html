@@ -22,6 +22,7 @@
       }
     </script>
   </div>
+
   <h4 style="margin-top:40px; margin-left:60px">Your Latest Polls</h4>
   <table  style="width:810px; margin-left:60px;" class="condensed-table">
     <thead>
@@ -50,11 +51,49 @@
       {% endfor %}
       {% else %}
       <tr class="poll_table_row">
-        <td colspan="5"><i>No existing Polls.  Click 'Add New Poll' to create one.</i></td>
+        <td colspan="5"><i>No existing Polls.  Click on 'Polls' to create one.</i></td>
       </tr>
       {% endif %}
     </tbody>
   </table>
+
+
+  <h4 style="margin-top:40px; margin-left:60px">Your Latest Data Collection</h4>
+  <table  style="width:810px; margin-left:60px;" class="condensed-table">
+    <thead>
+      <tr>
+        <th class="poll_name_col">Activity Name</th>
+        <th class="poll_question_col">Keyword</th>
+        <th class="poll_date_col">Description</th>
+        <th class="poll_date_col">Active</th>
+        <th class="poll_date_col">Date Created</th>
+        <th class="poll_submissions">Submissions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if data_collections %}
+      {% for data_collection in data_collections %}
+      <tr class="bordered-table zebra-striped">
+        <td>{{ data_collection.name }}</td>
+        <td><b>{{ data_collection.keyword }}</b></td>
+        <td>{{ data_collection.description }}</td>
+        <td>{% if data_collection.active %} Yes {% else %} No {% endif %}</td>
+        <td>{% if data_collection.created %}{{ data_collection.created|date:"d/m/Y" }}{% endif %}</td>
+        <td>{{ data_collection.submissions.distinct.count }} 
+            {% if data_collection.restrict_message %}
+              of {{ data_collection.restrict_to.count }} ({% widthratio data_collection.submissions.distinct.count data_collection.restrict_to.count 100 %}%)
+            {% endif %}
+           </td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <tr class="poll_table_row">
+        <td colspan="5"><i>No existing Data Collection activities.  Click on 'Data Collection' to create one.</i></td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+
 <div>
   <h4 style="margin-top:40px; margin-left:60px">Latest Activity</h4>
   <div id="condensed_table" style="width:810px; margin-left:60px;">

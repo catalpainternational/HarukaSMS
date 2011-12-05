@@ -25,7 +25,7 @@ from rapidsms_httprouter.models import Message
 from rapidsms_httprouter.views import MessageTable
 
 from .forms import *
-
+from rapidsms_xforms.models import XForm
 
 
 def _mail_merge(contact, text):
@@ -60,11 +60,6 @@ def responses_as_csv(req, pk):
     return response
 
 
-class ReplyForm(forms.Form):
-    recipient = forms.CharField(max_length=20)
-    message = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'size':'60'}))
-
-
 @login_required
 def dashboard(req):
     """ dashboard for viewing poll status and incoming / outgoing messages """
@@ -86,7 +81,8 @@ def dashboard(req):
                 reply_form.errors['recipient'].append("This number isn't in the system")
 
     polls = Poll.objects.annotate(Count('responses')).order_by('start_date')[:5]
-    messages = Message.objects.all().order_by('-date')[0:15]
+    data_collections = XForm.objects.annotate(Count('submissions')).order_by('created')[:5]
+    messages = Message.objects.all().order_by('-date')[0:10]
 
     # get some real names per connection
     for message in messages:
@@ -99,6 +95,7 @@ def dashboard(req):
     return render_to_response(
         "polls/poll_dashboard.html",
         { "polls": polls,
+          "data_collections" : data_collections,
           "reply_form" : reply_form,
           "messages_table": table},
         context_instance=RequestContext(req))
