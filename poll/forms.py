@@ -17,12 +17,13 @@ class ReplyForm(forms.Form):
 class NewPollForm(forms.Form): # pragma: no cover
 
     TYPE_YES_NO = 'yn'
+    choices = [(choice['type'], choice['label']) for choice in Poll.TYPE_CHOICES.values()]
+    choices.append((TYPE_YES_NO, 'Yes/No Question'))
 
     poll_type = forms.ChoiceField(
                required=True,
-               choices=(
-                    (TYPE_YES_NO, 'Yes/No Question'),
-                ))
+               choices=tuple(choices)
+               )
     response_type=forms.ChoiceField(choices=Poll.RESPONSE_TYPE_CHOICES,widget=RadioSelect,initial=Poll.RESPONSE_TYPE_ALL)
 
     def updateTypes(self):
@@ -79,7 +80,7 @@ class EditPollForm(forms.ModelForm): # pragma: no cover
     # default manage to be replaced at run-time.  There are many applications
     # for that, such as filtering contacts by site_id (as is done in the
     # authsites app, see github.com/daveycrockett/authsites).
-    # This does, however, also make the polling app independent of authsites.    
+    # This does, however, also make the polling app independent of authsites.
     def __init__(self, data=None, **kwargs):
         if data:
             forms.ModelForm.__init__(self, data, **kwargs)

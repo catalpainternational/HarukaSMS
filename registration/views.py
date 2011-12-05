@@ -54,7 +54,7 @@ def registration(req, pk=None):
                     location = line_list[4].strip()
                 except:
                     gender = age = location = ''
-                
+
                 # we need this because of the groups extensions to contact and its custom save()
                 language = 'en-us' # default behavior for now
                 contact = Contact(name=name, phone=identity,
@@ -83,6 +83,7 @@ def registration(req, pk=None):
                 contact.phone = contact.phone.replace('+','').replace(' ','')
                 contact.language = 'en-us' #default behavior for now
                 contact.save()
+                print contact
                 backend, created = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
                 connection = Connection.objects.get_or_create(backend=backend, contact=contact)[0]
                 connection.identity = contact.phone

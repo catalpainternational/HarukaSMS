@@ -35,7 +35,7 @@ STARTSWITH_PATTERN_TEMPLATE = '^\s*(%s)(\s|[^a-zA-Z]|$)'
 
 CONTAINS_PATTERN_TEMPLATE = '^.*\s*(%s)(\s|[^a-zA-Z]|$)'
 
-# This can be configurable from settings, but here's a default list of 
+# This can be configurable from settings, but here's a default list of
 # accepted yes keywords
 #YES_WORDS = ['yes', 'yeah', 'yep', 'yay', 'y']
 
@@ -85,15 +85,15 @@ class Poll(models.Model):
     Polls represent a simple-question, simple-response communication modality
     via SMS.  They can be thought of as a similar to a single datum in an XForm,
     although for now the only data types available are yes/no, free-form text, and
-    numeric response.  Fairly simple idea, a poll is created, containing a question 
+    numeric response.  Fairly simple idea, a poll is created, containing a question
     (the outgoing messages), a list of contacts (those to poll) and an expected
     *type* of response.  The poll can be edited, contact lists modified, etc. via
     the web (the "user"), until it is eventually *started.*  When a poll is started,
     the outgoing question will be sent to all contacts, and any subsequent messages
     coming in from the contacts associated with this poll (until they are polled again)
-    will be parsed (or attempted to be parsed) by this poll, and bucketed into a 
+    will be parsed (or attempted to be parsed) by this poll, and bucketed into a
     particular category.
-    
+
     FIXME: contact groups, if implemented in core or contrib, should be used here,
            instead of a many-to-many field
     """
@@ -238,14 +238,17 @@ class Poll(models.Model):
         # DB fast enough at scale
         cursor = connection.cursor()
         for language in localized_messages.keys():
-            raw_sql = "insert into poll_poll_contacts (poll_id, contact_id) values %s" % ','.join(\
-                ["(%d, %d)" % (poll.pk, c.pk) for c in localized_messages.get(language)[1]])
-            cursor.execute(raw_sql)
+            for c in localized_messages.get(language)[1]:
+                raw_sql = "insert into poll_poll_contacts (poll_id, contact_id) values (%d, %d)" % (poll.pk, c.pk)
+                print raw_sql
+                cursor.execute(raw_sql)
 
-            raw_sql = "insert into poll_poll_messages (poll_id, message_id) values %s" % ','.join(\
-                ["(%d, %d)" % (poll.pk, m.pk) for m in localized_messages.get(language)[0]])
-            cursor.execute(raw_sql)
-        
+            for m in localized_messages.get(language)[0]:
+                raw_sql = "insert into poll_poll_messages (poll_id, message_id) values (%d,%d)" % (poll.pk, m.pk)
+                print raw_sql
+                cursor.execute(raw_sql)
+
+        transaction.commit_unless_managed()
         if 'django.contrib.sites' in settings.INSTALLED_APPS:
             poll.sites.add(Site.objects.get_current())
         return poll
@@ -408,7 +411,7 @@ class Poll(models.Model):
         else:
             if db_message.connection.contact and  db_message.connection.contact.language:
                 outgoing_message=gettext_db(language=db_message.connection.contact.language,field=outgoing_message)
-                
+
             return (resp, outgoing_message,)
 
     def get_numeric_detailed_data(self):
@@ -543,7 +546,7 @@ class Poll(models.Model):
 class Category(models.Model):
     """
     A category is a 'bucket' that an incoming poll response is placed into.
-    
+
     Categories have rules, which are regular expressions that a message must
     satisfy to belong to a particular category (otherwise a response will have
     None for its category). FIXME does this make sense, or should all polls
@@ -642,7 +645,7 @@ class Translation(models.Model):
     class Meta:
         unique_together = ('field', 'language')
 
-   
+
 def gettext_db(field,language):
     #if name exists in po file get it else look
     if Translation.objects.filter(field=field,language=language).exists():
@@ -652,5 +655,3 @@ def gettext_db(field,language):
        lang_str=ugettext(field)
        deactivate()
        return lang_str
-
-
