@@ -423,6 +423,7 @@ tr.row_section td {
 /*-----------------DIV REPLACEMENTS POLLING -------------------*/
 
 
+
 #div_id_default_response_luo {
 	
 	visibility:hidden;
@@ -444,7 +445,7 @@ tr.row_section td {
 
 #newForm {
 	width:600px;
-	margin-left:20px;
+	margin-left:150px;
 	height: 605px;
 	margin-top:0px;
 	background-color: #F5F5F5;
