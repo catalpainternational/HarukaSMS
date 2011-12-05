@@ -47,14 +47,14 @@ def registration(req, pk=None):
             for line in req.FILES["bulk"]:
                 line_list = line.split(',')
                 name = line_list[0].strip()
-                identity = line_list[1].strip()
+                identity = line_list[1].strip().replace('+','').replace(' ','')
                 try:
                     gender = line_list[2].strip()
                     age = line_list[3].strip()
                     location = line_list[4].strip()
                 except:
                     gender = age = location = ''
-                
+
                 # we need this because of the groups extensions to contact and its custom save()
                 language = 'en-us' # default behavior for now
                 contact = Contact(name=name, phone=identity,
@@ -80,19 +80,25 @@ def registration(req, pk=None):
 
             if contact_form.is_valid():
                 contact = contact_form.save()
+                contact.phone = contact.phone.replace('+','').replace(' ','')
                 contact.language = 'en-us' #default behavior for now
                 contact.save()
+
                 backend, created = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
+
                 connection = Connection.objects.get_or_create(backend=backend, contact=contact)[0]
                 connection.identity = contact.phone
                 connection.save()
+
                 messages.success(req, 'Thank you, you successfully updated %s : %s.' % (contact.name, contact.phone))
+
                 return HttpResponseRedirect(
                     reverse(registration))
+            else:
+                bulk_form = BulkRegistrationForm()
 
     else:
-        contact_form = ContactForm(
-            instance=contact)
+        contact_form = ContactForm(instance=contact)
         bulk_form = BulkRegistrationForm()
 
     return render_to_response(

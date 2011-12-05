@@ -62,7 +62,7 @@ def review(request):
         g_name     = group.name
         g_size     = group.contacts.count()
 
-        send_price = g_size * m_price
+        send_price = "%.2f" % (g_size * m_price)
         sms_count  = g_size * m_count
 
 

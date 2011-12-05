@@ -6,13 +6,13 @@
 
 {% block stylesheets %}
     {{ block.super }}
-		<link type="text/css" rel="stylesheet" href="/static/css/ui.multiselect.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+<link type="text/css" rel="stylesheet" href="/static/css/ui.multiselect.css" />
 {% endblock %}
 
 {% block javascripts %}
 {{ block.super }}
 
-<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
 <script type="text/javascript" src="/admin/jsi18n/"></script>
 <script type="text/javascript" src="/static/admin/js/core.js"></script>
 <script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
@@ -27,16 +27,22 @@
 
 {% block content %}
 	<h4>{% if form.instance.pk %}Edit Group{% else %}Create Group{% endif %}</h4>
-blablablabla	<div class="row">
+	<div class="row">
 		    <div class="well span7">
 	    		<form action="#" method="POST" class="buttons">
 	    			{% csrf_token %}
-                                <table>
-	    			  <tr><td>Name</td><td>{{ form.name }}</td></tr>
-                                  <tr><td>Description</td><td>{{ form.description }}</td></tr>
+                                <p class="group_field_name">
+                                    <span class="label">Name:</span>
+	    			    <span class="field">{{ form.name }}</span>
+                                </p>
+                                <p class="group_field_desc">
+                                    <span class="label">Description:</span>
+                                    <span class="field">{{ form.description }}</span>
+                                </p>
+                                <p class="group_field_contacts">
+                                    <span class="field">{{ form.contacts }}</span>
+                                </p>
 
-                                  <tr><td colspan="2">{{ form.contacts }}</td></tr>
-                                </table>
 	    			<div class='form-action' style="align:right">
 	    				<input type='button' name='cancel' value='Cancel' class='btn' style="margin-left:255px;" />
 	    				<input type='submit' name='submit' value="Save" class='btn primary'  />
