@@ -346,6 +346,11 @@ form div.field label {
     
 }
 
+#id_bulk {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
 /*-----------------BULK MESSAGING STYLING OVERRIDES-------------------*/
 
 label {
@@ -559,8 +564,19 @@ tr.row_section td {
 /*-----------------DIV REPLACEMENTS GROUP SELECTION -------------------*/
 
 .selector {
-	margin-top:100px;
-	width: 180px;
+	margin-top: 10px;
+	width: 410px;
+	height: 380px;
+}
+
+id_contacts_to {
+
+}
+
+.selector .selector-available h2 {
+    background: none;	
+
+
 }
 
 .selector-filter id_contacts_to {
@@ -568,18 +584,75 @@ tr.row_section td {
     width: 180px;
     
 }
+    
+.group_field_name {
+	margin-left:37px;
+	padding-bottom:6px;
+	padding-top: 6px;
+}
 
-.selector-chooser {
-	width: 180px;
-	
+.selector-available, .selector-chosen {
+    float: left;
+    margin-bottom: 5px;
+    text-align: center;
+    width: 180px;
+    
 }
 
 .selector .selector-available h2 {
-    background: url("#");
-    color: #f7f7f7;
+    background: none;
+    color: none;
     
 }
+
+.selector-available h2, .selector-chosen h2 {
+    border: none;
+    font-size: 16px;
+    color: #404040;
+    font-weight: bold
     
-.group_field_name {
-	margin-left:20px;
+ }
+ 
+ .selector select {
+     height: 17.2em;
+     width: 180px;
+     
+}
+
+.selector .selector-available input {
+    width: 180px;
+  
+}
+ 
+ .selector .selector-filter {
+     -moz-border-bottom-colors: none;
+     -moz-border-image: none;
+     -moz-border-left-colors: none;
+     -moz-border-right-colors: none;
+     -moz-border-top-colors: none;
+     background: none;
+     border-color: none;
+     border-style: none;
+     border-width: none;
+     color: none;
+     font-size: 10px;
+     margin: 0;
+     padding: 3px;
+     text-align: left;
+     
+ }
+ 
+#id_contacts_input {
+	padding-left: 0px;
+	width: 173px;
+	margin-left: -3px;
+	margin-bottom: 8px;
+}
+
+#id_contacts_to {
+	margin-top: 36px;
+}
+
+.selector ul.selector-chooser {
+    background: none;
 }

@@ -7,9 +7,22 @@ from rapidsms.models import Contact
 
 
 class ContactForm(forms.ModelForm):
+
     class Meta:
         model = Contact
         fields = ('name', 'age', 'gender', 'phone','location',)
+
+    def clean_phone(self):
+        p = self.cleaned_data['phone']
+        if Contact.objects.filter(phone=p).exists():
+            raise forms.ValidationError("You already have a contact with this phone number")
+        return p
+
+    def clean_name(self):
+        n= self.cleaned_data['name']
+        if n is None or len(n.strip()) == 0:
+            raise forms.ValidationError("The contact name cannot be empty")
+        return n.strip()
 
 # the built-in FileField doesn't specify the 'size' attribute, so the
 # widget is rendered at its default width -- which is too wide for our
