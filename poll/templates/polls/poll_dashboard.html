@@ -30,7 +30,7 @@
         <th class="poll_name_col">Poll Name</th>
         <th class="poll_question_col">Question</th>
         <th class="poll_date_col">Start Date</th>
-        <th class="poll_date_col">Closing Date</th>
+        <th class="poll_date_col">Activity</th>
         <th class="poll_submissions">Submissions</th>
       </tr>
     </thead>
@@ -65,8 +65,8 @@
         <th class="poll_name_col">Activity Name</th>
         <th class="poll_question_col">Keyword</th>
         <th class="poll_date_col">Description</th>
-        <th class="poll_date_col">Active</th>
-        <th class="poll_date_col">Date Created</th>
+        <th class="poll_date_col">Start Date</th>
+        <th class="poll_date_col">Activity</th>
         <th class="poll_submissions">Submissions</th>
       </tr>
     </thead>
@@ -77,8 +77,9 @@
         <td>{{ data_collection.name }}</td>
         <td><b>{{ data_collection.keyword }}</b></td>
         <td>{{ data_collection.description }}</td>
-        <td>{% if data_collection.active %} Yes {% else %} No {% endif %}</td>
         <td>{% if data_collection.created %}{{ data_collection.created|date:"d/m/Y" }}{% endif %}</td>
+        <td>{% if data_collection.active %} Still Open {% else %} Closed {% endif %}</td>
+
         <td>{{ data_collection.submissions.distinct.count }} 
             {% if data_collection.restrict_message %}
               of {{ data_collection.restrict_to.count }} ({% widthratio data_collection.submissions.distinct.count data_collection.restrict_to.count 100 %}%)
