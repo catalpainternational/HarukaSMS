@@ -86,7 +86,9 @@ def dashboard(req):
 
     # get some real names per connection
     for message in messages:
-        message.connection.name = Contact.objects.get(connection__identity=message.connection.identity).name
+        message.connection.name = "Unknown"
+        if Contact.objects.filter(connection__identity=message.connection.identity).exists():
+            message.connection.name = Contact.objects.get(connection__identity=message.connection.identity).name
 
     # prepare for the message table
     titles=["Text","Direction","Phone number","Status","Time"]
@@ -738,7 +740,10 @@ def append_msg_row(table,message):
     table.append("</td><td>")
     table.append(make_friendly[message.direction])
     table.append("</td><td>")
-    name = Contact.objects.get(connection__identity=message.connection.identity).name
+    name = "Unknown"
+    if Contact.objects.filter(connection__identity=message.connection.identity).exists():
+        name = Contact.objects.get(connection__identity=message.connection.identity).name
+
     table.append("%(name)s <br /> <a href=\"#\" onclick=\"javascript:reply('%(identity)s')\">%(identity)s</a>" \
                                                                     % { 'identity': message.connection.identity,
                                                                         'name': name,})
