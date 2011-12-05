@@ -128,13 +128,13 @@ XFORMS_HOST = 'localhost:8000'
 # to add it here, also, to expose it in the rapidsms ui.
 RAPIDSMS_TABS = [
     # Haruka specific
-    ('rapidsms-dashboard',                                  "Home"),
+    ('rapidsms-dashboard',                                  "Activity"),
     ("polls",                                               "Polls"),
     ("xforms",                                              "Data Collection"),
     ("bulksend",                                            "Messaging"),
     ('list-groups',                                         "Groups"),
     ("registration",                                        "Registration"),
-    ("httprouter-console",                                  "Testing"), # for use with rapidsms_httprouter
+#    ("httprouter-console",                                  "Testing"), # for use with rapidsms_httprouter
 #    ("rapidsms.contrib.messagelog.views.message_log",       "Message Log"), # can't be used with rapidsms_httprouter
 #    ("rapidsms.contrib.messaging.views.messaging",          "Messaging"),
 #    ("rapidsms.contrib.locations.views.locations",          "Map"),
