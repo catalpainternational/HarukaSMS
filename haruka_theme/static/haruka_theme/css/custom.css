@@ -404,6 +404,12 @@ textarea {
     margin-left: -2px;
 }
 
+.tally {
+	width:250px;
+}
+	
+
+
 /*-----------------BULK REVIEW STYLING-------------------*/
 
 tr.row_section td {
