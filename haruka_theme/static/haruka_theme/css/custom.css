@@ -586,7 +586,23 @@ tr.row_section td {
 
 }
 
+#id_command {
+	width: 60px;
+}
+
+.field_command_col {
+	width: 82px;
+} 
+
+#id_description {
+	width: 202px;
+}
 /*-----------------DIV REPLACEMENTS GROUP SELECTION -------------------*/
+
+.selector-available h2 {
+	font-color: #404040;
+	
+}
 
 .selector {
 	margin-top: 10px;

@@ -1,0 +1,105 @@
+{% extends "xforms/layout.html" %}
+{% block title %}XForms{% endblock %}
+
+{% block content %}
+
+<div class="details">
+  <div class="name" style='margin-top:45px'><h4 style='margin-left:20px;'>{{ xform.name }} Submissions <blockquote><small>have a quick look at your results as the come in here, or for more thorough analysis export your results to Excel</small></blockquote></h4></div>
+  <div>
+    <a href="/xforms/{{ xform.pk }}/submissions.csv" class='btn primary' style='margin-left:815px;'>
+      Export
+    </a>
+    <br/>
+  </div>
+</div>
+
+<table style='width:858px; margin-left:20px' class="table"> 
+  <thead>
+    <tr>
+      <th class="center">Type</th>
+      <th>Date</th>
+      {% for field in fields.all %}
+      <th>{{ field.name }}</th>
+      {% endfor %}
+      <th></th>
+    </tr>
+  </thead>
+
+  {% if submissions.object_list %}
+  {% for submission in submissions.object_list %}
+  <tr class="form_table_row">
+    <td class="center">
+      {% ifequal submission.type "odk-www" %}
+      <img src="{{ MEDIA_URL }}rapidsms_xforms/icons/silk/application_form.png" title="XForms Submission" >
+      {% endifequal %}
+      {% ifequal submission.type "sms" %}
+      <img src="{{ MEDIA_URL }}rapidsms_xforms/icons/silk/phone.png" title="SMS Submission" >
+      {% endifequal %}
+    </td>
+    <td>
+      {% if submission.has_errors %}
+      <font color='red'>
+      {% else %}
+      <font color='green'>
+      {% endif %}
+      {{ submission.created|date:"m/j/y G:i:s"}}</td>
+    </font>
+    </td>
+    {% for field in fields.all %}
+    <td>
+      {% for value in submission.submission_values %}
+      {% ifequal field.pk value.attribute.pk %}
+      {% if field.xform_type == 'binary' %}
+      <a href="{{ value.value.url }}">{{ value.value }}</a>
+      {% else %}
+      {{ value.value }}
+      {% endif %}
+      {% endifequal %}
+      {% endfor %}
+    </td>
+    {% endfor %}
+    <td>
+      <div>
+	<a href="/xforms/submissions/{{ submission.pk }}/edit/" class='btn'>
+           Edit
+	</a>
+      </div>
+    </td>
+  </tr>
+  {% endfor %}
+  {% else %}
+  <tr class="form_table_row">
+    <td colspan="10">
+      <i>No submissions for this form.</i>
+    </td>
+  </tr>
+  {% endif %}
+</table>
+
+<div class="paginator" style='margin-left:40px;'>
+  <div class="paginator_pager">
+    <span class="paginator_prev">
+      {% if submissions.has_previous %}
+      <a href="?page={{ submissions.previous_page_number }}">&laquo; prev </a>
+      {% endif %}
+    </span>
+
+    <span class="paginator_curr">
+    Page {{ submissions.number }} of {{ submissions.paginator.num_pages }}
+    </span>
+
+    <span class="paginator_next">
+      {% if submissions.has_next %}
+      <a href="?page={{ submissions.next_page_number }}">next &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+
+  <div class="paginator_blurb">
+    Submissions {{ submissions.start_index }}-{{ submissions.end_index }} of {{ submissions.paginator.count }}
+  </div>
+</div>
+
+<br/>
+
+{% endblock %}
