@@ -346,6 +346,11 @@ form div.field label {
     
 }
 
+#id_bulk {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
 /*-----------------BULK MESSAGING STYLING OVERRIDES-------------------*/
 
 label {
