@@ -732,9 +732,13 @@ def create_translation(request):
 
 
 def append_msg_row(table,message):
-    make_friendly = {   "I": "Incoming", "O": "Outgoing",
-                        "Q": "Queued",   "S":"Sent",
-                        "H": "Received", "P": "Pending", }
+    make_friendly = {   "A": "All",         "H": "Handled",
+                        "L": "Locked",      "D": "Delivered",
+                        "I": "Incoming",    "O": "Outgoing",
+                        "Q": "Queued",      "S": "Sent",
+                        "H": "Received",    "P": "Processing", 
+                        "C": "Cancelled",   "E": "Errored",
+                        }
     table.append("<tr><td>")
     table.append(message.text)
     table.append("</td><td>")
