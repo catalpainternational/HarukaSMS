@@ -33,7 +33,7 @@ def registration(req, pk=None):
     if pk is not None:
         contact = get_object_or_404(
             Contact, pk=pk)
-
+    
     if req.method == "POST":
         if req.POST["submit"] == "Delete Contact":
             contact.delete()
@@ -83,17 +83,22 @@ def registration(req, pk=None):
                 contact.phone = contact.phone.replace('+','').replace(' ','')
                 contact.language = 'en-us' #default behavior for now
                 contact.save()
+
                 backend, created = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
+
                 connection = Connection.objects.get_or_create(backend=backend, contact=contact)[0]
                 connection.identity = contact.phone
                 connection.save()
+
                 messages.success(req, 'Thank you, you successfully updated %s : %s.' % (contact.name, contact.phone))
+
                 return HttpResponseRedirect(
                     reverse(registration))
+            else:
+                bulk_form = BulkRegistrationForm()
 
     else:
-        contact_form = ContactForm(
-            instance=contact)
+        contact_form = ContactForm(instance=contact)
         bulk_form = BulkRegistrationForm()
 
     return render_to_response(
