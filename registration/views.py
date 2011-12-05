@@ -48,6 +48,11 @@ def registration(req, pk=None):
                 line_list = line.split(',')
                 name = line_list[0].strip()
                 identity = line_list[1].strip().replace('+','').replace(' ','')
+
+                if Connection.objects.filter(identity=identity).exists():
+                    messages.error(req, "You already have a contact with the phone number: %s (%s)" % (identity, name))
+                    return HttpResponseRedirect(reverse(registration))
+
                 try:
                     gender = line_list[2].strip()
                     age = line_list[3].strip()
