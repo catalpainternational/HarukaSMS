@@ -404,6 +404,17 @@ textarea {
     margin-left: -2px;
 }
 
+.tally {
+	width:250px;
+}
+
+#form_bulk_send {
+	width:600px;
+	
+}
+	
+
+
 /*-----------------BULK REVIEW STYLING-------------------*/
 
 tr.row_section td {
@@ -421,6 +432,7 @@ tr.row_section td {
 }
 
 /*-----------------DIV REPLACEMENTS POLLING -------------------*/
+
 
 
 #div_id_default_response_luo {
@@ -444,7 +456,7 @@ tr.row_section td {
 
 #newForm {
 	width:600px;
-	margin-left:20px;
+	margin-left:150px;
 	height: 605px;
 	margin-top:0px;
 	background-color: #F5F5F5;
@@ -506,6 +518,10 @@ tr.row_section td {
 
 /*-----------------DIV REPLACEMENTS DATA COLLECTION -------------------*/
 
+.ctrlHolder {
+    border-bottom: none;
+    padding: 7px;
+}
 
 #div_id_keyword_prefix {
 	visibility:hidden;
@@ -519,6 +535,7 @@ tr.row_section td {
 
 #div_id_separator {
 	visibility:hidden;
+
 }
 
 #id_description {
@@ -528,12 +545,12 @@ tr.row_section td {
 
 #div_id_restrict_to {
 	position:relative;
-	top:-910px;
+	top:-465px;
 }
 
 #div_id_restrict_message {
 	position:relative;
-	top:-900px;	
+	top:-445px;	
 }
 
 .form_fields_cell {
@@ -548,6 +565,11 @@ tr.row_section td {
     line-height: 18px;
     padding: 10px 10px 9px;
     text-align: left;
+    background-color: #FFF;
+    color: #404040;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
 }
 
 #new_field_box {
@@ -561,7 +583,30 @@ tr.row_section td {
 
 }
 
+#button.positive, .buttons a.positive {
+    background-color: #FFF;
+    border: none;
+    color: none;
+
+}
+
+#id_command {
+	width: 60px;
+}
+
+.field_command_col {
+	width: 82px;
+} 
+
+#id_description {
+	width: 202px;
+}
 /*-----------------DIV REPLACEMENTS GROUP SELECTION -------------------*/
+
+.selector-available h2 {
+	font-color: #404040;
+	
+}
 
 .selector {
 	margin-top: 10px;
@@ -656,3 +701,5 @@ id_contacts_to {
 .selector ul.selector-chooser {
     background: none;
 }
+
+
