@@ -38,7 +38,7 @@
       {% if polls %}
       {% for poll in polls %}
       <tr class="bordered-table zebra-striped">
-        <td>{{ poll.name }}</td>
+        <td><a href="/polls/{{ poll.pk }}/responses/">{{ poll.name }}</a></td>
         <td><b>{% if poll.start_date %}{{ poll.question }}{% else %}<font color="grey">{{ poll.question }}</font>{% endif %}</b></td>
         <td>{% if poll.start_date %}{{ poll.start_date|date:"d/m/Y" }}{% endif %}</td>
         <td>{% if poll.end_date %}{{ poll.end_date|date:"d/m/Y" }}{% else %}Still Open{% endif %}</td>
@@ -74,7 +74,7 @@
       {% if data_collections %}
       {% for data_collection in data_collections %}
       <tr class="bordered-table zebra-striped">
-        <td>{{ data_collection.name }}</td>
+        <td><a href="/xforms/{{ data_collection.pk }}/submissions/">{{ data_collection.name }}</a></td>
         <td><b>{{ data_collection.keyword }}</b></td>
         <td>{{ data_collection.description }}</td>
         <td>{% if data_collection.created %}{{ data_collection.created|date:"d/m/Y" }}{% endif %}</td>
