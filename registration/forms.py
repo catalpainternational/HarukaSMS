@@ -9,7 +9,7 @@ from rapidsms.models import Contact
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ('name', 'age', 'phone','location',)
+        fields = ('name', 'age', 'gender', 'phone','location',)
 
 # the built-in FileField doesn't specify the 'size' attribute, so the
 # widget is rendered at its default width -- which is too wide for our

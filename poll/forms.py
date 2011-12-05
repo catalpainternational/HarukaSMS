@@ -54,7 +54,8 @@ class NewPollForm(forms.Form): # pragma: no cover
         cleaned_data = self.cleaned_data
         contacts = cleaned_data.get('contacts')
         groups = cleaned_data.get('groups')
-        cleaned_data['question'] = cleaned_data.get('question').replace('%', u'\u0025')
+        if cleaned_data.has_key('question'):
+            cleaned_data['question'] = cleaned_data.get('question').replace('%', u'\u0025')
         if 'default_response' in cleaned_data:
             cleaned_data['default_response'] = cleaned_data['default_response'].replace('%', u'\u0025')
 
