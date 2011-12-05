@@ -554,4 +554,32 @@ tr.row_section td {
     width: 858px;
     margin-left:20px;
 
-}    
+}
+
+/*-----------------DIV REPLACEMENTS GROUP SELECTION -------------------*/
+
+.selector {
+	margin-top:100px;
+	width: 180px;
+}
+
+.selector-filter id_contacts_to {
+    height: 17.2em;
+    width: 180px;
+    
+}
+
+.selector-chooser {
+	width: 180px;
+	
+}
+
+.selector .selector-available h2 {
+    background: url("#");
+    color: #f7f7f7;
+    
+}
+    
+.group_field_name {
+	margin-left:20px;
+}

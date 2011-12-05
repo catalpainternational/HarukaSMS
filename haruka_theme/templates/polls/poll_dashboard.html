@@ -1,0 +1,115 @@
+{% extends "polls/layout.html" %}
+{% block title %}HarukaSMS Dashboard{% endblock %}
+{% block javascripts %}
+    {{ block.super }}
+    <script src="{{MEDIA_URL}}poll/javascripts/polls.js" type="text/javascript"></script>
+
+{% endblock %}
+{% block content %}
+
+<h4 style="margin-top:40px; margin-left:60px">Quick SMS</h4>
+  <div class="well" style="width:770px; margin-left:60px;">
+    <form method="POST" class="sender-form" style='margin-left:80px; margin-top:20px;'>
+      {{ reply_form }}
+      <input type="hidden" name="action" value="reply" />
+      <input type="submit" value="send" class='btn primary'/>
+      {% csrf_token %}
+    </form>
+    <script language="javascript">
+      function reply(number) {
+          $('#id_recipient').val(number);
+          return void(0);
+      }
+    </script>
+  </div>
+
+  <h4 style="margin-top:40px; margin-left:60px">Your Latest Polls</h4>
+  <table  style="width:810px; margin-left:60px;" class="condensed-table">
+    <thead>
+      <tr>
+        <th class="poll_name_col">Poll Name</th>
+        <th class="poll_question_col">Question</th>
+        <th class="poll_date_col">Start Date</th>
+        <th class="poll_date_col">Activity</th>
+        <th class="poll_submissions">Submissions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if polls %}
+      {% for poll in polls %}
+      <tr class="bordered-table zebra-striped">
+        <td><a href="/polls/{{ poll.pk }}/responses/">{{ poll.name }}</a></td>
+        <td><b>{% if poll.start_date %}{{ poll.question }}{% else %}<font color="grey">{{ poll.question }}</font>{% endif %}</b></td>
+        <td>{% if poll.start_date %}{{ poll.start_date|date:"d/m/Y" }}{% endif %}</td>
+        <td>{% if poll.end_date %}{{ poll.end_date|date:"d/m/Y" }}{% else %}Still Open{% endif %}</td>
+        <td>{{ poll.responses.distinct.count }} 
+            {% if poll.contacts.count > 1 %}
+              of {{ poll.contacts.count }} ({% widthratio poll.responses.distinct.count poll.contacts.count 100 %}%)
+            {% endif %}
+           </td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <tr class="poll_table_row">
+        <td colspan="5"><i>No existing Polls.  Click on 'Polls' to create one.</i></td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+
+
+  <h4 style="margin-top:40px; margin-left:60px">Your Latest Data Collection</h4>
+  <table  style="width:810px; margin-left:60px;" class="condensed-table">
+    <thead>
+      <tr>
+        <th class="poll_name_col">Activity Name</th>
+        <th class="poll_question_col">Keyword</th>
+        <th class="poll_date_col">Description</th>
+        <th class="poll_date_col">Start Date</th>
+        <th class="poll_date_col">Activity</th>
+        <th class="poll_submissions">Submissions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if data_collections %}
+      {% for data_collection in data_collections %}
+      <tr class="bordered-table zebra-striped">
+        <td><a href="/xforms/{{ data_collection.pk }}/submissions/">{{ data_collection.name }}</a></td>
+        <td><b>{{ data_collection.keyword }}</b></td>
+        <td>{{ data_collection.description }}</td>
+        <td>{% if data_collection.created %}{{ data_collection.created|date:"d/m/Y" }}{% endif %}</td>
+        <td>{% if data_collection.active %} Still Open {% else %} Closed {% endif %}</td>
+
+        <td>{{ data_collection.submissions.distinct.count }} 
+            {% if data_collection.restrict_message %}
+              of {{ data_collection.restrict_to.count }} ({% widthratio data_collection.submissions.distinct.count data_collection.restrict_to.count 100 %}%)
+            {% endif %}
+           </td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <tr class="poll_table_row">
+        <td colspan="5"><i>No existing Data Collection activities.  Click on 'Data Collection' to create one.</i></td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+
+<div>
+  <h4 style="margin-top:40px; margin-left:60px">Latest Activity</h4>
+  <div id="condensed_table" style="width:810px; margin-left:60px;">
+      {{ messages_table|safe }}
+  </div>
+  <a class="more_msg" href="/router/console">More Messages</a>
+  <script type="text/javascript">
+    function update() {
+        $.get("/polls/latest_messages", function(data) {
+        $("#message_table").html(data);
+            window.setTimeout(update, 5000);
+        });
+    }
+    window.setTimeout(update, 5000);
+  </script>
+</div>
+
+{% endblock %}
