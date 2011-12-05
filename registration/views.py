@@ -48,6 +48,11 @@ def registration(req, pk=None):
                 line_list = line.split(',')
                 name = line_list[0].strip()
                 identity = line_list[1].strip().replace('+','').replace(' ','')
+
+                if Connection.objects.filter(identity=identity).exists():
+                    messages.error(req, "You already have a contact with the phone number: %s (%s)" % (identity, name))
+                    return HttpResponseRedirect(reverse(registration))
+
                 try:
                     gender = line_list[2].strip()
                     age = line_list[3].strip()
@@ -58,8 +63,8 @@ def registration(req, pk=None):
                 # we need this because of the groups extensions to contact and its custom save()
                 language = 'en-us' # default behavior for now
                 contact = Contact(name=name, phone=identity,
-                                 age=age, language=language)
-#                                gender=gender, age=age, location=location, language=language)
+                                 #age=age, language=language)
+                                 gender=gender, age=age, location=location, language=language)
                 contact.save()
 
                 # Get our backend or create one

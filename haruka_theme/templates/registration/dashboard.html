@@ -17,7 +17,7 @@
 
 <div class="row"> 
 	<div class="span7">
-		<h4>{% if contact %}
+		<h4 style="margin-top: 45px;">{% if contact %}
 				Edit {{ contact }}{% else %}
 				Add a Contact{% endif %}
 			</h4>
@@ -45,7 +45,7 @@
 		</div>
 	</div>
 	<div class="span8">
-		<h4>Contacts</h4>
+		<h4 style="margin-top: 45px;">Contacts</h4>
 			{{ contacts_table.as_html }}{% if contact %}	
 			<div id='well'>
 				<div class="toolbar">

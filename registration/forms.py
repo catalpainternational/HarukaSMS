@@ -8,13 +8,20 @@ from rapidsms.models import Contact
 
 class ContactForm(forms.ModelForm):
 
+    instance = None
+
+    def __init__(self, *args, **kwargs):
+        self.instance = kwargs.get('instance')
+        super(ContactForm, self).__init__(*args, **kwargs)
+
     class Meta:
         model = Contact
         fields = ('name', 'age', 'gender', 'phone','location',)
 
     def clean_phone(self):
         p = self.cleaned_data['phone']
-        if Contact.objects.filter(phone=p).exists():
+        print "instance :", self.instance.phone
+        if Contact.objects.filter(phone=p).exists() and not(self.instance and self.instance.phone == p):
             raise forms.ValidationError("You already have a contact with this phone number")
         return p
 

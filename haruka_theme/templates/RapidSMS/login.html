@@ -1,5 +1,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<link type="text/css" rel="stylesheet" href="/static/haruka_theme/css/bootstrap.css" />
+<style>
+	body {
+		background:  url("/static/haruka_theme/images/bg-login.png") repeat-x #B1DEEA;
+		color: #333333;
+		font: 9pt/1 "Helvetica","Arial";
+		margin-top: 90px;
+		padding: 0;
+
+	}
+	
+  #logo-centre {
+  	width: 500px;
+  	margin-left:500px;
+  	margin-top:0px;
+  }
+  
+  .table {
+  	border: 0px;
+  }
+	
+
+</style>
 
 {% load region_tags %}
 {% load tabs_tags %}
@@ -9,20 +32,18 @@
 	<head>
 		<title>{% block title %}Login{% endblock %}</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
 		{% block content %}
 		
-		{% if form.errors %}
-		<p>Oops. Your username and password didn't match. Please try again.</p>
-		{% endif %}
-		
+	
 		{% if user.is_authenticated %}
 		<p>You're already logged in!</p>
 		
 		{% else %}
 		
-		<h1>Please log in to HarukaSMS</h1>
-		
+		<body>
+		<div id='logo-centre'>
+		<img style="margin-top: 58px; margin-left: 25px;" src="/static/haruka_theme/images/loginlogo.png">
+		<h4 style="margin-left: 204px; margin-top: 26px;">Please log in to HarukaSMS</h4>			
 		
 		<form method="post" action="{% url rapidsms-login %}">
 		<table>
@@ -36,10 +57,14 @@
 			</tr>
 		</table>
 		{% csrf_token %}
-		<input type="submit" value="login" />
+		<input class="btn primary" type="submit" value="login" style="margin-left: 364px;">
 		<input type="hidden" name="next" value="{{ next }}" />
 		</form>
+		{% if form.errors %}
+		<p>Oops. Your username and password didn't match. Please try again.</p>
+		{% endif %}
 		
+		</div>
 		{% endif %}
 		{% endblock %}
 	</body>
