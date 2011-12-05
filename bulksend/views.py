@@ -22,10 +22,10 @@ def _mail_merge(contact, text):
     text = text.replace('[name ]', contact.name)
     text = text.replace('[ name ]', contact.name)
 
-    text = text.replace('[first_name]', contact.name.split()[0])
-    text = text.replace('[ first_name]', contact.name.split()[0])
-    text = text.replace('[first_name ]', contact.name.split()[0])
-    text = text.replace('[ first_name ]', contact.name.split()[0])
+    text = text.replace('[firstname]', contact.name.split()[0])
+    text = text.replace('[ firstname]', contact.name.split()[0])
+    text = text.replace('[firstname ]', contact.name.split()[0])
+    text = text.replace('[ firstname ]', contact.name.split()[0])
     return text
 
 
