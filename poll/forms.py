@@ -8,6 +8,12 @@ from django.forms.widgets import RadioSelect
 
 import re
 
+
+class ReplyForm(forms.Form):
+    recipient = forms.CharField(max_length=20)
+    message = forms.CharField(max_length=160, widget=forms.TextInput(attrs={'size':'60'}))
+
+
 class NewPollForm(forms.Form): # pragma: no cover
 
     TYPE_YES_NO = 'yn'

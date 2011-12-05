@@ -47,7 +47,7 @@ def registration(req, pk=None):
             for line in req.FILES["bulk"]:
                 line_list = line.split(',')
                 name = line_list[0].strip()
-                identity = line_list[1].strip()
+                identity = line_list[1].strip().replace('+','').replace(' ','')
                 try:
                     gender = line_list[2].strip()
                     age = line_list[3].strip()
@@ -80,6 +80,7 @@ def registration(req, pk=None):
 
             if contact_form.is_valid():
                 contact = contact_form.save()
+                contact.phone = contact.phone.replace('+','').replace(' ','')
                 contact.language = 'en-us' #default behavior for now
                 contact.save()
                 backend, created = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
