@@ -11,9 +11,9 @@ class ContactExtra(models.Model):
     """ Abstract model to extend the RapidSMS Contact model """
 
     phone = models.CharField(max_length=32, blank=True)
-    gender = models.CharField(
-            max_length=1,
-            choices=(('M', 'Male'), ('F', 'Female')), null=True)
+    #gender = models.CharField(
+    #        max_length=1,
+    #        choices=(('M', 'Male'), ('F', 'Female')), null=True)
     age = models.IntegerField(blank=True,)
     location = models.CharField(max_length=64, blank=True)
     
