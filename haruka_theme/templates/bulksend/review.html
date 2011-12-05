@@ -7,8 +7,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="form_bulk_send" id="form_bulk_send">
 
+<h5 style="margin-left:170px; margin-top:45px;">SMS Campaign Summary<blockquote><small> Read below for a quick snap-shot of your SMS campaign before you click send!</small></blockquote> 
+
+<div class="form_bulk_send" id="form_bulk_send">
 
     <form action='/bulksend/' method="POST">
         <div class="well">
@@ -31,7 +33,7 @@
                                     <td colspan="3"><h4>Message:</h4></td>
                                 </tr>
                                 <tr>          
-                                    <td class="col_m" colspan="3"><blockquote><p style="width: 750px;">{{m_text}}</p></blockquote></td>     
+                                    <td class="col_m" colspan="3"><blockquote><p style="width: 500px;">{{m_text}}</p></blockquote></td>     
                                 </tr>
                                 <tr class="row_op">
                                     <td class="col_0"></td>
@@ -40,7 +42,7 @@
                                 </tr>
                                 <tr class="row_rez">
                                 <tr class="row_section">
-                                    <td class="col_t" colspan="3"><h4>Group:</h4><blockquote><p>{{g_name}}</p></blockquote></td>
+                                    <td class="col_t" colspan="3"><h4>Group:</h4><blockquote style='width:740px;'><p>{{g_name}}</p></blockquote></td>
                                 </tr>
                                 <td class="col_0"><h4>Number of SMS per message:</h4></td>
                                     <td class="col_1"> <h4>{{m_count}}</h4></td>
@@ -75,7 +77,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                            <input onclick="javascript:showSpinnerAndRedirect('form_bulk_send')" type="submit" class="btn large danger" value="Send Message to {{g_size}} contacts" style="margin-bottom: 22px; margin-left: 170px;"/>
+                            <input onclick="javascript:showSpinnerAndRedirect('form_bulk_send')" type="submit" class="btn large danger" value="Send Message to {{g_size}} contacts" style="margin-bottom: 22px; margin-left: 345px;"/>
                     </center>
                 </div>
             </div>

@@ -407,6 +407,11 @@ textarea {
 .tally {
 	width:250px;
 }
+
+#form_bulk_send {
+	width:600px;
+	
+}
 	
 
 
@@ -526,6 +531,7 @@ tr.row_section td {
 
 #div_id_separator {
 	visibility:hidden;
+
 }
 
 #id_description {
@@ -555,6 +561,11 @@ tr.row_section td {
     line-height: 18px;
     padding: 10px 10px 9px;
     text-align: left;
+    background-color: #FFF;
+    color: #404040;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
 }
 
 #new_field_box {
@@ -565,6 +576,13 @@ tr.row_section td {
     margin: 0;
     width: 858px;
     margin-left:20px;
+
+}
+
+#button.positive, .buttons a.positive {
+    background-color: #FFF;
+    border: none;
+    color: none;
 
 }
 
@@ -663,3 +681,5 @@ id_contacts_to {
 .selector ul.selector-chooser {
     background: none;
 }
+
+
