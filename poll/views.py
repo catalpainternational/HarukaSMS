@@ -738,6 +738,7 @@ def append_msg_row(table,message):
                         "Q": "Queued",      "S": "Sent",
                         "H": "Received",    "P": "Processing", 
                         "C": "Cancelled",   "E": "Errored",
+                        "R": "Received",
                         }
     table.append("<tr><td>")
     table.append(message.text)
