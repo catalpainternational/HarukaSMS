@@ -29,4 +29,4 @@ Open up Terminal and do the following
 
 6. Run the GSM router
 		
-		~/haruka/HarukaSMS> python manage.py runrouter
+		~/haruka/HarukaSMS> python pygsm_gateway/pygsm-gateway.py
