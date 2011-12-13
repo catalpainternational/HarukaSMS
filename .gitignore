@@ -40,6 +40,7 @@ src
 site-packages
 databases
 
-# Sublime Text Related #
+# Text Editor Related #
 ########################
 .codeintel
+*.esproj
