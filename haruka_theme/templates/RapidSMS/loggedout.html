@@ -1,11 +1,18 @@
 {% extends "layout-split-2.html" %}
 {% block title %}Goodbye{% endblock %}
 {% block content %}
+<style>
+#logout-centre {
+	width: 500px;
+	margin-left:306px;
+	margin-top:207px;
+	padding-bottom:200px ;
+}
+</style>
 
-<h4 style="margin-top: 45px; margin-left: 18px;">Thanks for visiting RapidSMS!</h4>
-<p style="margin-left: 18px;">Please come again.</p>
-<a href="/account/login/" style="margin-left: 18px;">Log in again</a>
-
-<!--<a href="{% url rapidsms-login %}">Log in again</a>-->
-
+<div id='logout-centre'>
+	<h2>Thanks for using Haruka SMS</h2>
+	<h4>See you again soon!</h4>
+	<a href="{% url rapidsms-login %}">Log in again</a>
+</div>
 {% endblock %}
