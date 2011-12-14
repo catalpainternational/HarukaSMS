@@ -1,11 +1,13 @@
 -e git://github.com/macdhuibh/rapidsms.git#egg=RapidSMS
 -e git://github.com/rapidsms/pygsm.git#egg=pygsm
 -e git://github.com/catalpainternational/rapidsms-xforms.git#egg=rapidsms-xforms
+-e git://github.com/unicefuganda/rapidsms-httprouter.git#rapidsms-httprouter
 -e git://github.com/unicefuganda/rapidsms-generic.git#egg=rapidsms-generic
 -e git://github.com/unicefuganda/rapidsms-contact.git#egg=rapidsms-contact
+-e git://github.com/caktus/pygsm-gateway.git#egg=pygsm-gateway
 django-sorting
 django_pagination
--e git://github.com/caktus/pygsm-gateway.git#egg=pygsm-gateway
 django-mptt
 pyserial
 pytz
+django_wsgiserver
