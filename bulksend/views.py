@@ -17,11 +17,11 @@ from rapidsms_httprouter.router import get_router
 
 def _mail_merge(contact, text):
     # use regex!!!
-    text = text.replace(' ', '').replace('[name]', contact.name)                    # replace with  full name
-    text = text.replace(' ', '').replace('[firstname]', contact.name.split()[0])    #               first mame
-    text = text.replace(' ', '').replace('[gender]', contact.gender)                #               gender
-    text = text.replace(' ', '').replace('[location]', contact.location)            #               location
-    text = text.replace(' ', '').replace('[phone]', contact.phone)                  #               phone
+    text = text.replace('[name]', contact.name)                    # replace with  full name
+    text = text.replace('[firstname]', contact.name.split()[0])    #               first mame
+    text = text.replace('[gender]', contact.gender)                #               gender
+    text = text.replace('[location]', contact.location)            #               location
+    text = text.replace('[phone]', contact.phone)                  #               phone
     return text
 
 
