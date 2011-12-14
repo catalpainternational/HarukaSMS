@@ -87,8 +87,8 @@ INSTALLED_APPS = [
 
     # Haruka specific #
     ###################
-
-    #    'rosetta',
+    "django_wsgiserver",
+    # 'rosetta',
     "eav", # used by xforms
     "uni_form", # used by xforms
     "django_sorting", # used by groups
