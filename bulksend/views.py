@@ -22,8 +22,6 @@ def _mail_merge(contact, text):
     text = text.replace(' ', '').replace('[gender]', contact.gender)                #               gender
     text = text.replace(' ', '').replace('[location]', contact.location)            #               location
     text = text.replace(' ', '').replace('[phone]', contact.phone)                  #               phone
-
-    import pdb; pdb.set_trace()
     return text
 
 
