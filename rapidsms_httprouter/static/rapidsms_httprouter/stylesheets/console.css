@@ -1,0 +1,16 @@
+/* vim:set et ts=4 sw=4 */
+
+.tester .tester-form {
+    padding: 10px;
+}
+
+.sender .sender-form {
+    padding: 10px;
+}
+
+.messages table {
+    width: 100%;
+}
+
+.messages col { width: 1%; }
+
