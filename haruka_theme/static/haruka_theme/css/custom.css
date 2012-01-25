@@ -450,11 +450,12 @@ tr.row_section td {
 	
 }
 
+
 #div_id_question_luo {
 	visibility:hidden;
 	height:0px;
-}
 
+}
 
 #div_id_contacts {
 	visibility:hidden;
@@ -727,4 +728,10 @@ ctrlHolder {
     background: none;
 }
 
+
+#id_bulk{
+	position: relative;
+	left: 43px; 
+	margin-left: 0px;
+}
 

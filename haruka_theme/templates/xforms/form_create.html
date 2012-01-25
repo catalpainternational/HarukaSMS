@@ -3,6 +3,29 @@
 
 {% block content %}
 {% load forms %}
+<style>
+
+.uniForm .ctrlHolder {
+    border-bottom: none;
+    padding: 7px;
+}
+
+.uniForm .formHint, .uniForm .blockLabels .formHint {
+    color: #777777;
+    font-size: 0.9em;
+    padding-left: 0;
+    padding-top: 1px;
+    position: relative;
+    top: 0;
+    width: 39%;
+    left:  -3px;
+}
+
+#id_description {
+    width: 310px;
+}
+
+</style>
 
 <div id="form_header">
 <div><h4 style='margin-top:45px; margin-left:150px;'>Data Collection</h4><blockquote style='margin-left:150px;'><small> For more data intensive survey work design a SMS survey with keywords and multiple answers.</small></blockquote></div>
