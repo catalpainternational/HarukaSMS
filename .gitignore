@@ -26,7 +26,6 @@
 *.sqlite
 *.db
 
-
 # OS generated files #
 ######################
 .DS_Store
@@ -39,6 +38,10 @@ Thumbs.db
 src
 site-packages
 databases
+
+# Pip / Build Related #
+#######################
+build
 
 # Text Editor Related #
 ########################
