@@ -1,19 +1,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<link type="text/css" rel="stylesheet" href="../static/haruka_theme/css/bootstrap.css" />
 <style>
 
 	body {
-		background:  url("../haruka_theme/static/haruka_theme/images/bg-login.png") repeat-x #B1DEEA;
+		background:  url("../static/haruka_theme/images/bg-login.png") repeat-x #B1DEEA;
 		color: #333333;
-		margin-top: 390px;
+		font: 9pt/1 "Helvetica","Arial";
+		margin-top: 90px;
 		padding: 0;
-	}
+		
+	  }
+
+	  #logo-centre {
+	  	width: 500px;
+	  	margin-left:500px;
+	  	margin-top:0px;
+	  }
+	  
+	  .table {
+	  	border: none;
+	  }
+		
+		table td {
+		    border-top: none;
+		    vertical-align: top;
+	  } 	 	
+	
+	</style>
 	
 </style>
-<body>
-	
-	<img style="margin-top: 58px; margin-left: 25px;" src="/static/haruka_theme/images/loginlogo.png">
-	<h4 style="margin-left: 204px; margin-top: 26px;">HarukaSMS is now loading...</h4>
-
-</body>
+	<body>
+		<div id='logo-centre'>
+			<img style="margin-top: 58px; margin-left: 25px;" src="../static/haruka_theme/images/loginlogo.png">
+			<h4 style="margin-left: 204px; margin-top: 26px;">HarukaSMS is now loading...</h4>
+			<progress style="margin-left: 34px; width: 383px; height: 20px;"max="100" value="99.9">
+			</progress>
+		</div>
+	</body>
 </html>
