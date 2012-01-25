@@ -35,12 +35,12 @@ Thumbs.db
 
 # Django Related #
 ##################
-src
 site-packages
 databases
 
 # Pip / Build Related #
 #######################
+src
 build
 
 # Text Editor Related #
