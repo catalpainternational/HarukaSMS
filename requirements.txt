@@ -4,6 +4,7 @@
 -e git://github.com/unicefuganda/rapidsms-generic.git#egg=rapidsms-generic
 -e git://github.com/unicefuganda/rapidsms-contact.git#egg=rapidsms-contact
 -e git://github.com/caktus/pygsm-gateway.git#egg=pygsm-gateway
+django
 django-sorting
 django_pagination
 django-mptt
