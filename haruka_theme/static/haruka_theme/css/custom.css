@@ -492,17 +492,16 @@ tr.row_section td {
 	top:-15px;
 }
 
-#div_id_start_immediately {
-	position:relative;
-	top:-125px;
-	
-}
-
 #div_id_groups {
 	position:relative;
 	top:0px;
 	top:-138px;
 	
+}
+
+#div_id_start_immediately {
+	position:relative;
+	top:-195px;
 }
 
 #div_id_name {
