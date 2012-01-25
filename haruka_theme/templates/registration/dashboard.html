@@ -26,9 +26,9 @@
 				{% render_form contact_form %}
 				{% csrf_token %}
 		
-				<div class="submit">
-					<input class="btn primary" type="submit" value="Save Contact" name="submit" style="margin-left: 112px; margin-top: 19px;" />{% if contact %}
-					<input type="submit" name="submit" value="Delete Contact" class="btn danger" />{% endif %}
+				<div class="submit" style='height: 50px'>
+					<input class="btn primary" type="submit" value="Save Contact" name="submit" style="margin-left: 112px; margin-top: 19px; z-index: -1;" />{% if contact %}
+					<input type="submit" name="submit" value="Delete Contact" class="btn danger" style="margin-left: 65px; position: relative; top: -29px;" />{% endif %}
 				</div>
 			</form>
 		</div>
@@ -49,7 +49,7 @@
 			{{ contacts_table.as_html }}{% if contact %}	
 			<div id='well'>
 				<div class="toolbar">
-					<a href="{% url registration %}" class="add">Add a Contact</a>
+<!--					<a href="{% url registration %}" class="add">Add a Contact</a> -->
 				</div>{% endif %}
 			</div>
 	</div>
