@@ -736,7 +736,7 @@ def append_msg_row(table,message):
                         "L": "Locked",      "D": "Delivered",
                         "I": "Incoming",    "O": "Outgoing",
                         "Q": "Queued",      "S": "Sent",
-                        "H": "Received",    "P": "Processing", 
+                        "H": "Received",    "P": "Processing",
                         "C": "Cancelled",   "E": "Errored",
                         "R": "Received",
                         }
@@ -761,7 +761,7 @@ def append_msg_row(table,message):
 
 
 def read_only_message_table(messages,titles):
-    table =[u"<table>"]
+    table =[u"<table id=\'messages_table\'>"]
     table.append(u"\t<thead>\n\t\t<tr>")
 
     for item in titles:

@@ -15,7 +15,7 @@ label {
     width: auto;
     margin-left: 10px;
     margin-right: 25px;
-    
+
 }
 
 </style>
@@ -59,7 +59,7 @@ label {
         <td><b>{% if poll.start_date %}{{ poll.question }}{% else %}<font color="grey">{{ poll.question }}</font>{% endif %}</b></td>
         <td>{% if poll.start_date %}{{ poll.start_date|date:"d/m/Y" }}{% endif %}</td>
         <td>{% if poll.end_date %}{{ poll.end_date|date:"d/m/Y" }}{% else %}Still Open{% endif %}</td>
-        <td>{{ poll.responses.distinct.count }} 
+        <td>{{ poll.responses.distinct.count }}
             {% if poll.contacts.count > 1 %}
               of {{ poll.contacts.count }} ({% widthratio poll.responses.distinct.count poll.contacts.count 100 %}%)
             {% endif %}
@@ -97,7 +97,7 @@ label {
         <td>{% if data_collection.created %}{{ data_collection.created|date:"d/m/Y" }}{% endif %}</td>
         <td>{% if data_collection.active %} Still Open {% else %} Closed {% endif %}</td>
 
-        <td>{{ data_collection.submissions.distinct.count }} 
+        <td>{{ data_collection.submissions.distinct.count }}
             {% if data_collection.restrict_message %}
               of {{ data_collection.restrict_to.count }} ({% widthratio data_collection.submissions.distinct.count data_collection.restrict_to.count 100 %}%)
             {% endif %}
@@ -122,7 +122,7 @@ label {
   <script type="text/javascript">
     function update() {
         $.get("/polls/latest_messages", function(data) {
-        $("#message_table").html(data);
+        $("#messages_table").html(data);
             window.setTimeout(update, 5000);
         });
     }
