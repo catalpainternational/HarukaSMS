@@ -69,8 +69,20 @@
 
 /*--------------- START OF MAIN NAVIGATION -----------------*/
 
+#inner div.row div.span7 div.well form div div.field.bulk label {
+	height: 20px; 
+	width: 92px; 
+	padding-top: 0px; 
+	margin-top: 22px;
+	margin-left: 8px;
+}
 
-    #tabs,
+#id_bulk {
+	margin-right: 40px;
+	left: 15px
+}
+
+#tabs,
     #page-tabs {
         -webkit-border-radius: 8px;
 		-moz-border-radius: 8px;
@@ -86,8 +98,28 @@
         margin-right: 30px;
         
     }
-
-    #tabs { right: 0; }
+	
+	input#id_bulk {
+		left: 15px
+	}
+	
+	#inner div.row div.span8 table tfoot tr td div.paginator span {
+		
+	    border: 1px solid rgba(0, 0, 0, 0.15);
+	    border-radius: 3px 3px 3px 3px;
+	    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	    float: left;
+	    margin: 0;
+	    
+	}
+	
+	#footer p.rights {
+		position:relative;
+		top: -45px;
+		left: -128px;
+	}
+	
+	#tabs { right: 0; }
     #page-tabs { left: 0;  }
 
         #tabs li,
