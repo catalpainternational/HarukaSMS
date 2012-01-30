@@ -32,6 +32,13 @@ def _mail_merge(contact, text):
     text = text.replace('[phone]', contact.phone)                  #               phone
     return text
 
+def _sanitize_text(text):
+    """ remove accents form characters and replace with ? ... for now """
+
+    nkfd_form = unicodedata.normalize('NFKD', text)
+    text = nkfd_form.encode('ASCII', 'replace')
+    return text
+
 
 @login_required
 def review(request):
@@ -44,11 +51,7 @@ def review(request):
 
     elif request.method.upper() == 'POST':
 
-        text = request.POST.get('message')
-        
-        nkfd_form = unicodedata.normalize('NFKD', text)
-        text = nkfd_form.encode('ASCII', 'replace')
-       
+        text = _sanitize_text(request.POST.get('message'))
         group_id = request.POST.get('group_id')
 
         try:
@@ -104,11 +107,7 @@ def bulksend(request):
         )
     elif request.method.upper() == 'POST':
 
-        text = request.POST.get('message')
-
-        nkfd_form = unicodedata.normalize('NFKD', text)
-        text = nkfd_form.encode('ASCII', 'replace')
-
+        text = _santize_text(request.POST.get('message'))
         group_id = request.POST.get('group_id')
         group = Group.objects.get(pk=group_id)
 
@@ -122,8 +121,7 @@ def bulksend(request):
         #print datetime.datetime.now()
 
         # The leaders of the New School
-        import datetime
-        print datetime.datetime.now()
+
         router = get_router()
         for contact in group.contacts.all():
             connection = contact.connection_set.all()[0]
