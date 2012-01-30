@@ -54,7 +54,7 @@
                     </p>
 	    			<div class='form-action' style="align:right;">
 	    				{% if form.instance.pk %}
-	    				<input type="submit" name="delete" class='btn danger' value="Delete Group" />
+	    				<a href="/groups/group/{{form.instance.pk}}/delete" class='btn danger'>Delete Group</a>
 	    				{% endif %}
 	    				<input type='submit' name='submit' class='btn primary' value="Save" />
 	    			</div>
