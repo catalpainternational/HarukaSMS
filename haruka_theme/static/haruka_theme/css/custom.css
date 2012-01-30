@@ -752,3 +752,34 @@ ctrlHolder {
 	margin-left: 0px;
 }
 
+#inner div.row div.well.span7 form.buttons div.form-action input.btn.primary {
+	float: right;
+	position: relative;
+	right: 10px; 
+
+}
+
+#inner div.row div.well.span7 form.buttons div.form-action a.btn.danger {
+	position: relative;
+	left: 215px; 
+	
+}
+
+#inner div.well form.buttons div.form-action input.btn.danger {;
+	right: 10px; 
+	
+}
+
+#inner div.well form.buttons div.form-action input.btn {
+	position: relative;
+	left: 455px; 
+	top: 20px;
+}
+
+#inner div.row div.well.span7 form.buttons div.form-action input.btn.primary {
+	position: relative;
+	left: -10px; 
+	top: 0px;	
+
+}
+
