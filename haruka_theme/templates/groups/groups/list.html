@@ -41,21 +41,22 @@
 		    <div class="well span7">
 	    		<form action="#" method="POST" class="buttons">
 	    			{% csrf_token %}
-                                <p class="group_field_name">
-                                    <span style='margin-right:9px;'>Name:</span>
-	    			    <span class="field">{{ form.name }}</span>
-                                </p>
-                                <p class="group_field_desc">
-                                    <span style='margin-right:8px; margin-left:7px;'>Description:</span>
-                                    <span class="field">{{ form.description }}</span>
-                                </p>
-                                <p class="group_field_contacts">
-                                    <span class="field">{{ form.contacts }}</span>
-                                </p>
-
-	    			<div class='form-action' style="align:right">
-	    				<input type='button' name='cancel' value='Cancel' class='btn' style="margin-left:255px;" />
-	    				<input type='submit' name='submit' value="Save" class='btn primary'  />
+                    <p class="group_field_name">
+                    	<span style='margin-right:9px;'>Name:</span>
+	    				<span class="field">{{ form.name }}</span>
+                    </p>
+                    <p class="group_field_desc">
+                        <span style='margin-right:8px; margin-left:7px;'>Description:</span>
+                        <span class="field">{{ form.description }}</span>
+                    </p>
+                    <p class="group_field_contacts">
+                        <span class="field">{{ form.contacts }}</span>
+                    </p>
+	    			<div class='form-action' style="align:right;">
+	    				{% if form.instance.pk %}
+	    				<input type="submit" name="delete" class='btn danger' value="Delete Group" />
+	    				{% endif %}
+	    				<input type='submit' name='submit' class='btn primary' value="Save" />
 	    			</div>
 	    		</form>
 		    </div>
