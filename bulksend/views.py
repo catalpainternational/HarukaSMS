@@ -45,6 +45,10 @@ def review(request):
     elif request.method.upper() == 'POST':
 
         text = request.POST.get('message')
+        
+        nkfd_form = unicodedata.normalize('NFKD', text)
+        text = nkfd_form.encode('ASCII', 'replace')
+       
         group_id = request.POST.get('group_id')
 
         try:
@@ -102,12 +106,8 @@ def bulksend(request):
 
         text = request.POST.get('message')
 
-        import pdb; pdb.set_trace()
-
         nkfd_form = unicodedata.normalize('NFKD', text)
         text = nkfd_form.encode('ASCII', 'replace')
-
-        #text = unicode(text, errors='replace')
 
         group_id = request.POST.get('group_id')
         group = Group.objects.get(pk=group_id)
