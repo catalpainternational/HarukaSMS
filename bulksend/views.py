@@ -107,7 +107,7 @@ def bulksend(request):
         )
     elif request.method.upper() == 'POST':
 
-        text = _santize_text(request.POST.get('message'))
+        text = _sanitize_text(request.POST.get('message'))
         group_id = request.POST.get('group_id')
         group = Group.objects.get(pk=group_id)
 
