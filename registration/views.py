@@ -19,9 +19,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import BulkRegistrationForm
 from .forms import ContactForm
 from .tables import ContactTable
-
-
-DEFAULT_BACKEND_NAME = "TLS-TT"  # move to settings.py ?
+from settings import DEFAULT_BACKEND_NAME
 
 
 @login_required
