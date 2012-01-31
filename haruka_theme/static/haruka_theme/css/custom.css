@@ -1,5 +1,6 @@
 /* @override 
-	http://127.0.0.1:8000/static/haruka_theme/css/custom.css */
+	http://127.0.0.1:8000/static/haruka_theme/css/custom.css
+	http://localhost:8000/static/haruka_theme/css/custom.css */
 
 
 	body {
@@ -101,22 +102,8 @@
 	
 	input#id_bulk {
 		left: 15px
-	}
-	
-	#inner div.row div.span8 table tfoot tr td div.paginator span {
-		
-	    border: 1px solid rgba(0, 0, 0, 0.15);
-	    border-radius: 3px 3px 3px 3px;
-	    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-	    float: left;
-	    margin: 0;
+
 	    
-	}
-	
-	#footer p.rights {
-		position:relative;
-		top: -45px;
-		left: -128px;
 	}
 	
 	#tabs { right: 0; }
