@@ -49,6 +49,7 @@ INSTALLED_BACKENDS = {
     }
 }
 
+DEFAULT_BACKEND_NAME = "TLS-TT"
 
 # to help you get started quickly, many django/rapidsms apps are enabled
 # by default. you may wish to remove some and/or add your own.
