@@ -16,10 +16,12 @@ from rapidsms.contrib.registration.tables import ContactTable
 from rapidsms.contrib.messaging.utils import send_message
 from django.contrib.auth.decorators import login_required
 
+import phonenumbers
+
 from .forms import BulkRegistrationForm
 from .forms import ContactForm
 from .tables import ContactTable
-from settings import DEFAULT_BACKEND_NAME
+from settings import LANGUAGE_CODE, DEFAULT_BACKEND_NAME
 
 
 @login_required
@@ -59,15 +61,14 @@ def registration(req, pk=None):
                     gender = age = location = ''
 
                 # we need this because of the groups extensions to contact and its custom save()
-                language = 'en-us' # default behavior for now
                 contact = Contact(name=name, phone=identity,
                                  #age=age, language=language)
-                                 gender=gender, age=age, location=location, language=language)
+                                 gender=gender, age=age, location=location, language=LANGUAGE_CODE)
                 contact.save()
 
                 # Get our backend or create one
                 backend, created = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
-
+                i
                 connection = Connection(backend=backend, identity=identity,\
                     contact=contact)
                 connection.save()
@@ -83,8 +84,10 @@ def registration(req, pk=None):
 
             if contact_form.is_valid():
                 contact = contact_form.save()
-                contact.phone = contact.phone.replace('+','').replace(' ','')
-                contact.language = 'en-us' #default behavior for now
+                
+                #Sanitize and properly format the phone number
+                contact.phone = phonenumbers.format_number(phonenubmers.parse(contact.phone, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
+                contact.language = LANGUAGE_CODE
                 contact.save()
 
                 backend, created = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
@@ -100,7 +103,7 @@ def registration(req, pk=None):
             else:
                 bulk_form = BulkRegistrationForm()
 
-    else:
+    elif req.method == "GET":
         contact_form = ContactForm(instance=contact)
         bulk_form = BulkRegistrationForm()
 

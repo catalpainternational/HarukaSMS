@@ -259,6 +259,11 @@ TEST_EXCLUDED_APPS = [
 # the project-level url patterns
 ROOT_URLCONF = "urls"
 
+# set Language default
+LANGUAGE_CODE = 'en-us'
+COUNTRY_CODE = 'TL'
+#COUNTRY_CODE = 'US'
+
 
 # since we might hit the database from any thread during testing, the
 # in-memory sqlite database isn't sufficient. it spawns a separate
