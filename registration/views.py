@@ -21,7 +21,7 @@ import phonenumbers
 from .forms import BulkRegistrationForm
 from .forms import ContactForm
 from .tables import ContactTable
-from settings import LANGUAGE_CODE, DEFAULT_BACKEND_NAME
+from settings import LANGUAGE_CODE, COUNTRY_CODE, DEFAULT_BACKEND_NAME
 
 
 @login_required
@@ -47,7 +47,8 @@ def registration(req, pk=None):
             for line in req.FILES["bulk"]:
                 line_list = line.split(',')
                 name = line_list[0].strip()
-                identity = line_list[1].strip().replace('+','').replace(' ','')
+                identity = line_list[1].strip()
+                identity = phonenumbers.format_number(phonenumbers.parse(identity, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
 
                 if Connection.objects.filter(identity=identity).exists():
                     messages.error(req, "You already have a contact with the phone number: %s (%s)" % (identity, name))
@@ -59,7 +60,6 @@ def registration(req, pk=None):
                     location = line_list[4].strip()
                 except:
                     gender = age = location = ''
-
                 # we need this because of the groups extensions to contact and its custom save()
                 contact = Contact(name=name, phone=identity,
                                  #age=age, language=language)
