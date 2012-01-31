@@ -7,7 +7,7 @@ Open up Terminal and do the following
 
 1. Set up your virtualenv
 
-		~> virtualenv -p python2.6 --no-site-packages haruka
+		~> virtualenv -p --no-site-packages haruka
 		~/haruka> source bin/activate
 
 2. Clone Repository
@@ -25,7 +25,7 @@ Open up Terminal and do the following
 
 5. Run the development webserver
  
-		~/haruka/HarukaSMS> python manage.py runserver
+		~/haruka/HarukaSMS> python manage.py runserver &
 
 6. Run the GSM router
 		
