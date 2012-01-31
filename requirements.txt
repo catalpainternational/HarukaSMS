@@ -11,3 +11,4 @@ django-mptt
 pyserial
 pytz
 django_wsgiserver
+phonenumbers
