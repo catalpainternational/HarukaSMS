@@ -8,16 +8,16 @@
 {% endblock %}
 
 {% block content %}
-   <h4 style="margin-top: 45px; margin-left: 150px; margin-right:20px">Delete Group</h4>
-<div class="well" style="margin-left: 150px; width: 600px;"> 
-    <form method="POST" action="#" class='buttons'>
-        <p class='message'>Are you sure you want to delete the group named {{ group }}?</p>
-        {% csrf_token %}
-        <div class='form-action'>
-            <input type='button' name='cancel' value='Cancel' class='btn' />
-            <input type='submit' name='submit' value="Delete" class='btn danger' />
-        </div>
-    </form>
-</div>
+    <h4 style="margin-top: 45px; margin-left: 150px; margin-right:20px">Delete Group</h4>
+    <div class="well" style="margin-left: 150px; width: 600px;"> 
+        <form method="POST" action="#" class='buttons'>
+            <p class='message'>Are you sure you want to delete the group named {{ group }}?</p>
+            {% csrf_token %}
+            <div class='form-action'>
+                <a href='/groups/group/' class='btn'> Cancel </a>
+                <input type='submit' name='submit' value="Delete" class='btn danger' />
+            </div>
+        </form>
+    </div>
 {% endblock %}
 
