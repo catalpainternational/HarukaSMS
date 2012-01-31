@@ -35,6 +35,8 @@
 			{% region "top" %}
 
 			{% block header %}
+			<div id="spacer">
+			</div>
 			<div id="header">
 				<div id="branding">
 					<h1>
@@ -62,13 +64,6 @@
 				{% block page_tabs %}
 				{% endblock %}
 			</div>
-			{% endblock %}
-
-			{% block breadcrumbs %}{% if breadcrumbs %}
-			<div id="breadcrumbs">{% for caption, url in breadcrumbs %}
-				<a href="{{ url }}">{{ caption }}</a>{% if not forloop.last %}
-				<span>&raquo;</span>{% endif %}{% endfor %}
-			</div>{% endif %}
 			{% endblock %}
 
 			<div id="inner">
