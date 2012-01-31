@@ -86,7 +86,7 @@ def registration(req, pk=None):
                 contact = contact_form.save()
                 
                 #Sanitize and properly format the phone number
-                contact.phone = phonenumbers.format_number(phonenubmers.parse(contact.phone, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
+                contact.phone = phonenumbers.format_number(phonenumbers.parse(contact.phone, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
                 contact.language = LANGUAGE_CODE
                 contact.save()
 
