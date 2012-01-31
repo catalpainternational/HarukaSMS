@@ -42,23 +42,34 @@
         height: 33px;
         background: #fff;
         margin: 0 auto 0 auto;
-        z-index: 10;
-   
-        -moz-box-shadow: 4px 4px #575757;
+        z-index: 10;     
+	   	     -webkit-box-shadow: 2 8px 6px -6px black;
+	   	     	   -moz-box-shadow: 2 8px 6px -6px black;
+	   	     	        box-shadow: 2 8px 6px -6px black;
+	   	     
+        -moz-box-shadow: 3px 3px #575757;
         box-shadow: 0px 2px 6px #aaa;
         -moz-border-radius-topright: 1em;
         -moz-border-radius-topleft: 1em;
     
 }
 
-    #tabs{
+#inner div.row div.well.span7 form.buttons div.form-action a.btn.danger {
+	margin-top:0px;
+}
+
+#tabs{
         height: 25px; 
-        width: 480px; 
+        width: 487px; 
         margin-right: 0px; 
         top: -30px;
-        left: 453px;
+        left: 440px;
     }
-
+	
+	#tabs li.app-contacts a {
+		width: 46px;
+	}
+	
 	#branding {
 		padding: 0 10px;
 	
