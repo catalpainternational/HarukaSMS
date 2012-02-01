@@ -104,6 +104,27 @@
 	margin-right: 24px;
 }
 
+li.alert-message.success {
+	margin-top: 0;
+	top: 30px;
+	right: 9px;
+	z-index: 0;
+}
+
+li.alert-message.info {
+	margin-top: 0;
+	top: 30px;
+	right: 9px;
+	z-index: 0;
+}
+
+li.alert-message.danger {
+	margin-top: 0;
+	top: 30px;
+	right: 9px;
+	z-index: 0;
+}
+
 #header #auth {
 	color: ##0069D6;
     font-size: 100%;
