@@ -67,8 +67,9 @@
     }
 	
 	#tabs li.app-contacts a {
-		width: 46px;
+		width: 45px;
 	}
+
 	
 	#branding {
 		padding: 0 10px;
@@ -90,6 +91,15 @@
 		width: 250px;
 		margin-left: 17px;
 		margin-top: -71px;
+}
+
+#inner div.row div.well.span7 form.buttons div.form-action a.btn.danger {
+	height: 16px;
+	
+}
+
+#inner table.condensed-table thead tr th.poll_submissions {
+	border-bottom: 1px solid #DDDDDD;
 }
 
 #header #auth a {
