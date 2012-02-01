@@ -72,8 +72,11 @@ def dashboard(req):
             if reply_form.is_valid():
                 if Connection.objects.filter(identity=reply_form.cleaned_data['recipient']).count():
                     text = reply_form.cleaned_data['message']
-                    conn = Connection.objects.filter(identity=reply_form.cleaned_data['recipient'])[0]
-                    text = _mail_merge(Contact.objects.get(connection__identity=conn.identity), text)
+                    try: #if the contact is in the database perform a mailmerge
+                        conn = Connection.objects.filter(identity=reply_form.cleaned_data['recipient'])[0]
+                        text = _mail_merge(Contact.objects.get(connection__identity=conn.identity), text)
+                    except:
+                        pass
                     outgoing = OutgoingMessage(conn, text)
                     get_router().handle_outgoing(outgoing)
             else:
