@@ -199,8 +199,6 @@ class GsmPollingThread(threading.Thread):
 
     def run(self):
 
-        import pdb; pdb.set_trace()
-
         try:
             self.running = True
             while self.running:
