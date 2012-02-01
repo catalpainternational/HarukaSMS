@@ -23,7 +23,7 @@
     #spacer {
         top: 0px;
         left: 0px;
-        height: 128px;
+        height: 108px;
         width: 100%;
         background-color: #FFFFFF;
         z-index: 5;
@@ -39,16 +39,13 @@
 		position: fixed;
 
         width: 80em;
-        height: 33px;
+        height: 13px;
         background: #fff;
         margin: 0 auto 0 auto;
-        z-index: 10;     
-	   	     -webkit-box-shadow: 2 8px 6px -6px black;
-	   	     	   -moz-box-shadow: 2 8px 6px -6px black;
-	   	     	        box-shadow: 2 8px 6px -6px black;
+        z-index: 10;    
 	   	     
         -moz-box-shadow: 3px 3px #575757;
-        box-shadow: 0px 2px 6px #aaa;
+        box-shadow: 0px 0px 2px #aaa;
         -moz-border-radius-topright: 1em;
         -moz-border-radius-topleft: 1em;
     
@@ -59,7 +56,7 @@
 }
 
 #tabs{
-        height: 25px; 
+        height: 20px; 
         width: 487px; 
         margin-right: 0px; 
         top: -30px;
@@ -144,9 +141,9 @@
 		background-image: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.1) 50%, transparent 50%);
     	background-color: #999999;
         position: absolute;
-        height: 57px;
+        height: 50px;
         bottom: 0;
-        padding: 0;
+        padding: p;
         margin: 0;
         margin-right: 30px;
         
@@ -165,7 +162,7 @@
         #page-tabs li {
             display: block;
             float: left;
-            line-height: 28px;
+            line-height: 20px;
            
         }
 
@@ -181,14 +178,18 @@
                 border-right: 1px solid #f5f5f5;
                 border-left: 1px solid #f5f5f5;
                 outline: none;
-                height: 27px;
+                height: 20px;
                 padding: 15px;
                 opacity: 0.9;
                 text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
                 
             }
-
-            #tabs li.unread a span {
+			
+			#tabs li.app-contacts a {
+				border-right:none;
+			}
+			
+			#tabs li.unread a span {
                 display: block;
                 padding-right: 21px;
                 background: url("");
