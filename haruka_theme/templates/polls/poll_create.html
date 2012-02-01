@@ -5,7 +5,7 @@
 
 {% load uni_form_tags %}
 {% load forms_tags %}
-<h4 style='margin-left:150px; margin-top: 45px;'>Create a New Poll <blockquote><small>create a simple SMS poll that includes either a yes no response or a numbered response -- but with no keywords!</small></blockquote></h4>
+<h4 style='margin-left:150px; margin-top: 45px;'>Create a New Poll <blockquote><small>create a simple SMS poll that includes either a yes no response or a numbered response -- but with no keywords needed!</small></blockquote></h4>
 <form action="{% url poll.views.new_poll %}" method="post" class="uniForm" id="newForm">
 <fieldset>
 {{ form|as_uni_form }}
