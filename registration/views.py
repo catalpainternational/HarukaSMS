@@ -37,6 +37,8 @@ def registration(req, pk=None):
     if req.method == "POST":
         if req.POST["submit"] == "Delete Contact":
             contact.delete()
+            messages.success(req, 'You have successfully deleted a contact')
+            
             return HttpResponseRedirect(
                 reverse(registration))
 
