@@ -28,7 +28,6 @@ elif platform.platform().startswith('Darwin'):
 else:
     port = '/dev/tty.USB1'
 
-
 if __name__ == '__main__':
     args = {
         #'url': 'http://localhost:8000/backend/pygsm-gateway/',
@@ -43,6 +42,7 @@ if __name__ == '__main__':
     }
     gsm_thread = GsmPollingThread(**args)
     gsm_thread.start()
+
     server = PygsmHttpServer(('localhost', 8080), gsm_thread.send)
     print 'Starting server, use <Ctrl-C> to stop'
     try:

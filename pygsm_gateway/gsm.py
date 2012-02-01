@@ -55,7 +55,7 @@ class GsmPollingThread(threading.Thread):
         return False
 
 
-    def get_inbox_size(self,):
+    def get_inbox_ids(self,):
         """
         For figuring out message box size
         """
@@ -66,24 +66,24 @@ class GsmPollingThread(threading.Thread):
             print "Error - phone not supported"
             exit()
 
-        boxsize = boxdata.split("(")[1].split(")")[0].split("-")[0].split(',').__len__()
+        message_ids = boxdata.split("(")[1].split(")")[0].split("-")[0].split(',')
         
-        logger.debug('SIM Inbox size URL: %s' % boxsize)
+        logger.debug('SIM Inbox size: %s message ids: %s' % (message_ids.__len__(), message_ids))
         
-        return boxsize
-    
+        return message_ids
+
 
     def clean_up_inbox(self,):
         """ 
-        Clean up routine
+        The Clean up / delete every message routine
         """
 
-        for i in range(self.get_inbox_size()):
+        message_ids = self.get_inbox_ids()
+
+        for id in message_ids:
             try:
-                temp = self.modem.command('AT+CMGR=' + str(i+1)+',1')
-                if "REC READ" in temp[0]:
-                    self.modem.query('AT+CMGD=' + str(i+1))
-                logger.debug('Cleaned messages from inbox')
+                self.modem.command('AT+CMGD=' + str(id))
+                logger.debug('Cleaned read message %s from inbox' % i)
             except:
                 pass
 
@@ -108,6 +108,7 @@ class GsmPollingThread(threading.Thread):
             self.failed_messages += 1
 
         return was_sent
+
 
     def message(self, identity, text):
         """ handle SMS from modem """
@@ -134,6 +135,7 @@ class GsmPollingThread(threading.Thread):
         except Exception, e:
             logger.exception(e)
             return False
+        
         logger.info('SENT')
         logger.debug('response: %s' % response.read())
 
@@ -182,8 +184,8 @@ class GsmPollingThread(threading.Thread):
             self.modem.boot()
 
             # Clean up (delete) all read messages from the SIM so it doesn't get filled up.
-            #Not sure if this is the best place for it
-            self.clean_up_inbox()
+            # Don't do this unless we can't be both clever and on schedule
+            # self.clean_up_inbox() # we're attempting to be clever (see above comment)
 
             if getattr(self, 'service_center', None) is not None:
                 self.modem.service_center = self.service_center
@@ -196,6 +198,9 @@ class GsmPollingThread(threading.Thread):
         super(GsmPollingThread, self).start()
 
     def run(self):
+
+        import pdb; pdb.set_trace()
+
         try:
             self.running = True
             while self.running:
@@ -207,8 +212,14 @@ class GsmPollingThread(threading.Thread):
     
                     # we got an sms! hand it off to the
                     # router to be dispatched to the apps
-                    x = self.message(msg.sender, msg.text)
-    
+                    success = self.message(msg.sender, msg.text)
+
+                    # if the message was processed successfully remove it from the sim card
+                    if success != False:
+                        id = self.get_inbox_ids().pop(0)
+                        self.modem.command('AT+CMGD=' + str(id))
+                        logger.debug("Deleted message id: %s" % id)
+
                 # wait for POLL_INTERVAL seconds before continuing
                 # (in a slightly bizarre way, to ensure that we abort
                 # as soon as possible when the backend is asked to stop)
