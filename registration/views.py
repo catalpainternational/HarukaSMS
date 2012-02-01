@@ -51,6 +51,7 @@ def registration(req, pk=None):
                 name = line_list[0].strip()
                 identity = line_list[1].strip()
                 identity = phonenumbers.format_number(phonenumbers.parse(identity, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
+                identity = identity.replace('+','') # this makes the polls app happy again
 
                 if Connection.objects.filter(identity=identity).exists():
                     messages.error(req, "You already have a contact with the phone number: %s (%s)" % (identity, name))
@@ -89,6 +90,7 @@ def registration(req, pk=None):
                 
                 #Sanitize and properly format the phone number
                 contact.phone = phonenumbers.format_number(phonenumbers.parse(contact.phone, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
+                contact.phone = contact.phone.replace('+','') # this makes the polls app happy again
                 contact.language = LANGUAGE_CODE
                 contact.save()
 
