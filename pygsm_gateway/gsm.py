@@ -198,7 +198,6 @@ class GsmPollingThread(threading.Thread):
         super(GsmPollingThread, self).start()
 
     def run(self):
-
         try:
             self.running = True
             while self.running:
