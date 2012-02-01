@@ -1,0 +1,70 @@
+
+<script language="javascript">
+  $(document).ready(function() {
+    // highlight the save button when changes are detected
+    $("input,select").change(function() { 
+        field_id = $(this).parents(".field_table").attr("id");
+        $("#save_" + field_id).addClass("positive");
+    });
+  });
+  
+</script>
+
+{% if field %}
+<div class="edit_field">
+<form class="form" action="/xforms/{{ xform.pk }}/edit_field/{{ field.pk }}/" method="post">
+{% else %}
+<div class="add_field_header">Add New Field</div>
+<div class="add_field">
+<form class="form" action="/xforms/{{ xform.pk }}/add_field/" method="post">
+{% endif %}
+
+<table class="field_table" width="100%" id="{{field.pk}}">
+<tbody>
+<tr>
+<td class="field_name_col">
+  {% if field %}
+  
+  {% endif %} {{ form.name }} {{ form.name.errors}}</td>
+<td class="field_type_col">{{ form.field_type }} {{ form.field_type.errors }}</td>
+<td class="field_command_col">{{ form.command }} {{form.command.errors}}</td>
+<td class="field_description_col">{{ form.description }} {{ form.description.errors }}</td>
+<td class="field_options_col">
+  
+  {% if field %}
+
+  <a style="float:right;padding-top:7px;" href="javascript:void(0);"><img onclick="cancelField(this);" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt="" border="0"/></a>
+  
+  <div class="buttons">
+    <a onclick="saveField(this);" href="javascript:void(0);" id="save_{{field.pk}}">
+      <img src="{{ MEDIA_URL }}rapidsms_xforms/icons/silk/bullet_disk.png" alt=""/>Save
+    </a>
+  </div>
+
+  {% else %}
+  
+  <a href="javascript:void(0);"><img onclick="cancelAdd(this);" style="float:right;padding-top:6px;" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt="" border="0"/></a>
+  
+  <div class="buttons">
+    <a onclick="saveField(this);" href="javascript:void(0);" id="save_{{field.pk}}" class="positive">
+      <img src="{{ MEDIA_URL }}rapidsms/icons/silk/add.png" alt=""/>Add
+    </a>
+  </div>
+  {% endif %}
+  </td>
+</tr>
+</tbody>
+</table>
+</form>
+
+</div>
+<!--div class="constraints_box" id="field_constraints_{{field.pk}}">
+
+{% for constraint in constraints %}
+	{{constraint.type}}
+{% endfor %}
+				
+
+
+</div-->
+

@@ -10,15 +10,13 @@
 }
 
 </style>
-<div class="buttons">
+<div>
     {% if not poll.start_date %}
-    <a onclick="editPollDetails();" href="javascript:void(0);">
-        <img src="{{ MEDIA_URL }}poll/icons/silk/pencil.png" alt=""/> 
+    <a onclick="editPollDetails();" href="javascript:void(0);" class='btn'> 
         Edit
     </a>
     <form style="border:0px" action="{% url poll.views.start_poll poll.pk %}" method="POST" id="startPollForm">
-    <a onclick="submitForm(this, '#poll_header');" href="javascript:void(0);">
-        <img src="{{ MEDIA_URL }}poll/icons/silk/phone.png" alt=""/> 
+    <a onclick="submitForm(this, '#poll_header');" href="javascript:void(0);" class='btn success'> 
         Start Poll
     </a>
     </form>

@@ -1,0 +1,106 @@
+{% extends "xforms/layout_table.html" %}
+
+<script>
+{% block table_scripts %}
+
+  function viewRow(row, id) {
+    row.load("/xforms/{{xform.pk}}/field/{{field.pk}}/constraint/" + id + "/");
+  }
+
+  function updateOrder() {
+    delim = "";
+    sub = "";
+
+    $("#sortable").children(".row").each(function() {
+      if (this.id != "") {
+        sub += delim + this.id;
+        delim = ",";
+      }
+    });
+
+    if (sub != "") {
+      $.post("/xforms/{{xform.pk}}/field/{{field.pk}}/constraints/order/",{'order':sub});
+    }
+  }
+  
+  function editRow(link) {
+    var itemId = $(link).parents(".item_table").attr("id");
+    var url = "/xforms/{{xform.pk}}/field/{{field.pk}}/constraint/" + itemId + "/edit/";
+    var row = $(link).parents(".row");
+    row.load(url);
+    
+  }
+  
+  function addConstraint() {
+    $.get("/xforms/{{ xform.pk }}/field/{{field.pk}}/constraints/add/", function(data) {
+      $("#sortable").append("<li class='row'>" + data + "</li>");
+    });
+  }
+  
+  function cancelAdd(link) {
+    if (confirm("Are you sure you want to cancel this new constraint?")) {
+      $(link).parents(".row").remove();
+    }
+  }
+  
+  
+  function add(link) {
+    
+    var row = $(link).parents(".row");
+    var form = $(link).parents(".form");
+    
+    var form_data = form.serializeArray();
+    
+    $.post(form.attr("action"), form_data, function(data) {
+      row.empty();
+      row.append(data);
+    });
+
+  }
+  
+  function cancelSave(link) {
+    var id = $(link).parents(".item_table").attr("id");
+    viewRow($(link).parents(".row"), id)    
+  }
+  
+  function saveRow(link) {
+    form = $(link).parents(".form");
+    form_data = form.serializeArray();
+    
+    var row = $(link).parents(".row");
+    row.load(form.attr("action"), form_data);
+  }
+  
+  function deleteRow(link) {
+    var itemId = $(link).parents(".item_table").attr("id");
+    if (confirm("Are you sure you want to delete this constraint?")) {
+      $.post('/xforms/{{xform.pk}}/field/{{field.pk}}/constraint/' + itemId + '/delete/' , function(data) {
+        $(link).parents(".row").remove();
+      }); 
+    }
+  }
+  
+  
+  
+{% endblock %}
+</script>
+
+
+
+{% block table_header %}
+<h4 style="margin-left:20px; margin-top: 45px">Manage Data Constraints</h4>
+<div class="details">
+<div class="name">{{ field.caption }}</div>
+</div>
+{% endblock %}
+
+
+{% block table_footer %}
+
+<br/>
+  <div>
+      <a href="javascript:addConstraint();" style="float:left" class='btn'>Add Constraint
+      </a>
+  </div>
+
+{% endblock %}

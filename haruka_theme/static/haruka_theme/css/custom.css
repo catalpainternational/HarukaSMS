@@ -576,9 +576,53 @@ tr.row_section td {
     padding: 7px;
 }
 
+#7 table tbody tr td.field_options_col {
+	
+}
+
+div#field_box_2.field_box {
+	border: none;
+}
+
 .uniForm .focused {
 	background-color: #DDF4FB;
     border-color: #C6EDF9;
+    
+}
+
+#field_box_3 {
+	border: none;
+}
+
+#field_box_4 {
+	border: none;
+}
+
+#field_box_5 {
+	border: none;
+}
+
+#field_box_6 {
+	border: none;
+}
+
+#field_box {
+	border: none;
+}
+
+
+}
+
+#inner table.condensed-table thead tr th.field_command_col {
+	margin-left: 0;
+	margin-right: 0;
+	position: relative;
+	right: 55px;
+}
+
+#inner table.condensed-table thead tr th.field_description_col {
+	right: 7px;
+	position: relative;
 }
 
 #div_id_default_response {
@@ -857,4 +901,67 @@ ctrlHolder {
 	top: 0px;	
 
 }
+
+#inner div.well form.buttons div.form-action a.btn {
+	left: 451px;
+	position: relative;
+	top: 20px;
+}
+
+#closePollForm a.btn {
+	float: right;
+	margin-right: 11px;
+}
+
+#startPollForm a.btn.success {
+	margin-right: 10px;
+	float: right;
+	right: 0;
+}
+
+#poll_header div a.btn {
+	position: relative;
+	margin-right: 17px;
+	left: 4px;
+	float: right;
+}
+
+#hint_id_name {
+	visibility:hidden
+
+}
+
+#form_header div a.btn {
+	float: right;
+	margin-right: 10px;
+}
+
+#inner div a.btn.primary {
+	margin-top: 0;
+	top: 15px;
+	position: relative;
+}
+
+#field_box_1 {
+	border:none;
+}
+
+#newForm div a.btn.primary {
+	position: relative;
+	top: 0;
+}
+
+#save_5 {
+	position: relative;
+}
+
+div.field_box {
+	border: none;
+}
+
+#inner div a.btn {
+	left: 15px;
+	position: relative;
+}
+
 

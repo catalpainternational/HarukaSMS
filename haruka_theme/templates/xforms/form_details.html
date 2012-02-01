@@ -1,10 +1,8 @@
- <div class="buttons">
-    <a onclick="editFormDetails('{{xform.pk}}');" href="javascript:void(0);">
-        <img src="{{ MEDIA_URL }}rapidsms_xforms/icons/silk/pencil.png" alt=""/> 
+ <div>
+    <a onclick="editFormDetails('{{xform.pk}}');" href="javascript:void(0);" class='btn'>
         Edit
     </a>
-    <a href="/xforms/odk/get/{{ xform.pk }}/">
-        <img src="{{ MEDIA_URL }}rapidsms_xforms/icons/silk/application_form.png" alt=""/> 
+    <a href="/xforms/odk/get/{{ xform.pk }}/" class='btn'>     
         XForm
     </a>
     </div>

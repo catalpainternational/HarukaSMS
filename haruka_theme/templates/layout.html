@@ -18,6 +18,7 @@
 <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}rapidsms/stylesheets/tables.css" />
 <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}rapidsms/stylesheets/forms.css" />
 <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}rapidsms/stylesheets/icons.css" />
+<link type="text/css" rel="stylesheet" href="/static/haruka_theme/css/bootstrap-ext.css" />
 <link type="text/css" rel="stylesheet" href="/static/haruka_theme/css/bootstrap.css" />
 <link type="text/css" rel="stylesheet" href="/static/haruka_theme/css/custom.css" />
 
@@ -31,11 +32,13 @@
 
 	</head>
 	<body>
+	
 		<div id="wrapper">
 			{% region "top" %}
 
 			{% block header %}
 			<div id="spacer">
+			<img style="float: left;margin-left: -2px;" src="../static/haruka_theme/images/beta-ribbon.png">
 			</div>
 			<div id="header">
 				<div id="branding">
@@ -50,6 +53,7 @@
 				<div id="auth">{% if user.is_authenticated %}
 					<a href="{% url rapidsms-logout %}">{% trans "Log out" %} {{ user.username }}</a>{% else %}
 					<a href="{% url rapidsms-login %}">{% trans "Log in" %}</a>{% endif %}
+					<i class="icon-search"></i>
 				</div>
 				{% endblock %}
 

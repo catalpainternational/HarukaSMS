@@ -1,0 +1,25 @@
+<div class="field_table" id="{{field.id}}">
+<table width="100%"><tr>
+<td class="field_name_col"><div class="grippy" style="margin-right:8px;float:left;width:18px;height:19px;background: url('{{MEDIA_URL}}xforms/images/grippy_grid.png')">&nbsp;</div>
+{{ field.name }}</td>
+<td class="field_type_col">{{ field.field_type }}</td>
+<td class="field_command_col">{{ field.command }}</td>
+<td class="field_description_col">{{ field.help_text }}</td>
+<td class="field_options_col">
+    
+  <a onclick="deleteField(this);" class="negative" style="float:right">
+    <img style="position: relative; vertical-alignment:bottom;padding-top:7px;left:20px" src="{{ MEDIA_URL }}rapidsms/icons/silk/delete.png" alt=""/>
+  </a>
+
+  <div>
+    <a onclick="editField(this);" href="javascript:void(0);" class='btn'>
+        Edit
+    </a>
+    <a href="/xforms/{{xform.pk}}/field/{{field.pk}}/constraints/" id="save_{{field.pk}}" class='btn'>
+      Constraints ({{ field.constraints.all.count }})
+    </a>
+  </div>
+
+</td>
+</tr></table>
+</div>

@@ -1,0 +1,78 @@
+{% extends "xforms/layout.html" %}
+{% load dumper %}
+{% load prop %}
+{% block content %}
+
+
+  <script type="text/javascript">
+
+  
+    $(document).ready(function() {
+      $("#sortable").sortable({ update: updateOrder, delay: 0, distance: 10, handle: '.grippy' }).disableSelection;
+      
+      $(".row").each(function() {
+        viewRow($(this), $(this).attr("id"));
+      });
+    });
+    
+
+    // For a given row, grab its data from the database and load it in
+    function viewJSONRow(row) {
+      var itemId = row.attr("id");
+      $.getJSON("/xforms/{{xform.pk}}/field/" + itemId + "/json/", function(data) {
+        if (data.length > 0) {
+          row.children().each(
+            function() {
+              var fieldName = $(this).attr("id");
+              $(this).html("<b>" + data[0].fields[fieldName] + "</b>");
+            });
+          }
+       });
+    }
+  
+    // Return a helper with preserved width of cells
+    var fixHelper = function(e, ui) {
+      ui.children().each(function() { $(this).width($(this).width());});
+      return ui;
+    };
+    
+    {% block table_scripts %}
+    
+    {% endblock %}
+    
+  </script>
+
+  {% block table_header %}{% endblock %}
+
+  <table width="100%" class="table-condensed">
+  <thead>
+  <tr>
+  
+  {% for name, type in columns %}
+  <th class="constraint_{{type}}_col">{{name}}</th>
+  {% endfor %}
+  
+  {% if buttons %}
+  <th id="options_header"></th>
+  {% endif %}
+  
+  </tr>
+  </thead>
+  
+  <tbody>
+    <tr><td colspan="4">
+      <ul id="sortable">
+        {% for item in table %}
+          <li id="{{item.pk}}" class="row ui-state-default"></li>
+        {% endfor %}
+      </ul>
+    </td></tr>
+  </tbody>
+  </table>
+  
+
+  {% block table_footer %}{% endblock %}
+  
+  <div id="error"></div>
+
+{% endblock %}
