@@ -117,15 +117,15 @@ class Poll(models.Model):
 
 
     TYPE_CHOICES = {
-        TYPE_LOCATION: dict(
-                        label='Location-based',
-                        type=TYPE_LOCATION,
-                        db_type=Attribute.TYPE_OBJECT,
-                        parser=None,
-                        view_template='polls/response_location_view.html',
-                        edit_template='polls/response_location_edit.html',
-                        report_columns=(('Text', 'text'), ('Location', 'location'), ('Categories', 'categories')),
-                        edit_form=LocationResponseForm),
+#        TYPE_LOCATION: dict(
+#                        label='Location-based',
+#                        type=TYPE_LOCATION,
+#                        db_type=Attribute.TYPE_OBJECT,
+#                        parser=None,
+#                        view_template='polls/response_location_view.html',
+#                        edit_template='polls/response_location_edit.html',
+#                        report_columns=(('Text', 'text'), ('Location', 'location'), ('Categories', 'categories')),
+#                        edit_form=LocationResponseForm),
         TYPE_NUMERIC: dict(
                         label='Numeric Response',
                         type=TYPE_NUMERIC,
@@ -144,15 +144,15 @@ class Poll(models.Model):
                         edit_template='polls/response_text_edit.html',
                         report_columns=(('Text', 'text'), ('Categories', 'categories')),
                         edit_form=ResponseForm),
-        TYPE_REGISTRATION:  dict(
-                        label='Name/registration-based',
-                        type=TYPE_REGISTRATION,
-                        db_type=Attribute.TYPE_TEXT,
-                        parser=None,
-                        view_template='polls/response_registration_view.html',
-                        edit_template='polls/response_registration_edit.html',
-                        report_columns=(('Text', 'text'), ('Categories', 'categories')),
-                        edit_form=NameResponseForm),
+#        TYPE_REGISTRATION:  dict(
+#                        label='Name/registration-based',
+#                        type=TYPE_REGISTRATION,
+#                        db_type=Attribute.TYPE_TEXT,
+#                        parser=None,
+#                        view_template='polls/response_registration_view.html',
+#                        edit_template='polls/response_registration_edit.html',
+#                        report_columns=(('Text', 'text'), ('Categories', 'categories')),
+#                        edit_form=NameResponseForm),
     }
 
     name = models.CharField(max_length=32,
