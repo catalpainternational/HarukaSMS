@@ -958,9 +958,13 @@ ctrlHolder {
 }
 
 #inner div a.btn.primary {
-	left: 25px;
+	left: 20px;
 	top: 15px;
 	position: relative;
+}
+
+#inner form.form table.condensed-table thead tr th.response_categories_col {
+	border-bottom: 1px solid #dfdfdf;
 }
 
 #field_box_1 {
