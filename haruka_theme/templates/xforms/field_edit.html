@@ -35,9 +35,8 @@
 
   <a style="float:right;padding-top:7px;" href="javascript:void(0);"><img onclick="cancelField(this);" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt="" border="0"/></a>
   
-  <div class="buttons">
-    <a onclick="saveField(this);" href="javascript:void(0);" id="save_{{field.pk}}">
-      <img src="{{ MEDIA_URL }}rapidsms_xforms/icons/silk/bullet_disk.png" alt=""/>Save
+  <div>
+    <a onclick="saveField(this);" href="javascript:void(0);" id="save_{{field.pk}}" class='btn'>Save
     </a>
   </div>
 
@@ -45,9 +44,8 @@
   
   <a href="javascript:void(0);"><img onclick="cancelAdd(this);" style="float:right;padding-top:6px;" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt="" border="0"/></a>
   
-  <div class="buttons">
-    <a onclick="saveField(this);" href="javascript:void(0);" id="save_{{field.pk}}" class="positive">
-      <img src="{{ MEDIA_URL }}rapidsms/icons/silk/add.png" alt=""/>Add
+  <div>
+    <a onclick="saveField(this);" href="javascript:void(0);" id="save_{{field.pk}}" class="positive" class='btn'>Add
     </a>
   </div>
   {% endif %}

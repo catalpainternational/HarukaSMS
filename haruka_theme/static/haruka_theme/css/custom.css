@@ -354,6 +354,33 @@ thead th {
 
 }
 
+th.field_name_col {
+	width: 94px;
+}
+
+#inner table.condensed-table thead tr th.field_command_col {
+	width: 50px;
+	margin-right: 0;
+	position: relative;
+	right: 30px;
+}
+
+#5 tbody tr td.field_options_col a img {
+	position: relative;
+	left: 50px;
+}
+
+#sortable {
+	width: 865px;
+}
+
+#save_5 {
+	position: relative;
+	right: 12px;
+	margin-right: 15px;
+	
+}
+
 thead th a:hover {
     background-image: url("");
     color: none;
@@ -962,6 +989,7 @@ div.field_box {
 #inner div a.btn {
 	left: 15px;
 	position: relative;
+	margin
 }
 
 
