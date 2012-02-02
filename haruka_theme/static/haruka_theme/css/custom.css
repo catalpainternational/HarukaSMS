@@ -958,7 +958,7 @@ ctrlHolder {
 }
 
 #inner div a.btn.primary {
-	margin-top: 0;
+	left: 25px;
 	top: 15px;
 	position: relative;
 }
@@ -972,18 +972,8 @@ ctrlHolder {
 	top: 0;
 }
 
-#save_5 {
-	position: relative;
-}
-
 div.field_box {
 	border: none;
-}
-
-#inner div a.btn {
-	left: 0px;
-	position: relative;
-	margin
 }
 
 

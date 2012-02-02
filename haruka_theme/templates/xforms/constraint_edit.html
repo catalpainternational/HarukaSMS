@@ -1,0 +1,4 @@
+<form method="post" action="/xforms/{{xform.pk}}/field/{{field.pk}}/constraint/">
+	{{ form.type }} {{ form.test }} {{ form.message }} 
+	<button type="submit" id="save_constraint"><img src="{{ MEDIA_URL }}rapidsms/icons/silk/accept--dull.png"/><div>Save</div></button>
+</form>
