@@ -1,0 +1,44 @@
+{% load prop %}
+
+<div class="field_box">
+<div class="field_table">
+<table class="item_table" id="{{item.pk}}" width="100%"><tr>
+{% for name,type in columns %}
+
+  <td class="constraint_{{type}}_col">
+    {% if forloop.first %} 
+    <div class="grippy" style="margin-right:8px;float:left;width:18px;height:19px;background: url('{{MEDIA_URL}}xforms/images/grippy_grid.png')">&nbsp;</div>
+    {% endif %}
+    {{item|prop:type}}
+  </td>
+
+{% endfor %}
+
+<td class="constraint_options_col" >
+  {% for button in buttons %}
+  
+    {% if button.text %}
+      <div>
+        <a onclick="{{button.click}}(this);" href="javascript:void(0);" class='btn'>
+        {{button.text}}
+        </a>
+      </div>
+    
+    {% else %}
+      <a style="float:right" onclick="{{button.click}}(this);" href="javascript:void(0);">
+        <img border="0" style="padding-top:7px;" src="{{ MEDIA_URL }}{{button.image}}" alt=""/> 
+      </a>
+    {% endif %}
+
+    
+    
+    {% if button.text %}
+    {% endif %}
+
+  {% endfor %}
+</td>
+
+</tr>
+</table>
+</div>
+</div>

@@ -1,0 +1,62 @@
+{% load prop %}
+{% load dumper %}
+
+
+
+<div class="field_box">
+  <div class="field_table">
+{% if item %}
+<div class="edit_field">
+<form class="form" action="/xforms/{{ xform.pk }}/field/{{ field.pk }}/constraint/{{item.pk}}/edit/" method="post">
+
+{% else %}
+<div class="add_field_header">Add New Constraint</div>
+<div class="add_field">
+<form class="form" action="/xforms/{{ xform.pk }}/field/{{ field.pk }}/constraints/add/" method="post">
+{% endif %}
+
+
+
+<table class="item_table" id="{{item.pk}}" width="100%"><tr>
+  
+{% for field in form %}
+ <td class="constraint_{{field.name}}_col">
+   
+   {% if forloop.first %}
+   {% endif %}
+   {{field.errors}}
+   {{field}}
+   
+ </td>
+{% endfor %}
+  
+  
+<td class="constraint_options_col">
+  {% for button in buttons %}
+  
+    {% if button.text %}
+      <div>
+        <a onclick="{{button.click}}(this);" href="javascript:void(0);" class='btn'>
+        {{button.text}}
+        </a>
+      </div>
+    
+    {% else %}
+      <a style="float:right" onclick="{{button.click}}(this);" href="javascript:void(0);">
+        <img border="0" style="padding-top:7px;" src="{{ MEDIA_URL }}{{button.image}}" alt=""/> 
+      </a>
+    {% endif %}
+
+    
+    
+    {% if button.text %}
+    {% endif %}
+
+  {% endfor %}
+</td>
+
+</tr></table>
+</form>
+</div>  
+</div>
+</div>
