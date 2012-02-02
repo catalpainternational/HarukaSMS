@@ -372,13 +372,7 @@ th.field_name_col {
 
 #sortable {
 	width: 865px;
-}
 
-#save_5 {
-	position: relative;
-	right: 12px;
-	margin-right: 15px;
-	
 }
 
 thead th a:hover {
@@ -987,7 +981,7 @@ div.field_box {
 }
 
 #inner div a.btn {
-	left: 15px;
+	left: 0px;
 	position: relative;
 	margin
 }
