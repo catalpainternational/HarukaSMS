@@ -229,9 +229,9 @@ class Poll(models.Model):
             else:
 
                 localized_contacts=contacts.filter(language=language)
-            if localized_contacts.exists():
-                messages = Message.mass_text(gettext_db(field=question,language=language), Connection.objects.filter(contact__in=list(localized_contacts)).distinct(), status='L')
-                localized_messages[language] = [messages,localized_contacts]
+            #if localized_contacts.exists():
+            #    messages = Message.mass_text(gettext_db(field=question,language=language), Connection.objects.filter(contact__in=list(localized_contacts)).distinct(), status='L')
+            #    localized_messages[language] = [messages,localized_contacts]
         poll = Poll.objects.create(name=name, type=type, question=question, default_response=default_response, user=user)
 
         # This is the fastest (pretty much only) was to get contacts and messages M2M into the

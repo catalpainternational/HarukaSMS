@@ -37,19 +37,19 @@ INSTALLED_BACKENDS = {
 #        "baudrate": 115200,
 #        "rtscts": 1,
 #  },
-    "TLS-TT": {
-        "ENGINE": "rapidsms.backends.gsm",
+#    "TLS-TT": {
+#        "ENGINE": "rapidsms.backends.gsm",
         #"PORT": "/dev/tty.MTCBA-U-G410",
-        "PORT" : "/dev/tty.HUAWEIMobile-Modem",
-        "baudrate": 115200,
-        "rtscts": 1,
-  },
+#        "PORT" : "/dev/tty.HUAWEIMobile-Modem",
+#        "baudrate": 115200,
+#        "rtscts": 1,
+#  },
     "message_tester": {
         "ENGINE": "rapidsms.backends.bucket",
     }
 }
 
-DEFAULT_BACKEND_NAME = "TLS-TT"
+DEFAULT_BACKEND_NAME = "console"
 
 # to help you get started quickly, many django/rapidsms apps are enabled
 # by default. you may wish to remove some and/or add your own.

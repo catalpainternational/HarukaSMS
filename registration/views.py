@@ -30,6 +30,7 @@ def registration(req, pk=None):
     contact = None
     backend_name = DEFAULT_BACKEND_NAME
 
+    #TODO: fix case where a user registers via sms and then edits via web
     if pk is not None:
         contact = get_object_or_404(
             Contact, pk=pk)

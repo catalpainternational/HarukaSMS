@@ -27,8 +27,16 @@ def _mail_merge(contact, text):
     # use regex!!!
     text = text.replace('[name]', contact.name)                    # replace with  full name
     text = text.replace('[firstname]', contact.name.split()[0])    #               first mame
-    text = text.replace('[gender]', contact.gender)                #               gender
-    text = text.replace('[location]', contact.location)            #               location
+    try:
+        text = text.replace('[gender]', contact.gender)                #               gender
+    except:
+        pass
+    
+    try:
+        text = text.replace('[location]', contact.location)            #               location
+    except:
+        pass
+        
     text = text.replace('[phone]', contact.phone)                  #               phone
     return text
 

@@ -32,6 +32,7 @@ class RegistrationApp(AppBase):
             identity = message.connection.identity
 
             contact, new = Contact.objects.get_or_create(connection__identity=identity)
+            contact.language = 'en'
             contact.phone = identity
             contact.name = name
             contact.save()
