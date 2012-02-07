@@ -136,7 +136,7 @@ RAPIDSMS_TABS = [
     ("bulksend",                                            "Messaging"),
     ('list-groups',                                         "Groups"),
     ("registration",                                        "Contacts"),
-    ("httprouter-console",                                  "Testing"), # for use with rapidsms_httprouter
+#    ("httprouter-console",                                  "Testing"), # for use with rapidsms_httprouter
 #    ("rapidsms.contrib.messagelog.views.message_log",       "Message Log"), # can't be used with rapidsms_httprouter
 #    ("rapidsms.contrib.messaging.views.messaging",          "Messaging"),
 #    ("rapidsms.contrib.locations.views.locations",          "Map"),
