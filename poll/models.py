@@ -39,6 +39,7 @@ CONTAINS_PATTERN_TEMPLATE = '^.*\s*(%s)(\s|[^a-zA-Z]|$)'
 # accepted yes keywords
 #YES_WORDS = ['yes', 'yeah', 'yep', 'yay', 'y']
 
+#TODO: Remove tetum from the en
 YES_WORDS = {
     'en-us':['yes', 'yeah', 'yep', 'yay', 'y'],
     'en':['yes', 'yeah', 'yep', 'yay', 'y'],
@@ -221,6 +222,7 @@ class Poll(models.Model):
     @classmethod
     @transaction.commit_on_success
     def create_with_bulk(cls, name, type, question, default_response, contacts, user):
+        #import pdb; pdb.set_trace()
         localized_messages={}
         for language in dict(settings.LANGUAGES).keys():
             if language == "en":
@@ -240,12 +242,12 @@ class Poll(models.Model):
         for language in localized_messages.keys():
             for c in localized_messages.get(language)[1]:
                 raw_sql = "insert into poll_poll_contacts (poll_id, contact_id) values (%d, %d)" % (poll.pk, c.pk)
-                print raw_sql
+                #print raw_sql
                 cursor.execute(raw_sql)
 
             for m in localized_messages.get(language)[0]:
                 raw_sql = "insert into poll_poll_messages (poll_id, message_id) values (%d,%d)" % (poll.pk, m.pk)
-                print raw_sql
+                #print raw_sql
                 cursor.execute(raw_sql)
 
         transaction.commit_unless_managed()
