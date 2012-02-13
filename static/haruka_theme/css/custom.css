@@ -1,0 +1,983 @@
+/* @override 
+	http://127.0.0.1:8000/static/haruka_theme/css/custom.css
+	http://localhost:8000/static/haruka_theme/css/custom.css */
+
+
+	body {
+		background:  url("../images/backgroundwhite.png") repeat-x fixed #B1DEEA;
+		color: #333333;
+		font: 9pt/1 "Helvetica","Arial";
+		margin-top: 70px;
+		padding: 0;
+    
+}
+
+	#inner {
+		padding: 1em;
+		position: relative;
+        z-index = 0;
+}
+
+/*--------------- START OF HEADER -----------------*/
+
+    #spacer {
+        top: 0px;
+        left: 0px;
+        height: 108px;
+        width: 100%;
+        background-color: #FFFFFF;
+        z-index: 5;
+        position: fixed;
+        opacity: 5; 
+    }
+
+	#header {
+		background: url("") repeat-x scroll 0 0 transparent;
+		color: #CCCCFF;
+		padding-bottom: 2px;
+		padding-top: 23px;
+		position: fixed;
+
+        width: 80em;
+        height: 13px;
+        background: #fff;
+        margin: 0 auto 0 auto;
+        z-index: 10;    
+	   	     
+        -moz-box-shadow: 3px 3px #575757;
+        box-shadow: 0px 0px 2px #aaa;
+        -moz-border-radius-topright: 1em;
+        -moz-border-radius-topleft: 1em;
+    
+}
+
+#inner div.row div.well.span7 form.buttons div.form-action a.btn.danger {
+	top:0px;
+}
+
+#tabs{
+        height: 20px; 
+        width: 487px; 
+        margin-right: 0px; 
+        top: -30px;
+        left: 440px;
+    }
+	
+	#tabs li.app-contacts a {
+		width: 45px;
+	}
+
+	
+	#branding {
+		padding: 0 10px;
+	
+}
+
+    #branding h1 {
+        background: url("");
+        height: 0px;
+        color: #fff;
+        margin: 0;
+}
+
+	#branding h1 a {
+		background: url("../images/harukasms.png") no-repeat scroll 0 50% transparent;
+		display: block;
+		float: left;
+		height: 70px;
+		width: 250px;
+		margin-left: 17px;
+		margin-top: -71px;
+}
+
+#inner div.row div.well.span7 form.buttons div.form-action a.btn.danger {
+	height: 16px;
+	
+}
+
+#inner table.condensed-table thead tr th.poll_submissions {
+	border-bottom: 1px solid #DDDDDD;
+}
+
+#header #auth a {
+    color: #0069D6;
+	margin-right: 24px;
+}
+
+li.alert-message.success {
+	margin-top: 0;
+	top: 30px;
+	right: 9px;
+	z-index: 0;
+}
+
+li.alert-message.info {
+	margin-top: 0;
+	top: 30px;
+	right: 9px;
+	z-index: 0;
+}
+
+li.alert-message.danger {
+	margin-top: 0;
+	top: 30px;
+	right: 9px;
+	z-index: 0;
+}
+
+#header #auth {
+	color: ##0069D6;
+    font-size: 100%;
+    line-height: 22px;
+    margin: 0 10px;
+    position: absolute;
+    right: 0;
+    top: -66px;
+    
+}
+
+/*------------------- END OF HEADER ---------------------*/
+
+
+/*--------------- START OF MAIN NAVIGATION -----------------*/
+
+#inner div.row div.span7 div.well form div div.field.bulk label {
+	height: 20px; 
+	width: 92px; 
+	padding-top: 0px; 
+	margin-top: 22px;
+	margin-left: 8px;
+}
+
+#id_bulk {
+	margin-right: 40px;
+	left: 15px
+}
+
+#tabs,
+    #page-tabs {
+        -webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		border-radius: 8px;
+		-moz-transition: opacity 0.2s ease 0s;
+		background-image: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.1) 50%, transparent 50%);
+    	background-color: #999999;
+        position: absolute;
+        height: 50px;
+        bottom: 0;
+        padding: p;
+        margin: 0;
+        margin-right: 30px;
+        
+    }
+	
+	input#id_bulk {
+		left: 15px
+
+	    
+	}
+	
+	#tabs { right: 0; }
+    #page-tabs { left: 0;  }
+
+        #tabs li,
+        #page-tabs li {
+            display: block;
+            float: left;
+            line-height: 20px;
+           
+        }
+
+        #tabs li { margin-right: 0px; }
+        #page-tabs li { margin-left: 0px; }
+
+            #tabs li a,
+            #page-tabs li a {
+                color: #fff;
+                display: block;
+                padding: 0 1em;
+                background: url("");
+                border-right: 1px solid #f5f5f5;
+                border-left: 1px solid #f5f5f5;
+                outline: none;
+                height: 20px;
+                padding: 15px;
+                opacity: 0.9;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+			
+			}
+			
+			#tabs li.app-contacts a {
+				border-right:none;
+			}
+			
+			#tabs li.unread a span {
+                display: block;
+                padding-right: 21px;
+                background: url("");
+            }
+
+            #tabs li.active a,       #page-tabs li.active a,
+            #tabs li.active a:hover, #page-tabs li.active a:hover,
+            #tabs li.active a:focus, #page-tabs li.active a:focus {
+			
+                background: #fff url("") repeat-x;
+                text-decoration: none;
+                text-shadow: none;
+                color: #000;
+                opacity: 0.5;
+                border: none;
+                border-bottom: 0;
+                margin-top: 0px;
+            }
+
+            #tabs li a:hover, #page-tabs li a:hover,
+            #tabs li a:focus, #page-tabs li a:focus {
+				
+                background-color: #fff;
+                color: #000;
+                opacity: 0.7;
+                background-image: url("");
+                text-shadow: #cef1f5 0 0 2px;
+                text-decoration: none;
+                
+/*--------------- END OF MAIN NAVIGATION -----------------*/
+
+}
+
+#wrapper {
+    width: 80em;
+    background: #fff;
+    margin: 0.5em auto 0 auto;
+   
+    -moz-box-shadow: 4px 4px 8px #575757;
+    box-shadow: 0px 2px 6px #aaa;
+    -moz-border-radius-bottomright: 1em;
+    -moz-border-radius-bottomleft: 1em;
+    -moz-border-radius-topright: 1em;
+    -moz-border-radius-topleft: 1em;
+}
+
+/*--------------- START OF FOOTER -----------------*/
+
+#footer {
+    border-top: 0px;
+    padding: 0.5em;
+    clear: both;
+    color: #fff;
+
+    /* reserve space for at two lines of links @ LH=1.4 (for the
+     * copyright and licensing/download info) */
+    min-height: 2.8em;
+}
+
+    #footer .footer-region {
+        margin-top: 1.4em;
+        line-height: 1.4;
+        opacity: 0.25;
+        float: left;
+    }
+
+        #footer .footer-region:hover {
+            opacity: 1; }
+
+        #footer .footer-region a            { margin-right: 0.5em; }
+        #footer .footer-region a:last-child { margin-right: 0; }
+
+
+    #footer p.rights {
+        text-align: right;
+        float: right;
+        margin: 0;
+   }
+    
+    
+ /*------------- START OF MODULE HEADER ----------------*/
+
+.review {
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 19px;
+  min-height: 20px;
+ 
+}
+    
+	div.module h2 {
+		background-color: #FFFFFF;
+		background-image: url("");
+		font-size: 160%;
+		letter-spacing:0.5px;
+		padding: 0.3125em;
+		text-shadow: 1px 1px 1px #f4f4f4;
+}
+
+	div.module h2, div.module h3 {
+		background-position: 0 100%;
+		background-repeat: repeat-x;
+		color: #666666;
+		font-weight: normal;
+		line-height: 1;
+		margin: 0;
+		white-space: nowrap;
+    
+}
+
+	div.module div {
+		-moz-border-bottom-colors: none;
+		-moz-border-image: none;
+		-moz-border-left-colors: none;
+		-moz-border-right-colors: none;
+		-moz-border-top-colors: none;
+		border-color: #DDDDDD #EEEEEE #FFFFFF;
+		border-style: none;
+		border-width: 1px;
+		border-radius: 4px 4px 4px 4px;
+    
+    
+}
+
+	div.module div.module {
+		border: none;
+}
+
+body:last-child form > div:first-child {
+    background-color: #f5f5f5;
+    padding: 0em;
+
+}
+
+ /*------------- START OF TABLE STYLING ----------------*/
+
+thead th {
+    background: url("");
+    color: none;
+
+}
+
+th.field_name_col {
+	width: 94px;
+}
+
+#inner table.condensed-table thead tr th.field_command_col {
+	width: 50px;
+	margin-right: 0;
+	position: relative;
+	right: 30px;
+}
+
+#5 tbody tr td.field_options_col a img {
+	position: relative;
+	left: 50px;
+}
+
+#sortable {
+	width: 865px;
+
+}
+
+thead th a:hover {
+    background-image: url("");
+    color: none;
+    
+ }
+ 
+ thead th a, thead th span.unsortable {
+    border-left: 0 solid #F8F8F8;
+    display: block;
+    margin: -0.5em;
+    outline: 0 none;
+    padding: 0.5em;
+    position: relative;
+    
+}
+
+ thead th.asc  a span { background-image: url(""); }
+ thead th.desc a span { background-image: url(""); }
+ 
+   tfoot {
+        background: url("") repeat-x 0 0;
+        font-size: none;
+    }
+ 
+ div.form_bulk_send table td {
+    border: 0 none;
+    padding: 0.4em;
+    width: 70px;
+}
+
+tr.row_rez.row_rez_final td {
+    background: none repeat scroll 0 0;
+ 
+ }
+
+/*------------- START OF CSS FORM OVERRIDES  ----------------*/
+
+body:last-child h2 + form {
+    background-color: #FFFFFF;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: opx;
+    border-top: 0 none;
+    padding: 0;
+
+}
+
+
+form div.submit {
+    background: url("");
+    border-top: none;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+form div.field p.help {
+    border-left: none;
+    color: #AAAAAA;
+    font-size: 80%;
+    margin-left: 0.625em;
+    margin-top: 0;
+    max-width: 30em;
+    padding-left: 0.3125em;
+    padding-top: 2px;
+    
+}
+ 
+form div.field label {
+
+    color: #404040;
+    display: block;
+    float: left;
+    font-size: 13px;
+    line-height: 18px;
+    padding-top: 6px;
+    text-align: right;
+    width: 100px;
+    display: block;
+    margin-bottom: 0.5em
+    text-align: left;
+    width: 75px;
+    padding-right: 10px;
+    
+}
+
+#id_bulk {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+/*-----------------BULK MESSAGING STYLING OVERRIDES-------------------*/
+
+label {
+    color: #404040;
+    float: left;
+    font-size: 12px;
+    line-height: 18px;
+    padding-top: 6px;
+    text-align: left;
+    width: auto;
+}
+
+#c_count {
+	color: #6699CC;
+	padding-top: 18px;
+	alignment-baseline: central;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+#sms_count {
+	color: #6699CC;
+	padding-top: 18px;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+#msg_price {
+	color: #6699CC;
+	padding-top: 18px;
+	font-weight: bold;
+	font-size: 24px;
+	
+}
+#sms_length {
+	color: #6699CC;
+	padding-top: 18px;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.msg_input textarea {
+    height: 90em;
+    
+}
+textarea {
+	height: 161px;
+    width: 290px;
+}
+.row {
+    margin-left: -2px;
+}
+
+.tally {
+	width:250px;
+}
+
+#form_bulk_send {
+	width:600px;
+	
+}
+	
+
+
+/*-----------------BULK REVIEW STYLING-------------------*/
+
+tr.row_section td {
+    background: none;
+}
+
+.paginator {
+	position: absolute;
+
+}
+
+#contact_list {
+	height: 530px; 
+	
+}
+
+/*-----------------DIV REPLACEMENTS POLLING -------------------*/
+
+
+.add_category_header {
+    background-color: none
+    color: none;
+    padding-bottom: none;
+    padding-left: none;
+    padding-top: none;
+
+}
+
+#div_id_default_response_luo {
+	
+	visibility:hidden;
+	height:0px;
+	
+}
+
+
+#div_id_question_luo {
+	visibility:hidden;
+	height:0px;
+
+}
+
+#div_id_contacts {
+	visibility:hidden;
+	height:0px;
+	
+}
+
+#newForm {
+	width:600px;
+	margin-left:150px;
+	height: 605px;
+	margin-top:0px;
+	background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 19px;
+}
+
+.uniForm .ctrlHolder {
+    border-bottom: 0px solid #DFDFDF;
+    padding: 7px;
+}
+
+#7 table tbody tr td.field_options_col {
+	
+}
+
+div#field_box_2.field_box {
+	border: none;
+}
+
+.uniForm .focused {
+	background-color: #DDF4FB;
+    border-color: #C6EDF9;
+    
+}
+
+#field_box_3 {
+	border: none;
+}
+
+#field_box_4 {
+	border: none;
+}
+
+#field_box_5 {
+	border: none;
+}
+
+#field_box_6 {
+	border: none;
+}
+
+#field_box {
+	border: none;
+}
+
+
+}
+
+#inner table.condensed-table thead tr th.field_command_col {
+	margin-left: 0;
+	margin-right: 0;
+	position: relative;
+	right: 55px;
+}
+
+#inner table.condensed-table thead tr th.field_description_col {
+	right: 7px;
+	position: relative;
+}
+
+#div_id_default_response {
+	position:relative;
+	top:-15px;
+}
+
+#div_id_groups {
+	position:relative;
+	top:0px;
+	top:-138px;
+	
+}
+
+#div_id_start_immediately {
+	position:relative;
+	top:-195px;
+}
+
+#div_id_name {
+	position:relative;
+	top:-14px;
+}
+
+#div_id_question {
+	position:relative;
+	top:-10px;
+}
+
+.uniForm fieldset {
+	height: 605px;
+}
+
+.uniForm textarea, .uniForm .blockLabels textarea {
+    height: 2em;
+    width: 53%;
+ 
+ }
+
+/*-----------------DIV REPLACEMENTS DATA COLLECTION -------------------*/
+
+.uniForm fieldset {
+    height: auto;
+
+}
+
+.uniForm .formHint, .uniForm .blockLabels .formHint {
+    color: #777777;
+    font-size: 0.9em;
+    padding-left: 0;
+    position: relative;
+    top: 0;
+    width: 39%;
+}
+
+
+.ctrlHolder {
+    border-bottom: none;
+    padding: 7px;
+}
+
+#div_id_keyword_prefix {
+	visibility:hidden;
+	
+}
+
+#div_id_command_prefix {
+	visibility:hidden;
+	
+}
+
+#div_id_separator {
+	visibility:hidden;
+
+}
+
+#id_description {
+	height: 2em;
+	width: 53%;
+}
+
+#div_id_restrict_to {
+	position:relative;
+	top:-150px;
+}
+
+#div_id_restrict_message {
+	position:relative;
+	top:-140px;	
+}
+
+.form_fields_cell {
+	background-color: #ffffff;
+}
+
+.add_field_header {
+    color: white;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
+    line-height: 18px;
+    padding: 10px 10px 9px;
+    text-align: left;
+    background-color: #FFF;
+    color: #404040;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+#new_field_box {
+    background-color: white;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    margin: 0;
+    width: 858px;
+    margin-left:20px;
+
+}
+
+#button.positive, .buttons a.positive {
+    background-color: #FFF;
+    border: none;
+    color: none;
+
+}
+
+#id_command {
+	width: 60px;
+}
+
+.field_command_col {
+	width: 82px;
+} 
+
+#id_description {
+	width: 202px;
+}
+/*-----------------DIV REPLACEMENTS GROUP SELECTION -------------------*/
+
+.selector-available h2 {
+	font-color: #404040;
+	
+}
+
+.selector {
+	margin-top: 10px;
+	width: 410px;
+	height: 380px;
+}
+
+ctrlHolder {
+    border-bottom: 0px;
+    padding: 7px;
+
+}
+
+.selector .selector-available h2 {
+    background: none;	
+
+
+}
+
+.selector-filter id_contacts_to {
+    height: 17.2em;
+    width: 180px;
+    
+}
+    
+.group_field_name {
+	margin-left:37px;
+	padding-bottom:6px;
+	padding-top: 6px;
+}
+
+.selector-available, .selector-chosen {
+    float: left;
+    margin-bottom: 5px;
+    text-align: center;
+    width: 180px;
+    
+}
+
+.selector .selector-available h2 {
+    background: none;
+    color: none;
+    
+}
+
+.selector-available h2, .selector-chosen h2 {
+    border: none;
+    font-size: 16px;
+    color: #404040;
+    font-weight: bold
+    
+ }
+ 
+ .selector select {
+     height: 17.2em;
+     width: 180px;
+     
+}
+
+.selector .selector-available input {
+    width: 180px;
+  
+}
+ 
+ .selector .selector-filter {
+     -moz-border-bottom-colors: none;
+     -moz-border-image: none;
+     -moz-border-left-colors: none;
+     -moz-border-right-colors: none;
+     -moz-border-top-colors: none;
+     background: none;
+     border-color: none;
+     border-style: none;
+     border-width: none;
+     color: none;
+     font-size: 10px;
+     margin: 0;
+     padding: 3px;
+     text-align: left;
+     
+ }
+ 
+#id_contacts_input {
+	padding-left: 0px;
+	width: 173px;
+	margin-left: -3px;
+	margin-bottom: 8px;
+}
+
+#id_contacts_to {
+	margin-top: 36px;
+}
+
+.selector ul.selector-chooser {
+    background: none;
+}
+
+#id_bulk{
+	position: relative;
+	left: 43px; 
+	margin-left: 0px;
+}
+
+#inner div.row div.well.span7 form.buttons div.form-action input.btn.primary {
+	float: right;
+	position: relative;
+	right: 10px; 
+
+}
+
+#inner div.row div.well.span7 form.buttons div.form-action a.btn.danger {
+	position: relative;
+	left: 215px; 
+	
+}
+
+#inner div.well form.buttons div.form-action input.btn.danger {;
+	right: 10px; 
+	
+}
+
+#inner div.well form.buttons div.form-action input.btn {
+	position: relative;
+	left: 455px; 
+	top: 20px;
+}
+
+#inner div.row div.well.span7 form.buttons div.form-action input.btn.primary {
+	position: relative;
+	left: -10px; 
+	top: 0px;	
+
+}
+
+#inner div.well form.buttons div.form-action a.btn {
+	left: 451px;
+	position: relative;
+	top: 20px;
+}
+
+#closePollForm a.btn {
+	float: right;
+	margin-right: 11px;
+}
+
+#startPollForm a.btn.success {
+	margin-right: 10px;
+	float: right;
+	right: 0;
+}
+
+#poll_header div a.btn {
+	position: relative;
+	margin-right: 17px;
+	left: 4px;
+	float: right;
+}
+
+#hint_id_name {
+	visibility:hidden
+
+}
+
+#form_header div a.btn {
+	float: right;
+	margin-right: 10px;
+}
+
+#inner div a.btn.primary {
+	left: 20px;
+	top: 15px;
+	position: relative;
+}
+
+#inner form.form table.condensed-table thead tr th.response_categories_col {
+	border-bottom: 1px solid #dfdfdf;
+}
+
+#field_box_1 {
+	border:none;
+}
+
+#newForm div a.btn.primary {
+	position: relative;
+	top: 0;
+}
+
+div.field_box {
+	border: none;
+}
+
+

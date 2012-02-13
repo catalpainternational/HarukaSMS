@@ -1,0 +1,106 @@
+/* @override http://127.0.0.1:8000/static/bulksend/stylesheets/bulk_review.css */
+
+.msg_input{
+width: 300px;
+display: inline;
+clear: left;
+}
+.msg_input textarea{
+	height: 9em;
+}
+.price{
+	display: inline-block;
+	text-align: right;
+}
+.price table {
+	height: 9em;
+}
+.price table tr td{
+	text-align: left;
+	width: 10em;
+	padding: .2em;
+}
+
+.price table tr td.col_0{
+	text-align: right;
+	width: .5em;
+}
+.price table tr td.col_1{
+	text-align: right;
+	width: .5em;
+}
+.price table tr.hr td{
+	height: 1em;
+	line-height: 1em;
+	padding: 0em;
+	margin: 0em;
+}
+.price hr{
+	border-top: 1px solid black;
+	border-bottom: 1px solid transparent;
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+
+}
+.price table tr.last_row td{
+	background: darkgray;
+	border: none;
+}
+
+/* Message sending */
+div.form_bulk_send table{
+border: 0px solid transparent;
+margin: 2em;
+}
+div.form_bulk_send table thead td{
+background: darkgray;
+font-weight: bold;
+text-align: center;
+}
+div.form_bulk_send table td{
+	border: 0px;
+	padding: 0.4em;
+}
+table{
+	width: 400px;
+}
+td.col_m{
+	width: 400px;
+}
+td.col_0{
+	text-align: right;
+	width: 20em;
+}
+td.col_1{
+	text-align: right;
+}
+td.col_2{
+	text-align: left;
+}
+td.empty_row{
+height: 2em;	
+}
+
+tr.row_op td.col_1{
+	height: 1em;
+	padding: 0px;
+	margin: 0px;
+}
+
+
+tr.row_rez td{
+font-weight: bold;
+}
+tr.row_rez.row_rez_final td{
+background: darkgray;
+}
+tr.row_section td{
+	background: lightgreen;
+}
+
+div.form_bulk_send hr{
+	border-top: 1px solid black;
+	border-bottom: 0px solid black;
+	border-right: 0px solid black;
+	border-left: 0px solid black;
+}

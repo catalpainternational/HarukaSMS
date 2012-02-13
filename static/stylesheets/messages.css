@@ -1,0 +1,110 @@
+.results ul {
+    list-style-type:none;
+    margin:2px;
+    padding:0;
+}
+
+.results li {
+    padding:1px;
+}
+
+.small {
+    font-size:8pt;
+}
+
+.successmessage {
+    color:green;
+}
+
+.errormessage {
+    color:red;
+}
+
+.othermessage {
+    color:blue;
+}
+
+.filter_form_help {
+    font-size:8pt;
+    color:gray;
+    position:relative;
+    float:left;
+    top:.5em;
+}
+
+#filters {
+    height:5.5em;
+}
+
+#div_filter_0 {
+    position:absolute;
+    left:0;
+    top:3em;
+}
+
+#div_filter_0 input {
+    position:absolute;
+	margin-left:30%;
+    left:20%;
+    top:0em;
+}
+
+#div_filter_1 {
+    position:absolute;
+    left:35%;
+    top: 3em;
+}
+
+#div_filter_2 {
+    position:absolute;
+    left:56%;
+    top: 3em;
+}
+
+#div_filter_3 {
+    position:absolute;
+    left:76%;
+    top: 3em;
+}
+
+#div_filter_update {
+    position:absolute;
+    right:1em;
+    top: 5em;
+}
+
+#div_filter_clear {
+    position:absolute;
+    right:7em;
+    top: 5em;
+}
+
+#actions {
+    height:9em;
+}
+
+#div_action_0 {
+    position:absolute;
+    top:3em;
+    left:0;
+}
+
+#div_action_0 a {
+    position:absolute;
+    top:1em;
+    left:25em;
+    white-space:nowrap;
+}
+
+#div_action_1 {
+    position:absolute;
+    top:3em;
+    left:45%;
+}
+
+#div_action_1 a {
+    position:absolute;
+    top:1em;
+    left:10em;
+    white-space:nowrap;
+}

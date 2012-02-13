@@ -39,7 +39,7 @@ INSTALLED_BACKENDS = {
 #  },
 #    "TLS-TT": {
 #        "ENGINE": "rapidsms.backends.gsm",
-        #"PORT": "/dev/tty.MTCBA-U-G410",
+#        #"PORT": "/dev/tty.MTCBA-U-G410",
 #        "PORT" : "/dev/tty.HUAWEIMobile-Modem",
 #        "baudrate": 115200,
 #        "rtscts": 1,
@@ -62,7 +62,6 @@ INSTALLED_APPS = [
 
     # common dependencies (which don't clutter up the ui).
     "rapidsms.contrib.handlers",
-    #"rapidsms.contrib.ajax", # can't be used with rapidsms_httprouter
 
     # enable the django admin using a little shim app (which includes
     # the required urlpatterns), and a bunch of undocumented apps that
@@ -72,23 +71,18 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.sessions",
     "django.contrib.contenttypes",
-   # "django.contrib.staticfiles",
+    "django.contrib.staticfiles",
 
     # the rapidsms contrib apps.
     "rapidsms.contrib.default",
     "rapidsms.contrib.export",
-    #"rapidsms.contrib.httptester", # can't be used with rapidsms_httprouter
     "rapidsms.contrib.locations",
-    #"rapidsms.contrib.messagelog", # can't be used with rapidsms_httprouter
     "rapidsms.contrib.messaging",
-    #"rapidsms.contrib.registration",
     "rapidsms.contrib.scheduler",
     "rapidsms.contrib.echo",
-    "django.contrib.staticfiles",
 
     # Haruka specific #
     ###################
-    "django_wsgiserver",
     # 'rosetta',
     "eav", # used by xforms
     "uni_form", # used by xforms
@@ -107,6 +101,14 @@ INSTALLED_APPS = [
     "simple_locations",
     "rapidsms_httprouter",
     "poll",
+
+    # just for Development
+    "django_extensions",
+    "werkzeug",
+
+    # for Deployment
+    "django_wsgiserver",
+
 ]
 
 # rapidsms-httprouter related items
@@ -165,8 +167,7 @@ MIDDLEWARE_CLASSES = (
 # debug mode is turned on as default, since rapidsms is under heavy
 # development at the moment, and full stack traces are very useful
 # when reporting bugs. don't forget to turn this off in production.
-DEBUG = TEMPLATE_DEBUG = True
-
+DEBUG = TEMPLATE_DEBUG = False
 
 # after login (which is handled by django.contrib.auth), redirect to the
 # dashboard rather than 'accounts/profile' (the default).
@@ -206,6 +207,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
+    "django.core.context_processors.static",
 ]
 
 # Absolute path to the directory static files should be collected to.
