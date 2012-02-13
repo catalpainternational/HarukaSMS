@@ -54,27 +54,30 @@ def registration(req, pk=None):
                 identity = phonenumbers.format_number(phonenumbers.parse(identity, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
                 identity = identity.replace('+','') # this makes the polls app happy again
 
-                if Connection.objects.filter(identity=identity).exists():
-                    messages.error(req, "You already have a contact with the phone number: %s (%s)" % (identity, name))
-                    return HttpResponseRedirect(reverse(registration))
-
                 try:
                     gender = line_list[2].strip()
                     age = line_list[3].strip()
                     location = line_list[4].strip()
                 except:
                     gender = age = location = ''
-                # we need this because of the groups extensions to contact and its custom save()
-                contact = Contact(name=name, phone=identity,
-                                 #age=age, language=language)
-                                 gender=gender, age=age, location=location, language=LANGUAGE_CODE)
+                
+                if not age.isdigit():
+                        age = 0
+                
+                # Create or update our contact
+                contact, new = Contact.objects.get_or_create(connection__identity=identity)
+                contact.name = name
+                contact.phone = identity
+                contact.gender = gender
+                contact.age = age
+                contact.location = location
+                contact.language = LANGUAGE_CODE
                 contact.save()
 
                 # Get our backend or create one
-                backend, created = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
-
-                connection = Connection(backend=backend, identity=identity,\
-                    contact=contact)
+                backend, new = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
+                connection, new = Connection.objects.get_or_create(backend=backend, identity=identity)
+                connection.contact=contact
                 connection.save()
 
             messages.success(req, 'Thank you, you successfully added to your contacts.')

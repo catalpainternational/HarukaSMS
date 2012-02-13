@@ -10,7 +10,7 @@ class RegistrationApp(AppBase):
     # message pattern expected: 'mileage start number' or 'mileage stop number'
     # in order to take care of possible typos it will accept a mispelled milage
     # for the keyword: 'milage start number' or 'milage stop number'
-    pattern = re.compile(r'^(reg|join|register)\s+(.+)', re.IGNORECASE)
+    pattern = re.compile(r'^(reg|join|register|rej|rejistu)\s+(.+)', re.IGNORECASE)
 
     def start (self):
         """Configure your app in the start phase."""
@@ -27,6 +27,7 @@ class RegistrationApp(AppBase):
 
         if response:
 
+            # FIX ME! Please?!?!
             name = response.pop()[1].encode('ascii', 'replace')
 
             identity = message.connection.identity
