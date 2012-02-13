@@ -50,7 +50,6 @@ class GroupForm(forms.ModelForm):
         qs = Contact.objects.order_by('name')
         self.fields['contacts'].queryset = qs
         self.fields['contacts'].widget.attrs['class'] = 'horitzonal-multiselect'
-        print self.fields['contacts'].widget
 
 class ContactForm(forms.ModelForm):
     """ Form for managing contacts """
