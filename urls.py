@@ -26,7 +26,6 @@ urlpatterns = patterns('',
     (r'^locations/', include('rapidsms.contrib.locations.urls')),
     (r'^messagelog/', include('rapidsms.contrib.messagelog.urls')),
     (r'^messaging/', include('rapidsms.contrib.messaging.urls')),
-    #(r'^registration/', include('rapidsms.contrib.registration.urls')),
     (r'^scheduler/', include('rapidsms.contrib.scheduler.urls')),
 
     # Haruka specific
@@ -38,11 +37,16 @@ urlpatterns = patterns('',
     ('', include('rapidsms_httprouter.urls')),
 )
 
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        # helper URLs file that automatically serves the 'static' folder in
-        # INSTALLED_APPS via the Django static media server (NOT for use in
-        # production)
-        (r'^', include('rapidsms.urls.static_media')),
-    )
-    urlpatterns += staticfiles_urlpatterns()
+urlpatterns += patterns('',
+    # helper URLs file that automatically serves the 'static' folder in
+    # INSTALLED_APPS via the Django static media server (NOT for use in
+    # production)
+    (r'^', include('rapidsms.urls.static_media')),
+)
+urlpatterns += staticfiles_urlpatterns()
+
+urlpatterns += patterns('',
+        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.STATIC_ROOT,
+        }),
+   )
