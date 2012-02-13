@@ -42,11 +42,8 @@ urlpatterns += patterns('',
     # INSTALLED_APPS via the Django static media server (NOT for use in
     # production)
     (r'^', include('rapidsms.urls.static_media')),
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': settings.STATIC_ROOT,}),
+ 
 )
 urlpatterns += staticfiles_urlpatterns()
-
-urlpatterns += patterns('',
-        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.STATIC_ROOT,
-        }),
-   )
