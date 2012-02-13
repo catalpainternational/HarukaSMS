@@ -18,6 +18,11 @@ DATABASES = {
     }
 }
 
+# debug mode is turned on as default, since rapidsms is under heavy
+# development at the moment, and full stack traces are very useful
+# when reporting bugs. don't forget to turn this off in production.
+DEBUG = TEMPLATE_DEBUG = True
+
 
 # the rapidsms backend configuration is designed to resemble django's
 # database configuration, as a nested dict of (name, configuration).
@@ -102,14 +107,18 @@ INSTALLED_APPS = [
     "rapidsms_httprouter",
     "poll",
 
-    # just for Development
-    "django_extensions",
-    "werkzeug",
-
-    # for Deployment
-    "django_wsgiserver",
-
 ]
+
+if DEBUG == True:
+    INSTALLED_APPS += [
+        "django_extensions",
+        "werkzeug",
+    ]
+elif DEBUG == False:
+    INSTALLED_APPS += [
+        "django_wsgiserver"
+    ]
+
 
 # rapidsms-httprouter related items
 SMS_APPS = [
@@ -163,11 +172,6 @@ MIDDLEWARE_CLASSES = (
 #                         BORING CONFIGURATION                         #
 # -------------------------------------------------------------------- #
 
-
-# debug mode is turned on as default, since rapidsms is under heavy
-# development at the moment, and full stack traces are very useful
-# when reporting bugs. don't forget to turn this off in production.
-DEBUG = TEMPLATE_DEBUG = False
 
 # after login (which is handled by django.contrib.auth), redirect to the
 # dashboard rather than 'accounts/profile' (the default).
