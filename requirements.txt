@@ -1,9 +1,3 @@
--e git://github.com/macdhuibh/rapidsms.git#egg=RapidSMS
--e git://github.com/rapidsms/pygsm.git#egg=pygsm
--e git://github.com/catalpainternational/rapidsms-xforms.git#egg=rapidsms-xforms
--e git://github.com/unicefuganda/rapidsms-generic.git#egg=rapidsms-generic
--e git://github.com/unicefuganda/rapidsms-contact.git#egg=rapidsms-contact
--e git://github.com/caktus/pygsm-gateway.git#egg=pygsm-gateway
 django
 django-sorting
 django_pagination
@@ -14,3 +8,11 @@ django_wsgiserver
 django_extensions
 werkzeug
 phonenumbers
+-e git://github.com/rapidsms/pygsm.git#egg=pygsm
+-e git://github.com/macdhuibh/rapidsms.git#egg=RapidSMS
+-e git://github.com/catalpainternational/code_generator#egg=code_generator
+-e git://github.com/catalpainternational/pygsm-gateway.git#egg=pygsm-gateway
+-e git://github.com/catalpainternational/rapidsms-xforms.git#egg=rapidsms-xforms
+-e git://github.com/unicefuganda/rapidsms-generic.git#egg=rapidsms-generic
+-e git://github.com/unicefuganda/rapidsms-contact.git#egg=rapidsms-contact
+
