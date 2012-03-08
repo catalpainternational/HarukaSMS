@@ -51,8 +51,8 @@ def registration(req, pk=None):
                 line_list = line.split(',')
                 name = line_list[0].strip()
                 identity = line_list[1].strip()
-                identity = phonenumbers.format_number(phonenumbers.parse(identity, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
-                identity = identity.replace('+','') # this makes the polls app happy again
+                #identity = phonenumbers.format_number(phonenumbers.parse(identity, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
+                #identity = identity.replace('+','') # this makes the polls app happy again
 
                 try:
                     gender = line_list[2].strip()
@@ -93,8 +93,8 @@ def registration(req, pk=None):
                 contact = contact_form.save()
                 
                 #Sanitize and properly format the phone number
-                contact.phone = phonenumbers.format_number(phonenumbers.parse(contact.phone, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
-                contact.phone = contact.phone.replace('+','') # this makes the polls app happy again
+                #contact.phone = phonenumbers.format_number(phonenumbers.parse(contact.phone, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
+                #contact.phone = contact.phone.replace('+','') # this makes the polls app happy again
                 contact.language = LANGUAGE_CODE
                 contact.save()
 
