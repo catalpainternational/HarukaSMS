@@ -40,4 +40,6 @@ urlpatterns = patterns(
     url(r"^(\d+)/category/(\d+)/rules/$", views.view_rules),
     url(r"^(\d+)/categories/add/$", views.add_category),
     url(r"^(\d+)/demo/", views.demo, name="demo"),
+
+    url(r"^/activity_as_csv/$", views.activity_as_csv),
 )

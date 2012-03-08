@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import csv
+
 from django import forms
+from django.forms.util import ErrorList
 from django.db import transaction
 from django.db.models import Q, Count
 from django.views.decorators.http import require_GET
@@ -11,21 +13,21 @@ from django.contrib.sites.models import Site
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils import simplejson, timesince
 from django.utils.safestring import mark_safe
-from rapidsms_httprouter.router import get_router
-from rapidsms.messages.outgoing import OutgoingMessage
-from .models import Response
-from rapidsms.contrib.locations.models import Location
-from rapidsms.models import Contact, Connection, Backend
-from eav.models import Attribute
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_control
 from django.conf import settings
-from django.core.paginator import Paginator, EmptyPage
-from rapidsms_httprouter.models import Message
-from rapidsms_httprouter.views import MessageTable
 
-from .forms import *
+from rapidsms.messages.outgoing import OutgoingMessage
+from rapidsms.contrib.locations.models import Location
+from rapidsms.models import Contact, Connection, Backend
+
+from rapidsms_httprouter.models import Message
+from rapidsms_httprouter.router import get_router
 from rapidsms_xforms.models import XForm
+from eav.models import Attribute
+
+from poll.forms import ReplyForm, NewPollForm, EditPollForm, CategoryForm, RuleForm, PollTranslation
+from poll.models import Response, Poll, Translation, Category, Rule
 
 
 def _mail_merge(contact, text):
@@ -60,6 +62,23 @@ def responses_as_csv(req, pk):
     return response
 
 
+@require_GET
+@login_required
+def activity_as_csv(req):
+    """ CSV export """
+    activity = Message.objects.all().order_by('-pk')
+
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=export.csv'
+
+    writer = csv.writer(response)
+    writer.writerow(['Date', 'Phone Number', 'Message Text'])
+    for item in activity:
+        writer.writerow([item.date, item.connection.identity, item.text])
+    return response
+
+
 @login_required
 def dashboard(req):
     """ dashboard for viewing poll status and incoming / outgoing messages """
@@ -72,7 +91,7 @@ def dashboard(req):
             if reply_form.is_valid():
                 if Connection.objects.filter(identity=reply_form.cleaned_data['recipient']).count():
                     text = reply_form.cleaned_data['message']
-                    try: #if the contact is in the database perform a mailmerge
+                    try:  # if the contact is in the database perform a mailmerge
                         conn = Connection.objects.filter(identity=reply_form.cleaned_data['recipient'])[0]
                         text = _mail_merge(Contact.objects.get(connection__identity=conn.identity), text)
                     except:
@@ -94,14 +113,14 @@ def dashboard(req):
             message.connection.name = Contact.objects.get(connection__identity=message.connection.identity).name
 
     # prepare for the message table
-    titles=["Text","Direction","Phone number","Status","Time"]
-    table = read_only_message_table(messages,titles)
+    titles = ["Text", "Direction", "Phone number", "Status", "Time"]
+    table = read_only_message_table(messages, titles)
 
     return render_to_response(
         "polls/poll_dashboard.html",
-        { "polls": polls,
-          "data_collections" : data_collections,
-          "reply_form" : reply_form,
+        {"polls": polls,
+          "data_collections": data_collections,
+          "reply_form": reply_form,
           "messages_table": table},
         context_instance=RequestContext(req))
 
@@ -111,10 +130,10 @@ def dashboard(req):
 def latest_messages(req):
     """ return -json- HTML with latest messages """
     queryset = Message.objects.all()
-    titles=["Text","Direction","Phone number","Status","Date"]
-    table = read_only_message_table(queryset.order_by('-date')[0:15],titles)
+    titles = ["Text", "Direction", "Phone number", "Status", "Date"]
+    table = read_only_message_table(queryset.order_by('-date')[0:15], titles)
 
-    return HttpResponse(status=200,content=table)
+    return HttpResponse(status=200, content=table)
 
 
 @require_GET
@@ -124,21 +143,20 @@ def polls(req):
     breadcrumbs = (('Polls', ''),)
     return render_to_response(
         "polls/poll_index.html",
-        { 'polls': polls, 'breadcrumbs': breadcrumbs },
+        {'polls': polls, 'breadcrumbs': breadcrumbs},
         context_instance=RequestContext(req))
 
 
 def demo(req, poll_id):
-    poll = get_object_or_404(Poll, pk=poll_id)
     b1, created = Backend.objects.get_or_create(name="dmark")
     # Terra
     c1, created = Connection.objects.get_or_create(identity="256785137868", defaults={
-        'backend':b1,
+        'backend': b1,
     })
     # Sharad
     b2, created = Backend.objects.get_or_create(name="utl")
     c2, created = Connection.objects.get_or_create(identity="256717171100", defaults={
-        'backend':b2,
+        'backend': b2,
     })
     router = get_router()
     outgoing = OutgoingMessage(c1, "dear Bulambuli representative: uReport, Uganda's community-level monitoring system, shows that 75% of young reporters in your district found that their local water point IS NOT functioning.")
@@ -181,8 +199,8 @@ def new_poll(req):
                                  default_response,
                                  contacts,
                                  req.user)
-            poll.contacts=contacts # for some reason this wasn't being saved in the create_with_bulk call
-            poll.response_type=response_type
+            poll.contacts = contacts  # for some reason this wasn't being saved in the create_with_bulk call
+            poll.response_type = response_type
             poll.save()
 
             if p_type == NewPollForm.TYPE_YES_NO:
@@ -199,7 +217,7 @@ def new_poll(req):
         form.updateTypes()
 
     return render_to_response(
-        "polls/poll_create.html", { 'form': form},
+        "polls/poll_create.html", {'form': form},
         context_instance=RequestContext(req))
 
 
@@ -209,7 +227,7 @@ def view_poll(req, poll_id):
     categories = Category.objects.filter(poll=poll)
     breadcrumbs = (('Polls', reverse('polls')), ('Edit Poll', ''))
     return render_to_response("polls/poll_view.html",
-        { 'poll': poll, 'categories': categories, 'category_count' : len(categories), 'breadcrumbs' : breadcrumbs },
+        {'poll': poll, 'categories': categories, 'category_count': len(categories), 'breadcrumbs': breadcrumbs},
         context_instance=RequestContext(req))
 
 
@@ -218,9 +236,9 @@ def view_report(req, poll_id, location_id=None, as_module=False):
     template = "polls/poll_report.html"
     poll = get_object_or_404(Poll, pk=poll_id)
     try:
-        response_rate =  poll.responses.distinct().count()* 100.0 / poll.contacts.distinct().count()
+        response_rate = poll.responses.distinct().count() * 100.0 / poll.contacts.distinct().count()
     except ZeroDivisionError:
-        response_rate="N/A"
+        response_rate = "N/A"
     if as_module:
         if poll.type == Poll.TYPE_TEXT:
             template = "polls/poll_report_text.html"
@@ -252,8 +270,8 @@ def view_report(req, poll_id, location_id=None, as_module=False):
                 offset = 0
                 while (offset < len(report)):
                     #reset the current row
-                    row = {'location_name':report[offset]['location_name'],
-                           'location_id':report[offset]['location_id']}
+                    row = {'location_name': report[offset]['location_name'],
+                           'location_id': report[offset]['location_id']}
                     data = []
                     total = 0.0
 
@@ -287,12 +305,12 @@ def view_report(req, poll_id, location_id=None, as_module=False):
                 results = results + list(report)
 
     breadcrumbs = (('Polls', reverse('polls')),)
-    context = { 'poll':poll, 'breadcrumbs':breadcrumbs, 'categories':poll.categories.order_by('name'), 'report_rows':results, 'response_rate':response_rate }
+    context = {'poll': poll, 'breadcrumbs': breadcrumbs, 'categories': poll.categories.order_by('name'), 'report_rows': results, 'response_rate': response_rate}
 
     if poll.type != Poll.TYPE_TEXT and poll.type != Poll.TYPE_NUMERIC:
         return render_to_response(
         "polls/poll_index.html",
-        { 'polls': Poll.objects.order_by('start_date'), 'breadcrumbs': (('Polls', ''),) },
+        {'polls': Poll.objects.order_by('start_date'), 'breadcrumbs': (('Polls', ''),)},
         context_instance=RequestContext(req))
     else:
         return render_to_response(template, context, context_instance=RequestContext(req))
@@ -303,7 +321,7 @@ def view_report(req, poll_id, location_id=None, as_module=False):
 def view_poll_details(req, form_id):
     poll = get_object_or_404(Poll.objects.annotate(Count('contacts')), pk=form_id)
     return render_to_response("polls/poll_details.html",
-        { 'poll': poll },
+        {'poll': poll},
         context_instance=RequestContext(req))
 
 
@@ -321,13 +339,13 @@ def edit_poll(req, poll_id):
             poll = form.save()
             poll.contacts = form.cleaned_data['contacts']
             return render_to_response("polls/poll_details.html",
-                {"poll" : poll},
+                {"poll": poll},
                 context_instance=RequestContext(req))
     else:
         form = EditPollForm(instance=poll)
 
     return render_to_response("polls/poll_edit.html",
-        { 'form': form, 'poll': poll, 'categories': categories, 'category_count' : len(categories), 'breadcrumbs' : breadcrumbs },
+        {'form': form, 'poll': poll, 'categories': categories, 'category_count': len(categories), 'breadcrumbs': breadcrumbs},
         context_instance=RequestContext(req))
 
 
@@ -345,7 +363,7 @@ def view_responses(req, poll_id, as_module=False):
 
     typedef = Poll.TYPE_CHOICES[poll.type]
     return render_to_response(template,
-        { 'poll': poll, 'responses': responses, 'breadcrumbs': breadcrumbs, 'columns': typedef['report_columns'], 'db_type': typedef['db_type'], 'row_template':typedef['view_template']},
+        {'poll': poll, 'responses': responses, 'breadcrumbs': breadcrumbs, 'columns': typedef['report_columns'], 'db_type': typedef['db_type'], 'row_template': typedef['view_template']},
         context_instance=RequestContext(req))
 
 
@@ -355,7 +373,7 @@ def stats(req, poll_id, location_id=None):
     if location_id:
         location = get_object_or_404(Location, pk=location_id)
     json_response_data = {}
-    json_response_data = {'layer_title':'Survey:%s' % poll.name, 'layer_type':'categorized', 'data':list(poll.responses_by_category(location))}
+    json_response_data = {'layer_title': 'Survey:%s' % poll.name, 'layer_type': 'categorized', 'data': list(poll.responses_by_category(location))}
     return HttpResponse(mark_safe(simplejson.dumps(json_response_data)))
 
 
@@ -370,13 +388,15 @@ def _get_response_edit_form(response, data=None):
     if typedef['edit_form']:
         form = typedef['edit_form']
         if type(form) == str:
-            m = '.'.join(form.split('.')[:-1])
+            module = '.'.join(form.split('.')[:-1])
             klass = form.split('.')[-1]
             module = __import__(module, globals(), locals(), [klass])
             form = getattr(module, klass)
     else:
         parser = typedef['parser']
+
         class CustomForm(forms.Form):
+
             def __init__(self, data=None, **kwargs):
                 response = kwargs.pop('response')
                 if data:
@@ -385,6 +405,7 @@ def _get_response_edit_form(response, data=None):
                     forms.Form.__init__(self, **kwargs)
 
             value = forms.CharField()
+
             def clean(self):
                 cleaned_data = self.cleaned_data
                 value = cleaned_data.get('value')
@@ -411,7 +432,7 @@ def _get_response_edit_form(response, data=None):
             value = response.eav.poll_number_value
         elif typedef['db_type'] == Attribute.TYPE_OBJECT:
             value = response.eav.poll_location_value
-        return form(response=response, initial={'value':value})
+        return form(response=response, initial={'value': value})
 
 
 @login_required
@@ -475,21 +496,21 @@ def edit_response(req, response_id):
                     response.eav.poll_number_value = form.cleaned_data['value']
                 elif db_type == Attribute.TYPE_OBJECT:
                     response.eav.poll_location_value = form.cleaned_data['value']
-                elif db_type == Attibute.TYPE_TEXT:
+                elif db_type == Attribute.TYPE_TEXT:
                     response.eav.poll_text_value = form.cleaned_data['value']
             response.save()
             return render_to_response(view_template,
-                { 'response' : response, 'db_type':db_type },
+                {'response': response, 'db_type': db_type},
                 context_instance=RequestContext(req))
         else:
             return render_to_response(edit_template,
-                            { 'response' : response, 'form':form, 'db_type':db_type },
+                            {'response': response, 'form': form, 'db_type': db_type},
                             context_instance=RequestContext(req))
     else:
         form = _get_response_edit_form(response)
 
     return render_to_response(edit_template,
-        { 'form' : form, 'response': response, 'db_type':db_type },
+        {'form': form, 'response': response, 'db_type': db_type},
         context_instance=RequestContext(req))
 
 
@@ -499,18 +520,17 @@ def view_response(req, response_id):
     db_type = Poll.TYPE_CHOICES[response.poll.type]['db_type']
     view_template = Poll.TYPE_CHOICES[response.poll.type]['view_template']
     return render_to_response(view_template,
-        { 'response': response, 'db_type': db_type},
+        {'response': response, 'db_type': db_type},
         context_instance=RequestContext(req))
 
 
 @login_required
 @permission_required('poll.can_edit_poll')
-def delete_response (req, response_id):
+def delete_response(req, response_id):
     response = get_object_or_404(Response, pk=response_id)
-    poll = response.poll
     if req.method == 'POST':
-        response_message=response.message
-        response_message.application=None
+        response_message = response.message
+        response_message.application = None
         response_message.save()
         response.delete()
 
@@ -522,14 +542,14 @@ def view_category(req, poll_id, category_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     category = get_object_or_404(Category, pk=category_id)
     return render_to_response("polls/category_view.html",
-        { 'poll': poll, 'category' : category },
+        {'poll': poll, 'category': category},
         context_instance=RequestContext(req))
 
 
 @login_required
 @transaction.commit_on_success
 @permission_required('poll.can_edit_poll')
-def edit_category (req, poll_id, category_id):
+def edit_category(req, poll_id, category_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     category = get_object_or_404(Category, pk=category_id)
     if req.method == 'POST':
@@ -542,17 +562,17 @@ def edit_category (req, poll_id, category_id):
             category.poll = poll
             category.save()
             return render_to_response("polls/category_view.html",
-                { 'form' : form, 'poll': poll, 'category' : category },
+                {'form': form, 'poll': poll, 'category': category},
                 context_instance=RequestContext(req))
         else:
             return render_to_response("polls/category_edit.html",
-                            { 'form' : form, 'poll': poll, 'category' : category },
+                            {'form': form, 'poll': poll, 'category': category},
                             context_instance=RequestContext(req))
     else:
         form = CategoryForm(instance=category)
 
     return render_to_response("polls/category_edit.html",
-        { 'form' : form, 'poll': poll, 'category' : category },
+        {'form': form, 'poll': poll, 'category': category},
         context_instance=RequestContext(req))
 
 
@@ -574,19 +594,19 @@ def add_category(req, poll_id):
             category.save()
             poll.categories.add(category)
             return render_to_response("polls/category_view.html",
-                { 'category' : category, 'form' : form, 'poll' : poll },
+                {'category': category, 'form': form, 'poll': poll},
                 context_instance=RequestContext(req))
     else:
         form = CategoryForm()
 
     return render_to_response("polls/category_edit.html",
-        { 'form' : form, 'poll' : poll },
+        {'form': form, 'poll': poll},
         context_instance=RequestContext(req))
 
 
 @login_required
 @permission_required('poll.can_edit_poll')
-def delete_poll (req, poll_id):
+def delete_poll(req, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     if req.method == 'POST':
         poll.delete()
@@ -596,32 +616,31 @@ def delete_poll (req, poll_id):
 
 @login_required
 @permission_required('poll.can_poll')
-def start_poll (req, poll_id):
+def start_poll(req, poll_id):
     poll = Poll.objects.get(pk=poll_id)
     if req.method == 'POST':
         poll.start()
 
     return render_to_response("polls/poll_details.html",
-        {"poll" : poll},
+        {"poll": poll},
         context_instance=RequestContext(req))
 
 
 @login_required
 @permission_required('poll.can_edit_poll')
-def end_poll (req, poll_id):
+def end_poll(req, poll_id):
     poll = Poll.objects.get(pk=poll_id)
     if req.method == 'POST':
         poll.end()
 
     return render_to_response("polls/poll_details.html",
-        {"poll" : poll},
+        {"poll": poll},
         context_instance=RequestContext(req))
 
 
 @login_required
 @permission_required('poll.can_edit_poll')
-def delete_category (req, poll_id, category_id):
-    poll = get_object_or_404(Poll, pk=poll_id)
+def delete_category(req, poll_id, category_id):
     category = get_object_or_404(Category, pk=category_id)
 
     if req.method == 'POST':
@@ -631,7 +650,7 @@ def delete_category (req, poll_id, category_id):
 
 @login_required
 @permission_required('poll.can_edit_poll')
-def edit_rule(req, poll_id, category_id, rule_id) :
+def edit_rule(req, poll_id, category_id, rule_id):
 
     poll = get_object_or_404(Poll, pk=poll_id)
     category = get_object_or_404(Category, pk=category_id)
@@ -645,11 +664,11 @@ def edit_rule(req, poll_id, category_id, rule_id) :
             rule.save()
             poll.reprocess_responses()
             return render_to_response("polls/rule_view.html",
-                {  'rule' : rule, 'poll' : poll, 'category' : category },
+                {'rule': rule, 'poll': poll, 'category': category},
                 context_instance=RequestContext(req))
         else:
             return render_to_response("polls/rule_edit.html",
-                { 'rule' : rule, 'form' : form, 'poll' : poll, 'category' : category },
+                {'rule': rule, 'form': form, 'poll': poll, 'category': category},
                 context_instance=RequestContext(req))
     else:
         form = RuleForm(instance=rule)
@@ -714,7 +733,7 @@ def view_rules(req, poll_id, category_id):
 @login_required
 @transaction.commit_on_success
 @permission_required('poll.can_edit_poll')
-def delete_rule (req, poll_id, category_id, rule_id):
+def delete_rule(req, poll_id, category_id, rule_id):
     rule = get_object_or_404(Rule, pk=rule_id)
     category = rule.category
     if req.method == 'POST':
@@ -724,7 +743,7 @@ def delete_rule (req, poll_id, category_id, rule_id):
 
 
 def create_translation(request):
-    translation_form=PollTranslation()
+    translation_form = PollTranslation()
     if request.method == 'POST':
         translation_form = PollTranslation(request.POST)
         if translation_form.is_valid():
@@ -734,7 +753,7 @@ def create_translation(request):
             context_instance=RequestContext(request))
 
 
-def append_msg_row(table,message):
+def append_msg_row(table, message):
     make_friendly = {   "A": "All",         "H": "Handled",
                         "L": "Locked",      "D": "Delivered",
                         "I": "Incoming",    "O": "Outgoing",
@@ -754,17 +773,17 @@ def append_msg_row(table,message):
 
     table.append("%(name)s <br /> <a href=\"#\" onclick=\"javascript:reply('%(identity)s')\">%(identity)s</a>" \
                                                                     % { 'identity': message.connection.identity,
-                                                                        'name': name,})
+                                                                        'name': name})
     table.append("</td><td>")
     table.append(make_friendly[message.status])
     table.append("</td><td>")
-    table.append(timesince.timesince(message.date)+" ago")
+    table.append(timesince.timesince(message.date) + " ago")
     #table.append(message.date.strftime("%m/%d/%Y %H:%m"))
     table.append("</td></tr>")
 
 
-def read_only_message_table(messages,titles):
-    table =[u"<table id=\'messages_table\'>"]
+def read_only_message_table(messages, titles):
+    table = [u"<table id=\'messages_table\'>"]
     table.append(u"\t<thead>\n\t\t<tr>")
 
     for item in titles:
@@ -776,7 +795,7 @@ def read_only_message_table(messages,titles):
     table.append('\t<tbody>')
 
     for message in messages:
-        append_msg_row(table,message)
+        append_msg_row(table, message)
 
     table.append(u'\t</tbody>\n</table>')
     return u"".join(table)
