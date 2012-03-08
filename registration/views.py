@@ -1,34 +1,51 @@
 #!/usr/bin/env python
 # vim: ai ts=4 sts=4 et sw=4
 
-#import csv
+import csv
 
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.db import transaction
 from django.shortcuts import render_to_response, get_object_or_404
+from django.views.decorators.http import require_GET
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
 from rapidsms.models import Contact
 from rapidsms.models import Connection
 from rapidsms.models import Backend
 from rapidsms.contrib.registration.tables import ContactTable
-from rapidsms.contrib.messaging.utils import send_message
-from django.contrib.auth.decorators import login_required
+
 
 import phonenumbers
 
 from .forms import BulkRegistrationForm
 from .forms import ContactForm
-from .tables import ContactTable
 from settings import LANGUAGE_CODE, COUNTRY_CODE, DEFAULT_BACKEND_NAME
+
+
+@require_GET
+@login_required
+def contacts_as_csv(req):
+    """ CSV export of all contacts """
+    contacts = Contact.objects.all().order_by('name')
+
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=harukasms-contacts.csv'
+
+    writer = csv.writer(response)
+    writer.writerow(['Name', 'Telephone Number', ' Gender', 'Age', 'Location'])
+    for contact in contacts:
+        writer.writerow([contact.name, contact.phone, contact.gender, contact.age, contact.location])
+    return response
 
 
 @login_required
 @transaction.commit_on_success
 def registration(req, pk=None):
     contact = None
-    backend_name = DEFAULT_BACKEND_NAME
 
     #TODO: fix case where a user registers via sms and then edits via web
     if pk is not None:
@@ -60,10 +77,10 @@ def registration(req, pk=None):
                     location = line_list[4].strip()
                 except:
                     gender = age = location = ''
-                
+
                 if not age.isdigit():
                         age = 0
-                
+
                 # Create or update our contact
                 contact, new = Contact.objects.get_or_create(connection__identity=identity)
                 contact.name = name
@@ -77,7 +94,7 @@ def registration(req, pk=None):
                 # Get our backend or create one
                 backend, new = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
                 connection, new = Connection.objects.get_or_create(backend=backend, identity=identity)
-                connection.contact=contact
+                connection.contact = contact
                 connection.save()
 
             messages.success(req, 'Thank you, you successfully added to your contacts.')
@@ -91,7 +108,6 @@ def registration(req, pk=None):
 
             if contact_form.is_valid():
                 contact = contact_form.save()
-                
                 #Sanitize and properly format the phone number
                 #contact.phone = phonenumbers.format_number(phonenumbers.parse(contact.phone, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
                 #contact.phone = contact.phone.replace('+','') # this makes the polls app happy again
