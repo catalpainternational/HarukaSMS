@@ -79,23 +79,6 @@ def activity_as_csv(req):
     return response
 
 
-@require_GET
-@login_required
-def contacts_as_csv(req):
-    """ CSV export of all contacts """
-    activity = Message.objects.all().order_by('-pk')
-
-    # Create the HttpResponse object with the appropriate CSV header.
-    response = HttpResponse(mimetype='text/csv')
-    response['Content-Disposition'] = 'attachment; filename=harukasms-activity.csv'
-
-    writer = csv.writer(response)
-    writer.writerow(['Date', 'Phone Number', 'Message Text'])
-    for item in activity:
-        writer.writerow([item.date, item.connection.identity, item.text])
-    return response
-
-
 @login_required
 def dashboard(req):
     """ dashboard for viewing poll status and incoming / outgoing messages """

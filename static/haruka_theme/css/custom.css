@@ -980,4 +980,16 @@ div.field_box {
 	border: none;
 }
 
+img#download-activity {
+    float: left;
+    margin-left: 140px;
+    margin-top: -28px;
+}
+
+img#download-contacts {
+    float: left;
+    margin-left: 80px;
+    margin-top: -28px;
+}
+
 

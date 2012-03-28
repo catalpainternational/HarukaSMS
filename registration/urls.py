@@ -11,11 +11,7 @@ urlpatterns = patterns('',
         views.registration,
         name="registration"),
 
-    url(r'^registration/$',
-        views.registration,
-        name="registration"),
-
-    url(r'^registration/(?P<pk>\d+)/edit/$',
+    url(r'^/(?P<pk>\d+)/edit/$',
         views.registration,
         name="registration_edit"),
 

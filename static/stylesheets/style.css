@@ -1,4 +1,8 @@
-.form_title {
+#id_contacts, #id_groups {
+    height:80px;
+}
+
+.poll_title {
 	font-size:20px;
 	padding-bottom:5px;
 	border-bottom:0px solid #eee;
@@ -6,17 +10,17 @@
 	margin-bottom:10px;
 }
 
-.form_body {
+.poll_body {
 	font-size:16px;
 	color:#666;
 }
 
-.form_edit {
+.poll_edit {
 	font-size:10px;
 	padding-left:5px;
 }
 
-.form_fields {
+.poll_categories {
 	margin-top:10px;
 	padding-top:10px;
 	background: green;
@@ -35,28 +39,28 @@
   font-weight: bold;
 }
 
-.form_unselected {
+.poll_unselected {
 }
 
-.form_selected {
-
-}
-
-.form_field_edits {
+.poll_selected {
 
 }
 
-.form_field_name {
+.poll_category_edits {
 
 }
 
-.form_edit_name {
+.poll_category_name {
+
+}
+
+.poll_edit_name {
 	padding-bottom:3px;
 	margin-bottom:5px;
 	border-bottom:0px solid #ddd;
 }
 
-.form_edit_name #id_caption {
+.poll_edit_name #id_caption {
 	font-size:18px;
 	color:#666;
 }
@@ -68,7 +72,7 @@
 }
 
 
-.constraints_box {
+.categories_box {
 	margin-top:5px;
 	border-top:0px solid #ddd;
 	padding-top:5px;
@@ -91,25 +95,80 @@
 	padding-left:25px;
 }
 
-.form_table {
+.poll_table {
 	background-color:#efefef;
 	border: 1px solid #ddd;
 
 }
 
-.form_table table tr td th form  {
+.poll_table table tr td th form  {
   padding:0px;
   margin:0px;
 }
 
-.form_fields_cell {
+.poll_categories_cell {
 	padding:0px;
 	padding-right:2px;
 	padding-left:-4px;
-	background-color:#f3f3f3;
+	background-color:white;
 }
 
-.field_box {
+.poll_responses_cell {
+  padding:0px;
+  padding-right:2px;
+  padding-left:-4px;
+  background-color:white;
+}
+
+#div_id_start_immediately {
+  white-space:nowrap;
+}
+
+.rule_rule_type_friendly_col {
+  padding-left:5px;
+  width:150px;
+}
+
+.rule_rule_type_friendly_col td {
+  margin:0px;
+  padding:0px;
+  font-weight:bold;
+}
+
+.rule_rule_type_col {
+  margin:0px;
+  padding:0px;
+  width:150px;
+  font-weight:bold;
+}
+
+.rule_rule_string_col td {
+  padding:0px;
+  padding-left:5px;
+  margin:0px;
+  width:450px;
+}
+
+.rule_rule_string_col input {
+  padding:0px;
+  padding-left:5px;
+  margin:0px;
+  width:430px;
+}
+
+#options_header {
+  width: 250px;
+  border:0px solid;
+  text-align:right; 
+}
+
+.rule_options_col {
+  width: 250px;
+  border:0px solid;
+  text-align:right; 
+}
+
+.category_box {
 	background-color:white;
 	border-left: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
@@ -118,96 +177,148 @@
 	width:100%;
 }
 
-.field_name_col {
+.category_list {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.category_name_col {
 	padding:0px;
 	padding-left:5px;
 	margin:0px;
-	width:200px;
-	border:0px solid;
+	width:100px;
 	font-weight:bold;
 }
 
-.field_type_col {
-	width:125px;
+.category_name_col input {
+  padding:0px;
+  margin:0px;
+  width:80px;
+}
+
+.category_response_col {
+  width:350px;
+}
+
+.category_response_col input {
+  width:330px;
+}
+
+.category_priority_col {
+  text-align:center;
+  width: 75px;
+}
+
+.category_color_col {
+  width:75px;
+  text-align:center;
+}
+
+.category_default_col {
+  width:75px;
+  text-align:center;
+}
+
+.poll_question_col {
 	border:0px solid;
 }
 
-.field_command_col {
-	width:165px;
-	border:0px solid;
-}
-
-.field_description_col {
+.poll_name_col {
 	border:0px solid;
 	width:150px;
 }
 
-.field_options_col {
+.poll_options_col {
+	width: 350px;
 	border:0px solid;
 	text-align:right;	
 }
 
-.form_description_col {
-	border:0px solid;
-}
-
-.form_name_col {
-	border:0px solid;
-	width:100px;
-}
-
-
-.form_options_col {
-	width: 250px;
-	border:0px solid;
-	text-align:right;	
-}
-
-
-.constraint_type_col {
-  width:200px;
-  border:0px;
-}
-
-.constraint_test_col {
-  width:200px;
-  border:0px;
-}
-
-.constraint_message_col {
-  width:250px;
-  border:0px;
-}
-
-.constraint_options_col {
-  border:0px;
-}
-
-.form_table_row {
+.poll_table_row {
 	background: #FFF;
 }
 
-.field_table table tr td th form {
+.category_table table tr td th form {
   padding:0px;
   margin:0px;
 }
 
+.response_table table tr td th form {
+  padding:0px;
+  margin:0px;
+}
 
-.field_table {
+.category_table {
   margin-left:0px;
 }
 
-.field_table td {
+.category_table td {
   font-size:12px;
   color:#666;
 }
 
+.response_options_col {
+  padding:0px;
+  padding-left:5px;
+  margin:0px;
+  width:200px;
+}
+
+.response_location_col {
+  padding:0px;
+  margin:0px;
+  width:100px;    
+}
+
+.response_custom_col {
+  padding:0px;
+  margin:0px;
+  width:100px;
+}
+
+.response_value_col {
+  padding-left:5px;
+  margin:0px;
+  width:50px;    
+}
+
+.response_value_col input {
+  padding-left:5px;
+  width:40px;
+}
+
+.response_categories_col {
+  padding:0px;
+  padding-left:5px;
+  margin:0px;
+  width:100px;
+}      
+      
+.response_sender_col {
+  padding:0px;
+  padding-left:5px;
+  margin:0px;
+  width:100px;
+}      
+      
+.response_text_col {
+  padding:0px;
+  padding-left:5px;
+  margin:0px;
+  width:100px;
+  font-weight:bold;
+}
+
+.response_text_col input {
+   width:80px;
+}
 
 form {
   padding:0px;
   margin:0px;
 }
-.add_field_header {
+.add_category_header {
   background-color:#66a1d0;
   color:white;
   padding-left:10px;
@@ -215,7 +326,7 @@ form {
   padding-bottom:5px;
 }
 
-.field_box .add_field {
+.category_box .add_category {
   background-color:#fff;
 }
 
@@ -237,28 +348,28 @@ form {
   font-size:14px;
 }
 
-#form_header {
+#poll_header {
   margin-left:8px;
   margin-bottom:15px;
   color:#666;
 }
 
-#form_header .name {
+#poll_header .name {
   font-weight:bold;
   font-size:18px;
   margin-bottom:7px;
 }
 
-#form_header .keyword {
+#form_header .participants {
   font-weight:bold;
   font-size:12px;
 }
 
-#form_header .description {
+#poll_header .question {
   font-size:14px;
 }
 
-#form_header .response {
+#poll_header .response {
   font-size:12px;
   font-style:italic;
   margin-top:10px;
@@ -363,19 +474,4 @@ button.positive, .buttons a.positive{
     background-color:#d12f19;
     border:1px solid #d12f19;
     color:#fff;
-}
-
-input[type="checkbox"] + label {
-    display: inline;
-}
-
-.paginator {
-    margin-top: 5px;
-    margin-left: 2px;
-    margin-right: 2px;
-    color: #aaa;
-}
-
-.paginator_pager {
-    float: right;
 }

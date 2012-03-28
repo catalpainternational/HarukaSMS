@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     (r'^account/', include('rapidsms.urls.login_logout')),
 
     url(r'^$', views.dashboard, name='rapidsms-dashboard'),
-    url(r'^activity_as_csv/$', views.activity_as_csv), 
+    url(r'^activity_as_csv/$', views.activity_as_csv),
 
     # RapidSMS contrib app URLs
     (r'^ajax/', include('rapidsms.contrib.ajax.urls')),
