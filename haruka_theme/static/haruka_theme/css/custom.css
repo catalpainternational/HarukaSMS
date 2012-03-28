@@ -18,6 +18,12 @@
         z-index = 0;
 }
 
+	h8 {
+
+	margin-left:150px;
+	margin-top: 45px
+}
+
 /*--------------- START OF HEADER -----------------*/
 
     #spacer {
@@ -579,28 +585,22 @@ tr.row_section td {
 	
 }
 
-#newForm {
-	width:600px;
-	margin-left:150px;
-	height: 605px;
-	margin-top:0px;
+#newForm1 {
+	margin-left:130px;
+	width:  650px;
 	background-color: #F5F5F5;
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
-    margin-bottom: 20px;
-    min-height: 20px;
     padding: 19px;
 }
 
 .uniForm .ctrlHolder {
-    border-bottom: 0px solid #DFDFDF;
-    padding: 7px;
+    border-bottom: 0px;
+    margin: 0px;
+    
 }
 
-#7 table tbody tr td.field_options_col {
-	
-}
 
 div#field_box_2.field_box {
 	border: none;
@@ -633,8 +633,6 @@ div#field_box_2.field_box {
 }
 
 
-}
-
 #inner table.condensed-table thead tr th.field_command_col {
 	margin-left: 0;
 	margin-right: 0;
@@ -647,36 +645,6 @@ div#field_box_2.field_box {
 	position: absolute;
 }
 
-#div_id_default_response {
-	position:absolute;
-	top:-15px;
-}
-
-#div_id_groups {
-	position:absolute;
-	top:0px;
-	top:-138px;
-	
-}
-
-#div_id_start_immediately {
-	position:absolute;
-	top:-16em;
-}
-
-#div_id_name {
-	position:absolute;
-	top:-1em;
-}
-
-#div_id_question {
-	position:absolute;
-	top:-10px;
-}
-
-.uniForm fieldset {
-	height: 605px;
-}
 
 .uniForm textarea, .uniForm .blockLabels textarea {
     height: 2em;
@@ -685,9 +653,6 @@ div#field_box_2.field_box {
  }
 
 /*-----------------DIV REPLACEMENTS DATA COLLECTION -------------------*/
-
-.uniForm fieldset {
-    height: auto;
 
 }
 
@@ -698,12 +663,6 @@ div#field_box_2.field_box {
     position: relative;
     top: 0;
     width: 39%;
-}
-
-
-.ctrlHolder {
-    border-bottom: none;
-    padding: 7px;
 }
 
 #div_id_keyword_prefix {
@@ -958,11 +917,6 @@ ctrlHolder {
 	margin-right: 10px;
 }
 
-#inner div a.btn.primary {
-	left: 20px;
-	top: 15px;
-	position: relative;
-}
 
 #inner form.form table.condensed-table thead tr th.response_categories_col {
 	border-bottom: 1px solid #dfdfdf;
@@ -1000,15 +954,18 @@ img#download-contacts {
 
 }
 
-
-#newForm fieldset div {
-	position: relative;
-
+.poll-buttons{
+	padding-top:1px;
+	width: 200px;
+	margin-left: 15em;
+	margin-top: 1em;
+	
 }
 
-#inner div.row div.span7 div.well form div.submit {
-	position: relative;
-	top: 30px;
+.poll-buttons{
+	padding-top:1px;
+	width: 200px;
+	margin-left: 15em;
+	margin-top: 1em;
+	
 }
-
-

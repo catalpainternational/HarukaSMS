@@ -10,39 +10,26 @@
     padding: 7px;
 }
 
-.uniForm .formHint, .uniForm .blockLabels .formHint {
-    color: #777777;
-    font-size: 0.9em;
-    padding-left: 0;
-    padding-top: 1px;
-    position: relative;
-    top: 0;
-    width: 39%;
-    left:  -3px;
-}
-
-#id_description {
-    width: 310px;
-}
-
 </style>
 
-<div id="form_header">
-<div><h4 style='margin-top:45px; margin-left:150px;'>Data Collection</h4><blockquote style='margin-left:150px;'><small> For more data intensive survey work design a SMS survey with keywords and multiple answers.</small></blockquote></div>
-</div>
-
-<form action="/xforms/new/" method="post" class="uniForm" id="newForm">
-{% csrf_token %}
-{{ form|render_layout }}
-
-<div style="float:left;margin-bottom:10px;margin-top:-75px; margin-left:150px;">
-  <a class='btn' href="/xforms/">
-    Cancel
-  </a>
-  <a onclick="$('#newForm').submit();" href="javascript:void(0);" class="btn primary">
-    Create Form
-  </a>
-</div>
-</form>
-
+	<h4 style='margin-top:45px; margin-left:150px;'>Data Collection<blockquote><small> For more data intensive survey work design a SMS survey with keywords and multiple answers.</small></blockquote>
+	</h4>
+	
+	
+	<div id='newForm1'>
+		<form action="/xforms/new/" method="post" class="uniForm">
+			<fieldset>
+				{{ form|render_layout }}
+				<div class='poll-buttons'>
+					<a class='btn' href="/xforms/">
+					Cancel
+					</a>
+					<a class="btn primary" onclick="$('#newForm').submit();" href="javascript:void(0);" >
+					Create Form
+					</a>
+				</div>
+			</fieldset>
+		{% csrf_token %}
+		</form>
+	</div>
 {% endblock %}
