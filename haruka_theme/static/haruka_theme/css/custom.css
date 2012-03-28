@@ -661,12 +661,12 @@ div#field_box_2.field_box {
 
 #div_id_start_immediately {
 	position:absolute;
-	top:-195px;
+	top:-16em;
 }
 
 #div_id_name {
 	position:absolute;
-	top:-14px;
+	top:-1em;
 }
 
 #div_id_question {
@@ -1000,9 +1000,6 @@ img#download-contacts {
 
 }
 
-div#div_id_poll_type.ctrlHolder. {
-	
-}
 
 #newForm fieldset div {
 	position: relative;
@@ -1012,7 +1009,6 @@ div#div_id_poll_type.ctrlHolder. {
 #inner div.row div.span7 div.well form div.submit {
 	position: relative;
 	top: 30px;
-	left: ;
 }
 
 

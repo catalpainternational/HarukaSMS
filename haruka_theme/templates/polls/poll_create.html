@@ -9,7 +9,12 @@
 <form action="{% url poll.views.new_poll %}" method="post" class="uniForm" id="newForm">
 <fieldset>
 {{ form|as_uni_form }}
-<div>
+
+</fieldset>
+{% csrf_token %}
+</form>
+<div class='poll-buttons'>
+
   <a class='btn' href="{% url polls %}">
    <!-- <img src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt=""/> -->
     Cancel
@@ -18,10 +23,7 @@
     <!--<img src="{{ MEDIA_URL }}rapidsms/icons/silk/add.png" alt=""/> -->
     Create Poll
   </a>
-</div>
 
-</fieldset>
-{% csrf_token %}
-</form>
+</div>
 
 {% endblock %}
