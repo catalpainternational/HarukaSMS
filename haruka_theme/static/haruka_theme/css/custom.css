@@ -469,7 +469,7 @@ form div.field label {
 
 label {
     color: #404040;
-    float: left;
+    float: none;
     font-size: 12px;
     line-height: 18px;
     padding-top: 6px;
