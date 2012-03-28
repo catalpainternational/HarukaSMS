@@ -66,36 +66,37 @@ def registration(req, pk=None):
             #for row in reader:
             for line in req.FILES["bulk"]:
                 line_list = line.split(',')
-                name = line_list[0].strip()
-                identity = line_list[1].strip()
-                #identity = phonenumbers.format_number(phonenumbers.parse(identity, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
-                #identity = identity.replace('+','') # this makes the polls app happy again
+                if line_list.__len__() >= 2:
+                    name = line_list[0].strip()
+                    identity = line_list[1].strip()
+                    #identity = phonenumbers.format_number(phonenumbers.parse(identity, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
+                    #identity = identity.replace('+','') # this makes the polls app happy again
 
-                try:
-                    gender = line_list[2].strip()
-                    age = line_list[3].strip()
-                    location = line_list[4].strip()
-                except:
-                    gender = age = location = ''
+                    try:
+                        gender = line_list[2].strip()
+                        age = line_list[3].strip()
+                        location = line_list[4].strip()
+                    except:
+                        gender = age = location = ''
 
-                if not age.isdigit():
-                        age = 0
+                    if not age.isdigit():
+                            age = 0
 
-                # Create or update our contact
-                contact, new = Contact.objects.get_or_create(connection__identity=identity)
-                contact.name = name
-                contact.phone = identity
-                contact.gender = gender
-                contact.age = age
-                contact.location = location
-                contact.language = LANGUAGE_CODE
-                contact.save()
+                    # Create or update our contact
+                    contact, new = Contact.objects.get_or_create(connection__identity=identity)
+                    contact.name = name
+                    contact.phone = identity
+                    contact.gender = gender
+                    contact.age = age
+                    contact.location = location
+                    contact.language = LANGUAGE_CODE
+                    contact.save()
 
-                # Get our backend or create one
-                backend, new = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
-                connection, new = Connection.objects.get_or_create(backend=backend, identity=identity)
-                connection.contact = contact
-                connection.save()
+                    # Get our backend or create one
+                    backend, new = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
+                    connection, new = Connection.objects.get_or_create(backend=backend, identity=identity)
+                    connection.contact = contact
+                    connection.save()
 
             messages.success(req, 'Thank you, you successfully added to your contacts.')
 
