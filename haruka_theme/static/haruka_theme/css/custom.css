@@ -994,8 +994,16 @@ img#download-contacts {
 }
 
 #inner div.row div.span7 div.well form.zebra-striped div.submit {
-	margin-top: 30px;
-	margin-left: 80px;
+	position: relative;
+	top: 30px;
+	left: 0px;
+
+}
+
+#inner div.row div.span7 div.well form div.submit {
+	position: relative;
+	top: 30px;
+	left: ;
 }
 
 
