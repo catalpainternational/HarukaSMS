@@ -3,21 +3,21 @@
 
 {% block content %}
 {% load forms %}
-<style>
+<!--<style>
 
 .uniForm .ctrlHolder {
     border-bottom: none;
     padding: 7px;
 }
 
-</style>
+</style>-->
 
 	<h4 style='margin-top:45px; margin-left:150px;'>Data Collection<blockquote><small> For more data intensive survey work design a SMS survey with keywords and multiple answers.</small></blockquote>
 	</h4>
 	
 	
 	<div id='newForm1'>
-		<form action="/xforms/new/" method="post" class="uniForm">
+		<form action="/xforms/new/" method="post" class="uniForm" id='newForm'>
 			<fieldset>
 				{{ form|render_layout }}
 				<div class='poll-buttons'>
@@ -28,8 +28,11 @@
 					Create Form
 					</a>
 				</div>
+				
+				{% csrf_token %}
+				
 			</fieldset>
-		{% csrf_token %}
+		
 		</form>
 	</div>
 {% endblock %}
