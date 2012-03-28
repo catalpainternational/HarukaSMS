@@ -1,6 +1,3 @@
-/* @override 
-	http://127.0.0.1:8000/static/haruka_theme/css/custom.css */
-
 
 	body {
 		background:  url("../images/backgroundwhite.png") repeat-x fixed #B1DEEA;
@@ -16,6 +13,10 @@
 		position: relative;
         z-index = 0;
 }
+
+	.ul {
+		list-style-type: none;
+	}
 
 /*--------------- START OF HEADER -----------------*/
 
