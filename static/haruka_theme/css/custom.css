@@ -1,5 +1,6 @@
 /* @override 
-	http://127.0.0.1:8000/static/haruka_theme/css/custom.css */
+	http://127.0.0.1:8000/static/haruka_theme/css/custom.css
+	http://192.168.0.2:8080/static/haruka_theme/css/custom.css */
 
 
 	body {
@@ -583,6 +584,8 @@ tr.row_section td {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
     padding: 19px;
     padding-left: 50px;
+    height: 680px;
+    
 }
 
 .uniForm .ctrlHolder {
@@ -689,15 +692,19 @@ div#hint_id_restrict_message.formHint {
 }
 
 #div_id_start_immediately {
-	margin-top:-60px
+	position: relative;
+	top:-160px;
 }
 
 #div_id_default_response {
-		margin-top:-60px
+	position: relative;
+	top:-80px
+	
 }
 
 #div_id_groups {
-		margin-top:-110px
+	position: relative;
+	top:-270px
 }
 
 #div_id_command_prefix {
@@ -727,6 +734,7 @@ div#hint_id_restrict_message.formHint {
 
 .form_fields_cell {
 	background-color: #ffffff;
+	text-align: right;
 }
 
 .add_field_header {
@@ -987,8 +995,9 @@ img#download-contacts {
 .poll-buttons{
 	padding-top:1px;
 	width: 200px;
-	margin-left: 13em;
-	margin-top: 1em;
+	position: relative;
+	left: 153px;
+	top: -221px;
 	
 }
 
