@@ -19,6 +19,8 @@ Open up Terminal and do the following
     	~/haruka> cd HarukaSMS
     	~/haruka/HarukaSMS> pip install -r requirements.txt
 
+4. Start a new Terminal Session. (This is to ensure that step 6 works)
+
 4. Create the database
 
     	~/haruka/HarukaSMS> python manage.py syncdb
@@ -29,4 +31,4 @@ Open up Terminal and do the following
 
 6. Run the GSM router
 		
-		~/haruka/HarukaSMS> python pygsm_gateway/pygsm-gateway.py
+		~/haruka/HarukaSMS> pygsm-gateway.py
