@@ -357,16 +357,6 @@ thead th {
 
 }
 
-th.field_name_col {
-	width: 94px;
-}
-
-#inner table.condensed-table thead tr th.field_command_col {
-	width: 50px;
-	margin-right: 0;
-	position: relative;
-	right: 30px;
-}
 
 #5 tbody tr td.field_options_col a img {
 	position: relative;
@@ -584,6 +574,19 @@ tr.row_section td {
     
 }
 
+#newForm2 {
+	margin-left:140px;
+	width:  600px;
+	background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    padding: 19px;
+    padding-left: 50px;
+    height: 770px;
+    
+}
+
 .uniForm .ctrlHolder {
     border-bottom: none;
     margin: 7px;
@@ -619,19 +622,6 @@ div#field_box_2.field_box {
 
 #field_box {
 	border: none;
-}
-
-
-#inner table.condensed-table thead tr th.field_command_col {
-	margin-left: 0;
-	margin-right: 0;
-	position: relative;
-	right: 55px;
-}
-
-#inner table.condensed-table thead tr th.field_description_col {
-	right: 7px;
-	position: absolute;
 }
 
 
@@ -765,14 +755,8 @@ div#hint_id_restrict_message.formHint {
 #id_command {
 	width: 60px;
 }
-
-.field_command_col {
-	width: 82px;
-} 
-
-#id_description {
-	width: 202px;
-}
+ 
+ 
 /*-----------------DIV REPLACEMENTS GROUP SELECTION -------------------*/
 
 .selector-available h2 {
