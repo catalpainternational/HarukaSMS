@@ -25,7 +25,7 @@ mkdir -p $SRC_DEST
 cp -r * $SRC_DEST/
 
 echo "- Copying site-packages"
-cp -r ../lib/python2.7/site-packages $SRC_DEST/
+cp -r ../env/lib/python2.7/site-packages $SRC_DEST/
 
 echo '- Going into into $SRC_DEST'
 cd $SRC_DEST/
