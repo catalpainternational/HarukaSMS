@@ -3,7 +3,7 @@
 
 {% block stylesheets %}
 {{ block.super }}
-<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/dashboard.css" />
+<!--<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/dashboard.css" />-->
 {% endblock %}
 
 {% block content %}
@@ -21,12 +21,12 @@
 				Edit {{ contact }}{% else %}
 				Add a Contact{% endif %}
 		</h4>
-		<div class="well">
-			<form action="" method="post" class="zebra-striped">
+		<div class="well" style="padding-left: 45px;">
+			<form action="" method="post">
 				{% render_form contact_form %}
 				{% csrf_token %}
 		
-				<div class="submit" style='height: 50px'>
+				<div class="submit">
 					<input class="btn primary" type="submit" value="Save Contact" name="submit" />{% if contact %}
 					<input type="submit" name="submit" value="Delete Contact" class="btn danger" />{% endif %}
 				</div>
