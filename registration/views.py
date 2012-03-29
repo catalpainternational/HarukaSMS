@@ -67,7 +67,7 @@ def registration(req, pk=None):
                 line_list = line.split(',')
                 if line_list.__len__() >= 2:
                     name = line_list[0].strip()
-                    if not name.starts_with('Name'):
+                    if not name.startswith('Name'):
 
                         identity = line_list[1].strip()
                         #identity = phonenumbers.format_number(phonenumbers.parse(identity, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
