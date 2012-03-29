@@ -15,13 +15,12 @@ from django.contrib import messages
 from rapidsms.models import Contact
 from rapidsms.models import Connection
 from rapidsms.models import Backend
-from rapidsms.contrib.registration.tables import ContactTable
 
-
-import phonenumbers
+#import phonenumbers
 
 from .forms import BulkRegistrationForm
 from .forms import ContactForm
+from .tables import ContactTable
 from settings import LANGUAGE_CODE, COUNTRY_CODE, DEFAULT_BACKEND_NAME
 
 
@@ -130,10 +129,11 @@ def registration(req, pk=None):
     elif req.method == "GET":
         contact_form = ContactForm(instance=contact)
         bulk_form = BulkRegistrationForm()
+        contact_table = ContactTable(Contact.objects.all(), request=req)
 
     return render_to_response(
         "registration/dashboard.html", {
-            "contacts_table": ContactTable(Contact.objects.all(), request=req),
+            "contacts_table": contact_table,
             "contact_form": contact_form,
             "bulk_form": bulk_form,
             "contact": contact
