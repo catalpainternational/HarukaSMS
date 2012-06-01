@@ -212,11 +212,17 @@ def summary(request):
 
 def modem_status(request):
     status = {"_status":"Not OK"}
+    status["_reason"] = "No GSM Gateway"
     try:
         status = get_router().router_status()
+        if status['_status'] == "Not OK":
+            status["_reason"] = "GSM modem not ready"
+
     except URLError, e:
         pass #The server is not present or unresponsive: this is "Not OK"
     clean ={}
+
+
     for key,value in status.items():
         if key.startswith('_'):
             clean[key[1:]]=value

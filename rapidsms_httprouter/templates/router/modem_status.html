@@ -1,7 +1,7 @@
 <span class="Status">
   {% if "Not OK" in status %}
-  <span class="NOK">[{{status}}]</span>
+  <span class="NOK">[{{status}} : {{reason}}]</span>
   {% else %}
-  <span class="OK">[{{status}}] | #-&gt; : {{sent}} | #&lt;- {{received}} | #-x {{failed }} | {{signal}} </span>
+  <span class="OK">[{{status}} | #-&gt; : {{sent}} | #&lt;- {{received}} | #-x {{failed }} | {{signal}} ]</span>
   {% endif %}
 </span>
