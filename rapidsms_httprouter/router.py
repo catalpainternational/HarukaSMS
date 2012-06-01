@@ -172,6 +172,7 @@ class HttpRouterThread(Thread, LoggerMixin):
             msg.save()
             outgoing_db_lock.release()
 
+
 class HttpRouter(object, LoggerMixin):
     """
     This is a simplified version of the normal SMS router in that it has no threading.  Instead
@@ -474,6 +475,14 @@ class HttpRouter(object, LoggerMixin):
 
         # mark ourselves as started
         self.started = True
+
+    def router_status(self):
+        router = settings.ROUTER_ADDR
+        url = router+"status"
+        
+        response = urlopen(url, timeout=15)
+        return response.info()
+
         
 # we'll get started when we first get used
 http_router = HttpRouter()

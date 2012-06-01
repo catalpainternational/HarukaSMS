@@ -16,6 +16,8 @@ from rapidsms.models import Connection
 from djtables import Table, Column
 from djtables.column import DateColumn
 
+from urllib2 import URLError
+
 from .models import Message
 from .router import get_router
 
@@ -205,3 +207,21 @@ def summary(request):
     return render_to_response(
         "router/summary.html",
         { 'messages': messages},context_instance=RequestContext(request))
+
+
+
+def modem_status(request):
+    status = {"_status":"Not OK"}
+    try:
+        status = get_router().router_status()
+    except URLError, e:
+        pass #The server is not present or unresponsive: this is "Not OK"
+    clean ={}
+    for key,value in status.items():
+        if key.startswith('_'):
+            clean[key[1:]]=value
+
+    return render_to_response(
+        "router/modem_status.html",
+        clean,context_instance=RequestContext(request))
+ 
