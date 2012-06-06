@@ -23,6 +23,7 @@
 		list-style-type: none;
 	}
 
+	
 /*--------------- START OF HEADER -----------------*/
 
     #spacer {
@@ -991,3 +992,12 @@ form div.field{
 	margin-top: none;
 
 }
+
+#modem_status span.Status span.NOK {
+	
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	background-color: #ef6060;
+}
+

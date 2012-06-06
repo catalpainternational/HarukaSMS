@@ -36,7 +36,7 @@
 <!--                        <img src="{{ STATIC_URL }}icons/silk/zoom.png" alt=""/> Report-->
                   </a>
             	  <a href="{% url poll-responses poll_obj.pk %}" class="btn">
-                        {% trans" Responses" %}({{ poll_obj.responses__count }})</a>
+                        {% trans "Responses" %}({{ poll_obj.responses__count }})</a>
 	          {% endif %}
 	          <a href="{% url poll.views.view_poll poll_obj.pk %}" class="btn">{% trans "Edit" %}</a>
 	      </div>
