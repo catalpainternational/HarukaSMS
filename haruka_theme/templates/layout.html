@@ -63,6 +63,7 @@
 
 				{% block page_tabs %}
 				{% endblock %}
+                                <span id="modem_status"></span>
 
 				<!-- Message list: errors, warnings and such -->
 				{% if context_instance.messages %}
@@ -91,5 +92,14 @@
 
 			{% region "bottom" %}
 		</div>
+  <script type="text/javascript">
+    var modem_poll_update_interval=3000;
+    function update_modem_status() {
+        var something = $.get("/router/modem_status", function(data) {
+          $("#modem_status").html(data);
+});}          
+    window.setInterval(update_modem_status, modem_poll_update_interval);
+  </script>
+
 	</body>
 </html>

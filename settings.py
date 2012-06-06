@@ -130,6 +130,7 @@ SMS_APPS = [
 
 # pointing the rapidsms-httprouter to pygsm-gateway
 ROUTER_URL = "http://localhost:8080/?backend=%(backend)s&identity=%(recipient)s&text=%(text)s"
+ROUTER_ADDR = "http://localhost:8080/"
 
 
 # rapidsms-xforms specific settings
