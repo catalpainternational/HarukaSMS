@@ -1,5 +1,5 @@
 {% extends "xforms/layout.html" %}
-{% block title %}HarukaSMS - Data Collection{% endblock %}
+{% block title %}{% trans "HarukaSMS - Data Collection" %}{% endblock %}
 
 {% block content %}
 
@@ -12,14 +12,14 @@ function deleteForm(form_id, form_name) {
 }
 </script>
 
-    <a class='btn large primary' style="margin-bottom:30px;margin-top: 45px; margin-left: 20px;" href="/xforms/new/" style="float:left"> Add New Survey </a> 
+    <a class='btn large primary' style="margin-bottom:30px;margin-top: 45px; margin-left: 20px;" href="/xforms/new/" style="float:left"> {% trans "Add New Survey" %} </a> 
 
 
 <table class="condensed-table" style="width:878px; margin-left:20px;"> 
   <thead> 
     <tr> 
-      <th class="form_name_col">Name</th> 
-      <th class="form_description_col">Description</th> 
+      <th class="form_name_col">{% trans "Name" %}</th> 
+      <th class="form_description_col">{% trans "Description %}</th> 
       <th class="form_options_col"></th> 
     </tr> 
   </thead> 
@@ -34,10 +34,10 @@ function deleteForm(form_id, form_name) {
 	
 	<div>
        
-	  <a class='btn' href="/xforms/{{ xform.pk }}/submissions/">Submissions ({{ xform.submissions.all.count }})
+	  <a class='btn' href="/xforms/{{ xform.pk }}/submissions/">{% trans "Submissions" %} ({{ xform.submissions.all.count }})
 	  </a>
 	  <a class='btn' href="/xforms/{{ xform.pk }}/view/">
-         View
+         {% trans "View" %}
 	  </a>
 	</div>
       </td>
@@ -45,7 +45,7 @@ function deleteForm(form_id, form_name) {
     {% endfor %}
     {% else %}
     <tr class="form_table_row">
-      <td colspan=3><i>No existing Forms.  Click 'Add New Form' to create one.</i></td>
+      <td colspan=3><i>{% trans "No existing Forms.  Click 'Add New Form' to create one." %}</i></td>
     </tr>
     {% endif %}
   </tbody>

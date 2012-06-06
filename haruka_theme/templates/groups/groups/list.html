@@ -2,7 +2,7 @@
 {% load pagination_tags sorting_tags %}
 
 
-{% block title %}{% if form.instance.pk %}HarukaSMS - Edit Group{% else %}HarukaSMS - Create Group{% endif %}{% endblock %}
+{% block title %}{% if form.instance.pk %}{% trans "HarukaSMS - Edit Group" %}{% else %}{% trans "HarukaSMS - Create Group" %}{% endif %}{% endblock %}
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
@@ -36,17 +36,17 @@
 {% endif %}
 
 
-	<h4 style='margin-left:20px; margin-top:45px; width: 400px;'>{% if form.instance.pk %}Edit Group{% else %}Create Group{% endif %}</h4>
+	<h4 style='margin-left:20px; margin-top:45px; width: 400px;'>{% if form.instance.pk %}{% trans "Edit Group" %}{% else %}{% trans "Create Group" %}{% endif %}</h4>
 	<div class="row">
 		    <div class="well span7">
 	    		<form action="#" method="POST" class="buttons">
 	    			{% csrf_token %}
                     <p class="group_field_name">
-                    	<span style='margin-right:9px;'>Name:</span>
+                    	<span style='margin-right:9px;'>{% trans "Name:" %}</span>
 	    				<span class="field">{{ form.name }}</span>
                     </p>
                     <p class="group_field_desc">
-                        <span style='margin-right:8px; margin-left:7px;'>Description:</span>
+                        <span style='margin-right:8px; margin-left:7px;'>{% trans "Description:" %}</span>
                         <span class="field">{{ form.description }}</span>
                     </p>
                     <p class="group_field_contacts">
@@ -54,14 +54,14 @@
                     </p>
 	    			<div class='form-action'>
 	    				{% if form.instance.pk %}
-	    				<a href="/groups/group/{{form.instance.pk}}/delete" class='btn danger'>Delete Group</a>
+	    				<a href="/groups/group/{{form.instance.pk}}/delete" class='btn danger'>{% trans "Delete Group" %}</a>
 	    				{% endif %}
 	    				<input type='submit' name='submit' class='btn primary' value="Save" />
 	    			</div>
 	    		</form>
 		    </div>
 		    <div class="span7">
-		    <h4 style='margin-top:-36px;'>Group List</h4>
+		    <h4 style='margin-top:-36px;'>{% trans "Group List" %}</h4>
 		    	<table class='table' >
 		    		<thead>
 		    			<tr>

@@ -7,7 +7,7 @@
 </style>
 
 
-<div class="name">Edit '{{poll.name}}'</div>
+<div class="name">{% trans "Edit" %} '{{poll.name}}'</div>
 
 {% load uni_form_tags %}
 
@@ -17,10 +17,10 @@
 
 
   <a class='btn'="showPollDetails('{{ poll.pk }}');" href="javascript:void(0);" class="negative" class='btn'>
-    Cancel
+    {% trans "Cancel" %}
   </a>
   <a onclick="submitForm(this, '#poll_header');" href="javascript:void(0);" class='btn primary'>
-    Save Poll Details
+    {% trans "Save Poll Details" %}
   </a>
 
 </fieldset>

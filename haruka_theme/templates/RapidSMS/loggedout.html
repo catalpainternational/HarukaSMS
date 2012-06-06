@@ -11,8 +11,8 @@
 </style>
 
 <div id='logout-centre'>
-	<h2>Thanks for using Haruka SMS</h2>
-	<h4>See you again soon!</h4>
-	<a href="{% url rapidsms-login %}">Log in again</a>
+	<h2>{% trans "Thanks for using Haruka SMS" %}</h2>
+	<h4>{% trans "See you again soon!" %}</h4>
+	<a href="{% url rapidsms-login %}">{% trans "Log in again" %}</a>
 </div>
 {% endblock %}

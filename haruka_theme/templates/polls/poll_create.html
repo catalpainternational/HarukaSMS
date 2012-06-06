@@ -1,12 +1,12 @@
 {% extends "polls/layout.html" %}
-{% block title %}HarukaSMS - Polls{% endblock %}
+{% block title %}{% trans "HarukaSMS - Polls" %}{% endblock %}
 
 {% block content %}
 
 {% load uni_form_tags %}
 {% load forms_tags %}
 
-	<h4 style='margin-left:150px; margin-top: 45px;'>Create a New Poll <blockquote><small>create a simple SMS poll that includes either a yes no response or a numbered response -- but with no keywords needed!</small></blockquote></h4>
+	<h4 style='margin-left:150px; margin-top: 45px;'>{% trans "Create a New Poll" %} <blockquote><small>{% trans "create a simple SMS poll that includes either a yes no response or a numbered response -- but with no keywords needed!" %}</small></blockquote></h4>
 
 <div id='newForm1'>
 	<form action="{% url poll.views.new_poll %}" method="post" class="uniForm" id='newForm'>
@@ -15,11 +15,11 @@
 			<div class='poll-buttons'>
 				<a class='btn' href="{% url polls %}">
 				<!-- <img src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt=""/> -->
-				Cancel
+				{% trans "Cancel" %}
 				</a>
 				<a class='btn primary' onclick="$('#newForm').submit();" href="javascript:void(0);">
 				<!--<img src="{{ MEDIA_URL }}rapidsms/icons/silk/add.png" alt=""/> -->
-				Create Poll
+				{% trans "Create Poll" %}
 				</a>
 			</div>
 		</fieldset>

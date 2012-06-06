@@ -14,7 +14,7 @@
 <div class="edit_field">
 <form class="form" action="/xforms/{{ xform.pk }}/edit_field/{{ field.pk }}/" method="post">
 {% else %}
-<div class="add_field_header">Add New Field</div>
+<div class="add_field_header">{% trans "Add New Field" %}</div>
 <div class="add_field">
 <form class="form" action="/xforms/{{ xform.pk }}/add_field/" method="post">
 {% endif %}
@@ -36,7 +36,7 @@
   <a style="float:right;padding-top:7px;" href="javascript:void(0);"><img onclick="cancelField(this);" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt="" border="0"/></a>
   
   <div>
-    <a onclick="saveField(this);" href="javascript:void(0);" id="save_{{field.pk}}" class='btn'>Save
+    <a onclick="saveField(this);" href="javascript:void(0);" id="save_{{field.pk}}" class='btn'>{% trans "Save" %}
     </a>
   </div>
 
@@ -45,7 +45,7 @@
   <a href="javascript:void(0);"><img onclick="cancelAdd(this);" style="float:right;padding-top:6px;" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt="" border="0"/></a>
   
   <div>
-    <a onclick="saveField(this);" href="javascript:void(0);" id="save_{{field.pk}}" class="positive" class='btn'>Add
+    <a onclick="saveField(this);" href="javascript:void(0);" id="save_{{field.pk}}" class="positive" class='btn'>{% trans "Add" %}
     </a>
   </div>
   {% endif %}

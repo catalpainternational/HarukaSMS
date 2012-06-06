@@ -13,18 +13,18 @@
 <div>
     {% if not poll.start_date %}
     <a onclick="editPollDetails();" href="javascript:void(0);" class='btn'> 
-        Edit
+       {% trans "Edit" %}
     </a>
     <form style="border:0px" action="{% url poll.views.start_poll poll.pk %}" method="POST" id="startPollForm">
     <a onclick="submitForm(this, '#poll_header');" href="javascript:void(0);" class='btn success'> 
-        Start Poll
+        {% trans "Start Poll" %}
     </a>
     </form>
     {% endif %}
     {% if poll.start_date and not poll.end_date %}
     <form style="border:0px" action="{% url poll.views.end_poll poll.pk %}" method="POST" id="closePollForm">
     <a onclick="submitForm(this, '#poll_header');" href="javascript:void(0);" class='btn'>
-        Close Poll
+        {% trans "Close Poll" %}
     </a>
     </form>    
     {% endif %}
@@ -33,4 +33,4 @@
   <span class="participants">({{ poll.contacts__count }} participant{{ poll.contacts__count|pluralize }})</span>
 </div>
 <div class="question">{{ poll.question }}</div>
-<div class="response">Response: {{ poll.default_response }}</div>
+<div class="response">{% trans "Response:" %} {{ poll.default_response }}</div>

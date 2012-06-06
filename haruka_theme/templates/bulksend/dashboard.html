@@ -17,7 +17,7 @@
 </ul>
 {% endif %}
 
-<h4 style="margin-left:20px; margin-top: 45px;">Groups</h4>
+<h4 style="margin-left:20px; margin-top: 45px;">{% trans "Groups" %}</h4>
 <form action='/bulksend/review/' method="POST">
   <script content="text/javascript">
     var sms_length = {{ sms_length }};
@@ -26,7 +26,7 @@
 <div class="well" style="margin-right: 18px; margin-left: 20px;">
       <div style='padding=10'>
           <div>
-                  <h5>Send To:</h5>
+                  <h5>{% trans "Send To:" %}</h5>
           </div>
           <select name='group_id'>
               {% for group in groups %}
@@ -37,7 +37,7 @@
   </div>
   <div class="row">
 	  <div class="span6">
-		<h4 style="margin-left: 2px;">Message</h4><blockquote><small> for mail merge type [name] for fullname, or [firstname] for the first name - just don't forget the square brackets.</small></blockquote>
+		<h4 style="margin-left: 2px;">{% trans "Message" %}</h4><blockquote><small> {% trans "for mail merge type [name] for fullname, or [firstname] for the first name - just don't forget the square brackets." %}</small></blockquote>
 		<div class="well">
 			<div class="input, textarea">
 		          <textarea name="message"
@@ -52,23 +52,23 @@
 	  <div class="span8">
 		<div class="bordered">
 		  <table>
-		    <thead><tr><th colspan="1"><h4 style="margin-top: -9px; margin-left: 13px; margin-bottom: 46px;">Cost Calculator:</h4></th></tr></thead>
+		    <thead><tr><th colspan="1"><h4 style="margin-top: -9px; margin-left: 13px; margin-bottom: 46px;">{% trans "Cost Calculator:" %}</h4></th></tr></thead>
 		    <tbody>
 		        <tr>
 		        	<td class="col_1" id="c_count">0</td>
-		        	<td><h4>Characters</h4></td>
+		        	<td><h4>{% trans "Characters" %}</h4></td>
 		        </tr>
 		        <tr>
 		        	<td class="col_1" id="sms_length">{{ sms_length }}</td>
-		        	<td><h4>Characters per SMS</h4></td>
+		        	<td><h4>{% trans "Characters per SMS" %}</h4></td>
 		        </tr>
 		        <tr>
 		        	<td class="col_1" id="sms_count">0</td>
-		        	<td><h4>SMS per Message</h4></td>
+		        	<td><h4>{% trans "SMS per Message" %}</h4></td>
 		        </tr>
 		        <tr class="last_row">
 		        	<td class="col_1" id="msg_price">US$0</td>
-		        	<td><h4>Per Contact</h4></td>
+		        	<td><h4>{% trans "Per Contact" %}</h4></td>
 		        </tr>
 		    </tbody>
 		  </table>

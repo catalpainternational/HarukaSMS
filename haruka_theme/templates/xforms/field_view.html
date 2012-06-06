@@ -13,10 +13,10 @@
 
   <div>
     <a onclick="editField(this);" href="javascript:void(0);" class='btn'>
-        Edit
+        {% trans "Edit" %}
     </a>
     <a href="/xforms/{{xform.pk}}/field/{{field.pk}}/constraints/" id="save_{{field.pk}}" class='btn'>
-      Constraints ({{ field.constraints.all.count }})
+      {% trans "Constraints" %} ({{ field.constraints.all.count }})
     </a>
   </div>
 

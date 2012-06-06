@@ -1,12 +1,12 @@
 {% extends "groups/base.html" %}
 {% load pagination_tags sorting_tags %}
 
-{% block title %}Groups{% endblock %}
+{% block title %}{% trans "Groups" %}{% endblock %}
 
 {% block content %}
     <div class="row">
 		<div class="span10">
-				<h2>Groups</h2>  
+				<h2>{% trans "Groups" %}</h2>  
 				<table class='zebra-striped' >
 					<thead>
 						<tr>
@@ -25,7 +25,7 @@
 						{% endfor %}
 					</tbody>
 				</table>
-				<p><a class='btn' title='Add group' href="{% url create-group %}" >add group</a></p>
+				<p><a class='btn' title='Add group' href="{% url create-group %}" >{% trans "add group" %}</a></p>
 			
     </div>
     <div class="span10">

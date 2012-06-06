@@ -18,8 +18,8 @@
 <div class="row"> 
 	<div class="span7">
 		<h4 style="margin-top: 45px;">{% if contact %}
-				Edit {{ contact }}{% else %}
-				Add a Contact{% endif %}
+				{% trans "Edit" %} {{ contact }}{% else %}
+				{% trans "Add a Contact" %}{% endif %}
 		</h4>
 		<div class="well" style="padding-left: 45px;">
 			<form action="" method="post">
@@ -32,7 +32,7 @@
 				</div>
 			</form>
 		</div>
-		<h4>Bulk Registration</h4>
+		<h4>{% trans "Bulk Registration" %}</h4>
 		<div class="well">
 			<form action="" method="post" enctype="multipart/form-data">
 				{% render_form bulk_form %}
@@ -45,7 +45,7 @@
 		</div>
 	</div>
 	<div class="span8">
-		<h4 style="margin-top: 45px;">Contacts</h4>
+		<h4 style="margin-top: 45px;">{% trans "Contacts" %}</h4>
 		<a href="contacts_as_csv/"><img id="download-contacts" src='{{STATIC_URL}}images/download-alt.png'/></a>
 			{{ contacts_table.as_html }}{% if contact %}	
 			<div id='well'>

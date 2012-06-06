@@ -1,5 +1,5 @@
 {% extends "xforms/layout.html" %}
-{% block title %}HarukaSMS - Data Collection{% endblock %}
+{% block title %}{% trans "HarukaSMS - Data Collection" %}{% endblock %}
 
 {% block content %}
 {% load forms %}
@@ -12,7 +12,7 @@
 
 </style>-->
 
-	<h4 style='margin-top:45px; margin-left:150px;'>Data Collection<blockquote><small> For more data intensive survey work design a SMS survey with keywords and multiple answers.</small></blockquote>
+	<h4 style='margin-top:45px; margin-left:150px;'>{% trans "Data Collection" }<blockquote><small> {% trans "For more data intensive survey work design a SMS survey with keywords and multiple answers." %}</small></blockquote>
 	</h4>
 	
 	
@@ -22,10 +22,10 @@
 				{{ form|render_layout }}
 				<div class='form-buttons'>
 					<a class='btn' href="/xforms/">
-					Cancel
+					{% trans "Cancel" %}
 					</a>
 					<a class="btn primary" onclick="$('#newForm').submit();" href="javascript:void(0);" >
-					Create Form
+					{% trans "Create Form" %}
 					</a>
 				</div>
 				

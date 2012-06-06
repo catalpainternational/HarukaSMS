@@ -18,7 +18,7 @@
     <img style="vertical-alignment:bottom;padding-top:7px" src="{{ MEDIA_URL }}rapidsms/icons/silk/delete.png" alt=""/>
   </a>
   <div>
-    <a class="btn" onclick="editCategory(this, '{% url poll.views.edit_category poll.pk category.pk %}');" href="javascript:void(0);">Edit</a>
+    <a class="btn" onclick="editCategory(this, '{% url poll.views.edit_category poll.pk category.pk %}');" href="javascript:void(0);">{% trans "Edit" %}</a>
     {% ifequal poll.type 't' %}
 <!--    <a href="{% url poll.views.view_rules  poll.pk category.pk %}" id="save_{{ category.pk }}">
       <img src="{{ MEDIA_URL }}poll/icons/silk/bullet_wrench.png" alt=""/>Rules ({{ category.rules.all.count }})
