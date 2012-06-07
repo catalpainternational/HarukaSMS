@@ -1,9 +1,10 @@
 {% extends "xforms/layout.html" %}
+{% load i18n %}
 {% block title %}{% trans "HarukaSMS - Data Collection" %}{% endblock %}
 
 {% block content %}
 {% load forms %}
-{% load i18n %}
+
 <!--<style>
 
 .uniForm .ctrlHolder {
@@ -13,7 +14,7 @@
 
 </style>-->
 
-	<h4 style='margin-top:45px; margin-left:150px;'>{% trans "Data Collection" }<blockquote><small> {% trans "For more data intensive survey work design a SMS survey with keywords and multiple answers." %}</small></blockquote>
+	<h4 style='margin-top:45px; margin-left:150px;'>{% trans "Data Collection" %}<blockquote><small> {% trans "For more data intensive survey work design a SMS survey with keywords and multiple answers." %}</small></blockquote>
 	</h4>
 	
 	
