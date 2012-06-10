@@ -22,31 +22,31 @@
 				{% trans "Edit" %} {{ contact }}{% else %}
 				{% trans "Add a Contact" %}{% endif %}
 		</h4>
-		<div class="well" style="padding-left: 45px;">
-			<form action="" method="post">
+		<div class="well registration" style="padding-left: 45px;">
+			<form class="registration_contacts" action="" method="post">
 				{% render_form contact_form %}
 				{% csrf_token %}
 		
-				<div class="submit">
-					<input class="btn primary" type="submit" value="Save Contact" name="submit" />{% if contact %}
-					<input type="submit" name="submit" value="Delete Contact" class="btn danger" />{% endif %}
+				<div class="submit registration">
+					<input class="btn primary contacts" type="submit" value="Save Contact" name="submit" />{% if contact %}
+					<input type="submit" name="submit" value="Delete Contact" class="btn danger contacts" />{% endif %}
 				</div>
 			</form>
 		</div>
 		<h4>{% trans "Bulk Registration" %}</h4>
-		<div class="well">
+		<div class="well bulk_registration">
 			<form action="" method="post" enctype="multipart/form-data">
 				{% render_form bulk_form %}
 				{% csrf_token %}
 		
-				<div class="submit">
-					<input class="btn primary" type="submit" value="Upload Contacts" name="submit" style="margin-left: 177px;" >
+				<div class="submit bulk">
+					<input class="btn primary bulk" type="submit" value="Upload Contacts" name="submit">
 				</div>
 			</form>
 		</div>
 	</div>
 	<div class="span8">
-		<h4 style="margin-top: 45px;">{% trans "Contacts" %}</h4>
+		<h4 id="bulk_upload">{% trans "Contacts" %}</h4>
 		<a href="contacts_as_csv/"><img id="download-contacts" src='{{STATIC_URL}}images/download-alt.png'/></a>
 			{{ contacts_table.as_html }}{% if contact %}	
 			<div id='well'>

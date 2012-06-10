@@ -27,8 +27,8 @@ label {
 {% block content %}
 
 <h4 style="margin-top:45px; margin-left:20px;">{% trans "Quick SMS" %}</h4>
-  <div class="well" style="width:770px; margin-left:18px; padding-right: 107px;">
-    <form method="POST" class="sender-form" style='margin-left:60px; margin-top:20px;'>
+  <div class="well quick_SMS">
+    <form method="POST" class="sender-form">
       {{ reply_form }}
       <input type="hidden" name="action" value="reply" />
       <input type="submit" value="send" class='btn primary' style='margin-left:15px;'/>
@@ -42,7 +42,7 @@ label {
     </script>
   </div>
 
-  <h4 style="margin-top:40px; margin-left:20px">{% trans "Your Latest Polls" %}</h4>
+  <h4 class="dashboard">{% trans "Your Latest Polls" %}</h4>
   <table  style="width:810px; margin-left:60px;" class="condensed-table">
     <thead>
       <tr>
@@ -77,7 +77,7 @@ label {
   </table>
 
 <hr/>
-  <h4 style="margin-top:40px; margin-left:20px">{% trans "Your Latest Data Collection" %}</h4>
+  <h4 class="dashboard">{% trans "Your Latest Data Collection" %}</h4>
   <table  style="width:810px; margin-left:60px;" class="condensed-table">
     <thead>
       <tr>
@@ -116,7 +116,7 @@ label {
 
 <hr/>
 <div>
-  <h4 style="margin-top:40px; margin-left:20px; width:120px;">{% trans "Latest Activity" %}</h4>
+  <h4 class="dashboard">{% trans "Latest Activity" %}</h4>
   <a href="/activity_as_csv/"><img id="download-activity" src='{{STATIC_URL}}images/download-alt.png'/></a>
   <div id="condensed-table" style="width:810px; margin-left:60px;">
       {{ messages_table|safe }}
