@@ -1,5 +1,6 @@
 {% extends "xforms/layout.html" %}
-{% block title %}HarukaSMS - Data Collection{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "HarukaSMS - Data Collection" %}{% endblock %}
 
 {% block content %}
 
@@ -130,18 +131,18 @@
 	
 </script>
 
-<h4 style="margin-left:20px; margin-top: 45px">Data Collection Campaign Overview</h4>
+<h4 style="margin-left:20px; margin-top: 45px">{% trans "Data Collection Campaign Overview" %}</h4>
 <div class="well" style="width:858px; margin-left:20px;" id="form_header">
    
 </div>
-<h4 style="margin-left:20px; margin-top: 45px; margin-bottom:10px;">Your Data Collection Code Words<blockquote><small>just think of each new field like a new column in excel - so with more columns you can record more data with each survey!</small></blockquote></h4>
+<h4 style="margin-left:20px; margin-top: 45px; margin-bottom:10px;">{% trans "Your Data Collection Code Words<blockquote><small>just think of each new field like a new column in excel - so with more columns you can record more data with each survey!" %}</small></blockquote></h4>
 <table class="condensed-table" style='width:858px; margin-left:20px'>
 <thead>
 <tr>
-<th class="field_name_col" style='padding-left:20px;'>Title</th>
-<th class="field_type_col" style='padding-left:40px;'>Data Type</th>
-<th class="field_command_col" style='padding-left:85px; width: 74px;'>Short Code</th>
-<th class="field_description_col" style='padding-left:15px;'>Description</th>
+<th class="field_name_col" style='padding-left:20px;'>{% trans "Title" %}</th>
+<th class="field_type_col" style='padding-left:40px;'>{% trans "Data Type" %}</th>
+<th class="field_command_col" style='padding-left:85px; width: 74px;'>{% trans "Short Code" %}</th>
+<th class="field_description_col" style='padding-left:15px;'>{% trans "Description" %}</th>
 <th class="field_options_col" style='margin-right:10px;'></th>
 </tr>
 </thead>
@@ -165,7 +166,7 @@
 <br/>
 <div>
     <a href="javascript:addNewFieldBox();" style="float:left; margin-left:50px; margin-top:-60px" class='btn primary'>
-      Add New Field
+      {% trans "Add New Field" %}
     </a>
   </div>
 <br/><br/>

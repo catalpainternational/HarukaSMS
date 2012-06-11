@@ -1,6 +1,6 @@
 {% extends "bulksend/base.html" %}
 {% load forms_tags %}
-
+{% load i18n %}
 {% block stylesheets %}
 {{ block.super }}
 <!--<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/dashboard.css" />-->
@@ -17,17 +17,14 @@
 </ul>
 {% endif %}
 
-<h4 style="margin-left:20px; margin-top: 45px;">Groups</h4>
+<h4 id="bulk-SMS">{% trans "Send SMS to Group" %}</h4>
 <form action='/bulksend/review/' method="POST">
   <script content="text/javascript">
     var sms_length = {{ sms_length }};
       var sms_cost = {{ sms_cost }};
   </script>
-<div class="well" style="margin-right: 18px; margin-left: 20px;">
-      <div style='padding=10'>
-          <div>
-                  <h5>Send To:</h5>
-          </div>
+<div class="well bulk">
+      <div>
           <select name='group_id'>
               {% for group in groups %}
               <option value="{{ group.pk }}"> {{ group.name }} </option>
@@ -36,9 +33,9 @@
       </div>
   </div>
   <div class="row">
-	  <div class="span6">
-		<h4 style="margin-left: 2px;">Message</h4><blockquote><small> for mail merge type [name] for fullname, or [firstname] for the first name - just don't forget the square brackets.</small></blockquote>
-		<div class="well">
+	  <div class="span4">
+		<h4>{% trans "Message" %}</h4><blockquote id="SMS-help"><small> {% trans "for mail merge type [name] for fullname, or [firstname] for the first name - just don't forget the square brackets." %}</small></blockquote>
+		<div class="well SMS-message">
 			<div class="input, textarea">
 		          <textarea name="message"
 		                    cols="60"
@@ -49,36 +46,38 @@
 		     </div>
 		  </div>
 	  </div>
-	  <div class="span8">
+	  <div class="span7 offset4">
 		<div class="bordered">
-		  <table>
-		    <thead><tr><th colspan="1"><h4 style="margin-top: -9px; margin-left: 13px; margin-bottom: 46px;">Cost Calculator:</h4></th></tr></thead>
+		  <table id="cost-calculator">
+		    <thead><tr><th colspan="1"><h4 id="cost-calc">{% trans "Cost Calculator:" %}</h4></th></tr></thead>
 		    <tbody>
 		        <tr>
 		        	<td class="col_1" id="c_count">0</td>
-		        	<td><h4>Characters</h4></td>
+		        	<td>{% trans "Characters" %}</td>
 		        </tr>
 		        <tr>
 		        	<td class="col_1" id="sms_length">{{ sms_length }}</td>
-		        	<td><h4>Characters per SMS</h4></td>
+		        	<td>{% trans "Characters per SMS" %}</td>
 		        </tr>
 		        <tr>
 		        	<td class="col_1" id="sms_count">0</td>
-		        	<td><h4>SMS per Message</h4></td>
+		        	<td>{% trans "SMS per Message" %}</td>
 		        </tr>
 		        <tr class="last_row">
 		        	<td class="col_1" id="msg_price">US$0</td>
-		        	<td><h4>Per Contact</h4></td>
+		        	<td>{% trans "Per Contact" %}</td>
 		        </tr>
 		    </tbody>
 		  </table>
 		</div>
 	  </div>
     </div>
-<div style='padding:10'>
-	<input class="btn large primary" type="submit" style="margin-left: 148px; margin-top: -12px;" value="Send Messages">
-</div>
     
+	<div>
+
+		<input class="btn large primary send-SMS" type="submit" value="Confirm Message">
+	</div>
+	
 
 </form>
 {% endblock %}

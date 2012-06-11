@@ -19,12 +19,15 @@
 <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}stylesheets/icons.css" />
 <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}haruka_theme/css/bootstrap-ext.css" />
 <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}haruka_theme/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}haruka_theme/css/font-awesome.css">
 <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}haruka_theme/css/custom.css" />
 {% endblock %}
 
 {% block javascripts %}
 <script type="text/javascript" src="{{ STATIC_URL }}javascripts/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}javascripts/collapse.js"></script>
+
+
 {% endblock %}
 
 	</head>
@@ -48,7 +51,7 @@
 
 				{% block auth %}
 				<div id="auth">{% if user.is_authenticated %}
-					<a href="{% url rapidsms-logout %}">{% trans "Log out" %} {{ user.username }}</a>{% else %}
+					<a href="{% url rapidsms-logout %}"><i class="icon-signout icon-large"></i><!--{{ user.username }}--></a>{% else %}
 					<a href="{% url rapidsms-login %}">{% trans "Log in" %}</a>{% endif %}
 				</div>
 				{% endblock %}
@@ -63,6 +66,7 @@
 
 				{% block page_tabs %}
 				{% endblock %}
+                                <span id="modem_status"></span>
 
 				<!-- Message list: errors, warnings and such -->
 				{% if context_instance.messages %}
@@ -82,7 +86,7 @@
 			{% block footer %}
 			<div id="footer">
 				<p class="rights" style="margin-top: 48px; margin-left: 0px; margin-right: 9px;">
-					HarukaSMS was designed and developed by<br /> Catalpa International and is available under the BSD license<br/>Copyright &copy; 2008 &#8211; 2012 Asia Foundation
+					{% trans "HarukaSMS was designed and developed by" %}<br /> {% trans "Catalpa International and is available under the BSD license" %}<br/>{% trans "Copyright &copy; 2008 &#8211; 2012 Asia Foundation" %}
 				</p>
 
 <!--				{% region "footer" %}-->
@@ -91,5 +95,28 @@
 
 			{% region "bottom" %}
 		</div>
+ <!-- <script type="text/javascript">
+    var modem_poll_update_interval=3000;
+    function update_modem_status() {
+        var something = $.get("/router/modem_status", function(data) {
+          $("#modem_status").html(data);
+});}          
+    window.setInterval(update_modem_status, modem_poll_update_interval);
+  </script> -->
+  
+<script src="{{ STATIC_URL }}haruka_theme/js/jquery-1.7.1.min.js"></script>
+<script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-dropdown.js"></script>
+<script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-collapse.js"></script>
+<script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-button.js"></script>
+<script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-modal.js"></script>
+<script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-tooltip.js"></script>
+<script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-popover.js"></script>
+<script type="text/javascript">$('#myModal').modal(options)</script>
+<script type="text/javascript">$('#myModal').modal('show')</script>
+<script type="text/javascript">$('#myModal').modal('hide')</script>
+<script type="text/javascript">$('#myModal').modal('toggle')</script>
+<script type="text/javascript"> $('#example').tooltip(options)</script>
+<script type="text/javascript"> $('#example').popover(options)</script>
+
 	</body>
 </html>

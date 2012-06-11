@@ -1,5 +1,5 @@
-
-<div class="name">Edit '{{xform.name}}'</div>
+{% load i18n %}
+<div class="name">{% trans "Edit" %} '{{xform.name}}'</div>
 {% load forms %}
 
 <form action="/xforms/{{xform.pk}}/edit/" method="post" class="uniForm">
@@ -8,10 +8,10 @@
 
 <div class="buttons" style="position: relative; top: -112px; left: 252px;">
   <div class='btn' onclick="showFormDetails('{{xform.pk}}');" href="javascript:void(0);" class="negative">
-    Cancel
+    {% trans "Cancel" %}
   </div>
   <div class='btn primary' onclick="submitForm(this, '#form_header');" href="javascript:void(0);">
-    Save Form Details
+    {% trans "Save Form Details" %}
   </div>
 </div>
 

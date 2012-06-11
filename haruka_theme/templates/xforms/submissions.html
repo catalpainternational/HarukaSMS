@@ -1,13 +1,14 @@
 {% extends "xforms/layout.html" %}
-{% block title %}HarukaSMS - Submissions{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "HarukaSMS - Submissions" %}{% endblock %}
 
 {% block content %}
 
 <div class="details">
-  <div class="name" style='margin-top:45px'><h4 style='margin-left:20px;'>{{ xform.name }} Submissions <blockquote><small>have a quick look at your results as the come in here, or for more thorough analysis export your results to Excel</small></blockquote></h4></div>
+  <div class="name" style='margin-top:45px'><h4 style='margin-left:20px;'>{{ xform.name }} {% trans "Submissions" %} <blockquote><small>{% trans "have a quick look at your results as the come in here, or for more thorough analysis export your results to Excel" %}</small></blockquote></h4></div>
   <div>
     <a href="/xforms/{{ xform.pk }}/submissions.csv" class='btn primary' style='margin-left:815px;'>
-      Export
+      {% trans "Export" %}
     </a>
     <br/>
   </div>
@@ -16,8 +17,8 @@
 <table style='width:858px; margin-left:20px' class="table"> 
   <thead>
     <tr>
-      <th class="center">Type</th>
-      <th>Date</th>
+      <th class="center">{% trans "Type" %}</th>
+      <th>{% trans "Date" %}</th>
       {% for field in fields.all %}
       <th>{{ field.name }}</th>
       {% endfor %}
@@ -61,7 +62,7 @@
     <td>
       <div>
 	<a href="/xforms/submissions/{{ submission.pk }}/edit/" class='btn'>
-           Edit
+           {% trans "Edit" %}
 	</a>
       </div>
     </td>
@@ -70,7 +71,7 @@
   {% else %}
   <tr class="form_table_row">
     <td colspan="10">
-      <i>No submissions for this form.</i>
+      <i>{% trans "No submissions for this form." %}</i>
     </td>
   </tr>
   {% endif %}
@@ -80,23 +81,23 @@
   <div class="paginator_pager">
     <span class="paginator_prev">
       {% if submissions.has_previous %}
-      <a href="?page={{ submissions.previous_page_number }}">&laquo; prev </a>
+      <a href="?page={{ submissions.previous_page_number }}">{% trans "previous" %} </a>
       {% endif %}
     </span>
 
     <span class="paginator_curr">
-    Page {{ submissions.number }} of {{ submissions.paginator.num_pages }}
+   {% trans "Page" %} {{ submissions.number }} of {{ submissions.paginator.num_pages }}
     </span>
 
     <span class="paginator_next">
       {% if submissions.has_next %}
-      <a href="?page={{ submissions.next_page_number }}">next &raquo;</a>
+      <a href="?page={{ submissions.next_page_number }}">{% trans "next" %}</a>
       {% endif %}
     </span>
   </div>
 
   <div class="paginator_blurb">
-    Submissions {{ submissions.start_index }}-{{ submissions.end_index }} of {{ submissions.paginator.count }}
+    {% trans "Submissions" %} {{ submissions.start_index }}-{{ submissions.end_index }} of {{ submissions.paginator.count }}
   </div>
 </div>
 

@@ -1,5 +1,5 @@
 {% extends "xforms/layout_table.html" %}
-
+{% load i18n %}
 <script>
 {% block table_scripts %}
 
@@ -88,7 +88,7 @@
 
 
 {% block table_header %}
-<h4 style="margin-left:20px; margin-top: 45px">Manage Data Constraints</h4>
+<h4 style="margin-left:20px; margin-top: 45px">{% trans "Manage Data Constraints" %}</h4>
 <div class="details">
 <div class="name">{{ field.caption }}</div>
 </div>
@@ -99,7 +99,7 @@
 
 <br/>
   <div>
-      <a href="javascript:addConstraint();" style="float:left" class='btn primary'>Add Constraint
+      <a href="javascript:addConstraint();" style="float:left" class='btn primary'>{% trans "Add Constraint" }
       </a>
   </div>
 

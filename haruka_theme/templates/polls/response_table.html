@@ -1,3 +1,4 @@
+{% load i18n %}
 <script type="text/javascript">
 
   function deleteResponse(link, delete_link) {
@@ -33,32 +34,32 @@ li {
 </style>   
 
 
-<h4 style='margin-left:20px; margin-top:45px; margin-bottom:15px;'>Your Poll</h4>
+<h4 style='margin-left:20px; margin-top:45px; margin-bottom:15px;'>{% trans "Your Poll" %}</h4>
 <div class="well" style="width:858px; margin-left:20px;">
     <div class="name" style='margin-left:10px;'><h5>'{{ poll.question }}'</h5></div>
     <div>
-        <a class='btn primary' style='margin-left:780px;'href="{% url poll.views.responses_as_csv poll.pk %}">Export
+        <a class='btn primary' style='margin-left:780px;'href="{% url poll.views.responses_as_csv poll.pk %}">{% trans "Export" %}
         </a>
         {% ifequal poll.type 'l' %}
             <a href="{% url poll.views.apply_all poll.pk %}">
-                <img src="{{ MEDIA_URL }}poll/icons/silk/application_form_add.png" alt=""/>Register All
+                <img src="{{ MEDIA_URL }}poll/icons/silk/application_form_add.png" alt=""/>{% trans "Register All" %}
             </a>
         {% else %}
             {% ifequal poll.type 'r' %}
                 <a href="{% url poll.views.apply_all poll.pk %}">
-                    <img src="{{ MEDIA_URL }}poll/icons/silk/application_form_add.png" alt=""/>Register All
+                    <img src="{{ MEDIA_URL }}poll/icons/silk/application_form_add.png" alt=""/>{% trans "Register All" %}
                 </a>
             {% endifequal %}
         {% endifequal %}
       <br/>
     </div>
 </div>
-<h4 style='margin-left:20px; margin-top:45px; margin-bottom:15px;'>SMS Poll Responses</h4>
+<h4 style='margin-left:20px; margin-top:45px; margin-bottom:15px;'>{% trans "SMS Poll Responses" %}</h4>
 <form class="form" action="" method="post">
 <table class="condensed-table" style='width:891px; margin-left:20px;'> 
   <thead>
     <tr>
-      <th class="response_sender_col">Sender</th>
+      <th class="response_sender_col">{% trans "Sender" %}</th>
       {% for column, colclass in columns %}
       <th class="response_{{ colclass }}_col">{{ column }}</th>
       {% endfor %}
@@ -76,7 +77,7 @@ li {
 {% else %}
   <tr class="poll_table_row">
     <td colspan="{{ columns|length }}">
-      <i>No responses for this poll.</i>
+      <i>{% trans "No responses for this poll." %}</i>
     </td>
   </tr>
 {% endif %}

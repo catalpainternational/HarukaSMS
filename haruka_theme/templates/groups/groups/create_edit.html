@@ -1,8 +1,9 @@
 {% extends "groups/base.html" %}
 {% load pagination_tags sorting_tags %}
+{% load i18n %}
 
 
-{% block title %}{% if form.instance.pk %}Edit Group{% else %}Create Group{% endif %}{% endblock %}
+{% block title %}{% if form.instance.pk %}{% trans "Edit Group" %}{% else %}{% trans "Create Group" %}{% endif %}{% endblock %}
 
 {% block stylesheets %}
     {{ block.super }}
@@ -20,7 +21,7 @@
 
 {% block content %}
     <div class="row">
-		<h2>Groups</h2>
+		<h2>{% trans "Groups" %}</h2>
 		<table class='zebra-striped' >
 			<thead>
 				<tr>
@@ -43,8 +44,7 @@
 
     <div class="row">
     	<div class="row well span6">
-    	<h4>{% if form.instance.pk %}Edit Group{% else %}Creates Group{% endif %}</h4>
-        bla bla bla bla bla
+    	<h4>{% if form.instance.pk %}{% trans 'Edit Group" %}{% else %}{% trans "Create Group" %}{% endif %}</h4>
 			<form action="#" method="POST" class="buttons">
 				{% csrf_token %}
 				<table>

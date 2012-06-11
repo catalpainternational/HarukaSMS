@@ -1,5 +1,6 @@
 {% extends "polls/layout.html" %}
-{% block title %}HarukaSMS - Polls{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "HarukaSMS - Polls" %}{% endblock %}
 
 {% block content %}
 
@@ -86,21 +87,21 @@
 	});
 	
 </script>
-  <h4 style='margin-left:40px; margin-top: 45px;;'>Polling Information<blockquote><small> here you can start or stop a poll. And if the polls not active make some minor changes.</small></blockquote></h4> 
+  <h4 style='margin-left:40px; margin-top: 45px;;'>{% trans "Polling Information" %}<blockquote><small> {% trans "here you can start or stop a poll. And if the polls not active make some minor changes." %}</small></blockquote></h4> 
 <div id="poll_header" class='well' style='margin-left:20px; width: 858px;'>
 </div>
 
 <form action="" style="width: 896px;">
 {% csrf_token %}
-<h4 style='margin-left:40px; margin-top:45px;margin-bottom:15px;'>Edit your Poll's Details<blockquote><small> you can color code your SMS replies, and tailor the SMS response message to the various answers</small></blockquote></h4>
+<h4 style='margin-left:40px; margin-top:45px;margin-bottom:15px;'>{% trans "Edit your Poll's Details" %}<blockquote><small> {% trans "you can color code your SMS replies, and tailor the SMS response message to the various answers" %}</small></blockquote></h4>
 <table class="condensed-table" id="poll_table" style='margin-left:20px;'>
 <thead>
 <tr>
-<th class="category_name_col">Name</th>
-<th class="category_response_col">Response Message</th>
+<th class="category_name_col">{% trans "Name" %}</th>
+<th class="category_response_col">{% trans "Response Message" %}</th>
 <!--<th class="category_priority_col">Priority</th>-->
-<th class="category_color_col">Color</th>
-<th class="category_default_col">Default</th>
+<th class="category_color_col">{% trans "Color" %}</th>
+<th class="category_default_col">{% trans "Default" %}</th>
 <th class="category_options_col" style="width: 83px;"></th>
 </tr>
 </thead>
@@ -116,7 +117,7 @@
 <br/>
 <div>
     <a href="javascript:addNewCategoryBox();" style="float:left; margin-left:40px;'" class='btn primary'>
-      Add New Category
+      {% trans "Add New Category" %}
     </a>
 </div>
 <br/><br/>

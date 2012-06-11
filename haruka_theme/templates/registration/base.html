@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
+{% load i18n %}
 
 {% block stylesheets %}
 {{ block.super }}
 <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/base.css" />
 {% endblock %}
 
-{% block title %}HarukaSMS - Contacts{% endblock %}
+{% block title %}{% trans "HarukaSMS - Contacts" %}{% endblock %}

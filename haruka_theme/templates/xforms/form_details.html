@@ -1,9 +1,10 @@
+{% load i18n %}
  <div>
     <a onclick="editFormDetails('{{xform.pk}}');" href="javascript:void(0);" class='btn'>
-        Edit
+        {% trans "Edit" %}
     </a>
     <a href="/xforms/odk/get/{{ xform.pk }}/" class='btn'>     
-        XForm
+        {% trans "XForm" %}
     </a>
     </div>
 

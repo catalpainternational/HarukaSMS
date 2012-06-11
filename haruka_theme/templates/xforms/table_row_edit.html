@@ -1,5 +1,6 @@
 {% load prop %}
 {% load dumper %}
+{% load i18n %}
 
 
 
@@ -10,7 +11,7 @@
 <form class="form" action="/xforms/{{ xform.pk }}/field/{{ field.pk }}/constraint/{{item.pk}}/edit/" method="post">
 
 {% else %}
-<div class="add_field_header">Add New Constraint</div>
+<div class="add_field_header">{% trans "Add New Constraint" %}</div>
 <div class="add_field">
 <form class="form" action="/xforms/{{ xform.pk }}/field/{{ field.pk }}/constraints/add/" method="post">
 {% endif %}

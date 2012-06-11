@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="field_table" id="{{field.id}}">
 <table width="100%"><tr>
 <td class="field_name_col"><div class="grippy" style="margin-right:8px;float:left;width:18px;height:19px;background: url('{{MEDIA_URL}}xforms/images/grippy_grid.png')">&nbsp;</div>
@@ -13,10 +14,10 @@
 
   <div>
     <a onclick="editField(this);" href="javascript:void(0);" class='btn'>
-        Edit
+        {% trans "Edit" %}
     </a>
     <a href="/xforms/{{xform.pk}}/field/{{field.pk}}/constraints/" id="save_{{field.pk}}" class='btn'>
-      Constraints ({{ field.constraints.all.count }})
+      {% trans "Constraints" %} ({{ field.constraints.all.count }})
     </a>
   </div>
 

@@ -1,3 +1,4 @@
+{% load i18n %}
 {% block message_information %}
     <td class="response_sender_col">
       {% if response.message.connection.contact %}
@@ -18,7 +19,7 @@
       </a>
       <div>
         <a onclick="editResponse(this, '{% url poll.views.edit_response response.pk %}');" href="javascript:void(0);" class='btn' style="float:right; margin-right:5px; margin-top: 2px;">
-            Edit
+            {% trans "Edit" %}
         </a>
       </div>
     {% endblock %}
