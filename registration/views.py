@@ -131,7 +131,8 @@ def registration(req, pk=None):
     elif req.method == "GET":
         contact_form = ContactForm(instance=contact)
         bulk_form = BulkRegistrationForm()
-        contact_table = ContactTable(Contact.objects.all(), request=req)
+    
+    contact_table = ContactTable(Contact.objects.all(), request=req)
 
     return render_to_response(
         "registration/dashboard.html", {
