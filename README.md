@@ -19,16 +19,18 @@ Open up Terminal and do the following
     	~/haruka> cd HarukaSMS
     	~/haruka/HarukaSMS> pip install -r requirements.txt
 
-4. Start a new Terminal Session. (This is to ensure that step 6 works)
+4. Make sure your HUAWEI dongle is plugged into your USB port
 
-4. Create the database
+5. Start a new Terminal Session. (This is to ensure that step 6 works)
+
+6. Create the database
 
     	~/haruka/HarukaSMS> python manage.py syncdb
 
-5. Run the development webserver
+7. Run the development webserver
  
 		~/haruka/HarukaSMS> python manage.py runserver &
 
-6. Run the GSM router
+8. Run the GSM router
 		
 		~/haruka/HarukaSMS> pygsm-gateway.py
