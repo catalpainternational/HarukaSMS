@@ -82,7 +82,8 @@ def activity_as_csv(req):
 @login_required
 def dashboard(req):
     """ dashboard for viewing poll status and incoming / outgoing messages """
-
+    # lets flush the messages & starts the workers
+    get_router(True)
     if req.method.upper() == 'GET':
         reply_form = ReplyForm()
 
@@ -98,10 +99,18 @@ def dashboard(req):
                         pass
                     outgoing = OutgoingMessage(conn, text)
                     get_router().handle_outgoing(outgoing)
+                else:
+                    ## Create the contact and send it an email ???
+                    # reply_form.errors['recipient']="This number isn't in the system. please add a contact"
+                    print "the message was ignored because the contact is not in the database"
             else:
                 reply_form.errors.setdefault('short_description', ErrorList())
-                reply_form.errors['recipient'].append("This number isn't in the system")
-
+                
+                if 'recipient' in reply_form.errors:
+                    reply_form.errors['recipient'].append("This number isn't in the system")
+                if 'message' in reply_form.errors:
+                    reply_form.errors['message'].append("A message is required")
+                
     polls = Poll.objects.annotate(Count('responses')).order_by('start_date')[:5]
     data_collections = XForm.objects.annotate(Count('submissions')).order_by('created')[:5]
     messages = Message.objects.all().order_by('-date')[0:10]
