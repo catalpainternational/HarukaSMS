@@ -43,7 +43,7 @@
     </div>
 
     <div class="row">
-    	<div class="row well span6">
+    	<div class="row well span6 group-create">
     	<h4>{% if form.instance.pk %}{% trans 'Edit Group" %}{% else %}{% trans "Create Group" %}{% endif %}</h4>
 			<form action="#" method="POST" class="buttons">
 				{% csrf_token %}

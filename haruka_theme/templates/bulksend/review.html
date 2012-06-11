@@ -4,94 +4,51 @@
 {% block stylesheets %}
 {{ block.super }}
 <!--<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/dashboard.css" />-->
-<style>
-
-body {
-background: #eee url("../images/body-bg.png");
-font: 9pt "Lucida Grande", "Bitstream Vera Sans", Verdana, sans-serif;
-line-height: 1;
-color: #333;
-padding: 0;
-margin: 0;
-} 
-
-</style>
 
 {% endblock %}
 
 {% block content %}
 
-<h5 style="margin-left:170px; margin-top:45px;">{% trans "SMS Campaign Summary" %}<blockquote><small> {% trans "Read below for a quick snap-shot of your SMS campaign before you click send!" %}</small></blockquote> 
-
+<h4 id="header-space-review">{% trans "SMS Campaign Summary" %}</h4>
 <div class="form_bulk_send" id="form_bulk_send">
 
     <form action='/bulksend/' method="POST">
-        <div class="well">
+        <div class="well SMS-review">
                 <div class="tally">
                     <input type="hidden" name="group_id"
                            value="{{group.pk}}"/>
                     <input type="hidden" name="message"
                            value="{{m_text}}"/>
-
-                    <center>
-                        <table><!--
-                                   <thead>
-                                   <tr class="row_0">
-                                   <td class="col_0">Item</td>
-                                   <td class="col_1">Quantity</td>
-                                   <td class="col_2">Unit</td></tr>
-                                   </thead>-->
+                    
+                    <div>
+                  		<p><h5>{% trans "Message:" %}</h5>{{m_text}}</p> 
+                  		<p><h5>{% trans "Group:" %}</h5>{{g_name}}</p>
+                    </div>
+                        <table>
                             <tbody>
-                                <tr class="row_section">
-                                    <td colspan="3"><h4>{% trans "Message:" %}</h4></td>
-                                </tr>
-                                <tr>          
-                                    <td class="col_m" colspan="3"><blockquote><p style="width: 500px;">{{m_text}}</p></blockquote></td>     
-                                </tr>
-                                <tr class="row_op">
-                                    <td class="col_0"></td>
-                                    <td class="col_1"></td>
-                                <td class="col_2"></td>
-                                </tr>
                                 <tr class="row_rez">
-                                <tr class="row_section">
-                                    <td class="col_t" colspan="3"><h4>{% trans "Group:" %}</h4><blockquote style='width:740px;'><p>{{g_name}}</p></blockquote></td>
-                                </tr>
-                                <td class="col_0"><h4>{% trans "Number of SMS per message:" %}</h4></td>
-                                    <td class="col_1"> <h4>{{m_count}}</h4></td>
+                                     <td class="col_0">{% trans "Number of SMS per message:" %}</td>
+                                    <td class="col_1">{{m_count}}</td>
                                 <tr>
-                                    <td class="col_0"><h4>{% trans "Group size:" %}</h4></td>
-                                    <td class="col_1"><h4>{{g_size}}</h4></td>
+                                    <td class="col_0">{% trans "Group size:" %}</td>
+                                    <td class="col_1">{{g_size}}</td>
                                     
                                 </tr>
-                      
-                               
                                 <tr class="row_rez">
-                                    <td class="col_0"><h4>{% trans "Number of SMS to send:" %}</h4></td>
-                                    <td class="col_1"><h4> {{sms_count}}</h4></td>
-                               
+                                    <td class="col_0">{% trans "Number of SMS to send:" %}</td>
+                                    <td class="col_1">{{sms_count}}</td>
                                 </tr>
-
                                 <tr>
-                                    <td class="col_0"><h4>{% trans "Cost per SMS:" %}</h4></td>
-                                    <td class="col_1"><h4>{{sms_cost}}</h4></td>
-                                 
-                                </tr>
-                           
-                                <tr class="row_op">
-                                    <td class="col_0"></td>
-                                    <td class="col_1"></td>
-                                  
+                                    <td class="col_0">{% trans "Cost per SMS:" %}</td>
+                                    <td class="col_1">{{sms_cost}}</td>
                                 </tr>
                                 <tr class="row_rez row_rez_final">
-                                    <td class="col_0"><h4>{% trans "Total Cost:" %}</h4></td>
+                                    <td class="col_0">{% trans "Total Cost:" %}</td>
                                     <td class="col_1" id="c_count">US$ {{send_price}}</td>
-                               
                                 </tr>
                             </tbody>
                         </table>
-                            <input onclick="javascript:showSpinnerAndRedirect('form_bulk_send')" type="submit" class="btn large danger" value="Send Message to {{g_size}} contacts" style="margin-bottom: 22px; margin-left: 345px;"/>
-                    </center>
+                            <input onclick="javascript:showSpinnerAndRedirect('form_bulk_send')" type="submit" class="btn large danger SMS-Send" value="Send Message to {{g_size}} contacts"/>
                 </div>
             </div>
     </form>
