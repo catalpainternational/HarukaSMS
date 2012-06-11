@@ -31,6 +31,30 @@ def stop_sending_mass_messages():
     global sending_mass_messages
     sending_mass_messages = False
 
+
+
+def unlock_messages():
+    """ Transform Locked messages into Queued messages """
+    transaction.enter_transaction_management()
+    
+    try:
+        # without this, our to_process list gets cached
+        transaction.commit()
+        
+        # this gets any outgoing messages which are either pending or queued
+        processable = list(Message.objects.filter(direction='O',
+                                                  status='L').for_single_update())
+        
+        transaction.enter_transaction_management()
+        for message in processable:
+            message.status = 'Q'
+            message.save()
+        transaction.commit()
+    except:
+        import traceback
+        traceback.print_exc()
+
+
 class HttpRouterThread(Thread, LoggerMixin):
     """
     This thread is just a worker thread for messages.  The run() method pops off a message to work on
@@ -56,9 +80,23 @@ class HttpRouterThread(Thread, LoggerMixin):
                     transaction.commit()
 
                     # this gets any outgoing messages which are either pending or queued
-                    to_process = list(Message.objects.filter(direction='O',
+                    processable = list(Message.objects.filter(direction='O',
                                                              status__in=['P','Q']).order_by('status').for_single_update())
+                    
+                    to_process = []
+                    transaction.enter_transaction_management()
+                    for message in processable:
+                        if message is not None and message.text is not None:
+                            self.debug("cancelling empty message %s",str(message))
+                            if message.text is None or len(message.text.strip()) == 0:
+                                message.status = 'C'
+                                message.save()
+                            else:
+                                to_process.append(message)
 
+                    transaction.commit()
+
+                    transaction.enter_transaction_management()
                     if len(to_process):
                         self._isbusy = True
                         outgoing_message = to_process[0]
@@ -66,7 +104,7 @@ class HttpRouterThread(Thread, LoggerMixin):
                         outgoing_message.save()
 
                         # frees our update lock
-                        transaction.commit()                        
+                        transaction.commit()
 
                         # process the outgoing phases for this message
                         send_msg = get_router().process_outgoing_phases(outgoing_message)
@@ -92,8 +130,8 @@ class HttpRouterThread(Thread, LoggerMixin):
     def fetch_url(self, url):
         """
         Wrapper around url open, mostly here so we can monkey patch over it in unit tests.
-        """
-        response = urlopen(url, timeout=15)
+        """        
+        response = urlopen(url, timeout=60)
         return response.getcode()
 
     def build_send_url(self, msg, kwargs):
@@ -166,6 +204,7 @@ class HttpRouterThread(Thread, LoggerMixin):
                 msg.save()
             outgoing_db_lock.release()
         except Exception as e:
+            print "SMS[%d] Message not sent: %s .. queued for later delivery." % (msg.id, str(e))
             self.error("SMS[%d] Message not sent: %s .. queued for later delivery." % (msg.id, str(e)))
             outgoing_db_lock.acquire()
             msg.status = 'Q'
@@ -187,6 +226,7 @@ class HttpRouter(object, LoggerMixin):
         # the apps we'll run through
         self.apps = []
 
+        unlock_messages()
         # we need to be started
         self.started = False
 
@@ -360,7 +400,7 @@ class HttpRouter(object, LoggerMixin):
     def check_workers(self):
         global outgoing_worker_threads
         # check for available worker threads in the pool, add one if necessary
-        num_workers = getattr(settings, 'ROUTER_WORKERS', 5)
+        num_workers = getattr(settings, 'ROUTER_WORKERS', 1)
         all_busy = True
         for worker in outgoing_worker_threads:
             if not worker.is_busy():
@@ -392,7 +432,7 @@ class HttpRouter(object, LoggerMixin):
         """
         # create a RapidSMS outgoing message
         msg = OutgoingMessage(outgoing.connection, outgoing.text.replace('%','%%'))
-        msg.db_message = outgoing
+        msg.db_message = outgoing            
         
         send_msg = True
         for phase in self.outgoing_phases:
@@ -403,11 +443,10 @@ class HttpRouter(object, LoggerMixin):
             # is the last app called with an outgoing message
             for app in reversed(self.apps):
                 self.debug("Out %s app" % app)
-
                 try:
                     func = getattr(app, phase)
                     keep_sending = func(msg)
-
+                    
                     # we have to do things this way because by default apps return
                     # None from outgoing()
                     if keep_sending is False:
@@ -488,6 +527,7 @@ class HttpRouter(object, LoggerMixin):
 http_router = HttpRouter()
 http_router_lock = Lock()
 
+        
 def get_router(start_workers=False):
     """
     Takes care of performing lazy initialization of the www router.
