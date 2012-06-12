@@ -1,10 +1,9 @@
 /* @override 
 	http://127.0.0.1:8000/static/haruka_theme/css/custom.css
 	http://10.0.1.4:8888/static/haruka_theme/css/custom.css
- */
+*/
 
-
-	body {
+body {
 		background:  url("../images/backgroundwhite.png") repeat-x fixed #B1DEEA;
 		color: #333333;
 		font: 9pt/1 "Helvetica","Arial";
@@ -1170,21 +1169,20 @@ img#download-contacts {
 	
 }
 
-#modem_status {
+div.status-lights {
+	display: inline-block;
+	width: 40px;
+	height: 10px;
 	position: relative;
-	top: -95px;
-	left: 750px;
-	border: 1px solid rgba(0, 0, 0, 0.15);
-	border-radius: 4px 4px 4px 4px;
-	display: block;
-	margin: 0 0 9px;
-	padding: 8.5px;
-	white-space: pre-wrap;
-	word-wrap: break-word;
-	width: 140px;
-	height: 11px;
-	background-color: #f0f0f0;
-	display:none;
+	top: -40px;
+	right: -150px;
+}
+
+#status_red{
+	color: red;
+}
+#status_green{
+	color: green;
 }
 
 div.well.span7 {

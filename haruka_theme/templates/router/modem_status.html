@@ -1,7 +1,8 @@
-<span class="Status icon-exclamation-sign icon-large">
- {% if "Not OK" in status %}
-  <span class="NOK">[{{status}} : {{reason}}]</span>
+<div class="status-lights">
+  {% if "Not OK" in status %}
+  <i class="Status icon-phone-sign icon-large" id="status_red"></i>
   {% else %}
-  <span class="OK">[{{status}} | #-&gt; : {{sent}} | #&lt;- {{received}} | #-x {{failed }} | {{signal}} ]</span>
+  <i class="Status icon-phone-sign icon-large" id="status_green"></i>
   {% endif %}
-</span>
+</div>
+
