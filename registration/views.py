@@ -117,7 +117,8 @@ def registration(req, pk=None):
                 contact.save()
 
                 backend, created = Backend.objects.get_or_create(name=DEFAULT_BACKEND_NAME)
-                connection = Connection.objects.get_or_create(backend=backend, contact=contact)[0]
+                connection = Connection.objects.get_or_create(backend=backend, identity=contact.phone)[0]
+                connection.contact = contact
                 connection.identity = contact.phone
                 connection.save()
 
