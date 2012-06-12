@@ -1397,5 +1397,22 @@ th.display-none {
 
 
 
+/* Trying to override the admin */
 
+.selector-add {
+    background: url(../images/admin/selector-add.png) top center no-repeat;
+    margin-bottom: 2px;
+}
 
+.selector-remove {
+    background: url(../images/admin/selector-remove.png) top center no-repeat;
+}
+
+a.selector-chooseall {
+    width: 7em;
+    background: url(../images/admin/selector-addall.png) left center no-repeat;
+}
+
+a.selector-clearall {
+    background: url(../images/admin/selector-removeall.png) left center no-repeat;
+}

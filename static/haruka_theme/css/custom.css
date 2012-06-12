@@ -1,6 +1,7 @@
 /* @override 
 	http://127.0.0.1:8000/static/haruka_theme/css/custom.css
-	http://192.168.0.2:8080/static/haruka_theme/css/custom.css */
+	http://10.0.1.4:8888/static/haruka_theme/css/custom.css
+ */
 
 
 	body {
@@ -12,24 +13,33 @@
     
 }
 
-	#inner {
+#inner {
 		padding: 1em;
 		position: relative;
         z-index = 0;
-}
-
+        min-height: 500px;
+		top: -35px;
+	}
+	
+	div.well.registration {
+		padding-bottom: 6px;
+		margin-bottom: 2px;
+		width: 340px;
+	}
+	
 	ul {
 		list-style-type: none;
 	}
 
+	
 /*--------------- START OF HEADER -----------------*/
 
     #spacer {
         top: 0px;
         left: 0px;
-        height: 108px;
+        height: 78px;
         width: 100%;
-        background-color: #FFFFFF;
+        background-color: #ffffff;
         z-index: 5;
         position: fixed;
         opacity: 5; 
@@ -39,31 +49,34 @@
 		background: url("") repeat-x scroll 0 0 transparent;
 		color: #CCCCFF;
 		padding-bottom: 2px;
-		padding-top: 23px;
 		position: fixed;
-
         width: 80em;
-        height: 13px;
+        height: 7px;
         background: #fff;
         margin: 0 auto 0 auto;
-        z-index: 10;    
-	   	     
+        z-index: 10;      
         -moz-box-shadow: 3px 3px #575757;
         box-shadow: 0px 0px 2px #aaa;
         -moz-border-radius-topright: 1em;
         -moz-border-radius-topleft: 1em;
-    
+		top: 44px;
+	}
+
+#inner div.row div.well.span7 form.buttons {
+	margin-bottom: 2px;
+	position: relative;
+	top: -12px;
 }
 
 #inner div.row div.well.span7 form.buttons div.form-action a.btn.danger {
-	top:0px;
+	top: -54px;
 }
 
 #tabs{
         height: 20px; 
         width: 487px; 
         margin-right: 0px; 
-        top: -30px;
+        top: -33px;
         left: 440px;
     }
 	
@@ -90,9 +103,10 @@
 		float: left;
 		height: 70px;
 		width: 250px;
-		margin-left: 17px;
-		margin-top: -71px;
-}
+		position: relative;
+		top: -64px;
+		left: 13px;
+	}
 
 #inner div.row div.well.span7 form.buttons div.form-action a.btn.danger {
 	height: 16px;
@@ -102,6 +116,17 @@
 #inner table.condensed-table thead tr th.poll_submissions {
 	border-bottom: 1px solid #DDDDDD;
 }
+
+th.poll_submissions {
+	width: 100px;
+}
+
+#quick-SMS-btn{
+	position: relative;
+	top: 10px;
+	left: 250px;
+}
+
 
 #header #auth a {
     color: #0069D6;
@@ -146,23 +171,21 @@ li.alert-message.danger {
 /*--------------- START OF MAIN NAVIGATION -----------------*/
 
 #inner div.row div.span7 div.well form div div.field.bulk label {
-	height: 20px; 
-	width: 92px; 
-	padding-top: 0px; 
-	margin-top: 22px;
-	margin-left: 8px;
+	height: 10px; 
+	width: 92px;
+	position: relative;
+	top: -23px;
+	right: 33px;
 }
 
-#id_bulk {
-	margin-right: 40px;
-	left: 15px
-}
+
 
 #tabs,
     #page-tabs {
         -webkit-border-radius: 8px;
 		-moz-border-radius: 8px;
 		border-radius: 8px;
+		border-radius-top-right: 0px;
 		-moz-transition: opacity 0.2s ease 0s;
 		background-image: -moz-linear-gradient(center top , rgba(255, 255, 255, 0.1) 50%, transparent 50%);
     	background-color: #999999;
@@ -173,12 +196,6 @@ li.alert-message.danger {
         margin: 0;
         margin-right: 30px;
         
-    }
-	
-	input#id_bulk {
-		left: 15px
-
-	    
 	}
 	
 	#tabs { right: 0; }
@@ -326,7 +343,7 @@ li.alert-message.danger {
     
 }
 
-	div.module div {
+div.module div {
 		-moz-border-bottom-colors: none;
 		-moz-border-image: none;
 		-moz-border-left-colors: none;
@@ -340,18 +357,24 @@ li.alert-message.danger {
     
 }
 
-	div.module div.module {
+div.module div.module {
 		border: none;
 }
 
 body:last-child form > div:first-child {
-    background-color: #f5f5f5;
+    background-color: transparent;
     
 }
 
  /*------------- START OF TABLE STYLING ----------------*/
-
-thead th {
+ 
+ #id_bulk {
+ 	position: relative;
+	 top: -44px;
+	 left: 80px;
+ }
+ 
+ thead th {
     background: url("");
     color: none;
 
@@ -363,9 +386,14 @@ thead th {
 	left: 50px;
 }
 
+
 #sortable {
 	width: 865px;
 
+}
+
+#form_bulk_send form div.well.SMS-review div.tally center table tbody tr td.col_m {
+	padding: 0;
 }
 
 thead th a:hover {
@@ -392,11 +420,6 @@ thead th a:hover {
         font-size: none;
     }
  
- div.form_bulk_send table td {
-    border: 0 none;
-    padding: 0.4em;
-    width: 70px;
-}
 
 tr.row_rez.row_rez_final td {
     background: none repeat scroll 0 0;
@@ -418,18 +441,84 @@ body:last-child h2 + form {
 form div.submit {
     background: url("");
     border:none;
+	position: relative;
+	top: -48px;
+	right: 0;
+	left: 0;
 }
+
+div.well.bulk {
+	width: 380px;
+	position: relative;
+	margin-bottom: -1px;
+	left: 18px;
+	height: 0;
+}
+
+#inner form div.row div.span3.offset4 blockquote small {
+	width: 330px;
+}
+
+table#cost-calculator {
+	position: relative;
+	top: -104px;
+}
+
+
+#inner div.well.quick_SMS {
+	width: 300px;
+	position: relative;
+}
+
+#inner div.well.quick_SMS form.sender-form {
+	position: relative;
+	width: 314px;
+	left: -12px;
+	margin-bottom: 1px;
+}
+
+input#id_recipient {
+	margin-bottom: 12px;
+}
+
+
+div.data-box {
+	border: 1px solid #DDDDDD;
+	border-radius: 4px 4px 4px 4px;
+	padding: 15px 15px 0;
+}
+
+#form_bulk_send form div.well {
+	background-color: #f2f1f1;
+	position: relative;
+	left: 200px;
+	width: auto;
+	padding-top: 16px;
+}
+
+#cost-calculator thead tr th {
+	padding-bottom: 7px;
+	width: 3px;
+
+}
+
+
+input.btn.primary.bulk {
+	position: relative;
+	left: 166px;
+}
+
 
 form div.field p.help {
     border-left: none;
     color: #AAAAAA;
     font-size: 80%;
-    margin-left: 0.625em;
+    margin-left: -1em;
     margin-top: 0;
     max-width: 30em;
     padding-left: 0.3125em;
     padding-top: 2px;
-    
+	display: none;
 }
 
 
@@ -447,10 +536,6 @@ form div.field label {
 	width: 190px;
 }
 
-#id_bulk {
-	margin-top: 20px;
-	margin-left: 20px;
-}
 
 /*-----------------BULK MESSAGING STYLING OVERRIDES-------------------*/
 
@@ -466,31 +551,76 @@ label {
 
 #c_count {
 	color: #6699CC;
-	padding-top: 18px;
-	alignment-baseline: central;
 	font-weight: bold;
-	font-size: 24px;
+
+}
+
+#cost-calculator tbody tr td {
+	padding-top: 6px;
+	color: #404040;
+	width: 50px;
+}
+
+input.btn.large.primary.send-SMS {
+	position: relative;
+	left: 227px;
+	top: -19px;
+}
+
+#inner form div.row div.span4.offset4 blockquote small {
+	display: none;
+}
+
+#inner form div.row div.span4.offset4 {
+	top: 95px;
+	position: relative;
+}
+
+#inner form div.row div.span4.offset4 h4 {
+	margin-top: 14px;
+}
+
+#inner form div.row div.span4.offset4 div.well {
+	position: relative;
+	left: 40px;
+}
+
+div.well.SMS-message {
+	width: 383px;
+	position: relative;
+	top: -9px;
+}
+
+textarea#message {
+	width: 373px;
+	height: 130px;
+}
+
+div.well.bulk {
+	
+}
+
+td#c_count.col_1 {
+	width: 105px;
 }
 
 #sms_count {
 	color: #6699CC;
 	padding-top: 18px;
 	font-weight: bold;
-	font-size: 24px;
+
 }
 
 #msg_price {
 	color: #6699CC;
 	padding-top: 18px;
 	font-weight: bold;
-	font-size: 24px;
 	
 }
 #sms_length {
 	color: #6699CC;
 	padding-top: 18px;
 	font-weight: bold;
-	font-size: 24px;
 }
 
 .msg_input textarea {
@@ -505,9 +635,6 @@ textarea {
     margin-left: -2px;
 }
 
-.tally {
-	width:250px;
-}
 
 #form_bulk_send {
 	width:600px;
@@ -520,6 +647,8 @@ textarea {
 
 tr.row_section td {
     background: none;
+    
+    
 }
 
 .paginator {
@@ -721,17 +850,11 @@ div#hint_id_restrict_message.formHint {
 
 .add_field_header {
     color: white;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-top: 5px;
-    line-height: 18px;
-    padding: 10px 10px 9px;
+	line-height: 18px;
+    padding: 5px 10px;
     text-align: left;
     background-color: #FFF;
     color: #404040;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-top: 5px;
 }
 
 #new_field_box {
@@ -765,9 +888,51 @@ div#hint_id_restrict_message.formHint {
 }
 
 .selector {
-	margin-top: 10px;
+	margin-top: -1px;
 	width: 410px;
-	height: 380px;
+	height: 368px;
+	position: relative;
+	top: -4px;
+}
+
+
+#inner div.row div.well.span7 form.buttons p.group_field_contacts span.field div.selector div.selector-available h2 {
+	font-size: 13px;
+	margin-bottom: -5px;
+}
+
+#inner div.row div.well.span7 form.buttons p.group_field_contacts span.field div.selector div.selector-chosen h2 {
+  font-size: 13px;
+  color: #666666;
+  margin-bottom: -10px;
+}
+
+
+#inner div.row div.well.span7 form.buttons p.group_field_contacts span.field div.selector div.selector-available p.selector-filter label {
+	position: relative;
+	top: 26px;
+	left: 153px;
+}
+
+#inner div.row div.well.span7 form.buttons p.group_field_contacts span.field div.selector div.selector-available p.selector-filter {
+	margin-top: -23px;
+}
+
+#inner div.row div.well.span7 form.buttons p.group_field_contacts span.field div.selector div.selector-chosen p.selector-filter img {
+	position: relative;
+	top: 4px;
+	left: 12px;
+}
+
+#inner div.row div.well.span7 form.buttons p.group_field_contacts span.field div.selector div.selector-chosen p.selector-filter {
+	position: relative;
+	top: 0;
+}
+
+select#id_contacts_to.filtered {
+	position: relative;
+	top: -14px;
+	height: 175px;
 }
 
 ctrlHolder {
@@ -789,9 +954,14 @@ ctrlHolder {
 }
     
 .group_field_name {
-	margin-left:37px;
+	margin-left: 30px;
 	padding-bottom:6px;
 	padding-top: 6px;
+}
+
+#inner div.row div.well.span7 form.buttons p.group_field_desc {
+	padding-bottom: 5px;
+	display: none;
 }
 
 .selector-available, .selector-chosen {
@@ -800,6 +970,15 @@ ctrlHolder {
     text-align: center;
     width: 180px;
     
+}
+
+#inner div.row div.well.span7 form.buttons p.group_field_contacts span.field div.selector div.selector-chosen a.selector-clearall {
+	position: relative;
+	top: -16px;
+}
+
+#inner div.row div.well.span7 form.buttons p.group_field_contacts span.field div.selector {
+	height: 330px;
 }
 
 .selector .selector-available h2 {
@@ -817,10 +996,9 @@ ctrlHolder {
  }
  
  .selector select {
-     height: 17.2em;
-     width: 180px;
-     
-}
+ 	width: 180px;
+	 height: 175px;
+ }
 
 .selector .selector-available input {
     width: 180px;
@@ -840,12 +1018,17 @@ ctrlHolder {
      color: none;
      font-size: 10px;
      margin: 0;
-     padding: 3px;
+     padding: 0 0 0 4px;
      text-align: left;
      
  }
  
-#id_contacts_input {
+ #inner div.row div.well.span7 form.buttons p.group_field_contacts span.field div.selector div.selector-chosen p.selector-filter {
+ 	position: relative;
+	 top: 6px;
+ }
+ 
+ #id_contacts_input {
 	padding-left: 0px;
 	width: 173px;
 	margin-left: -3px;
@@ -853,18 +1036,15 @@ ctrlHolder {
 }
 
 #id_contacts_to {
-	margin-top: 36px;
+	margin-top: 30px;
 }
 
 .selector ul.selector-chooser {
     background: none;
 }
 
-#id_bulk{
-	position: relative;
-	left: 43px; 
-	margin-left: 0px;
-}
+/*-----------------CSS STYLING FOR CONTACT MANGEMENT -------------------*/
+
 
 #inner div.row div.well.span7 form.buttons div.form-action input.btn.primary {
 	float: right;
@@ -888,12 +1068,17 @@ ctrlHolder {
 	position: relative;
 	left: 455px; 
 	top: 20px;
+
+}
+
+#reg-well {
+	height: 343px;
 }
 
 #inner div.row div.well.span7 form.buttons div.form-action input.btn.primary {
 	position: relative;
 	left: -10px; 
-	top: 0px;	
+	top: -53px;	
 
 }
 
@@ -985,8 +1170,249 @@ img#download-contacts {
 	
 }
 
-form div.field{
-	padding-left:0px;
-	margin-top: none;
+#modem_status {
+	position: relative;
+	top: -95px;
+	left: 750px;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px 4px 4px 4px;
+	display: block;
+	margin: 0 0 9px;
+	padding: 8.5px;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	width: 140px;
+	height: 11px;
+	background-color: #f0f0f0;
+	display:none;
+}
 
+div.well.span7 {
+	height: 400px;
+	width: 390px;
+}
+
+#auth a i.icon-signout.icon-large {
+	color: #888888;
+}
+
+#auth a i.icon-signout.icon-large:hover {
+	color: #038ad6;
+	text-decoration: none;
+}
+
+
+#inner div.row div.span7 div.well form div {
+	position: relative;
+	left: 7px;
+}
+
+#groups-create{
+	margin-left:20px; 
+	margin-top:45px; 
+	width: 400px;
+}
+
+h4#group-list {
+	position: relative;
+	margin-top: -35px;
+}
+
+#inner div.row div.well.span7 form.buttons p.group_field_contacts span.field div.selector {
+	border-top:1px solid #e5e4e4;
+	padding-top: 2px;
+	padding-bottom: 1px;
+}
+
+#bulk_upload{
+	margin-top: 45px
+	
+}
+
+#inner div.row div.span7 div.well.registration  {
+	height: 239px;
+}
+
+div.well.bulk_registration {
+	height: 70px;
+}
+
+#inner div.row div.span7 div.well.registration form div {
+	height: 0px;
+	margin-top: 0px;
+}
+
+span#description_padding {
+	padding-right: 23px;
+}
+
+#inner div.row div.span7 div.well.registration form.registration_contacts div label {
+	margin-top: 38px;
+	width: 2px;
+	margin-left: -63px;
+	position: relative;
+	top: 28px;
+	margin-right: 0;
+	left: -4px;
+}
+
+input.btn.primary.contacts {
+	position: relative;
+	top: 205px;
+	left: 120px;
+}
+
+input.btn.danger.contacts {
+	position: relative;
+	top: 205px;
+	left: -120px;
+}
+
+div.field.bulk {
+	background: transparent;
+}
+
+form.registration_contacts {
+	position: relative;
+	left: 28px;
+}
+
+#inner div.row div.span7 div.well.registration form.registration_contacts div {
+	top: -36px;
+	background: transparent;
+	left: 13px;
+}
+
+.dashboard{
+	 margin-left:20px;
+}
+
+#bulk-SMS{
+	margin-left: 15px; 
+	margin-top: 45px;
+	
+}
+
+#SMS-help small {
+	width: 400px;
+}
+
+
+.phone-count {
+   width: 40px; 
+   height: 25px; 
+   background: #A6CF44;
+   position: absolute;
+   -moz-border-radius: 5px; 
+   -webkit-border-radius: 5px; 
+   border-radius: 4px;
+   margin-left: 46px;
+   color: #fff;
+   line-height: 24px;
+}
+.phone-count:before {
+   content:"";
+   position: absolute;
+   width: 0;
+   height: 0;
+   border-top: 5px solid transparent;
+   border-right: 10px solid #A6CF44;
+   border-bottom: 5px solid transparent;
+   margin: 7px 0 0 -8px;
+ 
+}
+
+.cell-phone{
+	background: url(../images/cell.png) no-repeat 17px 2px;
+	height: 37px;
+	text-align: center;
+}
+
+h4#cost-calc {
+	margin-left: -33px;
+}
+
+#inner div.row div.span6 div.well.quick_SMS form.sender-form label {
+	padding-top: 0;
+	margin-right: 34px;
+	font-size: 13px;
+}
+
+#activity-margins{
+	position: relative;
+	left: 15px;
+	width: 535px;
+	top: 45px;
+}
+
+#quick-SMS-h4{
+	margin-top: 45px;
+	margin-left: 15px;
+}
+
+#inner div.row div.span6 div.data-box table.condensed-table thead tr th.poll_submissions {
+	font-size: 12px;
+}
+
+#inner div.row div.span6 div.data-box table.condensed-table thead tr th.poll_name_col {
+	font-size: 12px;
+}
+
+.header-space{
+	margin-top: 45px;
+	margin-left: 15px;
+}
+
+#header-space-review{
+	margin-top: 45px;
+	margin-left: 200px;
+}
+
+#form_bulk_send form div.well.SMS-review div.tally table {
+	margin: 0px;
+	width: 300px;
+	position: relative;
+	left: 107px;
+	top: -24px;
+}
+
+input.btn.large.danger.SMS-Send {
+	position: relative;
+	left: 198px;
+	top: -13px;
+}
+
+#form_bulk_send form div.well.SMS-review div.tally div {
+	position: relative;
+	top: -22px;
+}
+
+td.display-none,
+th.display-none {
+	display: none;
+}
+
+
+
+
+
+
+/* Trying to override the admin */
+
+.selector-add {
+    background: url(../images/admin/selector-add.png) top center no-repeat;
+    margin-bottom: 2px;
+}
+
+.selector-remove {
+    background: url(../images/admin/selector-remove.png) top center no-repeat;
+}
+
+a.selector-chooseall {
+    width: 7em;
+    background: url(../images/admin/selector-addall.png) left center no-repeat;
+}
+
+a.selector-clearall {
+    background: url(../images/admin/selector-removeall.png) left center no-repeat;
 }

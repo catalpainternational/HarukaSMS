@@ -1,0 +1,77 @@
+{% extends "registration/base.html" %}
+{% load forms_tags %}
+
+{% block stylesheets %}
+{{ block.super }}
+<!--<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}registration/stylesheets/dashboard.css" />-->
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="alert-message {{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="row"> 
+	<div class="span7">
+		<h4 style="margin-top: 45px;">{% if contact %}
+				Edit {{ contact }}{% else %}
+				Add a Contact{% endif %}
+		</h4>
+		<div class="well" style="padding-left: 45px;">
+			<form action="" method="post">
+				{% render_form contact_form %}
+				{% csrf_token %}
+		
+				<div class="submit">
+					<input class="btn primary" type="submit" value="Save Contact" name="submit" />{% if contact %}
+					<input type="submit" name="submit" value="Delete Contact" class="btn danger" />{% endif %}
+				</div>
+			</form>
+		</div>
+		<h4>Bulk Registration</h4>
+		<div class="well">
+			<form action="" method="post" enctype="multipart/form-data">
+				{% render_form bulk_form %}
+				{% csrf_token %}
+		
+				<div class="submit">
+					<input class="btn primary" type="submit" value="Upload Contacts" name="submit" style="margin-left: 177px;" >
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="span8">
+		<h4 style="margin-top: 45px;">Contacts</h4>
+		<a href="contacts_as_csv/"><img id="download-contacts" src='{{STATIC_URL}}images/download-alt.png'/></a>
+                <img src="contacts_as_csv/" id="stuff"></img>
+                <span id='toBeDragged' draggable="true">(Drag me to desktop to export)</span>
+                
+			{{ contacts_table.as_html }}{% if contact %}	
+			<div id='well'>
+				<div class="toolbar">
+<!--					<a href="{% url registration %}" class="add">Add a Contact</a> -->
+				</div>{% endif %}
+			</div>
+
+                        <script>
+                          var oXHR = new XMLHttpRequest();  
+                          // synchronous request  
+                          oXHR.open("GET", "contacts_as_csv/", false);  
+                          oXHR.send(null);  
+                          text = oXHR.responseText;
+                          sstuff = document.getElementById("stuff");
+                          document.getElementById('toBeDragged').addEventListener('dragstart', function(event) {
+                          event.dataTransfer.effectAllowed = "copy";
+                          event.dataTransfer.setData('text/plain', sstuff);//"contacts.csv                "+text);//"contacts.csv                \ncontact1,1234567,\n,contact2,1234567\ncontact1,1234567,\n,contact2,1234567\ncontact1,1234567,\n,contact2,1234567\ncontact1,1234567,\n,contact2,1234567"
+                          });
+                        </script>
+
+
+	</div>
+
+        
+{% endblock %}
