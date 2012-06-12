@@ -24,7 +24,7 @@ class App(AppBase):
                     for category in responses_by_category:
                         category_rate = int(category['value'] * 100.0 / poll.contacts.distinct().count())
                         response_text = response_text + "-- %s : %s%%%% \n" % (category['category__name'], category_rate)
-                    if response_text is not None:
+                    if response_text is not None and len(response_text)>0:
                         message.respond(response_text)
                     return False
 
