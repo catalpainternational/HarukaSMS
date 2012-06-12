@@ -106,6 +106,7 @@ INSTALLED_APPS = [
     "simple_locations",
     "rapidsms_httprouter",
     "poll",
+    "rosetta",
 
 ]
 
@@ -138,6 +139,17 @@ ROUTER_WORKERS = 1
 # rapidsms-xforms specific settings
 XFORMS_HOST = 'localhost:8000'
 
+# Internationalisation and Localisation
+USE_I18N = True
+USE_L10N = True
+
+LANGUAGE_CODE = 'tet'
+COUNTRY_CODE = 'TL'
+
+LANGUAGES = (
+    ('en', 'English'),
+    ('tet', 'Tetun'),
+    )
 
 # this rapidsms-specific setting defines which views are linked by the
 # tabbed navigation. when adding an app to INSTALLED_APPS, you may wish
