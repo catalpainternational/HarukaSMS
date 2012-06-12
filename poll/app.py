@@ -24,9 +24,8 @@ class App(AppBase):
                     for category in responses_by_category:
                         category_rate = int(category['value'] * 100.0 / poll.contacts.distinct().count())
                         response_text = response_text + "-- %s : %s%%%% \n" % (category['category__name'], category_rate)
-                        
-                    message.respond(response_text)
-
+                    if response_text is not None and len(response_text)>0:
+                        message.respond(response_text)
                     return False
 
                 if poll.response_type == Poll.RESPONSE_TYPE_ONE and poll.responses.filter(
@@ -39,7 +38,8 @@ class App(AppBase):
                             db_message = message.db_message
                             db_message.handled_by = 'poll'
                             db_message.save()
-                        message.respond(response_msg)
+                        if response_msg is not None:
+                            message.respond(response_msg)
                     else:
                         response_obj.delete()
                     return False
@@ -55,7 +55,10 @@ class App(AppBase):
                         db_message = message.db_message
                         db_message.handled_by = 'poll'
                         db_message.save()
-                    message.respond(response_msg)
+                    if response_msg is not None:
+                        message.respond(response_msg)
+                    #else: the response msg is none, don't respond
+
                     # play nice, let other things handle responses
                     return False
             except Poll.DoesNotExist:
