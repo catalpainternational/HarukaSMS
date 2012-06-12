@@ -38,6 +38,11 @@ urlpatterns = patterns('',
     ('', include('rapidsms_httprouter.urls')),
 )
 
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns += patterns('',
+        url(r'^rosetta/', include('rosetta.urls')),
+    )
+
 urlpatterns += patterns('',
     # helper URLs file that automatically serves the 'static' folder in
     # INSTALLED_APPS via the Django static media server (NOT for use in
