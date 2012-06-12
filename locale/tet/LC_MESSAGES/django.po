@@ -1,0 +1,573 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-06-11 03:51-0500\n"
+"PO-Revision-Date: 2012-06-11 04:00\n"
+"Last-Translator:   <a@fo.ho>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"X-Translated-Using: django-rosetta 0.6.8\n"
+
+#: haruka_theme/templates/layout.html:46
+msgid "Return to the Dashboard"
+msgstr "Fila fali ba Dashboard"
+
+#: haruka_theme/templates/layout.html:55
+msgid "Log in"
+msgstr ""
+
+#: haruka_theme/templates/layout.html:89
+msgid "HarukaSMS was designed and developed by"
+msgstr ""
+
+#: haruka_theme/templates/layout.html:89
+msgid "Catalpa International and is available under the BSD license"
+msgstr ""
+
+#: haruka_theme/templates/layout.html:89
+msgid "Copyright &copy; 2008 &#8211; 2012 Asia Foundation"
+msgstr ""
+
+#: haruka_theme/templates/splash.html:36
+msgid "HarukaSMS is now loading..."
+msgstr ""
+
+#: haruka_theme/templates/RapidSMS/loggedout.html:3
+msgid "Goodbye"
+msgstr ""
+
+#: haruka_theme/templates/RapidSMS/loggedout.html:15
+msgid "Thanks for using Haruka SMS"
+msgstr ""
+
+#: haruka_theme/templates/RapidSMS/loggedout.html:16
+msgid "See you again soon!"
+msgstr ""
+
+#: haruka_theme/templates/RapidSMS/loggedout.html:17
+msgid "Log in again"
+msgstr ""
+
+#: haruka_theme/templates/RapidSMS/login.html:37
+msgid "Login"
+msgstr ""
+
+#: haruka_theme/templates/RapidSMS/login.html:43
+msgid "You're already logged in!"
+msgstr ""
+
+#: haruka_theme/templates/RapidSMS/login.html:51
+msgid "Please log in to HarukaSMS"
+msgstr ""
+
+#: haruka_theme/templates/RapidSMS/login.html:69
+msgid "Oops. Your username and password didn't match. Please try again."
+msgstr ""
+
+#: haruka_theme/templates/bulksend/base.html:14
+msgid "HarukaSMS - Messaging"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/dashboard.html:20
+msgid "Send SMS to Group"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/dashboard.html:37
+msgid "Message"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/dashboard.html:37
+msgid "for mail merge type [name] or [firstname]"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/dashboard.html:52
+msgid "Cost Calculator:"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/dashboard.html:56
+msgid "Characters"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/dashboard.html:60
+msgid "Characters per SMS"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/dashboard.html:64
+msgid "SMS per Message"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/dashboard.html:68
+msgid "Per Contact"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/review.html:12
+msgid "SMS Campaign Summary"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/review.html:24
+msgid "Message:"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/review.html:25
+msgid "Group:"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/review.html:30
+msgid "Number of SMS per message:"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/review.html:33
+msgid "Group size:"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/review.html:38
+msgid "Number of SMS to send:"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/review.html:42
+msgid "Cost per SMS:"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/review.html:46
+msgid "Total Cost:"
+msgstr ""
+
+#: haruka_theme/templates/bulksend/review.html:57
+msgid "Please be patient. This may take a few minutes"
+msgstr ""
+
+#: haruka_theme/templates/groups/list.html:4
+#: haruka_theme/templates/groups/list.html:9
+#: haruka_theme/templates/groups/groups/create_edit.html:24
+msgid "Groups"
+msgstr ""
+
+#: haruka_theme/templates/groups/list.html:28
+msgid "add group"
+msgstr ""
+
+#: haruka_theme/templates/groups/groups/create_edit.html:6
+#: haruka_theme/templates/groups/groups/list.html:39
+msgid "Edit Group"
+msgstr ""
+
+#: haruka_theme/templates/groups/groups/create_edit.html:6
+#: haruka_theme/templates/groups/groups/create_edit.html:47
+#: haruka_theme/templates/groups/groups/list.html:39
+msgid "Create Group"
+msgstr ""
+
+#: haruka_theme/templates/groups/groups/delete.html:11
+#: haruka_theme/templates/groups/groups/list.html:57
+msgid "Delete Group"
+msgstr ""
+
+#: haruka_theme/templates/groups/groups/delete.html:14
+msgid "Are you sure you want to delete the group named"
+msgstr ""
+
+#: haruka_theme/templates/groups/groups/delete.html:17
+#: haruka_theme/templates/polls/poll_create.html:19
+#: haruka_theme/templates/polls/poll_edit.html:21
+#: haruka_theme/templates/xforms/form_create.html:27
+#: haruka_theme/templates/xforms/form_edit.html:11
+msgid "Cancel"
+msgstr ""
+
+#: haruka_theme/templates/groups/groups/list.html:5
+msgid "HarukaSMS - Edit Group"
+msgstr ""
+
+#: haruka_theme/templates/groups/groups/list.html:5
+msgid "HarukaSMS - Create Group"
+msgstr ""
+
+#: haruka_theme/templates/groups/groups/list.html:45
+msgid "Name:"
+msgstr ""
+
+#: haruka_theme/templates/groups/groups/list.html:49
+msgid "Description:"
+msgstr ""
+
+#: haruka_theme/templates/groups/groups/list.html:64
+msgid "Group List"
+msgstr ""
+
+#: haruka_theme/templates/polls/category_edit.html:4
+#: haruka_theme/templates/polls/poll_view.html:120
+msgid "Add New Category"
+msgstr ""
+
+#: haruka_theme/templates/polls/category_edit.html:29
+#: haruka_theme/templates/xforms/constraint_edit.html:4
+#: haruka_theme/templates/xforms/field_edit.html:39
+msgid "Save"
+msgstr ""
+
+#: haruka_theme/templates/polls/category_edit.html:36
+#: haruka_theme/templates/xforms/field_edit.html:48
+msgid "Add"
+msgstr ""
+
+#: haruka_theme/templates/polls/category_view.html:22
+#: haruka_theme/templates/polls/poll_details.html:17
+#: haruka_theme/templates/polls/poll_edit.html:11
+#: haruka_theme/templates/polls/poll_index.html:41
+#: haruka_theme/templates/polls/response_base_view.html:22
+#: haruka_theme/templates/registration/dashboard.html:22
+#: haruka_theme/templates/xforms/field_view.html:17
+#: haruka_theme/templates/xforms/form_details.html:4
+#: haruka_theme/templates/xforms/form_edit.html:2
+#: haruka_theme/templates/xforms/submissions.html:65
+msgid "Edit"
+msgstr ""
+
+#: haruka_theme/templates/polls/layout.html:3
+#: haruka_theme/templates/polls/poll_create.html:3
+#: haruka_theme/templates/polls/poll_index.html:3
+#: haruka_theme/templates/polls/poll_report.html:3
+#: haruka_theme/templates/polls/poll_view.html:3
+msgid "HarukaSMS - Polls"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_create.html:10
+msgid "Create a New Poll"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_create.html:10
+msgid ""
+"create a simple SMS poll that includes either a yes no response or a "
+"numbered response -- but with no keywords needed!"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_create.html:23
+msgid "Create Poll"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:4
+msgid "HarukaSMS - Activity"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:14
+msgid "Quick SMS"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:30
+msgid "Your Latest Polls"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:34
+msgid "Poll Name"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:35
+#: haruka_theme/templates/polls/poll_index.html:17
+msgid "Question"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:36
+#: haruka_theme/templates/polls/poll_dashboard.html:71
+#: haruka_theme/templates/polls/poll_index.html:18
+msgid "Start Date"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:37
+#: haruka_theme/templates/polls/poll_dashboard.html:72
+msgid "Activity"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:38
+#: haruka_theme/templates/polls/poll_dashboard.html:73
+#: haruka_theme/templates/xforms/form_index.html:38
+#: haruka_theme/templates/xforms/submissions.html:8
+#: haruka_theme/templates/xforms/submissions.html:100
+msgid "Submissions"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:58
+msgid "No existing Polls.  Click on 'Polls' to create one."
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:64
+msgid "Your Latest Data Collection"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:68
+msgid "Activity Name"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:69
+msgid "Keyword"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:70
+#: haruka_theme/templates/xforms/form_index.html:23
+#: haruka_theme/templates/xforms/form_view.html:145
+msgid "Description"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:92
+msgid ""
+"No existing Data Collection activities.  Click on 'Data Collection' to "
+"create one."
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_dashboard.html:103
+msgid "Latest Activity"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_details.html:21
+msgid "Start Poll"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_details.html:28
+msgid "Close Poll"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_details.html:37
+msgid "Response:"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_edit.html:24
+msgid "Save Poll Details"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_index.html:11
+msgid "Add New Poll"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_index.html:16
+#: haruka_theme/templates/polls/poll_view.html:100
+#: haruka_theme/templates/xforms/form_index.html:22
+msgid "Name"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_index.html:19
+msgid "Closing Date"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_index.html:39
+msgid "Responses"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_index.html:48
+msgid "No existing Polls.  Click 'Add New Poll' to create one."
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_view.html:90
+msgid "Polling Information"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_view.html:90
+msgid ""
+"here you can start or stop a poll. And if the polls not active make some "
+"minor changes."
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_view.html:96
+msgid "Edit your Poll's Details"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_view.html:96
+msgid ""
+"you can color code your SMS replies, and tailor the SMS response message to "
+"the various answers"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_view.html:101
+msgid "Response Message"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_view.html:103
+msgid "Color"
+msgstr ""
+
+#: haruka_theme/templates/polls/poll_view.html:104
+msgid "Default"
+msgstr ""
+
+#: haruka_theme/templates/polls/response_table.html:37
+msgid "Your Poll"
+msgstr ""
+
+#: haruka_theme/templates/polls/response_table.html:41
+#: haruka_theme/templates/xforms/submissions.html:11
+msgid "Export"
+msgstr ""
+
+#: haruka_theme/templates/polls/response_table.html:45
+#: haruka_theme/templates/polls/response_table.html:50
+msgid "Register All"
+msgstr ""
+
+#: haruka_theme/templates/polls/response_table.html:57
+msgid "SMS Poll Responses"
+msgstr ""
+
+#: haruka_theme/templates/polls/response_table.html:62
+msgid "Sender"
+msgstr ""
+
+#: haruka_theme/templates/polls/response_table.html:80
+msgid "No responses for this poll."
+msgstr ""
+
+#: haruka_theme/templates/registration/base.html:9
+msgid "HarukaSMS - Contacts"
+msgstr ""
+
+#: haruka_theme/templates/registration/dashboard.html:23
+msgid "Add a Contact"
+msgstr ""
+
+#: haruka_theme/templates/registration/dashboard.html:36
+msgid "Bulk Registration"
+msgstr ""
+
+#: haruka_theme/templates/registration/dashboard.html:49
+msgid "Contacts"
+msgstr ""
+
+#: haruka_theme/templates/xforms/constraints.html:91
+msgid "Manage Data Constraints"
+msgstr ""
+
+#: haruka_theme/templates/xforms/field_edit.html:17
+#: haruka_theme/templates/xforms/form_view.html:169
+msgid "Add New Field"
+msgstr ""
+
+#: haruka_theme/templates/xforms/field_view.html:20
+msgid "Constraints"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_create.html:3
+#: haruka_theme/templates/xforms/form_index.html:3
+#: haruka_theme/templates/xforms/form_view.html:3
+#: haruka_theme/templates/xforms/layout.html:3
+msgid "HarukaSMS - Data Collection"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_create.html:17
+msgid "Data Collection"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_create.html:17
+msgid ""
+"For more data intensive survey work design a SMS survey with keywords and "
+"multiple answers."
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_create.html:30
+msgid "Create Form"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_details.html:7
+msgid "XForm"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_edit.html:14
+msgid "Save Form Details"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_index.html:16
+msgid "Add New Survey"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_index.html:41
+msgid "View"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_index.html:49
+msgid "No existing Forms.  Click 'Add New Form' to create one."
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_view.html:134
+msgid "Data Collection Campaign Overview"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_view.html:138
+msgid ""
+"Your Data Collection Code Words<blockquote><small>just think of each new "
+"field like a new column in excel - so with more columns you can record more "
+"data with each survey!"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_view.html:142
+msgid "Title"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_view.html:143
+msgid "Data Type"
+msgstr ""
+
+#: haruka_theme/templates/xforms/form_view.html:144
+msgid "Short Code"
+msgstr ""
+
+#: haruka_theme/templates/xforms/submissions.html:3
+msgid "HarukaSMS - Submissions"
+msgstr ""
+
+#: haruka_theme/templates/xforms/submissions.html:8
+msgid ""
+"have a quick look at your results as the come in here, or for more thorough "
+"analysis export your results to Excel"
+msgstr ""
+
+#: haruka_theme/templates/xforms/submissions.html:20
+msgid "Type"
+msgstr ""
+
+#: haruka_theme/templates/xforms/submissions.html:21
+msgid "Date"
+msgstr ""
+
+#: haruka_theme/templates/xforms/submissions.html:74
+msgid "No submissions for this form."
+msgstr ""
+
+#: haruka_theme/templates/xforms/submissions.html:84
+msgid "previous"
+msgstr ""
+
+#: haruka_theme/templates/xforms/submissions.html:89
+msgid "Page"
+msgstr ""
+
+#: haruka_theme/templates/xforms/submissions.html:94
+msgid "next"
+msgstr ""
+
+#: haruka_theme/templates/xforms/table_row_edit.html:14
+msgid "Add New Constraint"
+msgstr ""
+
+#: poll/models.py:161
+msgid "question"
+msgstr ""
+
+#: poll/models.py:168
+msgid "default_response"
+msgstr ""
+
+#: simple_locations/models.py:31
+#, python-format
+msgid "%(lat)s, %(lon)s"
+msgstr ""
+
+#: simple_locations/models.py:79
+#, python-format
+msgid "%(type)s of %(area)s"
+msgstr ""
