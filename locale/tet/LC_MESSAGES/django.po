@@ -2,21 +2,49 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-11 03:51-0500\n"
+"POT-Creation-Date: 2012-06-13 00:31-0500\n"
 "PO-Revision-Date: 2012-06-12 23:53\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Translated-Using: django-rosetta 0.6.8\n"
+
+#: settings.py:165 haruka_theme/templates/polls/poll_dashboard.html:37
+#: haruka_theme/templates/polls/poll_dashboard.html:72
+msgid "Activity"
+msgstr "Atividade"
+
+#: settings.py:166
+msgid "Polls"
+msgstr ""
+
+#: settings.py:167 haruka_theme/templates/xforms/form_create.html:17
+msgid "Data Collection"
+msgstr "Kolekta Dadus"
+
+#: settings.py:168
+#, fuzzy
+msgid "Messaging"
+msgstr "Mensajen"
+
+#: settings.py:169 haruka_theme/templates/groups/list.html:4
+#: haruka_theme/templates/groups/list.html:9
+#: haruka_theme/templates/groups/groups/create_edit.html:24
+msgid "Groups"
+msgstr "Grupu sira"
+
+#: settings.py:170 haruka_theme/templates/registration/dashboard.html:49
+msgid "Contacts"
+msgstr "Kontaktu sira"
 
 #: haruka_theme/templates/layout.html:46
 msgid "Return to the Dashboard"
@@ -110,6 +138,11 @@ msgstr "SMS kada Mensajen"
 msgid "Per Contact"
 msgstr "Kada Kontaktu"
 
+#: haruka_theme/templates/bulksend/dashboard.html:78
+#, fuzzy
+msgid "Confirm Message"
+msgstr "Resposta mensajen"
+
 #: haruka_theme/templates/bulksend/review.html:12
 msgid "SMS Campaign Summary"
 msgstr "Sumariu Kampane SMS"
@@ -145,12 +178,6 @@ msgstr "Kustu Total:"
 #: haruka_theme/templates/bulksend/review.html:57
 msgid "Please be patient. This may take a few minutes"
 msgstr "Favor ida pasensia. Parese han tempu uitoan"
-
-#: haruka_theme/templates/groups/list.html:4
-#: haruka_theme/templates/groups/list.html:9
-#: haruka_theme/templates/groups/groups/create_edit.html:24
-msgid "Groups"
-msgstr "Grupu sira"
 
 #: haruka_theme/templates/groups/list.html:28
 msgid "add group"
@@ -284,11 +311,6 @@ msgstr "Pergunta"
 msgid "Start Date"
 msgstr "Data Hahu"
 
-#: haruka_theme/templates/polls/poll_dashboard.html:37
-#: haruka_theme/templates/polls/poll_dashboard.html:72
-msgid "Activity"
-msgstr "Atividade"
-
 #: haruka_theme/templates/polls/poll_dashboard.html:38
 #: haruka_theme/templates/polls/poll_dashboard.html:73
 #: haruka_theme/templates/xforms/form_index.html:38
@@ -323,8 +345,7 @@ msgstr "Diskripsaun"
 msgid ""
 "No existing Data Collection activities.  Click on 'Data Collection' to "
 "create one."
-msgstr ""
-"La iha atividade Koleta Dadus. Click ba 'Kolekta Dadus' hodi  kria ida"
+msgstr "La iha atividade Koleta Dadus. Click ba 'Kolekta Dadus' hodi  kria ida"
 
 #: haruka_theme/templates/polls/poll_dashboard.html:103
 msgid "Latest Activity"
@@ -442,10 +463,6 @@ msgstr "Aumenta Kontaktu ida"
 msgid "Bulk Registration"
 msgstr "Volume Rejistrasaun"
 
-#: haruka_theme/templates/registration/dashboard.html:49
-msgid "Contacts"
-msgstr "Kontaktu sira"
-
 #: haruka_theme/templates/xforms/constraints.html:91
 msgid "Manage Data Constraints"
 msgstr "Maneja Limitasaun Dadus "
@@ -465,10 +482,6 @@ msgstr "Limitasaun sira "
 #: haruka_theme/templates/xforms/layout.html:3
 msgid "HarukaSMS - Data Collection"
 msgstr "HarukaSMS - Kolekta Dadus"
-
-#: haruka_theme/templates/xforms/form_create.html:17
-msgid "Data Collection"
-msgstr "Kolekta Dadus"
 
 #: haruka_theme/templates/xforms/form_create.html:17
 msgid ""
@@ -513,7 +526,8 @@ msgid ""
 "data with each survey!"
 msgstr ""
 "Ita nia Palvra Kodigu Koletakta Dadus <blokkuota>\n"
-"<kiik> hanoin deit katak kada kaixa hanesan kuluna ida iha excel - Nune'e ho kuluna barak ita bele rekorda dadus barak ho kada survei!"
+"<kiik> hanoin deit katak kada kaixa hanesan kuluna ida iha excel - Nune'e ho "
+"kuluna barak ita bele rekorda dadus barak ho kada survei!"
 
 #: haruka_theme/templates/xforms/form_view.html:142
 msgid "Title"
@@ -543,7 +557,7 @@ msgstr ""
 msgid "Type"
 msgstr "Tipu"
 
-#: haruka_theme/templates/xforms/submissions.html:21
+#: haruka_theme/templates/xforms/submissions.html:21 poll/views.py:143
 msgid "Date"
 msgstr "Data"
 
@@ -573,6 +587,76 @@ msgstr "pergunta"
 
 #: poll/models.py:168
 msgid "default_response"
+msgstr ""
+
+#: poll/views.py:126 poll/views.py:143
+msgid "Text"
+msgstr ""
+
+#: poll/views.py:126 poll/views.py:143
+#, fuzzy
+msgid "Direction"
+msgstr "Diskripsaun"
+
+#: poll/views.py:126 poll/views.py:143
+msgid "Phone number"
+msgstr ""
+
+#: poll/views.py:126 poll/views.py:143
+msgid "Status"
+msgstr ""
+
+#: poll/views.py:126
+msgid "Time"
+msgstr ""
+
+#: poll/views.py:766
+msgid "All"
+msgstr ""
+
+#: poll/views.py:766
+msgid "Handled"
+msgstr ""
+
+#: poll/views.py:767
+msgid "Locked"
+msgstr ""
+
+#: poll/views.py:767
+msgid "Delivered"
+msgstr ""
+
+#: poll/views.py:768
+msgid "Incoming"
+msgstr ""
+
+#: poll/views.py:768
+msgid "Outgoing"
+msgstr ""
+
+#: poll/views.py:769
+msgid "Queued"
+msgstr ""
+
+#: poll/views.py:769
+msgid "Sent"
+msgstr ""
+
+#: poll/views.py:770 poll/views.py:772
+msgid "Received"
+msgstr ""
+
+#: poll/views.py:770
+msgid "Processing"
+msgstr ""
+
+#: poll/views.py:771
+#, fuzzy
+msgid "Cancelled"
+msgstr "kansela"
+
+#: poll/views.py:771
+msgid "Errored"
 msgstr ""
 
 #: simple_locations/models.py:31

@@ -29,6 +29,7 @@ from eav.models import Attribute
 from poll.forms import ReplyForm, NewPollForm, EditPollForm, CategoryForm, RuleForm, PollTranslation
 from poll.models import Response, Poll, Translation, Category, Rule
 
+from django.utils.translation import ugettext as _
 
 def _mail_merge(contact, text):
     # use regex!!!
@@ -122,7 +123,7 @@ def dashboard(req):
             message.connection.name = Contact.objects.get(connection__identity=message.connection.identity).name
 
     # prepare for the message table
-    titles = ["Text", "Direction", "Phone number", "Status", "Time"]
+    titles = [_("Text"), _("Direction"), _("Phone number"), _("Status"), _("Time")]
     table = read_only_message_table(messages, titles)
 
     return render_to_response(
@@ -139,7 +140,7 @@ def dashboard(req):
 def latest_messages(req):
     """ return -json- HTML with latest messages """
     queryset = Message.objects.all()
-    titles = ["Text", "Direction", "Phone number", "Status", "Date"]
+    titles = [_("Text"), _("Direction"), _("Phone number"), _("Status"), _("Date")]
     table = read_only_message_table(queryset.order_by('-date')[0:15], titles)
 
     return HttpResponse(status=200, content=table)
@@ -762,15 +763,16 @@ def create_translation(request):
             context_instance=RequestContext(request))
 
 
+make_friendly = {   "A": _("All"),         "H": _("Handled"),
+                    "L": _("Locked"),      "D": _("Delivered"),
+                    "I": _("Incoming"),    "O": _("Outgoing"),
+                    "Q": _("Queued"),      "S": _("Sent"),
+                    "H": _("Received"),    "P": _("Processing"),
+                    "C": _("Cancelled"),   "E": _("Errored"),
+                    "R": _("Received"),
+                }
+
 def append_msg_row(table, message):
-    make_friendly = {   "A": "All",         "H": "Handled",
-                        "L": "Locked",      "D": "Delivered",
-                        "I": "Incoming",    "O": "Outgoing",
-                        "Q": "Queued",      "S": "Sent",
-                        "H": "Received",    "P": "Processing",
-                        "C": "Cancelled",   "E": "Errored",
-                        "R": "Received",
-                        }
     table.append("<tr><td>")
     table.append(message.text)
     table.append("</td><td>")

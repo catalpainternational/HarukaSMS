@@ -158,14 +158,16 @@ XFORMS_HOST = 'localhost:8000'
 # this rapidsms-specific setting defines which views are linked by the
 # tabbed navigation. when adding an app to INSTALLED_APPS, you may wish
 # to add it here, also, to expose it in the rapidsms ui.
+
+_ = lambda s: s
 RAPIDSMS_TABS = [
     # Haruka specific
-    ('rapidsms-dashboard',                                  "Activity"),
-    ("polls",                                               "Polls"),
-    ("xforms",                                              "Data Collection"),
-    ("bulksend",                                            "Messaging"),
-    ('list-groups',                                         "Groups"),
-    ("registration",                                        "Contacts"),
+    ('rapidsms-dashboard',                                  _("Activity")),
+    ("polls",                                               _("Polls")),
+    ("xforms",                                              _("Data Collection")),
+    ("bulksend",                                            _("Messaging")),
+    ('list-groups',                                         _("Groups")),
+    ("registration",                                        _("Contacts")),
 #    ("httprouter-console",                                  "Testing"), # for use with rapidsms_httprouter
 #    ("rapidsms.contrib.messagelog.views.message_log",       "Message Log"), # can't be used with rapidsms_httprouter
 #    ("rapidsms.contrib.messaging.views.messaging",          "Messaging"),
