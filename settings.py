@@ -54,6 +54,22 @@ INSTALLED_BACKENDS = {
     }
 }
 
+
+
+# Internationalisation and Localisation
+USE_I18N = True
+USE_L10N = True
+
+LANGUAGE_CODE = 'tet'
+COUNTRY_CODE = 'TL'
+
+LANGUAGES = (
+    ('tet', 'Tetun'),
+    ('en', 'English'),
+)
+
+
+
 DEFAULT_BACKEND_NAME = "console"
 
 # to help you get started quickly, many django/rapidsms apps are enabled
@@ -138,18 +154,6 @@ ROUTER_WORKERS = 1
 
 # rapidsms-xforms specific settings
 XFORMS_HOST = 'localhost:8000'
-
-# Internationalisation and Localisation
-USE_I18N = True
-USE_L10N = True
-
-LANGUAGE_CODE = 'tet'
-COUNTRY_CODE = 'TL'
-
-LANGUAGES = (
-    ('en', 'English'),
-    ('tet', 'Tetun'),
-    )
 
 # this rapidsms-specific setting defines which views are linked by the
 # tabbed navigation. when adding an app to INSTALLED_APPS, you may wish
@@ -280,12 +284,6 @@ TEST_EXCLUDED_APPS = [
 
 # the project-level url patterns
 ROOT_URLCONF = "urls"
-
-# set Language default
-LANGUAGE_CODE = 'en-us'
-COUNTRY_CODE = 'TL'
-#COUNTRY_CODE = 'US'
-
 
 # since we might hit the database from any thread during testing, the
 # in-memory sqlite database isn't sufficient. it spawns a separate
