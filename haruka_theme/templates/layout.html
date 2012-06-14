@@ -60,13 +60,15 @@
 
 				<ul id="tabs">{% for tab in tabs %}
 					<li class="app-{{ tab.caption_slug }}{% if tab.is_active %} active{% endif %}">
-						<a href="{{ tab.url }}"><span>{{ tab.caption }}</span></a>
+						<a href="{{ tab.url }}">
+							<span>{% trans tab.caption %}</span></a>
 					</li>{% endfor %}
 				</ul>
 
 				{% block page_tabs %}
 				{% endblock %}
-                                <span id="modem_status"></span>
+                
+                <span id="modem_status"></span>
 
 				<!-- Message list: errors, warnings and such -->
 				{% if context_instance.messages %}

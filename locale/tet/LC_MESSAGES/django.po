@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-13 00:31-0500\n"
-"PO-Revision-Date: 2012-06-12 23:53\n"
-"Last-Translator:   <>\n"
+"POT-Creation-Date: 2012-06-13 22:57-0500\n"
+"PO-Revision-Date: 2012-06-13 22:34\n"
+"Last-Translator:   <a@fo.ho>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -25,14 +25,13 @@ msgstr "Atividade"
 
 #: settings.py:166
 msgid "Polls"
-msgstr ""
+msgstr "Sondazen"
 
 #: settings.py:167 haruka_theme/templates/xforms/form_create.html:17
 msgid "Data Collection"
 msgstr "Kolekta Dadus"
 
 #: settings.py:168
-#, fuzzy
 msgid "Messaging"
 msgstr "Mensajen"
 
@@ -40,11 +39,11 @@ msgstr "Mensajen"
 #: haruka_theme/templates/groups/list.html:9
 #: haruka_theme/templates/groups/groups/create_edit.html:24
 msgid "Groups"
-msgstr "Grupu sira"
+msgstr "Grupu"
 
 #: settings.py:170 haruka_theme/templates/registration/dashboard.html:49
 msgid "Contacts"
-msgstr "Kontaktu sira"
+msgstr "Kontaktu"
 
 #: haruka_theme/templates/layout.html:46
 msgid "Return to the Dashboard"
@@ -54,17 +53,17 @@ msgstr "Fila fali ba Dashboard"
 msgid "Log in"
 msgstr "Log in"
 
-#: haruka_theme/templates/layout.html:89
+#: haruka_theme/templates/layout.html:91
 msgid "HarukaSMS was designed and developed by"
 msgstr "HarukaSMS dezenu no dezenvolve ona husi "
 
-#: haruka_theme/templates/layout.html:89
+#: haruka_theme/templates/layout.html:91
 msgid "Catalpa International and is available under the BSD license"
 msgstr "Catalpa Internasional no iha  lisensa  husi BSD"
 
-#: haruka_theme/templates/layout.html:89
+#: haruka_theme/templates/layout.html:91
 msgid "Copyright &copy; 2008 &#8211; 2012 Asia Foundation"
-msgstr "lisensa &kopia; 2008 &#8211; 2012 Asia Foundation"
+msgstr "lisensa &copy; 2008 &#8211; 2012 Asia Foundation"
 
 #: haruka_theme/templates/splash.html:36
 msgid "HarukaSMS is now loading..."
@@ -116,7 +115,7 @@ msgstr "Mensajen"
 
 #: haruka_theme/templates/bulksend/dashboard.html:37
 msgid "for mail merge type [name] or [firstname]"
-msgstr "ba tipu mail merge [naran] ou [naraprimeiru]"
+msgstr "ba tipu mail merge [name] ou [firstname]"
 
 #: haruka_theme/templates/bulksend/dashboard.html:52
 msgid "Cost Calculator:"
@@ -139,9 +138,8 @@ msgid "Per Contact"
 msgstr "Kada Kontaktu"
 
 #: haruka_theme/templates/bulksend/dashboard.html:78
-#, fuzzy
 msgid "Confirm Message"
-msgstr "Resposta mensajen"
+msgstr "Konfirma mensajen"
 
 #: haruka_theme/templates/bulksend/review.html:12
 msgid "SMS Campaign Summary"
@@ -209,7 +207,7 @@ msgstr "Ita hakarak duni atu hamos grupu ne'e nia naran"
 #: haruka_theme/templates/xforms/form_create.html:27
 #: haruka_theme/templates/xforms/form_edit.html:11
 msgid "Cancel"
-msgstr "kansela"
+msgstr "Kansela"
 
 #: haruka_theme/templates/groups/groups/list.html:5
 msgid "HarukaSMS - Edit Group"
@@ -594,9 +592,8 @@ msgid "Text"
 msgstr ""
 
 #: poll/views.py:126 poll/views.py:143
-#, fuzzy
 msgid "Direction"
-msgstr "Diskripsaun"
+msgstr "Direksaun"
 
 #: poll/views.py:126 poll/views.py:143
 msgid "Phone number"
@@ -628,11 +625,11 @@ msgstr ""
 
 #: poll/views.py:768
 msgid "Incoming"
-msgstr ""
+msgstr "Tama"
 
 #: poll/views.py:768
 msgid "Outgoing"
-msgstr ""
+msgstr "Sai"
 
 #: poll/views.py:769
 msgid "Queued"
@@ -651,9 +648,8 @@ msgid "Processing"
 msgstr ""
 
 #: poll/views.py:771
-#, fuzzy
 msgid "Cancelled"
-msgstr "kansela"
+msgstr "Cansela"
 
 #: poll/views.py:771
 msgid "Errored"
