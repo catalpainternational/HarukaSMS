@@ -18,6 +18,8 @@
   <thead>
     <tr>
       <th class="center">{% trans "Type" %}</th>
+      <th class="center">{% trans "Identity" %}</th>
+      <th class="center">{% trans "Name" %}</th>
       <th>{% trans "Date" %}</th>
       {% for field in fields.all %}
       <th>{{ field.name }}</th>
@@ -36,6 +38,12 @@
       {% ifequal submission.type "sms" %}
       <img src="{{ MEDIA_URL }}rapidsms_xforms/icons/silk/phone.png" title="SMS Submission" >
       {% endifequal %}
+    </td>
+    <td class="center">
+      {{ submission.connection.identity }}
+    </td>
+    <td class="center">
+      {{ submission.connection.contact.name }}
     </td>
     <td>
       {% if submission.has_errors %}
