@@ -60,6 +60,7 @@ li {
   <thead>
     <tr>
       <th class="response_sender_col">{% trans "Sender" %}</th>
+      <th class="response_location_col">{% trans "Location" %}</th>
       {% for column, colclass in columns %}
       <th class="response_{{ colclass }}_col">{{ column }}</th>
       {% endfor %}
