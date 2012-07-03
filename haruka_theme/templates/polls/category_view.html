@@ -9,14 +9,14 @@
 </td>
 <td class="category_default_col">
   {% if category.default %}
-    <img style="vertical-alignment:bottom;padding-top:7px" src="{{ MEDIA_URL }}rapidsms/icons/silk/accept.png" alt="This category is default"/>
+    <img style="vertical-alignment:bottom;padding-top:7px" src="{{ STATIC_URL }}icons/silk/accept.png" alt="This category is default"/>
   {% else %}
     &nbsp;
   {% endif %}
 </td>
 <td class="category_options_col">
   <a onclick="deleteCategory(this, '{% url poll.views.delete_category poll.pk category.pk %}');" class="negative" style="float:right">
-    <img style="vertical-alignment:bottom;padding-top:7px" src="{{ MEDIA_URL }}rapidsms/icons/silk/delete.png" alt=""/>
+    <img style="vertical-alignment:bottom;padding-top:7px" src="{{ STATIC_URL }}icons/silk/delete.png" alt=""/>
   </a>
   <div>
     <a class="btn" onclick="editCategory(this, '{% url poll.views.edit_category poll.pk category.pk %}');" href="javascript:void(0);">{% trans "Edit" %}</a>

@@ -24,16 +24,16 @@
 <td class="category_options_col">
   
   {% if category %}
-      <a style="float:right;padding-top:7px;" href="javascript:void(0);"><img onclick="cancelCategory(this, '{% url poll.views.view_category poll.pk category.pk %}');" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt="" border="0"/></a>  
+      <a style="float:right;padding-top:7px;" href="javascript:void(0);"><img onclick="cancelCategory(this, '{% url poll.views.view_category poll.pk category.pk %}');" src="{{ STATIC_URL }}icons/silk/decline.png" alt="" border="0"/></a>  
       <div>
           <a class='btn success' onclick="saveCategory(this, '{% url poll.views.edit_category poll.pk category.pk %}');" href="javascript:void(0);" id="save_{{ category.pk }}">{% trans "Save" %}
           </a>
       </div>
   {% else %}  
-      <a href="javascript:void(0);"><img onclick="cancelAdd(this);" style="float:right;padding-top:6px;" src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt="" border="0"/></a>  
+      <a href="javascript:void(0);"><img onclick="cancelAdd(this);" style="float:right;padding-top:6px;" src="{{ STATIC_URL }}icons/silk/decline.png" alt="" border="0"/></a>  
       <div class="buttons">
           <a onclick="addCategory(this);" href="javascript:void(0);" id="save_{{ category.pk }}" class="positive">
-              <img src="{{ MEDIA_URL }}rapidsms/icons/silk/add.png" alt=""/>{% trans "Add" %}
+              <img src="{{ STATIC_URL }}icons/silk/add.png" alt=""/>{% trans "Add" %}
           </a>
       </div>
   {% endif %}

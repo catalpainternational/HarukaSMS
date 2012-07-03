@@ -15,11 +15,11 @@
 			{{ form|as_uni_form }}
 			<div class='poll-buttons'>
 				<a class='btn' href="{% url polls %}">
-				<!-- <img src="{{ MEDIA_URL }}rapidsms/icons/silk/decline.png" alt=""/> -->
+				<!-- <img src="{{ STATIC_URL }}icons/silk/decline.png" alt=""/> -->
 				{% trans "Cancel" %}
 				</a>
 				<a class='btn primary' onclick="$('#newForm').submit();" href="javascript:void(0);">
-				<!--<img src="{{ MEDIA_URL }}rapidsms/icons/silk/add.png" alt=""/> -->
+				<!--<img src="{{ STATIC_URL }}icons/silk/add.png" alt=""/> -->
 				{% trans "Create Poll" %}
 				</a>
 			</div>
