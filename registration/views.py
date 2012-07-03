@@ -16,12 +16,12 @@ from rapidsms.models import Contact
 from rapidsms.models import Connection
 from rapidsms.models import Backend
 
-#import phonenumbers
+import phonenumbers
 
 from .forms import BulkRegistrationForm
 from .forms import ContactForm
 from .tables import ContactTable
-from settings import LANGUAGE_CODE, COUNTRY_CODE, DEFAULT_BACKEND_NAME
+from settings import LANGUAGE_CODE, COUNTRY_CODE, DEFAULT_BACKEND_NAME, SANITIZE_PHONENUMBERS
 
 
 @require_GET
@@ -70,8 +70,9 @@ def registration(req, pk=None):
                     if not name.startswith('Name'):
 
                         identity = line_list[1].strip()
-                        #identity = phonenumbers.format_number(phonenumbers.parse(identity, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
-                        #identity = identity.replace('+','') # this makes the polls app happy again
+                        if SANITIZE_PHONENUMBERS:
+                            identity = phonenumbers.format_number(phonenumbers.parse(identity, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
+                        identity = identity.replace('+', '')  # this makes the polls app happy again
 
                         try:
                             gender = line_list[2].strip()
@@ -110,9 +111,10 @@ def registration(req, pk=None):
 
             if contact_form.is_valid():
                 contact = contact_form.save()
-                #Sanitize and properly format the phone number
-                #contact.phone = phonenumbers.format_number(phonenumbers.parse(contact.phone, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
-                #contact.phone = contact.phone.replace('+','') # this makes the polls app happy again
+                if SANITIZE_PHONENUMBERS:
+                    #Sanitize and properly format the phone number
+                    contact.phone = phonenumbers.format_number(phonenumbers.parse(contact.phone, COUNTRY_CODE), phonenumbers.PhoneNumberFormat.E164)
+                contact.phone = contact.phone.replace('+', '')  # this makes the polls app happy again
                 contact.language = LANGUAGE_CODE
                 contact.save()
 
@@ -132,7 +134,7 @@ def registration(req, pk=None):
     elif req.method == "GET":
         contact_form = ContactForm(instance=contact)
         bulk_form = BulkRegistrationForm()
-    
+
     contact_table = ContactTable(Contact.objects.all(), request=req)
 
     return render_to_response(

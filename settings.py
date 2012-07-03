@@ -68,6 +68,7 @@ LANGUAGES = (
     ('en', 'English'),
 )
 
+SANITIZE_PHONENUMBERS = True
 
 
 DEFAULT_BACKEND_NAME = "console"
