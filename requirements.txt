@@ -1,4 +1,5 @@
 django
+django-rosetta
 django-sorting
 django_pagination
 django-mptt
