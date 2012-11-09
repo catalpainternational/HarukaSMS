@@ -53,10 +53,16 @@ body {
         height: 7px;
         background: #fff;
         margin: 0 auto 0 auto;
-        z-index: 10;      
+        z-index: 10;
+		/*
+		box-shadow: 0px 0px 2px #aaa;
         -moz-box-shadow: 3px 3px #575757;
-        box-shadow: 0px 0px 2px #aaa;
         -webkit-box-shadow: 3px 3px #575757;
+		
+		-moz-box-shadow: 4px 0px 8px #575757;
+		-webkit-box-shadow: 4px 0px 8px #575757;
+		*/
+		box-shadow: 0px 0px 6px #aaa;
         -moz-border-radius-topright: 1em;
         -moz-border-radius-topleft: 1em;
         -webkit-border-radius: 1em 1em 0 0;
@@ -1065,8 +1071,7 @@ ctrlHolder {
 
 #inner div.row div.well.span7 form.buttons div.form-action a.btn.danger {
 	position: relative;
-	left: 215px; 
-	
+	left: 205px;
 }
 
 #inner div.well form.buttons div.form-action input.btn.danger {;
@@ -1088,8 +1093,8 @@ ctrlHolder {
 #inner div.row div.well.span7 form.buttons div.form-action input.btn.primary {
 	position: relative;
 	left: -10px; 
-	top: -53px;	
-
+	top: -54px;	
+	height: 29px;
 }
 
 #inner div.well form.buttons div.form-action a.btn {
@@ -1308,14 +1313,14 @@ form.registration_contacts {
 
 
 .phone-count {
-   width: 40px; 
+   width: 60px; 
    height: 25px; 
    background: #A6CF44;
    position: absolute;
    -moz-border-radius: 5px; 
    -webkit-border-radius: 5px; 
    border-radius: 4px;
-   margin-left: 46px;
+   text-align: center;
    color: #fff;
    line-height: 24px;
 }
@@ -1334,7 +1339,7 @@ form.registration_contacts {
 .cell-phone{
 	background: url(../images/cell.png) no-repeat 17px 2px;
 	height: 37px;
-	text-align: center;
+	text-align: right;
 }
 
 h4#cost-calc {

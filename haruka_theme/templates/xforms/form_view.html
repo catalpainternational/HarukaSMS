@@ -3,7 +3,6 @@
 {% block title %}{% trans "HarukaSMS - Data Collection" %}{% endblock %}
 
 {% block content %}
-
 <script type="text/javascript">
 
 	// send the current field order to the server
@@ -130,7 +129,24 @@
 	});
 	
 </script>
-
+<style>
+.field_name_col{
+	padding-left:20px !important;
+}
+.field_type_col{
+	padding-left:40px !important;
+}
+.field_command_col{
+	padding-left:85px !important;
+	width: 74px !important;
+}
+.field_description_col{
+	padding-left:15px !important;
+}
+.field_options_col{
+	margin-right:10px !important;
+}
+</style>
 <h4 style="margin-left:20px; margin-top: 45px">{% trans "Data Collection Campaign Overview" %}</h4>
 <div class="well" style="width:858px; margin-left:20px;" id="form_header">
    
