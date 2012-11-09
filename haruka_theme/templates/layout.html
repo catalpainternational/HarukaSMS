@@ -23,11 +23,9 @@
 <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}haruka_theme/css/custom.css" />
 {% endblock %}
 
+<script src="{{ STATIC_URL }}haruka_theme/js/jquery-1.7.1.min.js"></script>
 {% block javascripts %}
-<script type="text/javascript" src="{{ STATIC_URL }}javascripts/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}javascripts/collapse.js"></script>
-
-
 {% endblock %}
 
 	</head>
@@ -105,20 +103,20 @@
 });}          
     window.setInterval(update_modem_status, modem_poll_update_interval);
   </script>
-  
-<script src="{{ STATIC_URL }}haruka_theme/js/jquery-1.7.1.min.js"></script>
+
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-dropdown.js"></script>
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-collapse.js"></script>
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-button.js"></script>
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-modal.js"></script>
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-tooltip.js"></script>
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-popover.js"></script>
+<!--
 <script type="text/javascript">$('#myModal').modal(options)</script>
+<script type="text/javascript"> $('#example').tooltip(options)</script>
+<script type="text/javascript"> $('#example').popover(options)</script>
+-->
 <script type="text/javascript">$('#myModal').modal('show')</script>
 <script type="text/javascript">$('#myModal').modal('hide')</script>
 <script type="text/javascript">$('#myModal').modal('toggle')</script>
-<script type="text/javascript"> $('#example').tooltip(options)</script>
-<script type="text/javascript"> $('#example').popover(options)</script>
-
 	</body>
 </html>
