@@ -2,7 +2,7 @@
 ----------------------------------*/
 
 .ui-multiselect { border: 1px solid; font-size: 0.8em; }
-.ui-multiselect ul { -moz-user-select: none; }
+.ui-multiselect ul { -moz-user-select: none; -webkit-user-select: none; }
 .ui-multiselect div.list-container { padding: 0; margin: 0; border: 0; float:left;  }
 .ui-multiselect ul.list { position: relative; padding: 0; overflow: auto; overflow-x: hidden; margin: 0; list-style: none; width: 100%; }
 .ui-multiselect li { margin: 0; padding: 0; cursor: default; line-height: 20px; height: 20px; font-size: 11px; list-style: none; padding-left: 10px; white-space: nowrap; overflow: hidden; }

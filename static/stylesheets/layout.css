@@ -42,8 +42,10 @@ div.clear-hack {
     /* a little pretty for the 10/dec demo */
     -moz-box-shadow: 4px 4px 8px #aaa;
     box-shadow: 4px 4px 8px #aaa;
+    -webkit-box-shadow: 4px 4px 8px #aaa;
     -moz-border-radius-bottomright: 1em;
     -moz-border-radius-bottomleft: 1em;
+    -webkit-border-radius: 1em 1em 0 0;
 }
 
     /* no scaling for ie6 */
@@ -217,7 +219,9 @@ div.clear-hack {
          * important), like search terms. highlight them! */
         #inner h1 span.highlight {
             background: #ffa;
+            border-radius: 5px;
             -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
             border: 2px solid #ff0;
             padding: 0 4px;
             margin-left: -4px;
