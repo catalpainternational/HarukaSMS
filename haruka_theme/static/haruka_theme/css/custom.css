@@ -66,7 +66,7 @@ body {
         -moz-border-radius-topright: 1em;
         -moz-border-radius-topleft: 1em;
         -webkit-border-radius: 1em 1em 0 0;
-        top: 44px;
+        top: 47px;
 	}
 
 #inner div.row div.well.span7 form.buttons {
@@ -879,7 +879,7 @@ div#hint_id_restrict_message.formHint {
     border-right: none;
     margin: 0;
     width: 858px;
-    margin-left:20px;
+    /*margin-left:20px;*/
 
 }
 
@@ -1323,9 +1323,11 @@ form.registration_contacts {
    text-align: center;
    color: #fff;
    line-height: 24px;
+   margin-top: 5px;
+   margin-left: 45px;
 }
 .phone-count:before {
-   content:"";
+   /*content:"";*/
    position: absolute;
    width: 0;
    height: 0;
@@ -1339,7 +1341,7 @@ form.registration_contacts {
 .cell-phone{
 	background: url(../images/cell.png) no-repeat 17px 2px;
 	height: 37px;
-	text-align: right;
+	text-align: left;
 }
 
 h4#cost-calc {

@@ -7,21 +7,20 @@
 		color: #333333;
 		font: 9pt/1 "Helvetica","Arial";
 		padding: 0;
-
 	}
-  
-  .table {
-  	border: none;
-  }
-	
+
+	.table {
+		border: none;
+	}
+
 	table td {
-	    border-top: none;
-	    vertical-align: top;
-  } 	 	
-  
-	table td label{
-	    float: right;
-  } 	 	
+		border-top: none;
+		vertical-align: top;
+	}
+
+	table td label {
+		margin-left: 100px;
+	}
 
 </style>
 
@@ -46,10 +45,16 @@
 		<img style="float: left; margin-left: -2px;" src="/static/haruka_theme/images/beta-ribbon.png">
 		<div id='logo-centre'>
 		<img style="margin-top: 148px; margin-left: 25px;" src="/static/haruka_theme/images/loginlogo.png">
-		<h4 style="margin-left: 204px; margin-top: 40px;">{% trans "Please log in to HarukaSMS" %}</h4>			
 		
 		<form method="post" action="{% url rapidsms-login %}">
 		<table>
+			<tr>
+				<td style="width: 200px;"></td>
+				<td>
+					<h4 style="margin-top: 40px;">{% trans "Please log in to HarukaSMS" %}</h4>
+				</td>
+			</tr>
+			
 			<tr>
 				<td>{{ form.username.label_tag }}</td>
 				<td>{{ form.username }}</td>
@@ -60,7 +65,7 @@
 			</tr>
 		</table>
 		{% csrf_token %}
-		<input class="btn primary" type="submit" value="login" style="margin-left: 364px;">
+		<input class="btn primary" type="submit" value="login" style="margin-left: 422px;">
 		<input type="hidden" name="next" value="{{ next }}" />
 		</form>
 		{% if form.errors %}
