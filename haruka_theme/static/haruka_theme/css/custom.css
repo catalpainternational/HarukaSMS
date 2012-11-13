@@ -84,7 +84,7 @@ body {
         width: 510px; 
         margin-right: 0px; 
         top: -33px;
-        left: 440px;
+        left: 404px;
     }
 	
 	#tabs li.app-contacts a {
@@ -1185,13 +1185,36 @@ img#download-contacts {
 	
 }
 
+#modem_status {
+	float: right;
+}
+
+#settings {
+	position: relative;
+	left: 4px;
+	float: right;
+}
+
+#settings .toggle-settings-popup-button{
+	background: url(../images/header-options.png) no-repeat center center;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	position: relative;
+	top: -55px;
+}
+
+#settings .toggle-settings-popup-button:hover{
+	cursor: pointer;
+}
+
 div.status-lights {
 	display: inline-block;
-	width: 40px;
-	height: 10px;
+	/*width: 40px;
+	height: 10px;*/
 	position: relative;
-	top: -40px;
-	right: -150px;
+	top: -55px;
+	right: 30px;
 }
 
 #status_red{

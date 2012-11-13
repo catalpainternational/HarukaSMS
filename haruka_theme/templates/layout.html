@@ -41,7 +41,7 @@
 			<div id="header">
 				<div id="branding">
 					<h1>
-						<a title="{% trans "Return to the Dashboard" %}" href="{% url rapidsms-dashboard %}">
+						<a title='{% trans "Return to the Dashboard" %}' href="{% url rapidsms-dashboard %}">
 							<span>&nbsp;</span>
 						</a>
 					</h1>
@@ -65,16 +65,19 @@
 
 				{% block page_tabs %}
 				{% endblock %}
-                
-                <span id="modem_status"></span>
+				
+				<span id="modem_status"></span>
+				<span id="settings">
+					<div class="toggle-settings-popup-button"></div>
+				</span>
 
 				<!-- Message list: errors, warnings and such -->
 				{% if context_instance.messages %}
-        		<ul class="messagelist">
-		        {% for message in context_instance.messages %}
-		          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-		    	{% endfor %}</ul>
-		        {% endif %}
+				<ul class="messagelist">
+				{% for message in context_instance.messages %}
+				  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				{% endfor %}</ul>
+				{% endif %}
 
 			</div>
 			{% endblock %}
@@ -95,28 +98,62 @@
 
 			{% region "bottom" %}
 		</div>
- <script type="text/javascript">
-    var modem_poll_update_interval=3000;
-    function update_modem_status() {
-        var something = $.get("/router/modem_status", function(data) {
-          $("#modem_status").html(data);
-});}          
-    window.setInterval(update_modem_status, modem_poll_update_interval);
-  </script>
-
+		
+		<div id="settings_popup_wrapper" style="display: none;">
+			<div id="settings_popup_form">
+				<form>
+					<label for="">Language:</label>
+					<select id="language" name="language">
+						<option>language 1</option>
+						<option>language 2</option>
+						<option>language 3</option>
+						<option>language 4</option>
+					</select>
+					<br/><br/>
+					<label for="">Country Code:</label>
+					<select id="country_code" name="country_code">
+						<option>country 1</option>
+						<option>country 2</option>
+						<option>country 3</option>
+						<option>country 4</option>
+					</select>
+					<br/><br/>
+					<label for="">Cost of SMS:</label>
+					<input id="sms_cost" maxlength="160" type="text" name="sms_cost" size="60"/>
+					<br/><br/>
+					<a href="#">Change Password</a>
+					<br/><br/>
+					<input type="submit" value="Save" class="btn primary"/>
+				</form>
+			</div>
+		</div>
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-dropdown.js"></script>
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-collapse.js"></script>
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-button.js"></script>
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-modal.js"></script>
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-tooltip.js"></script>
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-popover.js"></script>
-<!--
-<script type="text/javascript">$('#myModal').modal(options)</script>
-<script type="text/javascript"> $('#example').tooltip(options)</script>
-<script type="text/javascript"> $('#example').popover(options)</script>
--->
-<script type="text/javascript">$('#myModal').modal('show')</script>
-<script type="text/javascript">$('#myModal').modal('hide')</script>
-<script type="text/javascript">$('#myModal').modal('toggle')</script>
-	</body>
+<script type="text/javascript">
+	var modem_poll_update_interval=3000;
+	
+	function update_modem_status() {
+		var something = $.get("/router/modem_status", function(data) {
+			$('#modem_status .status-lights').tooltip('hide');
+			$("#modem_status").html(data);
+			$('#modem_status .status-lights').tooltip({title: "You are connected.", placement: "bottom"});
+		});
+	}
+	
+	function init_settings_popup(){
+		settings_popup_content = $('#settings_popup_wrapper').html();
+		$('#settings .toggle-settings-popup-button').popover({title: "Settings", html: true, placement: "bottom", content: settings_popup_content});
+	}
+	
+	$('#myModal').modal('show');
+	$('#myModal').modal('hide');
+	$('#myModal').modal('toggle');
+	init_settings_popup();
+	window.setInterval(update_modem_status, modem_poll_update_interval);
+</script>
+</body>
 </html>
