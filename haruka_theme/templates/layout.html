@@ -135,7 +135,7 @@
 <script src="{{ STATIC_URL }}haruka_theme/js/bootstrap-popover.js"></script>
 <script type="text/javascript">
 	var modem_poll_update_interval=3000;
-	
+	var settings_popup_shown = false;
 	function update_modem_status() {
 		var something = $.get("/router/modem_status", function(data) {
 			$('#modem_status .status-lights').tooltip('hide');
@@ -146,14 +146,42 @@
 	
 	function init_settings_popup(){
 		settings_popup_content = $('#settings_popup_wrapper').html();
-		$('#settings .toggle-settings-popup-button').popover({title: "Settings", html: true, placement: "bottom", content: settings_popup_content});
+		$('#settings .toggle-settings-popup-button').popover({
+			title: "Settings", 
+			html: true, 
+			placement: "bottom",
+			trigger: "manual",
+			content: settings_popup_content
+		});
 	}
 	
-	$('#myModal').modal('show');
-	$('#myModal').modal('hide');
-	$('#myModal').modal('toggle');
-	init_settings_popup();
-	window.setInterval(update_modem_status, modem_poll_update_interval);
+	$(function(){
+		$('#myModal').modal('show');
+		$('#myModal').modal('hide');
+		$('#myModal').modal('toggle');
+		
+		init_settings_popup();
+		
+		$('#settings .toggle-settings-popup-button').on('click', function(){
+			if (settings_popup_shown){
+				$('#settings .toggle-settings-popup-button').popover('hide');
+				settings_popup_shown = false;
+			}
+			else{
+				$('#settings .toggle-settings-popup-button').popover('show');
+				settings_popup_shown = true;
+				var move_dist = -105;
+				var new_settings_popup_left = $('#settings .popover').offset().left + move_dist;
+				var new_settings_popup_arrow_left = $('#settings .toggle-settings-popup-button').offset().left - 2;
+				$('#settings .popover').offset({left: new_settings_popup_left});
+				$('#settings .popover .arrow').offset({left: new_settings_popup_arrow_left});
+				$('#settings .popover .arrow').offset({left: new_settings_popup_arrow_left});
+			}
+		});
+		
+		window.setInterval(update_modem_status, modem_poll_update_interval);
+	});
+	
 </script>
 </body>
 </html>

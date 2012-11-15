@@ -14,7 +14,15 @@
 		<h4 id="quick-SMS-h4">{% trans "Quick SMS" %}</h4>
 			<div class="well quick_SMS">
 				<form method="POST" class="sender-form">
-					{{ reply_form }}
+					{% if reply_form.recipient.errors %}
+						{{ reply_form.recipient.errors }}
+					{% endif %}
+					<label for="id_{{ reply_form.recipient.name }}">{{ reply_form.recipient.label }}:</label>{{ reply_form.recipient }}
+					<br/>
+					{% if reply_form.message.errors %}
+						{{ reply_form.message.errors }}
+					{% endif %}
+					<label for="id_{{ reply_form.message.name }}">{{ reply_form.message.label }}:</label>{{ reply_form.message }}
 					<input type="hidden" name="action" value="reply" />
 					<input type="submit" value="send" class='btn primary' id="quick-SMS-btn"/>
 					{% csrf_token %}

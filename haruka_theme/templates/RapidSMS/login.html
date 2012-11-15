@@ -21,6 +21,10 @@
 	table td label {
 		margin-left: 100px;
 	}
+	
+	p.login-error{
+		margin-left: 160px;
+	}
 
 </style>
 
@@ -69,7 +73,7 @@
 		<input type="hidden" name="next" value="{{ next }}" />
 		</form>
 		{% if form.errors %}
-		<p>{% trans "Oops. Your username and password didn't match. Please try again." %}</p>
+		<p class="login-error">{% trans "Oops. Your username and password didn't match. Please try again." %}</p>
 		{% endif %}
 		
 		</div>
